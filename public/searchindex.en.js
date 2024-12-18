@@ -1,42 +1,42 @@
 var relearn_searchindex = [
   {
-    "breadcrumb": "My New Hugo Site \u003e Posts",
+    "breadcrumb": "Rik's Treehouse \u003e Posts",
     "content": "Introduction This is bold text, and this is emphasized text.\nVisit the Hugo website!",
     "description": "Introduction This is bold text, and this is emphasized text.\nVisit the Hugo website!",
     "tags": [],
     "title": "My First Post",
-    "uri": "/posts/my-first-post/index.html"
+    "uri": "/~rikblok/posts/my-first-post/index.html"
+  },
+  {
+    "breadcrumb": "Rik's Treehouse",
+    "content": "",
+    "description": "",
+    "tags": [],
+    "title": "Posts",
+    "uri": "/~rikblok/posts/index.html"
   },
   {
     "breadcrumb": "",
     "content": "",
     "description": "",
     "tags": [],
-    "title": "My New Hugo Site",
-    "uri": "/index.html"
+    "title": "Rik's Treehouse",
+    "uri": "/~rikblok/index.html"
   },
   {
-    "breadcrumb": "My New Hugo Site",
-    "content": "",
-    "description": "",
-    "tags": [],
-    "title": "Posts",
-    "uri": "/posts/index.html"
-  },
-  {
-    "breadcrumb": "My New Hugo Site",
+    "breadcrumb": "Rik's Treehouse",
     "content": "",
     "description": "",
     "tags": [],
     "title": "Categories",
-    "uri": "/categories/index.html"
+    "uri": "/~rikblok/categories/index.html"
   },
   {
-    "breadcrumb": "My New Hugo Site",
+    "breadcrumb": "Rik's Treehouse",
     "content": "",
     "description": "",
     "tags": [],
     "title": "Tags",
-    "uri": "/tags/index.html"
+    "uri": "/~rikblok/tags/index.html"
   }
 ]

@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://www.cs.ubc.ca/~rikblok/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = "Rik's Treehouse"
 theme = 'hugo-theme-relearn'
