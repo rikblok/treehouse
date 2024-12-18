@@ -1,0 +1,6 @@
+Don't put any private information in this file!!!
+
+2024-12-17
+> cd themes
+> git submodule add https://github.com/McShelby/hugo-theme-relearn
+> edit hugo.toml: theme = 'hugo-theme-relearn'
