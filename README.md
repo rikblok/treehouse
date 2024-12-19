@@ -1,3 +1,3 @@
-# public_html
+# treehouse
  
 Personal website.
