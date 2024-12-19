@@ -1,6 +1,17 @@
 Don't put any private information in this file!!!
 
-2024-12-17
+
+2024-12-18 Set base_url to cs.ubc
+> edit hugo.toml: 
+	baseURL = 'https://www.cs.ubc.ca/~rikblok/'
+	title = "Rik's Treehouse"
+* seems to be overridden by github hugo deploy action 👍  So I can deploy to both servers:
+	https://rikblok.github.io/treehouse/
+	https://www.cs.ubc.ca/~rikblok/
+
+
+2024-12-17 Added Relearn theme
 > cd themes
 > git submodule add https://github.com/McShelby/hugo-theme-relearn
-> edit hugo.toml: theme = 'hugo-theme-relearn'
+> edit hugo.toml: 
+	theme = 'hugo-theme-relearn'
