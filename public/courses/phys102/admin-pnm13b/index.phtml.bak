@@ -1,0 +1,76 @@
+<?
+$title="Administration";
+$parent="../index";
+include 'head.php';
+$subdir="admin-pnm13b/";
+include "../menu.php";
+?>
+
+<p>This course is going to require a lot of effort from all of us.  To try and make things easier I've laid out my intentions here.  If you can think of a way to improve efficiency, let me know.</p>
+
+<?	tochead(array('name'=>"Tutorials", 'href'=>"tutsols.html")); ?>
+
+<p>The last 20-30 minutes of every class will be a tutorial session (except Mon).  Both tutorial TAs will be expected to attend to help the students with an assigned problem.  One TA will mark the Tue/Thu assignments and the other Wed/Fri.  Marked assignments should be returned to the students within two days.</p>
+
+<table cellspacing="4" cellpadding="8" align="center"><tr bgcolor="#6699ff" align="center">
+	<td><b>Day</b></td><td><b>Time</b></td><td><b>Marker</b></td><td><b>Location</b></td>
+</tr><tr bgcolor="#ccddff" align="center">
+	<td>Tue</td><td>11:00-11:30</td><td>Allan Cowan</td><td rowspan="4" valign="center">Hebb Theatre</td>
+</tr><tr bgcolor="#99ccff" align="center">
+	<td>Wed</td><td>11:00-11:30</td><td>Donovan Young</td>
+</tr><tr bgcolor="#ccddff" align="center">
+	<td>Thu</td><td>11:00-11:30</td><td>Allan Cowan</td>
+</tr><tr bgcolor="#99ccff" align="center">
+	<td>Fri</td><td>11:30-12:00</td><td>Donovan Young</td>
+</tr></table>
+
+<p>Each assignment will be graded on a scale of 1 through 10, with no part marks.  Deduct one mark for <i><b>serious or repeated</b></i> significant digit and/or unit errors. <b>Record the marks and return the completed sheet to me at the end of term.</b></p>
+
+<p><a href="tutsols.html">Tutorial solutions</a> will be posted (for the TAs only) in advance.  If you notice any mistakes, let me know.</p>
+
+<?	tochead(array('name'=>"Tests")); ?>
+
+<p>The tutorial TAs will also be expected to mark the three midterm tests.  Each Mon there will be a 4-question test.  You can pick up the tests from Hebb Theatre on Mon <i>immediately</i> after class or I can drop them in your mailboxes.  The test will be split and each TA will take home and mark 2 of the questions.  The tests must be returned to me by Wed of the same week.  I will then review them and return the tests to students on Thu.</p>
+
+<?	tochead(array('name'=>"Labs")); ?>
+
+<p>We will be re-using the Winter session lab manuals.  Students are responsible for providing their own yellow lab notebooks which will be collected by the TAs and kept in the marking room.</p>
+
+<p>Labs run 4 days per week.  Both lab TAs must attend all labs.  You will give a <i>brief</i> (5-10 min.) introduction to the lab to familiarize the students with the equipment.  Since the material in the lab may precede the lectures you may also be required to cover some theory, but keep it short.</p>
+
+<p>Two experiments will run simultaneously in each lab.  Unlike the Winter semester, you will not do all 6 labs.  Instead, each week you will supervise and mark a single lab.  (There are two benefits: (1) it's easier on you, and (2) the grades won't need to be normalized at the end of the semester.)</p>
+
+<table cellspacing="4" cellpadding="8" align="center"><tr bgcolor="#6699ff" align="center">
+	<td></td><td align="center" colspan="2"><b>Experiment</b></td>
+</tr><tr bgcolor="#6699ff" align="center">
+	<td><b>Week<sup><a href="#note1">*</a></sup></b></td><td><b>Kat Dixon</b></td><td><b>Perry Sih</b></td>
+</tr><tr bgcolor="#ccddff" align="center">
+	<td>1</td><td>1</td><td>2</td>
+</tr><tr bgcolor="#99ccff" align="center">
+	<td>2</td><td>3</td><td>4</td>
+</tr><tr bgcolor="#ccddff" align="center">
+	<td>3</td><td>5</td><td>6</td>
+</tr></table>
+<p><b><sup><a name="note1">*</a></sup></b> Weeks <b>start on Fri</b> since that is the first day of labs.</p>
+
+<p>Labs must be marked before the students begin their next lab (ie. within two days).  Each lab is marked out of 10.</p>
+
+<?	tochead(array('name'=>"Exam")); ?>
+
+<p>The final exam will be held during the final class, Fri Jul 25 9:00-12:00 in Hebb Theatre.  The lab TAs are expected to invigilate.</p>
+
+<p>Marking will commence at 1pm on the same day.  The tutorial TAs are expected to help with marking.  The location will be anounced later.</p>
+                                                    
+<?	include 'foot.php';	?>                           
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    

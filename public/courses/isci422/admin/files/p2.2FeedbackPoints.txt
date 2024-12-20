@@ -1,0 +1,3 @@
+Things students should consider when providing feedback:
+
+* Is the question inspired by a known, replicable phenomenon?  Ie. it shouldn't be an anecdote.

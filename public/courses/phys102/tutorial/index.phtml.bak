@@ -1,0 +1,71 @@
+<?
+$title="Tutorials";
+$parent="../index";
+include 'head.php';
+include '../menu.php';
+include 'table.php';
+include_once 'shortcut.php';
+<set icon="${basedir}images/pdficon.gif">
+<set nodate=""><? /* don't print date on pdf shortcuts */ ?>
+<def name="tut" option="num"><td><shortcut file="tut${num}.pdf"></td><td><shortcut file="tut${num}-4up.pdf"></td></def>
+?>
+
+<p>The last half hour of each class will be a tutorial session (except Mon).  A problem will be assigned for you to solve before the end of class.  The TAs will assist you and collect the solutions at the end of class for marking.  Solutions will be posted here after class.</p>
+
+<p>Participation in tutorials is not mandatory, but will contribute up to 10% to your final grade.  If you choose not to participate the extra 10% can be made up on the final exam.  See the <a href="../index.html#Mark&nbsp;Distribution">mark distribution</a> for more details.</p>
+
+<?	tochead(array('name'=>"Solutions")); ?>
+
+<table cellspacing="4" cellpadding="4" align="center"><tr bgcolor="#6699ff" align="center">
+	<td rowspan="2"><b>Tutorial</b></td><td rowspan="2"><b>Date</b></td><td colspan="2"><b>Solution</b></td>
+</tr><tr bgcolor="#6699ff" align="center">
+	<td><b>View</b></td> <td><b>Print<a href="#note1"><sup>*</sup></a><br><small><small>(4-up)</small></small></b></td>	
+</tr><?=trbgalt(array('align'=>'center')); ?>
+	<td> 1</td><td>Wed Jul  2</td><tut num="01">
+</tr><?=trbgalt(array('align'=>'center')); ?>
+	<td> 2</td><td>Thu Jul  3</td><tut num="02">
+</tr><?=trbgalt(array('align'=>'center')); ?>
+	<td> 3</td><td>Fri Jul  4</td><tut num="03">
+</tr><?=trbgalt(array('align'=>'center')); ?>
+<td><hr></td><td>Mon Jul  7</td>
+	<td><hr></td><td><hr></td>
+</tr><?=trbgalt(array('align'=>'center')); ?>
+	<td> 5</td><td>Tue Jul  8</td><tut num="05">
+</tr><?=trbgalt(array('align'=>'center')); ?>
+	<td> 6</td><td>Wed Jul  9</td><tut num="06">
+</tr><?=trbgalt(array('align'=>'center')); ?>
+	<td> 7</td><td>Thu Jul 10</td><tut num="07">
+</tr><?=trbgalt(array('align'=>'center')); ?>
+	<td> 8</td><td>Fri Jul 11</td><tut num="08">
+</tr><?=trbgalt(array('align'=>'center')); ?>
+	<td><hr></td><td>Mon Jul 14</td><td><hr></td><td><hr></td>
+</tr><?=trbgalt(array('align'=>'center')); ?>
+	<td>10</td><td>Tue Jul 15</td><tut num="10">
+</tr><?=trbgalt(array('align'=>'center')); ?>
+	<td>11</td><td>Wed Jul 16</td><tut num="11">
+</tr><?=trbgalt(array('align'=>'center')); ?>
+	<td>12</td><td>Thu Jul 17</td><tut num="12">
+</tr><?=trbgalt(array('align'=>'center')); ?>
+	<td>13</td><td>Fri Jul 18</td><tut num="13">
+</tr><?=trbgalt(array('align'=>'center')); ?>
+	<td><hr></td><td>Mon Jul 21</td><td><hr></td><td><hr></td>
+</tr><?=trbgalt(array('align'=>'center')); ?>
+	<td>15</td><td>Tue Jul 22</td><tut num="15">
+</tr><?=trbgalt(array('align'=>'center')); ?>
+	<td>16</td><td>Wed Jul 23</td><tut num="16">
+</tr></table>                                       
+<p><a name="note1"><b><sup>*</sup></b></a> - The display quality of the print version may be poor but the printout should look fine.</p>
+
+<?	include 'foot.php';	?>                           
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    

@@ -1,0 +1,2 @@
+<?include "${basedir}courses/index.tree";echo "<a href=\"${base}phys102/index.html\">UBC Physics 102 (Summer 2003)</a> &gt; ";
+?>

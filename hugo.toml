@@ -2,3 +2,8 @@ baseURL = 'https://www.cs.ubc.ca/~rikblok/'
 languageCode = 'en-us'
 title = "Rik's Treehouse"
 theme = 'hugo-theme-relearn'
+
+[params]
+  [params.author]
+    email = 'rik.blok@ubc.ca'
+    name = 'Rik Blok'

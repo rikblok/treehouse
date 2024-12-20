@@ -1,30 +1,22 @@
 var relearn_searchindex = [
   {
     "breadcrumb": "",
-    "content": "The home page of Rik Blok Welcome to my home page! Just a modest little site to let me air some of my crazy ideas and opinions. If you have a comment about any of the contents of this site, feel free to e-mail me. Scroll down to see what’s been on my mind lately.\nHere are a few things I’ve been thinking about lately:\nAcademic Aberrations\rBabbling in Binary\rMathematical Musings\rRandom Research\rScintillating Science\rReferences",
-    "description": "The home page of Rik Blok Welcome to my home page! Just a modest little site to let me air some of my crazy ideas and opinions. If you have a comment about any of the contents of this site, feel free to e-mail me. Scroll down to see what’s been on my mind lately.\nHere are a few things I’ve been thinking about lately:\nAcademic Aberrations\rBabbling in Binary\rMathematical Musings\rRandom Research\rScintillating Science\rReferences",
+    "content": "Here’s some course material for current and past courses I have been involved in. Also, check out my office hours if you’d like to talk to me outside of class. And look below if you’re interested in getting a reference from me.\nRecent courses Here are some recent courses I’ve taught:\nUBC ISCI 320: Research Development Project Retreat to develop skills in writing scientific research proposals. Emphasis on formulating and testing hypotheses to explain observations. Contact information Old courses (These pages are not maintained and may contain broken links.)\nUBC ISCI 344: Game Theory in Economics and Evolution (Fall 2016)) Exploration of human and animal interactions: integrating evolutionary and economic perspectives to investigate individual and social behaviour. UBC ISCI 422: Models in Science (Fall 2009) Meaning, nature, use, strengths and limitations of models as investigative tools in all scientific disciplines. Detailed investigation of selected model systems from different scientific disciplines. UBC PHYS 102: Electricity, Light and Radiation (Summer 2003) Introduction to optics, electricity and magnetism, electric circuits, radioactivity, including biological applications. UBC PHYS 153: Elements of Physics (Winter 2000) Thermometry, thermal properties of matter, heat, oscillations, waves, sound, wave optics; geometrical optics, elementary electricity and magnetism, simple DC and AC circuits.",
+    "description": "Material from some of my courses and my contact information.  Look here if you want to book an appointment.",
     "tags": [],
-    "title": "Rik's Treehouse",
-    "uri": "/~rikblok/index.html"
+    "title": "Academic Aberrations",
+    "uri": "/~rikblok/teaching/index.html"
   },
   {
-    "breadcrumb": "Rik's Treehouse \u003e Posts",
-    "content": "Introduction This is bold text, and this is emphasized text.\nVisit the Hugo website!",
-    "description": "Introduction This is bold text, and this is emphasized text.\nVisit the Hugo website!",
+    "breadcrumb": "Academic Aberrations",
+    "content": "Game Theory in Economics and Evolution (Fall 2016) Exploration of human and animal interactions: integrating evolutionary and economic perspectives to investigate individual and social behaviour.\nIntroduction We’re taking our first steps towards flipping the classroom! Here you can find video lectures and notes that replace in-class lectures.\n01 The Ultimatum Game 02 Extensive and normal form games 03 Dominance and Pareto optimality 04 Symmetric and zero-sum games 05 Sotto vs. Blotto and mixed Nash equilibria 06 Deriving mixed Nash equilibria 07 Deriving Expected Utility Theory 08 Evolutionary Game Theory 09 An asymmetric evolutionary game 10 Multiplayer games 11 Public goods with punishment 12 Repeated games Lecture notes Here’s the whole collection of lecture notes for the videos:\n01 The Ultimatum Game.pdf 02 Extensive and normal form games.pdf 03 Dominance and Pareto Optimality.pdf 04 Symmetric and zero-sum games.pdf 05 Sotto vs. Blotto and mixed Nash equilibria.pdf 06 Deriving mixed Nash equilibria.pdf 07 Deriving Expected Utility Theory.pdf 08 Evolutionary Game Theory.pdf 09 An asymmetric evolutionary game.pdf 10 Multiplayer games.pdf 11 Public goods with punishment.pdf 12 Repeated games.pdf",
+    "description": "Game Theory in Economics and Evolution (Fall 2016) Exploration of human and animal interactions: integrating evolutionary and economic perspectives to investigate individual and social behaviour.\nIntroduction We’re taking our first steps towards flipping the classroom! Here you can find video lectures and notes that replace in-class lectures.\n01 The Ultimatum Game 02 Extensive and normal form games 03 Dominance and Pareto optimality 04 Symmetric and zero-sum games 05 Sotto vs. Blotto and mixed Nash equilibria 06 Deriving mixed Nash equilibria 07 Deriving Expected Utility Theory 08 Evolutionary Game Theory 09 An asymmetric evolutionary game 10 Multiplayer games 11 Public goods with punishment 12 Repeated games Lecture notes Here’s the whole collection of lecture notes for the videos:",
     "tags": [],
-    "title": "My First Post",
-    "uri": "/~rikblok/posts/my-first-post/index.html"
+    "title": "UBC ISCI 344",
+    "uri": "/~rikblok/teaching/isci344/index.html"
   },
   {
-    "breadcrumb": "Rik's Treehouse",
-    "content": "",
-    "description": "",
-    "tags": [],
-    "title": "Posts",
-    "uri": "/~rikblok/posts/index.html"
-  },
-  {
-    "breadcrumb": "Rik's Treehouse",
+    "breadcrumb": "",
     "content": "",
     "description": "",
     "tags": [],
@@ -32,7 +24,7 @@ var relearn_searchindex = [
     "uri": "/~rikblok/categories/index.html"
   },
   {
-    "breadcrumb": "Rik's Treehouse",
+    "breadcrumb": "",
     "content": "",
     "description": "",
     "tags": [],

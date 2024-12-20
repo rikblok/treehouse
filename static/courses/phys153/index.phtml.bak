@@ -1,0 +1,179 @@
+<?
+$title='UBC Physics 153 (Spring 2000)';
+$parent='../index';
+include 'head.php';
+include 'notes.php';
+include 'prob.php';
+?>
+
+This is a web page for Phys 153 tutorial section T0H, Fri 1:30-2:20pm, Hebb 12.
+
+<h2>Contents</h2>
+
+<a href= "#links">Links</a><br>
+<a href= "#notes">Tutorial Notes</a><br>
+&nbsp;&nbsp;<a href= "#week1">Week 1: Thin Lenses</a><br>
+&nbsp;&nbsp;<a href= "#week2">Week 2: Multiple Lenses</a><br>
+&nbsp;&nbsp;<a href= "#week3">Week 3: Point Charges</a><br>
+&nbsp;&nbsp;<a href= "#week4">Week 4: Continuous Charge Distributions</a><br>
+&nbsp;&nbsp;<a href= "#week5">Week 5: Gauss's Law</a><br>
+&nbsp;&nbsp;<a href= "#week6">Week 6: Capacitors</a><br>
+&nbsp;&nbsp;<a href= "#week7">Week 7: Resistivity</a><br>
+&nbsp;&nbsp;<a href= "#week8">Week 8: RC Circuits</a><br>
+&nbsp;&nbsp;<a href= "#week9">Week 9: Ampere's Law</a><br>
+&nbsp;&nbsp;<a href= "#week10">Week 10: Faraday's Law</a><br>
+&nbsp;&nbsp;<a href= "#week11">Week 11: LR Circuits</a><br>
+<a href= "#probs">Solutions to Selected Problems</a><br>
+&nbsp;&nbsp;<a href= "#tiplerCh25Prob60">Tipler Ch. 25 Problem 60</a><br>
+<a href= "#crib">Crib Sheet</a><br>
+<p>
+
+<a name="links"><hr>
+<h2>Links</h2>
+
+<ul>
+	<li><a href= "http://www.physics.ubc.ca/~andre/physics153/index.html">Dr. Marziali's Physics 153 Page</a>
+	<li><a href= "http://www.physics.ubc.ca/~parsons/phys153.htm">Dr. Parsons' Physics 153 Page</a>
+</ul>
+
+<a name="notes"><hr>
+<h2>Tutorial Notes</h2>
+
+<? notes(array(
+	'week'=>"1",
+	'title'=>"Thin Lenses",
+	'tutpdf'=>'',
+	'tutpszip'=>'',
+	'solnpdf'=>'',
+	'solnpszip'=>''
+));
+?>
+
+<? notes(array(
+	'week'=>"2",
+	'title'=>"Multiple Lenses",
+	'tutpdf'=>'',
+	'tutpszip'=>'',
+	'solnpdf'=>'',
+	'solnpszip'=>''
+));
+?>
+
+<?	notes(array(
+	'week'=>"3",
+	'title'=>"Point Charges",
+	'tutpdf'=>'',
+	'tutpszip'=>'',
+	'solnpdf'=>'',
+	'solnpszip'=>''
+));
+?>
+
+<?	notes(array(
+	'week'=>"4",
+	'title'=>"Continuous Charge Distributions",
+	'tutpdf'=>'',
+	'tutpszip'=>'',
+	'solnpdf'=>'',
+	'solnpszip'=>''
+));
+?>
+
+<?	notes(array(
+	'week'=>"5",
+	'title'=>"Gauss's Law",
+	'tutpdf'=>'',
+	'tutpszip'=>'',
+	'solnpdf'=>'',
+	'solnpszip'=>''
+));
+?>
+
+<?	notes(array(
+	'week'=>"6",
+	'title'=>"Capacitors",
+	'tutpdf'=>'',
+	'tutpszip'=>'',
+	'solnpdf'=>'',
+	'solnpszip'=>''
+));
+?>
+
+<?	notes(array(
+	'week'=>"7",
+	'title'=>"Resistivity",
+	'tutpdf'=>'',
+	'tutpszip'=>'',
+	'solnpdf'=>'',
+	'solnpszip'=>''
+));
+?>
+
+<?	notes(array(
+	'week'=>"8",
+	'title'=>"RC Circuits",
+	'tutpdf'=>'',
+	'tutpszip'=>'',
+	'solnpdf'=>'',
+	'solnpszip'=>''
+));
+?>
+
+<?	notes(array(
+	'week'=>"9",
+	'title'=>"Ampere's Law",
+	'tutpdf'=>'',
+	'tutpszip'=>'',
+	'solnpdf'=>'',
+	'solnpszip'=>''
+));
+?>
+
+<?	notes(array(
+	'week'=>"10",
+	'title'=>"Faraday's Law",
+	'tutpdf'=>'',
+	'tutpszip'=>'',
+	'solnpdf'=>'',
+	'solnpszip'=>''
+));
+?>
+
+<?	notes(array(
+	'week'=>"11",
+	'title'=>"LR Circuits",
+	'tutpdf'=>'',
+	'tutpszip'=>'',
+	'solnpdf'=>'',
+	'solnpszip'=>''
+));
+?>
+
+<a name="probs"><hr>
+<h2>Solutions to Selected Problems</h2>
+?>
+
+If you have any homework (or other) problems you are having trouble with, let me know and I'll take a crack at it.<p>
+?>
+
+<?	prob(array(
+	'label'=>"tiplerCh25Prob60",
+	'title'=>"Tipler Ch. 25 Problem 60",
+	'comments'=>"Chris asked for this one...",
+	'pdf'=>'',
+	'pszip'=>''
+));
+?>
+
+<a name="crib"><hr>
+<h2>Crib Sheet</h2>
+?>
+
+I've been the TA for this course for about 5 years now and <i>every</i> year I forget the equations!  (My memory sucks.)  So I decided I'd write the important ones down once and for all.  This crib sheet is the result.  I really don't know if you'll be allowed to bring the crib sheet into the exams but if not, these are the equations <i>I</i> would memorize.<p>
+?>
+
+You can get my latest version of the 153 crib sheet here in <a href="153crib.ps">PostScript</a> format or <a href="153crib.pdf">Adobe Acrobat (PDF)</a> format.  (Visit my <a href= "../library.html#legend">library</a> for a description of how to view these files.)
+<p>
+?>
+
+<?	include 'foot.php';	?>

@@ -1,0 +1,61 @@
+<?
+$title="Tutorial Solutions";
+$parent="../index";
+include 'head.php';
+include "shortcut.php";
+include "../menu.php";
+
+function tut($num,$dir) {
+	global $basedir;
+	echo '<td>';
+	shortcut(array('file'=>"tut$num.pdf", 'dir'=>$dir, 'icon'=>"${basedir}images/pdficon.gif", 'nodate'=>true));
+	echo '</td><td>';
+	shortcut(array('file'=>"tut$num-4up.pdf", 'dir'=>$dir, 'icon'=>"${basedir}images/pdficon.gif", 'nodate'=>true));
+	echo '</td>';
+}
+?>
+
+<p>Solutions to the tutorial problems will be posted here at least a few days before class.  Let me know if you find any mistakes.</p>
+
+<?	tochead(array('name'=>"Schedule")); ?>
+
+<table cellspacing="4" cellpadding="4" align="center"><tr bgcolor="#6699ff" align="center">
+	<td rowspan="2"><b>Tutorial</b></td><td rowspan="2"><b>Date</b></td><td colspan="2"><b>Solution</b></td>
+</tr><tr bgcolor="#6699ff" align="center">
+	<td><b>View</b></td> <td><b>Print<a href="#note1"><sup>*</sup></a><br><small><small>(4-up)</small></small></b></td>	
+</tr><tr bgcolor="#ccddff" align="center">
+	<td> 1</td>	<td>Wed Jul  2</td><? tut("01", "../tutorial/") ?>
+</tr><tr bgcolor="#99ccff" align="center">
+	<td> 2</td>	<td>Thu Jul  3</td><? tut("02", "../tutorial/") ?>
+</tr><tr bgcolor="#ccddff" align="center">
+	<td> 3</td>	<td>Fri Jul  4</td><? tut("03", "../tutorial/") ?>
+</tr><tr bgcolor="#99ccff" align="center">
+	<td><hr></td>	<td>Mon Jul  7</td>	<td><hr></td>	<td><hr></td>
+</tr><tr bgcolor="#ccddff" align="center">
+	<td> 5</td>	<td>Tue Jul  8</td><? tut("05", "../tutorial/") ?>
+</tr><tr bgcolor="#99ccff" align="center">
+	<td> 6</td>	<td>Wed Jul  9</td><? tut("06", "../tutorial/") ?>
+</tr><tr bgcolor="#ccddff" align="center">
+	<td> 7</td>	<td>Thu Jul 10</td><? tut("07", "../tutorial/") ?>
+</tr><tr bgcolor="#99ccff" align="center">
+	<td> 8</td>	<td>Fri Jul 11</td><? tut("08", "../tutorial/") ?>
+</tr><tr bgcolor="#ccddff" align="center">
+	<td><hr></td>	<td>Mon Jul 14</td>	<td><hr></td>	<td><hr></td>
+</tr><tr bgcolor="#99ccff" align="center">
+	<td>10</td>	<td>Tue Jul 15</td><? tut("10", "../tutorial/") ?>
+</tr><tr bgcolor="#ccddff" align="center">
+	<td>11</td>	<td>Wed Jul 16</td><? tut("11", "../tutorial/") ?>
+</tr><tr bgcolor="#99ccff" align="center">
+	<td>12</td>	<td>Thu Jul 17</td><? tut("12", "../tutorial/") ?>
+</tr><tr bgcolor="#ccddff" align="center">
+	<td>13</td>	<td>Fri Jul 18</td><? tut("13", "../tutorial/") ?>
+</tr><tr bgcolor="#99ccff" align="center">
+	<td><hr></td>	<td>Mon Jul 21</td>	<td><hr></td>	<td><hr></td>
+</tr><tr bgcolor="#ccddff" align="center">
+	<td>15</td>	<td>Tue Jul 22</td><? tut("15", "../tutorial/") ?>
+</tr><tr bgcolor="#99ccff" align="center">
+	<td>16</td>	<td>Wed Jul 23</td><? tut("16", "../tutorial/") ?>
+</tr></table>                                       
+<p><a name="note1"><b><sup>*</sup></b></a> - The display quality of the print version may be poor but the printout should look fine.</p>
+
+<?	include 'foot.php';	?>

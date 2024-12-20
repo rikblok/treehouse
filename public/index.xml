@@ -2,18 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rik&#39;s Treehouse</title>
-    <link>https://www.cs.ubc.ca/~rikblok/index.html</link>
-    <description>The home page of Rik Blok Welcome to my home page! Just a modest little site to let me air some of my crazy ideas and opinions. If you have a comment about any of the contents of this site, feel free to e-mail me. Scroll down to see what’s been on my mind lately.&#xA;Here are a few things I’ve been thinking about lately:&#xA;Academic Aberrations&#xD;Babbling in Binary&#xD;Mathematical Musings&#xD;Random Research&#xD;Scintillating Science&#xD;References</description>
+    <link>http://localhost:1313/~rikblok/index.html</link>
+    <description>The home page of Rik Blok Welcome to my home page! Just a modest little site to let me air some of my crazy ideas. Here are a few things I’ve been thinking about lately:&#xA;Academic AberrationsMaterial from some of my courses and my contact information. Look here if you want to book an appointment.&#xA;Babbling in Binary&#xD;Mathematical Musings&#xD;Random Research&#xD;Scintillating Science&#xD;References</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 12 Dec 2024 21:53:44 -0800</lastBuildDate>
-    <atom:link href="https://www.cs.ubc.ca/~rikblok/index.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
+    <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
+    <atom:link href="http://localhost:1313/~rikblok/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Posts</title>
-      <link>https://www.cs.ubc.ca/~rikblok/posts/index.html</link>
-      <pubDate>Thu, 12 Dec 2024 21:53:44 -0800</pubDate>
-      <guid>https://www.cs.ubc.ca/~rikblok/posts/index.html</guid>
-      <description></description>
+      <title>Academic Aberrations</title>
+      <link>http://localhost:1313/~rikblok/teaching/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>http://localhost:1313/~rikblok/teaching/index.html</guid>
+      <description>Material from some of my courses and my contact information.  Look here if you want to book an appointment.</description>
     </item>
   </channel>
 </rss>

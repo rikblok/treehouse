@@ -1,0 +1,38 @@
+Next time:
+---------
+- announce lab marks will be scaled up/down to a group/section average of 75%.  Eg. Section L02 Group A will
+be scaled as a single population.
+
+
+Notes:
+-----
+Between lectures (n) and (n+1):
+- download prs responses for lec(n) via ftp
+- upload tutorial/tut(n).pdf
+- print 4-up hardcopy of lec(n+1)  (backup in case computer crashes)	
+- review lecture (n+1)
+- review prs (n+1)
+- print overheads for lec(n+1) of
+	1) multi-page examples 
+	2) PRS questions
+	3) tutorial question (not solution)  (don't put tutorial problem on slideshow)
+- prepare requested practice problems
+- if Fri then upload all of next week's lectures: lec(n+?).pdf & lec(n+?)-4up.pdf
+- if Fri then upload all of next week's admin tuts: admin/tut(n+2).pdf
+- upload latest formulasheet.pdf?
+- if Mon then post scanned solutions to practice problems for previous week
+
+
+
+Time:
+- have a total of 46 hrs (not incl. last Fri)
+- devote last 1/2 hr of each Tue-Thu class to tutorials (total=7 hrs)
+- devote first hr of each Mon to tests (total=3 hrs)
+- which leaves 36 hrs for teaching
+- lecture times: Mon: 10-11:30 (1.5hrs), Tue-Thu: 9-11 (2hrs), Fri: 9-11:30 (2.5hrs)
+
+Ch 42
+- skip neutron size.  Justification: not relevant to later material.
+- skip binding energy calculations. Justification: requires a lookup table and contributes nothing to understanding
+- instead use potential energy level diagrams to explain stable vs. unstable nuclei
+	

@@ -1,5 +1,9 @@
 Don't put any private information in this file!!!
 
+2024-12-19 Relearn theme setup
+* instructions at https://mcshelby.github.io/hugo-theme-relearn/introduction/quickstart/index.html
+	> hugo new --kind home _index.md
+	
 
 2024-12-18 Set base_url to cs.ubc
 > edit hugo.toml: 
@@ -8,6 +12,23 @@ Don't put any private information in this file!!!
 * seems to be overridden by github hugo deploy action 👍  So I can deploy to both servers:
 	https://rikblok.github.io/treehouse/
 	https://www.cs.ubc.ca/~rikblok/
+* to sync to cs.ubc:
+	> ssh ...@remote.cs.ubc.ca:22
+	>> mkdir GitHub											 ← first time
+	>> chmod 755 GitHub										 
+	>> cd GitHub											 
+	>> mkdir rikblok										 
+	>> chmod 755 rikblok									 
+	>> cd rikblok											 
+	>> git clone https://github.com/rikblok/treehouse.git    
+	>> ln -s ~/GitHub/rikblok/treehouse/public ~/public_html 
+	>> chmod 755 treehouse									 
+	>> nano ~/sync-treehouse.sh
+		cd treehouse
+		git pull     
+		chmod -R 755 .
+	>> chmod u+x ~/sync-treehouse.sh
+	>> ~/sync-treehouse.sh									 ← subsequent times
 
 
 2024-12-17 Added Relearn theme
@@ -15,3 +36,23 @@ Don't put any private information in this file!!!
 > git submodule add https://github.com/McShelby/hugo-theme-relearn
 > edit hugo.toml: 
 	theme = 'hugo-theme-relearn'
+
+
+2024-12-12 Installing Hugo:
+> winget install Hugo.Hugo.Extended
+From https://gohugo.io/getting-started/quick-start/
+> winget install --id Microsoft.PowerShell --source winget
+Run Powershell 7 (x64):
+PS > hugo version
+PS > cd "%UserProfile%\Documents\GitHub\rikblok"
+PS > hugo new site public_html
+PS > cd public_html
+PS > git init
+PS > git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+PS > echo "theme = 'ananke'" >> hugo.toml
+PS > hugo								← to deploy static site in public folder
+GitHub Desktop > File > Add local repository...
+PS > git add README.md
+PS > git commit -m "first commit"
+
+GitHub Desktop > Publish

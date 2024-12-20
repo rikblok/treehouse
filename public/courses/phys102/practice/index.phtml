@@ -1,0 +1,81 @@
+<?
+$title="Practice Problems";
+$parent="../index";
+include 'head.php';
+function remove($str) {
+	echo '<font color="#df0000"><strike>';
+	echo $str;
+	echo '</strike></font>';
+}
+include '../menu.php';
+?>
+
+<p>A set of practice problems will be assigned each day. <b>Practice problems will not be marked and should not be handed in.</b>  They represent typical problems you would likely see on tests or the final exam.</p>
+
+<?	tochead(array('name'=>"Help Sessions")); ?>
+
+<p>The tutorial TAs have agreed to stay behind (up to) half an hour after the tutorials (Tue-Fri) to help students with practice problems.</p>
+
+<?	tochead(array('name'=>"Requests")); ?>
+
+<p>If you would like me to cover a practice problem in class submit your request here.  If I get the request before 6pm I will cover it in the next class (if there's time).  Requests sent via this form are anonymous.</p>
+
+<center><form METHOD="POST" ACTION="http://www.zoology.ubc.ca/cgi-bin/formmail.pl">
+<input type="hidden" name="recipient" value=""><? /* value="rikblok@zoology.ubc.ca" */ ?>
+<input type=hidden name="subject" value="P102 Practice Problem">
+<input type=hidden name="required" value="Chapter, ProblemNumber">
+</center>
+<table align="center" border="0"><tr><td align="right">
+<p><b>Chapter:&nbsp;</b><input name="Chapter">
+<p><b>Problem #:&nbsp;</b><input name="ProblemNumber">
+<p><b>Comments (optional):&nbsp;</b><input name="Comments">
+<br>&nbsp;
+<p><input type="submit" value="Send form">
+</td></tr></table>
+</form>
+
+<?	tochead(array('name'=>"Schedule")); ?>
+
+<p>Some of the originally assigned problems have been removed because you will not be expected to be able to solve them. They are indicated by <?=remove('##'); ?>.</p>
+
+<table cellspacing="4" cellpadding="4" align="center"><tr bgcolor="#6699ff" align="center">
+	<td><b>Lecture</b></td><td><b>Date</b></td><td><b>Problems<sup><a href="#note1">*</a></sup></b></td>	</tr><tr bgcolor="#ccddff" align="center">
+	<td> 1</td>	<td>Wed Jul  2</td>	<td align="left">Ch 17: Q 1, 21; Pr 1<br>Ch 42: Q 1, 3, 5; Pr 3, 5, 57</td>	</tr><tr bgcolor="#99ccff" align="center">
+	<td> 2</td>	<td>Thu Jul  3</td>	<td align="left">Ch 42: Q 7, 13, 19, 21, 25<br>Ch 42: Pr 35, 37, 39, 43, 45, 47, 49, 55, 63, 65</td>	</tr><tr bgcolor="#ccddff" align="center">
+	<td> 3</td>	<td>Fri Jul  4</td>	<td align="left">Ch 43: Q 9, 19, 21, 27<br>Ch 43: Pr 49, 51, 59, 61, 71</td>	</tr><tr bgcolor="#99ccff" align="center">
+	<td> 4</td>	<td>Mon Jul  7</td>	<td align="left">Ch 21: Q 5, 7, 9, 13<br>Ch 21: Pr 1, 3, 5, 7, 17, 21, 67, 69</td>	</tr><tr bgcolor="#ccddff" align="center">
+	<td> 5</td>	<td>Tue Jul  8</td>	<td align="left">Ch 21: Q 15, 17, 19, 21, 23<br>Ch 21: Pr 11, 13, 15, 19, 25, 27, 29, 35, 37, 39, 41, 43, 55, 57, 71, 73, 75, 77, 79, 81, 83, 87</td>	</tr><tr bgcolor="#99ccff" align="center">
+	<td> 6</td>	<td>Wed Jul  9</td>	<td align="left">Ch 22: Q 1, 2, 3, 4, 5, 7, 9, 13<br>Ch 22: Pr 3, 5, 7, 9, 17, 21, 23, 25, 27, 29, 31, 33, 39, 41, 43, <?=remove('45'); ?>, 47, 49</td>	</tr><tr bgcolor="#ccddff" align="center">
+	<td> 7</td>	<td>Thu Jul 10</td>	<td align="left">Ch 23: Q 1, 3, 5, 7, 11, 15, 17, 19<br>Ch 23: Pr 1, 3, 5, 7, 11, 15, 21, 23, 25, 27, 29, 45, 47, 49, 51, 55, 61, 65, 57, 71, 73, 75, 77</td>	</tr><tr bgcolor="#99ccff" align="center">
+	<td> 8</td>	<td>Fri Jul 11</td>	<td align="left">Ch 24: Q 3, 7, 9, 13, 17<br>Ch 24: Pr 1, 3, 5, 7, 9, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, <?=remove('37'); ?>, 39, 41, 43, 45, 47, 51, 53, 55, 57, 59, 67, 69, 71, <?=remove('73'); ?>, 75, 77, 81, 83, 85, 87</td>	</tr><tr bgcolor="#ccddff" align="center">
+	<td> 9</td>	<td>Mon Jul 14</td>	<td align="left">Ch 25: Q 1, 3, 5, 7, 11, 17<br>Ch 25: Pr 1, 3, 5, 7, 9, 11, 13, 15, <?=remove('25'); ?>, 27, 29, 31, 33, 35, 37, 39, 43, 45, 47, 49, 55, 57, 59, 65, 67, 69, 71, 75</td>	</tr><tr bgcolor="#99ccff" align="center">
+	<td>10</td>	<td>Tue Jul 15</td>	<td align="left">Ch 26: Q 3, 7, 9, 11, 13, 15, 17, 19<br>Ch 26: Pr 1, 3, 5, 7, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 41, 43, <?=remove('45'); ?>, 63, 65, 67, 69, 71, 73, 75, 77, 79, 81, 83</td>	</tr><tr bgcolor="#ccddff" align="center">
+	<td>11</td>	<td>Wed Jul 16</td>	<td align="left">Ch 27: Q 1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25<br>Ch 27: Pr 1, 3, 5, 7, 9, 13, 15, 21, 23, 25, 31, 35, 51, 55, 57, 61, 63, 65, 67</td>	</tr><tr bgcolor="#99ccff" align="center">
+	<td>12</td>	<td>Thu Jul 17</td>	<td align="left">Ch 28: Q 1, 3, 5, 7, 9, 11, 21, 23<br>Ch 28: Pr 1, 3, 5, 7, 9, 11, 13, 15, 17, 21, 23 ,25, 27, 47, 49, <?=remove('55'); ?>, 59, 61, 63</td>	</tr><tr bgcolor="#ccddff" align="center">
+	<td>13</td>	<td>Fri Jul 18</td>	<td align="left">Ch 29: Q 1, 3, 5, 7, 9, 11, 19<br>Ch 29: Pr 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, <?=remove('21'); ?>, 23, 37, 39, 41, 43, 45, 55, 57, 59, 63, <?=remove('65'); ?></td>	</tr><tr bgcolor="#99ccff" align="center">
+	<td>14</td>	<td>Mon Jul 21</td>	<td align="left">Ch 30: Q 9, 11, 13, 15, 17, 19<br>Ch 30: Pr 7, 13, 15, 17, 25, 27, 29, 31, 33, 35, 45</td>	</tr><tr bgcolor="#ccddff" align="center">
+	<td>15</td>	<td>Tue Jul 22</td>	<td align="left">Ch 31: Q 1, 3, 5, 7, 9, 11, 13, 15<br>Ch 31: Pr 1, 3, 5, 7, 9, <?=remove('11'); ?>, 13, 15, 17, 19, <?=remove('21'); ?>, 23, 25, 27, 29, 31, 35, 37, 39, 41, 43, 45, 51, <?=remove('53'); ?></td>	</tr><tr bgcolor="#99ccff" align="center">
+	<td>16</td>	<td>Wed Jul 23</td>	<td align="left">Ch 32: Q 5, 7, 9, 11<br>Ch 32: Pr 13, 15, 17, 35, 37, 39, 45</td>	</tr><tr bgcolor="#ccddff" align="center">
+</tr></table>                                       
+<p><b><sup><a name="note1">*</a></sup></b> <b>Pr</b>=Problem,<b>Q</b>=Question.</p>
+
+<? /*
+tochead(array('name'=>"Solutions" href="sols/">
+
+Solutions to old practice problems are <a href="sols/">available here</a>.  Sorry for the poor quality of the images, hopefully they're clear enough to work through.
+*/
+?>
+
+<?	include 'foot.php';	?>                           
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    

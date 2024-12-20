@@ -1,0 +1,287 @@
+%\documentclass[twocolumn]{article}
+\documentclass{article}
+
+\usepackage{vmargin}
+
+% Preamble 
+
+\title{\large UBC Physics 153 Crib Sheet}
+\author{Rik Blok\thanks{send suggestions/corrections to rikblok@mail.com}}
+
+\setpapersize{USletter}
+\setmargnohfrb{1in}{1in}{1in}{0in}
+\pagestyle{empty}
+
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\partderiv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\deriv}[2]{\frac{d #1}{d #2}}
+\newcommand{\e}[1]{\times 10^{#1}}
+\newcommand{\half}{\frac{1}{2}}
+
+\begin{document}
+
+\small
+
+%\maketitle \thispagestyle{empty} % override \maketitle's page style
+
+\twocolumn[\center \Large UBC Physics 153 Crib Sheet \vspace{0.1in}]
+
+\section{Thermodynamics}
+\bd
+	\item[Boltzmann's constant] $ k = 1.381 \e{-23} $ J/K
+	\item[Calorie] 1 cal = 4.184 J
+	\item[Gas constant] $ R = 8.314 $ J/mol$\cdot$K
+	\item[Latent heat]
+		\begin{tabular}{ll}
+			Ice to water & $ L_{f,water} = 333.5 $ kJ/kg \\
+			Water to steam & $ L_{v,water} = 2257 $ kJ/kg
+		\end{tabular}
+	\item[Specific heat]
+		\begin{tabular}{ll}
+			Ice ($-10 ^\circ$C) & $ c_{ice} = 2.05 $ kJ/kg$\cdot$K \\
+			Water & $ c_{water} = 4.18 $ kJ/kg$\cdot$K
+		\end{tabular}
+	\item[Stefan's constant] $ \sigma = 5.67 \e{-8} $ W/m$^2\cdot$K$^4$
+\ed
+
+\subsection{Temperature}
+\bd
+	\item[Pressure] $ P = \frac{F}{A} $
+	\item[Ideal gas] $ PV = nRT $
+	\item[van der Waals] $\left(P + \frac{an^2}{V^2}\right) \left(V - bn\right) = nRT $
+	\item[Celsius] $T_C = T - 273.15 $ K
+	\item[Linear expansion] $ \frac{\Delta L}{L} = \alpha \Delta T $
+	\item[Stress] $ \frac{F}{A} = Y \frac{\Delta L}{L} $
+	\item[Average translational kinetic energy] $ K_{av} = \frac{3}{2} kT $
+	\item[Root-mean-square speed] $ K_{av} = \half mv_{rms}^2 $
+\ed
+
+\subsection{Heat}
+\bd
+	\item[Latent heat] $ Q = m L $ (phase change)
+	\item[Specific heat] $ Q = mc\Delta T $
+	\item[Conduction] $I = \deriv{Q}{t} = kA\frac{\Delta T}{\Delta x} $
+	\item[Conduction] $ \Delta T = I R $
+	\item[Resistance] $ R = \frac{\Delta x}{kA} $
+	\item[...In series] $ R_{eq} = R_1 + R_2 + ... $
+	\item[...In parallel] $\frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + ...$
+	\item[Radiation] $ P = e \sigma A T^4 $
+	\item[Heat capacity]
+		\begin{tabular}{ll}
+			Monatomic gas & $ C_v = \frac{3}{2} nR $ \\
+			Diatomic gas & $ C_v = \frac{5}{2} nR $ \\
+			Constant pressure & $C_p = C_v + nR $
+		\end{tabular}
+\ed
+
+\subsection{Gas processes}
+\bd
+	\item[Sign convention] ...\newline
+		\begin{tabular}{lll}
+			$Q$ & + & heat {\bf into} system \\
+			$W$ & + & work done {\bf by} system \\
+		\end{tabular}
+	\item[First law] $ Q = \Delta U + W $
+	\item[Work] $ W = \int P\; dV $
+	\item[Internal energy] $ \Delta U = C_v \Delta T $
+	\item[Adiabatic]
+		\begin{tabular}{l}
+			$ Q = 0 $ \\
+			$ PV^\gamma = $ constant, $ \gamma = \frac{C_p}{C_v} $ 
+		\end{tabular}
+	\item[Isochoric] 
+		\begin{tabular}{l}
+		  $ \Delta V = 0 $ \\
+			$ W = 0 $
+		\end{tabular}
+	\item[Isothermal]
+		\begin{tabular}{l}
+			$ \Delta U = 0 $ \\
+			$ W = nRT \ln \frac{V_f}{V_i} $ (ideal gas)
+		\end{tabular}
+	\item[Isobaric] $ \Delta P = 0 $
+\ed
+
+\subsection{Engines}
+\bd
+	\item[First law (1 cycle)] $ W = Q_h - |Q_c| $
+	\item[Efficiency] $ \epsilon  = \frac{W}{Q_h} $
+	\item[Refrigerator] COP $ = \frac{Q_c}{W} $
+\ed
+
+\section{Oscillations and Waves}
+\bd
+	\item[Speed of sound in air ($20 ^\circ$C)] 343 m/s
+	\item[Hearing threshold] $ I_0 = 1\e{-12} $ W/m$^2$
+\ed
+
+\subsection{Oscillations}
+\bd
+	\item[Hooke's law] $F_x = -k x $
+	\item[Simple harmonic motion]
+		\begin{tabular}{l}
+			$ a = -\omega^2 x $ \\
+			$ x = A \cos(\omega t + \delta) $
+		\end{tabular}
+	\item[Angular frequency] $ \omega = 2\pi f $
+	\item[Period] $ T = \frac{1}{f} $
+\ed
+
+\subsection{Mass on a spring}
+\bd
+	\item[Angular frequency] $ \omega_0 = \sqrt{\frac{k}{m}} $
+	\item[Potential Energy] $ U = \frac{1}{2} k x^2 $
+	\item[Mechanical energy]
+		\begin{tabular}{l} 
+			$ E = K + U $ \\
+			$ E = \frac{1}{2} k A^2 $
+		\end{tabular}
+	\item[Damping] $ E = E_0\; e^{-t/\tau} $
+	\item[Time constant] $ \tau = \frac{m}{b}$
+	\item[Critical damping] $ b_c = 2m \omega_0 $
+	\item[Quality] $ Q = \omega_0 \tau $
+	\item[Resonance] $ \omega = \omega_0 $
+	\item[Width of resonance] $ \Delta \omega = \frac{\omega_0}{Q} $
+\ed
+
+\subsection{Waves on a string}
+\bd
+	\item[Wave number] $ k = \frac{2\pi}{\lambda} $
+	\item[Wave speed] $ v = \frac{\omega}{k} = f \lambda $
+	\item[Tension] $ v = \sqrt{\frac{F}{\mu}} $
+	\item[Power transmitted] $ P = \half \mu \omega^2 A^2 v $
+	\item[Standing waves]
+		\begin{tabular}{lll}
+			Node-node & $ L = \frac{n}{2} \lambda_n $ & $ n=1,2,3,\ldots $ \\
+			Node-antinode & $ L = \frac{n}{4} \lambda_n $ & $ n=1,3,5,\ldots $
+		\end{tabular}
+\ed
+
+\subsection{Sound}
+\bd
+	\item[Intensity] $ I = \frac{P_{av}}{A} $
+	\item[Loudness] $ \beta = 10 \log\frac{I}{I_0} $ (in dB)
+	\item[Beat frequency] $\Delta f = |f_1 - f_2| $
+	\item[Doppler shift] $ f^' = \frac{1+u_r/v}{1-u_s/v} f_0 $
+	\item[Sign convention] ...\newline
+		\begin{tabular}{lll}
+			$u_s$ & + & source approaching \\
+			$u_r$ & + & receiver approaching
+		\end{tabular}
+\ed
+\clearpage
+
+\section{Optics}
+\bd
+ \item[Refraction index]
+  \begin{tabular}{ll}
+   Air & $ n_{air} = 1 $ \\
+   Water & $ n_{water} = 1.33 $
+  \end{tabular}
+\ed
+
+\subsection{Mirrors}
+\bd
+ \item[Focal length] $ f = \frac{1}{2} r $
+ \item[Mirror eq.] $ \frac{1}{s} + \frac{1}{s^\prime} = \frac{1}{f} $
+ \item[Magnification] $ m = \frac{y^\prime}{y} = - \frac{s^\prime}{s} $
+ \item[Sign convention] ...\newline
+  \begin{tabular}{lll}
+   $s$ & + & in front of mirror (real) \\
+   $s^\prime$ & + & in front of mirror (real) \\
+   $r,f$ & + & concave \\
+   $m$ & + & image has same orientation as object
+  \end{tabular}
+\ed
+
+\subsection{Refraction}
+\bd
+ \item[Snell's law] $ n_1 \sin\theta_1 = n_2 \sin\theta_2 $
+ \item[Total internal reflection] $ \theta = 90^\circ $
+ \item[Malus's law (polarizers)] $ I = I_0 \cos^2 \theta $
+ \item[Spherical surface] $ \frac{n_1}{s} + \frac{n_2}{s^\prime} = \frac{n_2 - n_1}{r} $
+ \item[Sign convention] ...\newline
+  \begin{tabular}{lll}
+   $s$ & + & incident side \\
+   $s^\prime$ & + & transmission side \\
+   $r,f$ & + & center of curv. on transmission side
+  \end{tabular}
+\ed
+
+\subsection{Thin Lenses}
+\bd
+ \item[Lens-maker's eq.] $ \frac{1}{f} = (n-1)\left(\frac{1}{r_1} + \frac{1}{r_2}\right) $
+ \item[Thin lens eq.] {\it same as Mirror eq.}
+ \item[Sign convention] {\it same as Refraction}
+ \item[Power] $ P = \frac{1}{f} $ (units: diopters, 1 D = 1/m)
+\ed
+
+\section{Electricity and Magnetism}
+\bd
+	\item[Coulomb const.] $ k = 8.99 \e{9} $ N$\cdot$m$^2$/C$^2$
+	\item[Fundamental charge] $ e = 1.60 \e{-19} $ C
+	\item[Permittivity] $ \epsilon_0 = 8.85 \e{-12} $ F/m
+\ed 
+
+\subsection{Discrete Charges}
+\bd
+ \item[Coulomb's law] $ {\bf E} = \frac{kQ}{r^2} {\bf \hat{r}} $
+ \item[Force on $q$] $ {\bf F} = q {\bf E} $
+ \item[Dipole]
+  \begin{tabular}{l}
+   Moment  $ {\bf p} = q {\bf L} $ \\
+   Torque  $ {\bf \tau = p \times E} $ \\
+   Potential Energy  $ U = - {\bf p \cdot E} $
+  \end{tabular}
+\ed
+
+\subsection{Continuous Distribution}
+\bd
+ \item[Gauss's law] $ \phi_{net} = {\displaystyle \sum_{\mbox{\small \it surfaces}}} E_\bot \cdot A = \frac{Q_{net}}{\epsilon_0} $
+ \item[Infinite line] $ E_r = 2 k \frac{\lambda}{r} $
+ \item[Infinite plane] $ E_n = 2 \pi k \sigma $
+\ed
+
+
+\subsection{Potential}
+\bd
+ \item[Point charge] $ V = \frac{kQ}{r} $
+ \item[Potential energy of $q$] $ U = q V $
+ \item[Gradient of {\bf E}] $ \left(E_x,E_y,E_z\right) = - \left(\partderiv{V}{x}, \partderiv{V}{y}, \partderiv{V}{z}\right) $
+\ed
+
+\subsection{Capacitance}
+\bd
+ \item[Capacitance] $ C = \frac{Q}{V} $ (units: 1 F = 1 C/V)
+ \item[Parallel plates] $ C = \frac{\epsilon_0 A}{s} $
+ \item[Dielectric]
+  \begin{tabular}{l}
+   $ E = \frac{E}{\kappa} $ \\
+   $ C = \kappa C_0 $
+  \end{tabular}
+ \item[Potential energy] $ U = \half \frac{Q^2}{C} = \half Q V = \half C V^2 $
+ \item[...In series] $ \frac{1}{C_{eq}} = \frac{1}{C_1} + \frac{1}{C_2} +...$
+ \item[...In parallel] $ C_{eq} = C_1 + C_2 + ... $
+\ed
+
+\subsection{Circuits}
+\bd
+ \item[Current] $ I = \frac{dQ}{dt} = nqAv_d $ ($n = \frac{\#}{V}$)
+ \item[Resistance] $ R = \frac{V}{I} = \rho \frac{L}{A} $
+ \item[...In series] $ R_{eq} = R_1 + R_2 + ... $
+ \item[...In parallel] $\frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + ... $
+ \item[Power] $ P = I V  = I^2 R = \frac{V^2}{R} $
+ \item[Kirchhoff's \#1] around a loop $ \sum V = 0 $
+ \item[Kirchhoff's \#2] at a branch $ \sum I_{in} = \sum I_{out} $
+ \item[RC circuits]
+  \begin{tabular}{l}
+   Time constant $ \tau = R C $ \\
+   $ Q(t) - Q_0 = \left(Q_\infty - Q_0\right) \left(1 - e^{-t/\tau}\right)$ \\
+   $ I(t) - I_0 = \left(I_\infty - I_0\right) \left(1 - e^{-t/\tau}\right)$ \\
+   $ V(t) - V_0 = \left(V_\infty - V_0\right) \left(1 - e^{-t/\tau}\right)$ \\
+   (note: need to calculate initial and final values)
+  \end{tabular}
+\ed
+
+\end{document}

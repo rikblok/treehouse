@@ -1,0 +1,22 @@
+<?
+include_once 'shortcut.php';
+
+function prob($options) {
+	global $basedir;
+	extract($options);	// $pdf, $pszip, $label, $comments
+	if (isset($pdf) && $pdf='')		$pdf=$label . '.pdf';
+	if (isset($pszip) && $pszip='')	$pszip=$label . '.zip';
+	if (isset($label))				echo "<a name=\"$label\">";
+	echo '<p>&nbsp;<table width="100%" border=3>';
+	if (isset($title))	echo "<tr><td align=center colspan=2 bgcolor=F0F8FF><big><b>$title</b></big></td></tr>";
+	echo '<tr>';
+	if (isset($comments))	echo "<td colspan=2>$comments</td>";
+	echo '</tr><tr><td width=50% align=center>';
+	if (isset($pdf))		echo shortcut(array('file'=>$pdf,'icon'=>"$basedir/images/pdficon.gif"));
+	else					echo '&nbsp;';
+	echo '</td><td width=50% align=center>';
+	if (isset($pszip))		echo shortcut(array('file'=>$pszip,'icon'=>"$basedir/images/pszipicon.gif"));
+	else					echo '&nbsp;';
+	echo '</td></tr></table></p>';
+}
+?>

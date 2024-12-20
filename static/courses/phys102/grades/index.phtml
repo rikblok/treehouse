@@ -1,0 +1,29 @@
+<?
+$title="Grades";
+$parent="../index";
+include 'head.php';
+include "article.php";
+include 'url.php';
+include "../menu.php";
+?>
+
+<p>Your final grades have been submitted to the faculty so you can check them with the <a href="https://ssc.adm.ubc.ca/sscportal/servlets/SRVSSCFramework">Student Service Centre</a> but I am also posting them here for convenience.  The class average was 73% which is slightly above previous years.</p>
+
+<p>I won't post marks for the separate components because (I've been told) that just invites complaints and there's no point: I can't make any changes anyway.  If you want to know your mark breakdown, <?=mailto(array('link'=>$email, 'name'=>'let me know')); ?> and I'll email it to you.  Keep in mind the average mark for the final exam was 64% so that might make your overall grade somewhat lower than you were hoping.</p>
+
+<p>You were a great set of students and I really enjoyed working with you all.  Best of luck in the future!  I hope to see you around campus.<p>
+
+<address>Rik</address>
+
+<?
+tochead(array('name'=>"Final Grades"));
+
+echo article(array(
+	'pdf'=>"P102Summer2003FinalGrades.pdf",
+	'title'=>"Physics 102 (Summer 2003) final grades.",
+	'icon'=>"${basedir}images/pdficon.gif",
+	'nodate'=>true
+));
+
+include 'foot.php';	
+?>

@@ -1,0 +1,70 @@
+<?
+$title="Lectures";
+$parent="../index";
+include 'head.php';
+include "../menu.php";
+include "shortcut.php";
+include "table.php";
+
+function feedback($lec) {
+	return "<td><a href=\"feedback/lec${lec}.gif\"><img src=\"feedback/lec${lec}.gif\" width=\"102\" height=\"55\" border=\"0\"></a></td>";
+}
+function lec($num) {
+	global $basedir;
+	echo '<td>' . shortcut(array('file'=>"lec$num.pdf", 'icon'=>"${basedir}images/pdficon.gif", 'nodate'=>true, 'noecho'=>true)); '</td><td>' . shortcut(array('file'=>"lec$num-4up.pdf", 'icon'=>"${basedir}images/pdficon.gif", 'nodate'=>true, 'noecho'=>true)) . '</td>' . feedback($num);
+}
+?>
+
+<?	tochead(array('name'=>"Section 951")); ?>
+
+<p>Lectures run five days a week from Jul 2 to Jul 25, 2003.  Note the extended class time on Fridays.</p>
+
+<table cellspacing="4" cellpadding="8" align="center"><tr bgcolor="#6699ff" align="center">
+	<td><b>Days</b></td><td><b>Times</b></td><td><b>Location</b></td><td><b>Lecturer</b></td>
+</tr><?=trbgalt(array('align'=>"center")); ?>
+	<td>Mon, Tue, Wed, Thu</td><td>9:00-11:30</td><td rowspan="2">Hebb Theatre</td><td rowspan="2" valign="center">Dr. Rik Blok</td>
+</tr><?=trbgalt(array('align'=>"center")); ?>
+	<td>Fri</td><td>9:00-12:00</td>
+</tr></table>
+
+<?	tochead(array('name'=>"Schedule")); ?>
+
+<table cellspacing="4" cellpadding="4" align="center"><tr bgcolor="#6699ff" align="center">
+	<td rowspan="2"><b>Lecture</b></td><td rowspan="2"><b>Date</b></td><td rowspan="2"><b>Text<br>Sections</b></td><td rowspan="2"><b>Topics</b></td><td colspan="2"><b>Lecture Notes</b></td>	<td rowspan="2"><b>Student<br>Feedback<a href="#note2"><sup>**</sup></a></b></td>
+</tr><tr bgcolor="#6699ff" align="center">
+	<td><b>View</b></td> <td><b>Print<a href="#note1"><sup>*</sup></a><br><small><small>(4-up)</small></small></b></td>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td> <a name="1">1</a></td>	<td>Wed Jul  2</td>	<td>Ch 42: Sec&nbsp;1,2</td>		<td>Introduction, Nuclear Physics</td><?=lec("01"); ?>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td> 2</td>	<td>Thu Jul  3</td>	<td>Ch 42: Sec&nbsp;3-6,8,10</td>	<td>Radioactivity</td><?=lec("02"); ?>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td> 3</td>	<td>Fri Jul  4</td>	<td>Ch 43: Sec&nbsp;1,3-6</td>	<td>Radiation</td><?=lec("03"); ?>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td> <a name="4">4</a></td>	<td>Mon Jul  7</td>	<td>Ch 21: Sec&nbsp;1-3,5</td>	<td><b><a href="../tests/index.html">Midterm Test 1</a></b>,<br>Electric Charge, Coulomb's Law</td><?=lec("04"); ?>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td> 5</td>	<td>Tue Jul  8</td>	<td>Ch 21: Sec&nbsp;6,7,9</td>	<td>Electric Field</td><?=lec("05v2"); ?>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td> 6</td>	<td>Wed Jul  9</td>	<td>Ch 22: Sec&nbsp;1-3</td>	<td>Gauss's Law</td><?=lec("06"); ?>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td> 7</td>	<td>Thu Jul 10</td>	<td>Ch 23: Sec&nbsp;1-3,7-9</td>	<td>Electric Potential</td><?=lec("07"); ?>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td> 8</td>	<td>Fri Jul 11</td>	<td>Ch 24: Sec&nbsp;1-5<br><a name="8">Ch 25: Sec&nbsp;2-4</td>	<td>Capacitors, Electric Current, Battery, Resistance</td><?=lec("08"); ?>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td> <a name="9">9</a></td>	<td>Mon Jul 14</td>	<td>Ch 25: Sec&nbsp;5,7</td>	<td><b><a href="../tests/index.html">Midterm Test 2</a></b>,<br>Electric Power, Alternating Current</td><?=lec("09"); ?>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td>10</td>	<td>Tue Jul 15</td>	<td>Ch 26: Sec&nbsp;1-4</td>	<td>DC Circuits</td><?=lec("10"); ?>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td>11</td>	<td>Wed Jul 16</td>	<td>Ch 27: Sec&nbsp;1-5</td>	<td>Magnetism</td><?=lec("11"); ?>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td>12</td>	<td>Thu Jul 17</td>	<td>Ch 28: Sec&nbsp;1,2,4,5</td>	<td>Magnetic Field, Ampere's Law</td><?=lec("12"); ?>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td>13</td>	<td>Fri Jul 18</td>	<td>Ch 29: Sec&nbsp;1-3,6<br>Ch 30: Sec&nbsp;2-3</td>	<td>Induction, Faraday's Law, Inductance</td><?=lec("13"); ?>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td>14</td>	<td>Mon Jul 21</td>	<td>Ch 30: Sec&nbsp;4-6</td>	<td><b><a href="../tests/index.html">Midterm Test 3</a></b>,<br>LRC Circuits</td><?=lec("14"); ?>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td>15</td>	<td>Tue Jul 22</td>	<td>Ch 31: Sec&nbsp;1-6</td>	<td>AC Circuits</td><?=lec("15"); ?>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td>16</td>	<td>Wed Jul 23</td>	<td>Ch 32: Sec&nbsp;1-3,5,6</td>	<td>Electromagnetic Waves</td><?=lec("16"); ?>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td>17</td>	<td>Thu Jul 24</td>	<td><hr></td>	<td>Review</td>	<td><hr></td>	<td><hr></td>
+</tr><?=trbgalt(array('align'=>"center")); ?>	<td>18</td>	<td>Fri Jul 25</td>	<td><hr></td>	<td><b><a href="../exam/index.html">Final Exam</a></b></td>	<td><hr></td>	<td><hr></td>
+</tr></table>
+<p><a name="note1"><b><sup>*</sup></b></a> - The display quality of the print version may be poor but the printout should look fine.</p>
+<p><a name="note2"><b><sup>**</sup></b></a> - Anonymous student responses submitted at the end of each lecture.</p>
+                                                    
+<?	include 'foot.php';	?>                           
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    

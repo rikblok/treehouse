@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts :: Rik&#39;s Treehouse</title>
-    <link>https://www.cs.ubc.ca/~rikblok/posts/index.html</link>
+    <link>http://localhost:1313/~rikblok/posts/index.html</link>
     <description></description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 12 Dec 2024 21:53:44 -0800</lastBuildDate>
-    <atom:link href="https://www.cs.ubc.ca/~rikblok/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/~rikblok/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My First Post</title>
-      <link>https://www.cs.ubc.ca/~rikblok/posts/my-first-post/index.html</link>
+      <link>http://localhost:1313/~rikblok/posts/my-first-post/index.html</link>
       <pubDate>Thu, 12 Dec 2024 21:53:44 -0800</pubDate>
-      <guid>https://www.cs.ubc.ca/~rikblok/posts/my-first-post/index.html</guid>
+      <guid>http://localhost:1313/~rikblok/posts/my-first-post/index.html</guid>
       <description>Introduction This is bold text, and this is emphasized text.&#xA;Visit the Hugo website!</description>
     </item>
   </channel>
