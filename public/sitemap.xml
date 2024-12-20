@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/~rikblok/teaching/index.html</loc>
+    <loc>https://www.cs.ubc.ca/~rikblok/teaching/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/~rikblok/teaching/isci344/index.html</loc>
+    <loc>https://www.cs.ubc.ca/~rikblok/teaching/isci344/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/~rikblok/categories/index.html</loc>
+    <loc>https://www.cs.ubc.ca/~rikblok/categories/index.html</loc>
   </url>
   <url>
-    <loc>http://localhost:1313/~rikblok/tags/index.html</loc>
+    <loc>https://www.cs.ubc.ca/~rikblok/tags/index.html</loc>
   </url>
 </urlset>
