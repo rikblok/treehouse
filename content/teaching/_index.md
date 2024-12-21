@@ -21,7 +21,7 @@ Here are some recent courses I've taught:
 
 (These pages are not maintained and may contain broken links.) 
 
-* [UBC ISCI 344: Game Theory in Economics and Evolution (Fall 2016)]({{% ref "/teaching/isci344" %}} "UBC ISCI 344")) \
+* [UBC ISCI 344: Game Theory in Economics and Evolution (Fall 2016)]({{% relref "/teaching/isci344" %}} "UBC ISCI 344")) \
   Exploration of human and animal interactions: integrating evolutionary and economic perspectives to investigate individual and social behaviour.
 * [UBC ISCI 422: Models in Science (Fall 2009)](../courses/isci422/) \
   Meaning, nature, use, strengths and limitations of models as investigative tools in all scientific disciplines. Detailed investigation of selected model systems from different scientific disciplines.
