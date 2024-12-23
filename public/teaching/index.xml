@@ -8,6 +8,7 @@
     <language>en-us</language>
     <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
     <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
+    <lastBuildDate>Sun, 22 Dec 2024 11:54:25 -0800</lastBuildDate>
     <atom:link href="https://www.cs.ubc.ca/~rikblok/teaching/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>UBC ISCI 344</title>
@@ -15,6 +16,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
       <guid>https://www.cs.ubc.ca/~rikblok/teaching/isci344/index.html</guid>
       <description>Game Theory in Economics and Evolution (Fall 2016) Exploration of human and animal interactions: integrating evolutionary and economic perspectives to investigate individual and social behaviour.&#xA;Introduction We’re taking our first steps towards flipping the classroom! Here you can find video lectures and notes that replace in-class lectures.&#xA;01 The Ultimatum Game 02 Extensive and normal form games 03 Dominance and Pareto optimality 04 Symmetric and zero-sum games 05 Sotto vs. Blotto and mixed Nash equilibria 06 Deriving mixed Nash equilibria 07 Deriving Expected Utility Theory 08 Evolutionary Game Theory 09 An asymmetric evolutionary game 10 Multiplayer games 11 Public goods with punishment 12 Repeated games Lecture notes Here’s the whole collection of lecture notes for the videos:</description>
+    </item>
+    <item>
+      <title>Workload</title>
+      <link>https://www.cs.ubc.ca/~rikblok/teaching/workload/index.html</link>
+      <pubDate>Sun, 22 Dec 2024 11:54:25 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/teaching/workload/index.html</guid>
+      <description>You reached out to me and now you’re wondering, “That ahle! Why hasn’t Rik got back to me?” If I’m busy I just may not have had a chance yet. So check out my current workload for yourself.</description>
     </item>
   </channel>
 </rss>
