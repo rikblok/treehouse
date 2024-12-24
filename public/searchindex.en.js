@@ -17,8 +17,8 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "Academic Aberrations",
-    "content": "You reached out to me and now you’re wondering, “That ahle! Why hasn’t Rik got back to me?” If I’m busy I just may not have had a chance yet. So check out my current workload for yourself.\n1:\n2:\nHTML view:\n​\r1 week\r2 months\r1 year\r10 years\rall time\recho \"Hello World!\"\rprintf\"Hello World!\");\rprintf\"Hello World!\");\rprintf\"Hello World!\");\rteaching:workload:1_week,teaching:workload:1_month,teaching:workload:3_months,teaching:workload:1_year\nUnder light workloads expect a response within a few days. I should be able to get back to you within a week under moderate workloads. But when my workload is heavy it could take a few weeks. Also check my schedule: I may be in a meeting or out of town.",
-    "description": "You reached out to me and now you’re wondering, “That ahle! Why hasn’t Rik got back to me?” If I’m busy I just may not have had a chance yet. So check out my current workload for yourself.\n1:\n2:",
+    "content": "You reached out to me and now you’re wondering, “That ahle! Why hasn’t Rik got back to me?” If I’m busy I just may not have had a chance yet. So check out my current workload for yourself.\n​\r1 week\r2 months\r1 year\r10 years\rall time\rChart shows daily maximum workload.\nChart shows daily maximum workload.\nChart shows weekly maximum workload.\nChart shows 3-month maximum workload.\nChart shows 3-month maximum workload.\nUnder light workloads expect a response within a few days. I should be able to get back to you within a week under moderate workloads. But when my workload is heavy it could take a few weeks. Also check my schedule: I may be in a meeting or out of town.",
+    "description": "You reached out to me and now you’re wondering, “That ahle! Why hasn’t Rik got back to me?” If I’m busy I just may not have had a chance yet. So check out my current workload for yourself.\n​\r1 week\r2 months\r1 year\r10 years\rall time\rChart shows daily maximum workload.",
     "tags": [],
     "title": "Workload",
     "uri": "/~rikblok/teaching/workload/index.html"
