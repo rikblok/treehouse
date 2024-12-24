@@ -7,3 +7,7 @@ theme = 'hugo-theme-relearn'
   [params.author]
     email = 'rik.blok@ubc.ca'
     name = 'Rik Blok'
+	
+[markup.goldmark.renderer]
+	unsafe = true
+	

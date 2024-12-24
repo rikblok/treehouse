@@ -7,14 +7,14 @@ title = 'Workload'
 
 You reached out to me and now you're wondering, "That a{{% icon icon="skull-crossbones" %}}h{{% icon icon="burst" %}}le! Why hasn't Rik got back to me?"  If I'm busy I just may not have had a chance yet.  So check out my current workload for yourself.
 
+1: 
+
 ![View link](https://drive.google.com/uc?export=view&id=10OjnUTLgN2oJVSwtxKNhNCpumJW4P038)
+
+2:
 
 ![View link 2](https://drive.google.com/file/d/10OjnUTLgN2oJVSwtxKNhNCpumJW4P038/preview)
 
-Iframe:
-
-<iframe src="https://drive.google.com/file/d/10OjnUTLgN2oJVSwtxKNhNCpumJW4P038/preview" width="640" height="480" allow="autoplay"></iframe>
-    
 ![Download link](https://drive.google.com/uc?export=download&id=10OjnUTLgN2oJVSwtxKNhNCpumJW4P038)
 
 HTML view:
@@ -22,11 +22,11 @@ HTML view:
 <img src="https://drive.google.com/uc?export=view&id=10OjnUTLgN2oJVSwtxKNhNCpumJW4P038" alt="My Image" />
 
 {{< tabs >}}
+
 {{% tab title="1 week" %}}
-```python
-print("Hello World!")
-```
+<iframe src="https://drive.google.com/file/d/10OjnUTLgN2oJVSwtxKNhNCpumJW4P038/preview" width="640" height="480" allow="autoplay"></iframe>
 {{% /tab %}}
+
 {{% tab title="2 months" %}}
 ```bash
 echo "Hello World!"
@@ -37,17 +37,21 @@ echo "Hello World!"
 printf"Hello World!");
 ```
 {{% /tab %}}
+
 {{% tab title="10 years" %}}
 ```c
 printf"Hello World!");
 ```
 {{% /tab %}}
+
 {{% tab title="all time" %}}
 ```c
 printf"Hello World!");
 ```
 {{% /tab %}}
+
 {{< /tabs >}}
+
 teaching:workload:1_week,teaching:workload:1_month,teaching:workload:3_months,teaching:workload:1_year
 
 Under light workloads expect a response within a few days.  I should be able to get back to you within a week under moderate workloads.  But when my workload is heavy it could take a few weeks.  Also check my schedule: I may be in a meeting or out of town.
