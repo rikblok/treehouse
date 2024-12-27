@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Recent courses :: Rik&#39;s Treehouse</title>
+    <link>https://www.cs.ubc.ca/~rikblok/teaching/current/index.html</link>
+    <description>Here are some recent courses I’ve taught.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
+    <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
+    <lastBuildDate>Thu, 26 Dec 2024 14:33:35 -0800</lastBuildDate>
+    <atom:link href="https://www.cs.ubc.ca/~rikblok/teaching/current/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UBC CPSC 110</title>
+      <link>https://www.cs.ubc.ca/~rikblok/teaching/current/cpsc110/index.html</link>
+      <pubDate>Thu, 26 Dec 2024 14:33:35 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/teaching/current/cpsc110/index.html</guid>
+      <description>Computation, Programs, and Programming&#xA;Fundamental program and computation structures. Introductory programming skills. Computation as a tool for information processing, simulation and modelling, and interacting with the world.</description>
+    </item>
+    <item>
+      <title>UBC CPSC 107</title>
+      <link>https://www.cs.ubc.ca/~rikblok/teaching/current/cpsc107/index.html</link>
+      <pubDate>Thu, 26 Dec 2024 14:33:28 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/teaching/current/cpsc107/index.html</guid>
+      <description>Systematic Program Design&#xA;Fundamental computation and program structures. Continuing systematic program design from CPSC 103.</description>
+    </item>
+    <item>
+      <title>UBC ISCI 320</title>
+      <link>https://www.cs.ubc.ca/~rikblok/teaching/current/isci320/index.html</link>
+      <pubDate>Thu, 26 Dec 2024 14:17:40 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/teaching/current/isci320/index.html</guid>
+      <description>Research Development Project&#xA;Retreat to develop skills in writing scientific research proposals. Emphasis on formulating and testing hypotheses to explain observations.</description>
+    </item>
+  </channel>
+</rss>

@@ -2,6 +2,9 @@
 title = "UBC ISCI 344"
 type = "section"
 weight = 1
+summary = '''**Game Theory in Economics and Evolution (Fall 2016))**
+
+Exploration of human and animal interactions: integrating evolutionary and economic perspectives to investigate individual and social behaviour.'''
 +++
 
 ## Game Theory in Economics and Evolution (Fall 2016)

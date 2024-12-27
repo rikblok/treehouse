@@ -3,19 +3,19 @@
   <channel>
     <title>Rik&#39;s Treehouse</title>
     <link>https://www.cs.ubc.ca/~rikblok/index.html</link>
-    <description>The home page of Rik Blok Welcome to my home page! Just a modest little site to let me air some of my crazy ideas. Here are a few things I’ve been thinking about lately:&#xA;Academic AberrationsMaterial from some of my courses and my contact information. Look here if you want to book an appointment.&#xA;Babbling in Binary&#xD;Mathematical Musings&#xD;Random Research&#xD;Scintillating Science&#xD;References</description>
+    <description>The home page of Rik Blok Welcome to my home page! Just a modest little site to let me air some of my crazy ideas. Here are a few things I’ve been thinking about lately:&#xA;Academic AberrationsMy contact information and material from some of my courses. Look here if you want to book an appointment.&#xA;WorkloadView my historical workload, automatically generated from the emails waiting in my inbox.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
     <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
-    <lastBuildDate>Sun, 22 Dec 2024 11:54:25 -0800</lastBuildDate>
+    <lastBuildDate>Thu, 26 Dec 2024 14:43:14 -0800</lastBuildDate>
     <atom:link href="https://www.cs.ubc.ca/~rikblok/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Academic Aberrations</title>
       <link>https://www.cs.ubc.ca/~rikblok/teaching/index.html</link>
-      <pubDate>Sun, 22 Dec 2024 11:54:25 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <pubDate>Thu, 26 Dec 2024 14:43:14 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
       <guid>https://www.cs.ubc.ca/~rikblok/teaching/index.html</guid>
-      <description>Material from some of my courses and my contact information.  Look here if you want to book an appointment.</description>
+      <description>My contact information and material from some of my courses.  Look here if you want to book an appointment.</description>
     </item>
   </channel>
 </rss>

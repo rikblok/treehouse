@@ -2,10 +2,12 @@
 date = '2024-12-22T11:54:25-08:00'
 draft = false
 title = 'Workload'
+weight = 10
+summary = 'View my historical workload, automatically generated from the emails waiting in my inbox.'
 +++
 
 
-You reached out to me and now you're wondering, "That a{{% icon icon="skull-crossbones" %}}h{{% icon icon="burst" %}}le! Why hasn't Rik got back to me?"  If I'm busy I just may not have had a chance yet.  So check out my current workload for yourself.
+You reached out to me and now you're wondering, "That a{{% icon icon="skull-crossbones" %}}h{{% icon icon="burst" %}}le! Why hasn't Rik got back to me?"  If I'm busy I just may not have had a chance yet.  So check out my current workload for yourself.  Automatically generated from the number of emails waiting in my inbox.
 
 {{< tabs >}}
 

@@ -1,5 +1,17 @@
 Don't put any private information in this file!!!
 
+2024-12-27 Site parameters and icons
+* Relearn theme has siteparam shortcode
+  * e.g., "{{< siteparam author.email >}}"
+* Also supports FontAwesome free icons: https://mcshelby.github.io/hugo-theme-relearn/shortcodes/icon/index.html
+  * e.g., "{{% icon icon="fa-regular fa-envelope" %}}"
+
+2024-12-26 To create new content
+* open command-line at Hugo root folder "treehouse":
+> hugo new --kind "Section" teaching/current/_index.md
+> hugo new --kind "Page" teaching/current/isci320.md
+
+
 2024-12-19 Relearn theme setup
 * instructions at https://mcshelby.github.io/hugo-theme-relearn/introduction/quickstart/index.html
 	> hugo new --kind home _index.md

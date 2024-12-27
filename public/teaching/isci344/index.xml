@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>UBC ISCI 344 :: Rik&#39;s Treehouse</title>
-    <link>https://www.cs.ubc.ca/~rikblok/teaching/isci344/index.html</link>
-    <description>Game Theory in Economics and Evolution (Fall 2016) Exploration of human and animal interactions: integrating evolutionary and economic perspectives to investigate individual and social behaviour.&#xA;Introduction We’re taking our first steps towards flipping the classroom! Here you can find video lectures and notes that replace in-class lectures.&#xA;01 The Ultimatum Game 02 Extensive and normal form games 03 Dominance and Pareto optimality 04 Symmetric and zero-sum games 05 Sotto vs. Blotto and mixed Nash equilibria 06 Deriving mixed Nash equilibria 07 Deriving Expected Utility Theory 08 Evolutionary Game Theory 09 An asymmetric evolutionary game 10 Multiplayer games 11 Public goods with punishment 12 Repeated games Lecture notes Here’s the whole collection of lecture notes for the videos:</description>
+    <link>http://localhost:1313/~rikblok/teaching/isci344/index.html</link>
+    <description>Game Theory in Economics and Evolution (Fall 2016)) Exploration of human and animal interactions: integrating evolutionary and economic perspectives to investigate individual and social behaviour.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
     <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
-    <atom:link href="https://www.cs.ubc.ca/~rikblok/teaching/isci344/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/~rikblok/teaching/isci344/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
