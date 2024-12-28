@@ -3,19 +3,26 @@
   <channel>
     <title>Rik&#39;s Treehouse</title>
     <link>https://www.cs.ubc.ca/~rikblok/index.html</link>
-    <description>The home page of Rik Blok Welcome to my home page! Just a modest little site to let me air some of my crazy ideas. Here are a few things I’ve been thinking about lately:&#xA;Academic AberrationsMy contact information and material from some of my courses. Look here if you want to book an appointment.&#xA;WorkloadView my historical workload, automatically generated from the emails waiting in my inbox.</description>
+    <description>The home page of Rik Blok Welcome to my home page! Just a modest little site to let me air some of my crazy ideas. Here are a few things I’ve been thinking about lately:&#xA;Academic aberrationsMy contact information and material from some of my courses. Look here if you want to book an appointment.&#xA;WorkloadView my historical workload, automatically generated from the emails waiting in my inbox.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
     <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
-    <lastBuildDate>Thu, 26 Dec 2024 14:43:14 -0800</lastBuildDate>
+    <lastBuildDate>Fri, 27 Dec 2024 16:31:19 -0800</lastBuildDate>
     <atom:link href="https://www.cs.ubc.ca/~rikblok/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Academic Aberrations</title>
+      <title>Academic aberrations</title>
       <link>https://www.cs.ubc.ca/~rikblok/teaching/index.html</link>
       <pubDate>Thu, 26 Dec 2024 14:43:14 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
       <guid>https://www.cs.ubc.ca/~rikblok/teaching/index.html</guid>
       <description>My contact information and material from some of my courses.  Look here if you want to book an appointment.</description>
+    </item>
+    <item>
+      <title>Mathematical musings</title>
+      <link>https://www.cs.ubc.ca/~rikblok/math/index.html</link>
+      <pubDate>Fri, 27 Dec 2024 16:31:19 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/math/index.html</guid>
+      <description>Some interesting (to me!) mathematical puzzles and problems I’ve come across.</description>
     </item>
   </channel>
 </rss>

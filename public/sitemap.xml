@@ -1,23 +1,39 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.cs.ubc.ca/~rikblok/teaching/index.html</loc>
-    <lastmod>2024-12-26T14:43:14-08:00</lastmod>
+    <loc>https://www.cs.ubc.ca/~rikblok/teaching/past/isci344/index.html</loc>
   </url>
   <url>
-    <loc>https://www.cs.ubc.ca/~rikblok/teaching/past/isci344/index.html</loc>
+    <loc>https://www.cs.ubc.ca/~rikblok/teaching/index.html</loc>
+    <lastmod>2024-12-26T14:43:14-08:00</lastmod>
   </url>
   <url>
     <loc>https://www.cs.ubc.ca/~rikblok/teaching/workload/index.html</loc>
     <lastmod>2024-12-22T11:54:25-08:00</lastmod>
   </url>
   <url>
+    <loc>https://www.cs.ubc.ca/~rikblok/math/eulers_constant/index.html</loc>
+    <lastmod>2014-12-27T16:34:42-08:00</lastmod>
+  </url>
+  <url>
+    <loc>https://www.cs.ubc.ca/~rikblok/math/index.html</loc>
+    <lastmod>2024-12-27T16:31:19-08:00</lastmod>
+  </url>
+  <url>
     <loc>https://www.cs.ubc.ca/~rikblok/teaching/contact/index.html</loc>
     <lastmod>2024-12-25T11:50:36-08:00</lastmod>
   </url>
   <url>
+    <loc>https://www.cs.ubc.ca/~rikblok/math/shared_gas/index.html</loc>
+    <lastmod>2002-12-27T23:46:30-08:00</lastmod>
+  </url>
+  <url>
     <loc>https://www.cs.ubc.ca/~rikblok/teaching/current/index.html</loc>
     <lastmod>2024-12-26T13:49:29-08:00</lastmod>
+  </url>
+  <url>
+    <loc>https://www.cs.ubc.ca/~rikblok/math/pythagoras/index.html</loc>
+    <lastmod>1997-12-27T23:05:16-08:00</lastmod>
   </url>
   <url>
     <loc>https://www.cs.ubc.ca/~rikblok/teaching/past/index.html</loc>

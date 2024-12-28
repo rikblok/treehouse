@@ -3,12 +3,22 @@ languageCode = 'en-us'
 title = "Rik's Treehouse"
 theme = 'hugo-theme-relearn'
 
+
 [params]
+  math = true
   [params.author]
     email = 'rik.blok@ubc.ca'
     name = 'Rik Blok'
 	phone = '604-736-6343'
 	
-[markup.goldmark.renderer]
+[markup]
+  [markup.goldmark]
+  [markup.goldmark.renderer]
 	unsafe = true
-	
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+

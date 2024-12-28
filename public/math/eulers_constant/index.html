@@ -5,18 +5,24 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.139.0">
     <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
-    <meta name="description" content="">
+    <meta name="description" content="I found a sequence that converges to Euler’s constant faster than Bernoulli’s formula.">
     <meta name="author" content="Rik Blok">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Tags :: Rik&#39;s Treehouse">
-    <meta property="og:url" content="https://www.cs.ubc.ca/~rikblok/tags/index.html">
+    <meta name="twitter:title" content="Euler&#39;s constant: An improved sequence :: Rik&#39;s Treehouse">
+    <meta name="twitter:description" content="I found a sequence that converges to Euler’s constant faster than Bernoulli’s formula.">
+    <meta property="og:url" content="https://www.cs.ubc.ca/~rikblok/math/eulers_constant/index.html">
     <meta property="og:site_name" content="Rik&#39;s Treehouse">
-    <meta property="og:title" content="Tags :: Rik&#39;s Treehouse">
+    <meta property="og:title" content="Euler&#39;s constant: An improved sequence :: Rik&#39;s Treehouse">
+    <meta property="og:description" content="I found a sequence that converges to Euler’s constant faster than Bernoulli’s formula.">
     <meta property="og:locale" content="en_us">
     <meta property="og:type" content="website">
-    <meta itemprop="name" content="Tags :: Rik&#39;s Treehouse">
-    <title>Tags :: Rik&#39;s Treehouse</title>
-    <link href="/~rikblok/tags/index.xml" rel="alternate" type="application/rss+xml" title="Tags :: Rik&#39;s Treehouse">
+    <meta itemprop="name" content="Euler&#39;s constant: An improved sequence :: Rik&#39;s Treehouse">
+    <meta itemprop="description" content="I found a sequence that converges to Euler’s constant faster than Bernoulli’s formula.">
+    <meta itemprop="datePublished" content="2014-12-27T16:34:42-08:00">
+    <meta itemprop="dateModified" content="2014-12-27T16:34:42-08:00">
+    <meta itemprop="wordCount" content="388">
+    <title>Euler&#39;s constant: An improved sequence :: Rik&#39;s Treehouse</title>
+    <link href="/~rikblok/math/eulers_constant/index.xml" rel="alternate" type="application/rss+xml" title="Euler&#39;s constant: An improved sequence :: Rik&#39;s Treehouse">
     <link href="/~rikblok/css/fontawesome-all.min.css?1735374481" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1735374481" rel="stylesheet"></noscript>
     <link href="/~rikblok/css/auto-complete.css?1735374481" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1735374481" rel="stylesheet"></noscript>
     <link href="/~rikblok/css/perfect-scrollbar.min.css?1735374481" rel="stylesheet">
@@ -24,8 +30,8 @@
     <link href="/~rikblok/css/format-html.min.css?1735374481" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.relBasePath='..';
-      window.relearn.relBaseUri='..\/..';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
       window.relearn.absBaseUri='https:\/\/www.cs.ubc.ca\/~rikblok';
       window.relearn.min = `.min`;
       window.relearn.disableAnchorCopy=false;
@@ -70,7 +76,7 @@
       window.T_N_results_found = `{1} results found for "{0}"`;
     </script>
   </head>
-  <body class="mobile-support html" data-url="/~rikblok/tags/index.html">
+  <body class="mobile-support html" data-url="/~rikblok/math/eulers_constant/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -81,18 +87,26 @@
             </div>
             <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
               <div class="topbar-content">
-                <div class="topbar-content-wrapper"> 
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#derivation">Derivation</a></li>
+    <li><a href="#higher-order-terms">Higher order terms</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav>
                 </div>
               </div>
             </div>
           </div>
           <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Tags</span><meta itemprop="position" content="1"></li>
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/math/index.html"><span itemprop="name">Mathematical musings</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Euler&#39;s constant</span><meta itemprop="position" content="2"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/index.html" title="Rik&#39;s Treehouse (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/math/index.html" title="Mathematical musings (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><span class="topbar-control"><i class="fa-fw fas fa-chevron-right"></i></span>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/math/shared_gas/index.html" title="Shared Gas: A &#39;Tragedy&#39; of the Commons (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
@@ -106,13 +120,30 @@
         </div>
       </nav>
       <div id="R-main-overlay"></div>
-      <main id="R-body-inner" class="highlightable tags" tabindex="-1">
+      <main id="R-body-inner" class="highlightable section" tabindex="-1">
         <div class="flex-block-wrapper">
-<article>
+<article class="default">
   <header class="headline">
   </header>
-<h1 id="tags">Tags</h1>
 
+<h1 id="eulers-constant-an-improved-sequence">Euler&#39;s constant: An improved sequence</h1>
+
+<p>Remember <a href="https://en.wikipedia.org/wiki/E_(mathematical_constant)" rel="external" target="_blank">Euler&rsquo;s number</a>, $e=2.71828$&hellip; ?  One of the <a href="https://en.wikipedia.org/wiki/Jacob_Bernoulli#Discovery_of_the_mathematical_constant_e" rel="external" target="_blank">Bernoulli boys</a> showed that it&rsquo;s the limit of $(1 + 1/n)^n$ as $n$ goes to infinity. But if $n$ goes to infinity then we should be able to add an arbitrary constant $c$ to the denominator without changing the result. So, more generally,</p>
+$$e = \lim_{n\rightarrow \infty} \left(1+\frac{1}{n+c}\right)^n.$$<p>The question that came to my mind then is, what is the &ldquo;best&rdquo; constant to choose? It turns out you can show it&rsquo;s $c=-1/2$. In other words, the limit of $(1+1/(n-1/2))^n$ converges to $e$ faster than Bernoulli&rsquo;s formula (or any other $c$). In fact, it&rsquo;s 99% accurate for $n=3$ (versus $n=50$ for Bernoulli).</p>
+<p><a href="#R-image-1792bfdcbf3d638df2dc7d4cf57fbafe" class="lightbox-link"><img alt="2016-12_euler_s_constant_-_an_improved_sequence" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="/~rikblok/math/eulers_constant/2016-12_euler_s_constant_-_an_improved_sequence.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-1792bfdcbf3d638df2dc7d4cf57fbafe"><img alt="2016-12_euler_s_constant_-_an_improved_sequence" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="/~rikblok/math/eulers_constant/2016-12_euler_s_constant_-_an_improved_sequence.png"></a></p>
+<h2 id="derivation">Derivation</h2>
+<p>Here&rsquo;s how I figured it out.  Let&rsquo;s call the $n$-th number in the sequence $E_n$:</p>
+$$E_n = \left(1+\frac{1}{n+c}\right)^n.$$<p>Ideally, we want $E_n=e$ for all $n$.  But then $c$ is no longer a constant.  In fact, we can isolate $c$ in the above equation (with $E_n=e$) to find out how $c$ would depend on $n$:</p>
+$$c(n) = \left( e^{1/n} - 1 \right)^{-1} - n.$$<p>Now we want to know if $c$ converges to a constant as $n\rightarrow\infty$.  But that&rsquo;s tricky.  It becomes much simpler if we take $u=1/n$ and look at what happens as $u\rightarrow 0$.</p>
+$$c(u) = \left( e^u - 1 \right)^{-1} - \frac{1}{u}.$$<p>Then we can expand $c$ as a <a href="https://en.wikipedia.org/wiki/Taylor%20series" rel="external" target="_blank">Taylor series</a> around $u=0$ (effectively, a Taylor expansion around $n=\infty$, which is pretty cool!) to get</p>
+$$c(u) \approx -\frac{1}{2} + \frac{u}{12} + \cdots$$<p>So the best choice as a constant for large $n$ is $c=-1/2$ which gives a sequence</p>
+$$E_n^{(1)} = \left(1+\frac{1}{n - 1/2}\right)^n = \left(\frac{2 n + 1}{2 n - 1}\right)^n.$$<h2 id="higher-order-terms">Higher order terms</h2>
+<p>Including higher order terms in the approximation allows to find sequences that converge even faster!  For example, the next order approximation would be $c(n) = -1/2 + 1/(12 n)$, which would give a sequence</p>
+$$E_n^{(2)} = \left( \frac{12 n^2 + 6 n + 1}{12 n^2 - 6 n + 1} \right)^n.$$<p>It&rsquo;s not as pretty an expression but it converges very quickly!  It&rsquo;s already more than 99.8% accurate for $n=1$!  (For $n=1$ the result simplifies to the fraction $E_1^{(2)}=19/7\approx 2.714$.)</p>
+<h2 id="summary">Summary</h2>
+<p>I found replacing $c=0$ in the sequence $\left(1+\frac{1}{n+c}\right)^n$ with $c=-1/2$ makes it converge to Euler&rsquo;s number much faster as $n\rightarrow \infty$.  Does it matter?  Probably not.  But I sure had a fun afternoon!  :-)</p>
+<p>&mdash; Rik Blok, 2014</p>
 
   <footer class="footline">
   </footer>
@@ -159,7 +190,10 @@ Rik&#39;s Treehouse
         <div id="R-shortcutmenu-home" class="R-sidebarmenu">
           <ul class="enlarge morespace collapsible-menu">
             <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding" href="/~rikblok/teaching/index.html">Academic aberrations</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/~rikblok/math/index.html"><a class="padding" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu">
+            <li class="active " data-nav-id="/~rikblok/math/eulers_constant/index.html"><a class="padding" href="/~rikblok/math/eulers_constant/index.html">Euler&#39;s constant</a></li>
+            <li class="" data-nav-id="/~rikblok/math/shared_gas/index.html"><a class="padding" href="/~rikblok/math/shared_gas/index.html">Shared gas</a></li>
+            <li class="" data-nav-id="/~rikblok/math/pythagoras/index.html"><a class="padding" href="/~rikblok/math/pythagoras/index.html">The Pythagoran theorem</a></li></ul></li>
           </ul>
         </div>
     
@@ -175,7 +209,7 @@ Rik&#39;s Treehouse
                   <div class="control-style">
                     <label class="a11y-only" for="R-select-language">Language</label>
                     <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/tags/index.html" lang="en-us" selected></option>
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/math/eulers_constant/index.html" lang="en-us" selected></option>
                     </select>
                   </div>
                   <div class="clear"></div>

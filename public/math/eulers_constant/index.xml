@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Euler&#39;s constant: An improved sequence :: Rik&#39;s Treehouse</title>
+    <link>https://www.cs.ubc.ca/~rikblok/math/eulers_constant/index.html</link>
+    <description>I found a sequence that converges to Euler’s constant faster than Bernoulli’s formula.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
+    <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://www.cs.ubc.ca/~rikblok/math/eulers_constant/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

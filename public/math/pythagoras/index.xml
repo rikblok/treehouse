@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Proof of the Pythagoran theorem :: Rik&#39;s Treehouse</title>
+    <link>https://www.cs.ubc.ca/~rikblok/math/pythagoras/index.html</link>
+    <description>I’ve been puzzling over a proof for this for years, and it finally dawned on me. (Eureka!) It’s all in how you draw it…</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
+    <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://www.cs.ubc.ca/~rikblok/math/pythagoras/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

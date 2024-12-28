@@ -5,18 +5,24 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.139.0">
     <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
-    <meta name="description" content="">
+    <meta name="description" content="My wife and I live in a twenty eight unit condominium which shares the cost of natural gas.  At what price level can we expect the residents to switch from heating with gas to heating with electricity?">
     <meta name="author" content="Rik Blok">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Tags :: Rik&#39;s Treehouse">
-    <meta property="og:url" content="https://www.cs.ubc.ca/~rikblok/tags/index.html">
+    <meta name="twitter:title" content="Shared Gas: A &#39;Tragedy&#39; of the Commons :: Rik&#39;s Treehouse">
+    <meta name="twitter:description" content="My wife and I live in a twenty eight unit condominium which shares the cost of natural gas.  At what price level can we expect the residents to switch from heating with gas to heating with electricity?">
+    <meta property="og:url" content="https://www.cs.ubc.ca/~rikblok/math/shared_gas/index.html">
     <meta property="og:site_name" content="Rik&#39;s Treehouse">
-    <meta property="og:title" content="Tags :: Rik&#39;s Treehouse">
+    <meta property="og:title" content="Shared Gas: A &#39;Tragedy&#39; of the Commons :: Rik&#39;s Treehouse">
+    <meta property="og:description" content="My wife and I live in a twenty eight unit condominium which shares the cost of natural gas.  At what price level can we expect the residents to switch from heating with gas to heating with electricity?">
     <meta property="og:locale" content="en_us">
     <meta property="og:type" content="website">
-    <meta itemprop="name" content="Tags :: Rik&#39;s Treehouse">
-    <title>Tags :: Rik&#39;s Treehouse</title>
-    <link href="/~rikblok/tags/index.xml" rel="alternate" type="application/rss+xml" title="Tags :: Rik&#39;s Treehouse">
+    <meta itemprop="name" content="Shared Gas: A &#39;Tragedy&#39; of the Commons :: Rik&#39;s Treehouse">
+    <meta itemprop="description" content="My wife and I live in a twenty eight unit condominium which shares the cost of natural gas.  At what price level can we expect the residents to switch from heating with gas to heating with electricity?">
+    <meta itemprop="datePublished" content="2002-12-27T23:46:30-08:00">
+    <meta itemprop="dateModified" content="2002-12-27T23:46:30-08:00">
+    <meta itemprop="wordCount" content="787">
+    <title>Shared Gas: A &#39;Tragedy&#39; of the Commons :: Rik&#39;s Treehouse</title>
+    <link href="/~rikblok/math/shared_gas/index.xml" rel="alternate" type="application/rss+xml" title="Shared Gas: A &#39;Tragedy&#39; of the Commons :: Rik&#39;s Treehouse">
     <link href="/~rikblok/css/fontawesome-all.min.css?1735374481" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1735374481" rel="stylesheet"></noscript>
     <link href="/~rikblok/css/auto-complete.css?1735374481" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1735374481" rel="stylesheet"></noscript>
     <link href="/~rikblok/css/perfect-scrollbar.min.css?1735374481" rel="stylesheet">
@@ -24,8 +30,8 @@
     <link href="/~rikblok/css/format-html.min.css?1735374481" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.relBasePath='..';
-      window.relearn.relBaseUri='..\/..';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
       window.relearn.absBaseUri='https:\/\/www.cs.ubc.ca\/~rikblok';
       window.relearn.min = `.min`;
       window.relearn.disableAnchorCopy=false;
@@ -70,7 +76,7 @@
       window.T_N_results_found = `{1} results found for "{0}"`;
     </script>
   </head>
-  <body class="mobile-support html" data-url="/~rikblok/tags/index.html">
+  <body class="mobile-support html" data-url="/~rikblok/math/shared_gas/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -81,18 +87,26 @@
             </div>
             <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
               <div class="topbar-content">
-                <div class="topbar-content-wrapper"> 
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#solution-1-self-consistency">Solution 1: Self-consistency</a></li>
+    <li><a href="#solution-2-game-theoretic">Solution 2: Game theoretic</a></li>
+    <li><a href="#tragedy-of-the-commons">Tragedy of the commons</a></li>
+  </ul>
+</nav>
                 </div>
               </div>
             </div>
           </div>
           <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Tags</span><meta itemprop="position" content="1"></li>
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/math/index.html"><span itemprop="name">Mathematical musings</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Shared gas</span><meta itemprop="position" content="2"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/index.html" title="Rik&#39;s Treehouse (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/math/eulers_constant/index.html" title="Euler&#39;s constant: An improved sequence (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><span class="topbar-control"><i class="fa-fw fas fa-chevron-right"></i></span>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/math/pythagoras/index.html" title="Proof of the Pythagoran theorem (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
@@ -106,13 +120,60 @@
         </div>
       </nav>
       <div id="R-main-overlay"></div>
-      <main id="R-body-inner" class="highlightable tags" tabindex="-1">
+      <main id="R-body-inner" class="highlightable section" tabindex="-1">
         <div class="flex-block-wrapper">
-<article>
+<article class="default">
   <header class="headline">
   </header>
-<h1 id="tags">Tags</h1>
 
+<h1 id="shared-gas-a-tragedy-of-the-commons">Shared Gas: A &#39;Tragedy&#39; of the Commons</h1>
+
+<p>My wife and I live in a twenty eight unit condominium which shares the cost of natural gas. Each unit has its own gas fireplace which we find is sufficient to heat our unit all year long, without resorting to electric baseboard heaters. This makes for an interesting problem in <a href="https://en.wikipedia.org/wiki/game%20theory" rel="external" target="_blank">game theory</a>: at what price level can we expect the residents to switch from heating with gas to heating with electricity?</p>
+<p>The problem is only interesting when the cost of heating with gas is on the same order as electric heat. If one source is <em>much</em> cheaper than the other then it is the rational choice. As I write this the cost of gas is roughly (if I did the math right!) 3/4 the cost of electricity (measured in dollars per unit of energy). This neglects some issues such as efficiency of turning the energy into heat, etc. but at least it gives us a ballpark figure. Clearly, the problem is relevant.</p>
+<p>I&rsquo;m going to demonstrate two solutions to the problem. The first ignores game theory and gives a trivial, intuitive result. The second, using game theory, gives a more likely&ndash;and drastically worse&ndash;result.</p>
+<h2 id="solution-1-self-consistency">Solution 1: Self-consistency</h2>
+<p>First, some definitions:</p>
+<dl>
+<dt>$T$</dt>
+<dd>total heating cost over some fixed period (eg. one year),</dd>
+<dt>$N$</dt>
+<dd>number of units in condo (eg. $N=28$),</dd>
+<dt>$E$</dt>
+<dd>total units of energy used to heat home,</dd>
+<dt>$f$</dt>
+<dd>ratio of gas price rate to electricity rate (eg. $f=3/4$),</dd>
+<dt>$r_e$</dt>
+<dd>cost per unit energy for electricity,</dd>
+<dt>$r_g$</dt>
+<dd>cost per unit energy for gas ($r_g=f r_e$), and</dd>
+<dt>$g$</dt>
+<dd>fraction of heat generated by gas, for a single resident (between zero and one).</dd>
+</dl>
+<p>Ok, to state it mathematically, we want to find the fraction $g$ which minimizes the total cost $T$ each resident spends. For this first solution, we assume each resident is going to do the same thing because they all want to minimize $T$.</p>
+<p>So each resident&rsquo;s cost for electric heat is $(1-g) E r_e$ and the total cost of gas for the entire building is $N g E r_g$, which is split uniformly between the $N$ condos. So the total cost to each condo is</p>
+$$
+  T = (1-g) E r_e + g E r_g = E r_e [1+(f-1)g].
+$$<p>So what would each resident choose for $g$ in order to minimize $T$? Simple: if $f&lt;1$ then choose $g=1$ and if $f&gt;1$ then choose $g=0$. This just means the rational way to heat your home is with whichever source is cheaper. That seems obvious doesn&rsquo;t it?</p>
+<h2 id="solution-2-game-theoretic">Solution 2: Game theoretic</h2>
+<p>If you agree with the first solution this one might surprise you. Again, we need a few definitions. Instead of everybody applying the same behaviour $g$, lets consider what <strong>I</strong> should do as a resident versus what everybody else is doing:</p>
+<dl>
+<dt>$g_\text{me}$</dt>
+<dd>the fraction $g$ for me, as a resident, or</dd>
+<dt>$g_\text{other}$</dt>
+<dd>the fraction $g$ averaged over all other residents.</dd>
+</dl>
+<p>Now there are three costs: my electricity, $(1-g_\text{me}) E r_e$, my gas, $g_\text{me} E r_g$, and everybody else&rsquo;s gas, $(N-1) g_\text{other} E r_g$. As before, these last two terms are shared by all $N$ residents so my total cost is</p>
+$$
+\begin{array}{rl}
+  T & = (1-g_\text{me}) E r_e + [g_\text{me} E r_g + (N-1) g_\text{other} E r_g]/N \\
+  & = E r_e [1+(N-1) g_\text{other} f / N + (f/N - 1) g_\text{me}].
+\end{array}
+$$<p>Notice that I only have control over my own actions, $g_\text{me}$. I can&rsquo;t hope to influence other people&rsquo;s behaviour so $g_\text{other}$ is effectively constant, independent of what I do. So, to minimize T all I can do is try to minimize the very last term $(f/N - 1) g_\text{me}$. This is achieved with $g_\text{me}=1$ when $f&lt;N$ and $g_\text{me}=0$ when $f&gt;N$.</p>
+<h2 id="tragedy-of-the-commons">Tragedy of the commons</h2>
+<p>Compare these two solutions: the first says I should use gas only if it is cheaper than electricity, but the second says I should keep using it until it is $N$ times more expensive than electricity! ($N=28$ in my building.)</p>
+<p>If that&rsquo;s the optimal behaviour for me, then the same should hold for every resident in the building. So, when $1&lt;f&lt;N$ we are all going to be paying more for heating than we need to! Strange but true. This dilemma is known as the <a href="https://en.wikipedia.org/wiki/tragedy%20of%20the%20commons" rel="external" target="_blank">tragedy of the commons</a>. It happens because nobody can improve their situation by changing their behaviour unless everyone else changes, too.</p>
+<p>Fortunately, there are ways to get around this kind of dilemma. What you have to do is change the rules of the game. For example, if the price of gas got too high we could have an emergency strata meeting to vote on the option of shutting off the gas to the entire building. (Other, less totalitarian solutions are probably also available&hellip;)</p>
+<p>&mdash; Rik Blok, 2002</p>
 
   <footer class="footline">
   </footer>
@@ -159,7 +220,10 @@ Rik&#39;s Treehouse
         <div id="R-shortcutmenu-home" class="R-sidebarmenu">
           <ul class="enlarge morespace collapsible-menu">
             <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding" href="/~rikblok/teaching/index.html">Academic aberrations</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/~rikblok/math/index.html"><a class="padding" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/math/eulers_constant/index.html"><a class="padding" href="/~rikblok/math/eulers_constant/index.html">Euler&#39;s constant</a></li>
+            <li class="active " data-nav-id="/~rikblok/math/shared_gas/index.html"><a class="padding" href="/~rikblok/math/shared_gas/index.html">Shared gas</a></li>
+            <li class="" data-nav-id="/~rikblok/math/pythagoras/index.html"><a class="padding" href="/~rikblok/math/pythagoras/index.html">The Pythagoran theorem</a></li></ul></li>
           </ul>
         </div>
     
@@ -175,7 +239,7 @@ Rik&#39;s Treehouse
                   <div class="control-style">
                     <label class="a11y-only" for="R-select-language">Language</label>
                     <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/tags/index.html" lang="en-us" selected></option>
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/math/shared_gas/index.html" lang="en-us" selected></option>
                     </select>
                   </div>
                   <div class="clear"></div>
