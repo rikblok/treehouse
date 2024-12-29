@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Academic aberrations :: Rik&#39;s Treehouse</title>
+    <title>Academic anecdotes :: Rik&#39;s Treehouse</title>
     <link>https://www.cs.ubc.ca/~rikblok/teaching/index.html</link>
     <description>My contact information and material from some of my courses.  Look here if you want to book an appointment.</description>
     <generator>Hugo</generator>
@@ -11,18 +11,18 @@
     <lastBuildDate>Thu, 26 Dec 2024 13:49:37 -0800</lastBuildDate>
     <atom:link href="https://www.cs.ubc.ca/~rikblok/teaching/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Workload</title>
-      <link>https://www.cs.ubc.ca/~rikblok/teaching/workload/index.html</link>
-      <pubDate>Sun, 22 Dec 2024 11:54:25 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
-      <guid>https://www.cs.ubc.ca/~rikblok/teaching/workload/index.html</guid>
-      <description>View my historical workload, automatically generated from the emails waiting in my inbox.</description>
-    </item>
-    <item>
       <title>Contact Rik</title>
       <link>https://www.cs.ubc.ca/~rikblok/teaching/contact/index.html</link>
       <pubDate>Wed, 25 Dec 2024 11:50:36 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
       <guid>https://www.cs.ubc.ca/~rikblok/teaching/contact/index.html</guid>
       <description>Want to book an appointment or reach me?  Check out my office hours and contact information here.</description>
+    </item>
+    <item>
+      <title>Workload</title>
+      <link>https://www.cs.ubc.ca/~rikblok/teaching/workload/index.html</link>
+      <pubDate>Sun, 22 Dec 2024 11:54:25 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/teaching/workload/index.html</guid>
+      <description>View my historical workload, automatically generated from the emails waiting in my inbox.</description>
     </item>
     <item>
       <title>Recent courses</title>

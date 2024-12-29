@@ -3,19 +3,26 @@
   <channel>
     <title>Rik&#39;s Treehouse</title>
     <link>https://www.cs.ubc.ca/~rikblok/index.html</link>
-    <description>The home page of Rik Blok Welcome to my home page! Just a modest little site to let me air some of my crazy ideas. Here are a few things I’ve been thinking about lately:&#xA;Academic aberrationsMy contact information and material from some of my courses. Look here if you want to book an appointment.&#xA;WorkloadView my historical workload, automatically generated from the emails waiting in my inbox.</description>
+    <description>The home page of Rik Blok Welcome to my home page! Just a modest little site to let me air some of my crazy ideas. Here are a few things I’ve been thinking about lately:&#xA;Academic anecdotesMy contact information and material from some of my courses. Look here if you want to book an appointment.&#xA;Contact RikWant to book an appointment or reach me? Check out my office hours and contact information here.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
     <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
-    <lastBuildDate>Fri, 27 Dec 2024 16:31:19 -0800</lastBuildDate>
+    <lastBuildDate>Sat, 28 Dec 2024 17:38:10 -0800</lastBuildDate>
     <atom:link href="https://www.cs.ubc.ca/~rikblok/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Academic aberrations</title>
+      <title>Academic anecdotes</title>
       <link>https://www.cs.ubc.ca/~rikblok/teaching/index.html</link>
-      <pubDate>Thu, 26 Dec 2024 14:43:14 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <pubDate>Thu, 26 Dec 2024 14:33:35 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
       <guid>https://www.cs.ubc.ca/~rikblok/teaching/index.html</guid>
       <description>My contact information and material from some of my courses.  Look here if you want to book an appointment.</description>
+    </item>
+    <item>
+      <title>Computational capers</title>
+      <link>https://www.cs.ubc.ca/~rikblok/compute/index.html</link>
+      <pubDate>Sat, 28 Dec 2024 17:37:53 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/compute/index.html</guid>
+      <description>I spend a lot of time around computers, both at work and play. Yes, I’m a card-carrying geek 😉  Here’s what I’ve picked up over the years.</description>
     </item>
     <item>
       <title>Mathematical musings</title>
@@ -23,6 +30,20 @@
       <pubDate>Fri, 27 Dec 2024 16:31:19 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
       <guid>https://www.cs.ubc.ca/~rikblok/math/index.html</guid>
       <description>Some interesting (to me!) mathematical puzzles and problems I’ve come across.</description>
+    </item>
+    <item>
+      <title>Research ramblings</title>
+      <link>https://www.cs.ubc.ca/~rikblok/research/index.html</link>
+      <pubDate>Sat, 28 Dec 2024 17:38:01 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/research/index.html</guid>
+      <description>I am a theoretical statistical physicist by training and a complexologist by nature. The common thread throughout my research is the search for common features of complex, irreducible systems.</description>
+    </item>
+    <item>
+      <title>Scientific scribblings</title>
+      <link>https://www.cs.ubc.ca/~rikblok/science/index.html</link>
+      <pubDate>Sat, 28 Dec 2024 17:38:10 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/science/index.html</guid>
+      <description>Science is both my work and my play. That doesn’t mean I’m particularly bright or hard-working, just that I’m curious. Because that’s the main ingredient for doing good science. (A healthy dose of skepticism helps, too.)</description>
     </item>
   </channel>
 </rss>

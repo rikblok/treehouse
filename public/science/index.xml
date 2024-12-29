@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scientific scribblings :: Rik&#39;s Treehouse</title>
+    <link>https://www.cs.ubc.ca/~rikblok/science/index.html</link>
+    <description>Science is both my work and my play. That doesn’t mean I’m particularly bright or hard-working, just that I’m curious. Because that’s the main ingredient for doing good science. (A healthy dose of skepticism helps, too.)</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
+    <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://www.cs.ubc.ca/~rikblok/science/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

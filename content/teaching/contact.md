@@ -2,7 +2,7 @@
 date = '2024-12-25T11:50:36-08:00'
 draft = false
 title = 'Contact Rik'
-weight = 20
+weight = 10
 summary = 'Want to book an appointment or reach me?  Check out my office hours and contact information here.'
 +++
 

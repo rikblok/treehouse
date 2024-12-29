@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>UBC ISCI 344 :: Rik&#39;s Treehouse</title>
+    <title>UBC ISCI 344 (2016) :: Rik&#39;s Treehouse</title>
     <link>https://www.cs.ubc.ca/~rikblok/teaching/past/isci344/index.html</link>
     <description>Game Theory in Economics and Evolution (Fall 2016))&#xA;Exploration of human and animal interactions: integrating evolutionary and economic perspectives to investigate individual and social behaviour.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
     <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
+    <lastBuildDate></lastBuildDate>
     <atom:link href="https://www.cs.ubc.ca/~rikblok/teaching/past/isci344/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

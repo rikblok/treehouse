@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Euler&#39;s constant: An improved sequence :: Rik&#39;s Treehouse</title>
+    <title>Euler&#39;s constant: An improved sequence (2014) :: Rik&#39;s Treehouse</title>
     <link>https://www.cs.ubc.ca/~rikblok/math/eulers_constant/index.html</link>
     <description>I found a sequence that converges to Euler’s constant faster than Bernoulli’s formula.</description>
     <generator>Hugo</generator>

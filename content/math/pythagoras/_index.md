@@ -1,9 +1,9 @@
 +++
 date = '1997-12-27T23:05:16-08:00'
-linkTitle = 'The Pythagoran theorem'
-title = 'Proof of the Pythagoran theorem'
+linkTitle = 'The Pythagorean theorem (1997)'
+title = 'Proof of the Pythagoran theorem (1997)'
 type = "section"
-weight = 30
+weight = -1997
 summary = "I've been puzzling over a proof for this for years, and it finally dawned on me. (Eureka!) It's all in how you draw it..."
 +++
 

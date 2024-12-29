@@ -28,6 +28,8 @@ start "Command-line" cmd.exe
 :github
 echo Starting GitHub Desktop
 echo.
-github "%~dpn0"
+
+call "U:\Google Drive\Windows\Cmd\isRunning.cmd" "GitHubDesktop.exe"
+if errorlevel 1 github "%~dpn0"
 
 :end

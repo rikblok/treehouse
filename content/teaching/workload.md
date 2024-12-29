@@ -2,7 +2,7 @@
 date = '2024-12-22T11:54:25-08:00'
 draft = false
 title = 'Workload'
-weight = 10
+weight = 20
 summary = 'View my historical workload, automatically generated from the emails waiting in my inbox.'
 +++
 

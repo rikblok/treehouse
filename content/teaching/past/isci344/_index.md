@@ -1,7 +1,8 @@
 +++
-title = "UBC ISCI 344"
+title = "UBC ISCI 344 (2016)"
+date = '2016-09-26T13:49:29-08:00'
+weight = -2016.09
 type = "section"
-weight = 1
 summary = '''**Game Theory in Economics and Evolution (Fall 2016))**
 
 Exploration of human and animal interactions: integrating evolutionary and economic perspectives to investigate individual and social behaviour.'''
