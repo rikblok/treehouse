@@ -1,5 +1,14 @@
 Don't put any private information in this file!!!
 
+
+2024-12-29 Citations
+* From https://labs.loupbrun.ca/hugo-cite/
+**** 2024-12-29 17:22 WORKING HERE.  Try again? ****
+> git submodule add https://github.com/baekgaard/hugo-cite.git themes/hugo-cite    ← fixes some deprecated fns in loup-brun repo
+* Zotero > Install plugin: Better Bibtex for Zotero (https://retorque.re/zotero-better-bibtex/index.html)    ← for readable id keys
+* Zotero > File > Export Library... > Format: Better CSL JSON > [OK] > U:\Documents\Programs\Zotero Standalone\zotero\export-library.json
+
+
 2024-12-27 Site parameters and icons
 * Relearn theme has siteparam shortcode
   * e.g., "{{< siteparam author.email >}}"
