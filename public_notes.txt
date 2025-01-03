@@ -1,12 +1,40 @@
 Don't put any private information in this file!!!
 
+Links:
+* http://localhost:1313/~rikblok/			← development
+* https://rikblok.github.io/treehouse/		← Git repo (and backup)
+* https://www.cs.ubc.ca/~rikblok/			← public
+* https://fontawesome.com/v6/search?m=free	← find free icon for {{% icon icon="..." %}}
+
 
 2024-12-29 Citations
 * From https://labs.loupbrun.ca/hugo-cite/
-**** 2024-12-29 17:22 WORKING HERE.  Try again? ****
-> git submodule add https://github.com/baekgaard/hugo-cite.git themes/hugo-cite    ← fixes some deprecated fns in loup-brun repo
+> git submodule add https://github.com/baekgaard/hugo-cite.git themes/hugo-cite    ← fixes some deprecated fns in original loup-brun repo
 * Zotero > Install plugin: Better Bibtex for Zotero (https://retorque.re/zotero-better-bibtex/index.html)    ← for readable id keys
-* Zotero > File > Export Library... > Format: Better CSL JSON > [OK] > U:\Documents\Programs\Zotero Standalone\zotero\export-library.json
+* Zotero > File > Export Library... > Format: Better CSL JSON > [OK] > .../treehouse/assets/bib-all-better-csl.json
+* edit hugo.toml:
+	theme = ['hugo-theme-relearn', 'hugo-cite']
+* create and edit layouts/partials/custom-header.html :
+	<link rel="stylesheet" type="text/css" href="{{ "hugo-cite.css" | relURL }}" />
+* override hugo-cite.css to inherit background color:
+	* create and edit static/css/custom.css:
+		.hugo-cite-group .hugo-cite-citation {
+			background-color: var(--MAIN-BG-color) !important;
+		}
+	* append to layouts/partials/custom-header.html :
+		<!-- link custom.css after hugo-cite.css to override default background color [Rik, 2025-01-01] -->
+		<link rel="stylesheet" type="text/css" href="{{ "css/custom.css" | relURL }}" />
+		<!-- nested double-quotes required [Rik, 2025-01-01] -->
+* edit markdown, e.g.:
+	+++
+	...
+	bibFile = "bib-all-better-csl.json"
+	+++
+	<!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
+
+	* {{< cite "blokEffect1997" >}}
+	* {{< cite "moosviComPAIR2018" >}}
+	{{< bibliography cited >}}
 
 
 2024-12-27 Site parameters and icons

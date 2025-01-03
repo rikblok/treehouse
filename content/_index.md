@@ -1,6 +1,7 @@
 +++
 title = ""
 type = "home"
+bibFile = "bib-all-better-csl.json"
 +++
 
 ## The home page of Rik Blok

@@ -3,7 +3,7 @@ date = '2002-12-27T23:46:30-08:00'
 linkTitle = 'Shared gas (2002)'
 title = "Shared Gas: A 'Tragedy' of the Commons (2002)"
 type = "section"
-weight = -2002
+weight = -20020000
 summary = "My wife and I live in a twenty eight unit condominium which shares the cost of natural gas.  At what price level can we expect the residents to switch from heating with gas to heating with electricity?"
 +++
 

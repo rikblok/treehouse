@@ -1,0 +1,16 @@
+<link rel="stylesheet" type="text/css" href="{{ "hugo-cite.css"  | relURL }}" />
+<!-- nested double-quotes required [Rik, 2025-01-01] -->
+
+<!--
+From https://github.com/loup-brun/hugo-cite?tab=readme-ov-file#3-add-css :
+"Reference the CSS somewhere in your HTML templates..."
+
+From https://mcshelby.github.io/hugo-theme-relearn/configuration/customization/dependencies/index.html#adding-javascript-or-stylesheets-to-all-pages :
+"To add JavaScript files or CSS stylesheets to every page, you can include them in layouts/partials/custom-header.html or layouts/partials/custom-footer.html."
+[Rik, 2024-12-31]
+-->
+
+<!-- link custom.css after hugo-cite.css to override default background color [Rik, 2025-01-01] -->
+<link rel="stylesheet" type="text/css" href="{{ "css/custom.css" | relURL }}" />
+<!-- nested double-quotes required [Rik, 2025-01-01] -->
+

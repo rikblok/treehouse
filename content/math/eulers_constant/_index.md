@@ -3,7 +3,7 @@ date = '2014-12-27T16:34:42-08:00'
 linkTitle = "Euler's constant (2014)"
 title = "Euler's constant: An improved sequence (2014)"
 type = "section"
-weight = -2014
+weight = -20140000
 summary = "I found a sequence that converges to Euler's constant faster than Bernoulli's formula."
 +++
 

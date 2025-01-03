@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Presented :: Rik&#39;s Treehouse</title>
+    <link>https://www.cs.ubc.ca/~rikblok/research/rik/presented/index.html</link>
+    <description>Work I’ve presented for feedback at seminars, lab meetings, and guest lectures</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
+    <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
+    <lastBuildDate>Thu, 02 Jan 2025 20:08:12 -0800</lastBuildDate>
+    <atom:link href="https://www.cs.ubc.ca/~rikblok/research/rik/presented/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blok (2003)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/research/rik/presented/blok03/index.html</link>
+      <pubDate>Thu, 02 Jan 2025 20:08:12 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/research/rik/presented/blok03/index.html</guid>
+      <description>Self-affine timeseries analysis. Guest lecture for U.B.C. Physics 510: Stochastic Processes in Physics</description>
+    </item>
+    <item>
+      <title>Blok (2002)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/research/rik/presented/blok02b/index.html</link>
+      <pubDate>Thu, 02 Jan 2025 20:08:08 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/research/rik/presented/blok02b/index.html</guid>
+      <description>Rock, paper and scissors in space: A demonstration of R2DToo.</description>
+    </item>
+    <item>
+      <title>Blok (2002)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/research/rik/presented/blok02/index.html</link>
+      <pubDate>Thu, 02 Jan 2025 20:08:02 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/research/rik/presented/blok02/index.html</guid>
+      <description>Statistical properties of financial timeseries</description>
+    </item>
+    <item>
+      <title>Blok (2001)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/research/rik/presented/blok01/index.html</link>
+      <pubDate>Thu, 02 Jan 2025 16:19:52 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/research/rik/presented/blok01/index.html</guid>
+      <description>Can memes drive genes?</description>
+    </item>
+    <item>
+      <title>Blok (2000)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/research/rik/presented/blok00c/index.html</link>
+      <pubDate>Thu, 02 Jan 2025 20:07:54 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/research/rik/presented/blok00c/index.html</guid>
+      <description>On the nature of the stock market: Simulations and experiments. Final PhD oral defense</description>
+    </item>
+    <item>
+      <title>Blok (2000)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/research/rik/presented/blok00/index.html</link>
+      <pubDate>Thu, 02 Jan 2025 20:07:48 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/research/rik/presented/blok00/index.html</guid>
+      <description>On the nature of the stock market: Simulations and experiments. Departmental PhD oral defense</description>
+    </item>
+    <item>
+      <title>Blok (1998)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/research/rik/presented/blok98/index.html</link>
+      <pubDate>Thu, 02 Jan 2025 20:07:33 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/research/rik/presented/blok98/index.html</guid>
+      <description>Modelling intentionality: The gambler. Presentation for UBC Phys 510</description>
+    </item>
+    <item>
+      <title>Blok (1998)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/research/rik/presented/blok98b/index.html</link>
+      <pubDate>Thu, 02 Jan 2025 20:07:24 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/research/rik/presented/blok98b/index.html</guid>
+      <description>Extra! Extra! Critical update on ‘Life’. Presentation for Peter Wall Inst. Adv. Science, Crisis Points Group, UBC</description>
+    </item>
+  </channel>
+</rss>

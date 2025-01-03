@@ -1,7 +1,7 @@
 +++
 title = "UBC ISCI 344 (2016)"
 date = '2016-09-26T13:49:29-08:00'
-weight = -2016.09
+weight = -20160900
 type = "section"
 summary = '''**Game Theory in Economics and Evolution (Fall 2016))**
 
