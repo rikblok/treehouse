@@ -1,0 +1,15 @@
+{{/* Example: This is my equation: {{< equation number="2.1" >}}\[E=mc^2\]{{< /equation >}} */}}
+{{/* Usage: You can refer to Equation [2.1](#eq-2-1) for more details. */}}
+{{- $number := .Get "number" -}}
+{{- $id := .Get "id" | default (printf "eq-%s" (replace $number "." "-")) -}}
+<table id="{{ $id }}" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">{{ .Inner }}</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			({{ $number }})
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 

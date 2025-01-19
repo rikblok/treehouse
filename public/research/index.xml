@@ -3,19 +3,33 @@
   <channel>
     <title>Research ramblings :: Rik&#39;s Treehouse</title>
     <link>https://www.cs.ubc.ca/~rikblok/research/index.html</link>
-    <description>I am a theoretical statistical physicist by training and a complexologist by nature. The common thread throughout my research is the search for common features of complex, irreducible systems.</description>
+    <description>I’m a theoretical statistical physicist by training and a complexologist by nature. The common thread throughout my research is the search for common features of complex, irreducible systems.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
     <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
-    <lastBuildDate>Wed, 01 Jan 2025 15:20:19 -0800</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jan 2025 22:02:46 -0800</lastBuildDate>
     <atom:link href="https://www.cs.ubc.ca/~rikblok/research/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>My research</title>
-      <link>https://www.cs.ubc.ca/~rikblok/research/rik/index.html</link>
-      <pubDate>Wed, 01 Jan 2025 15:20:19 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
-      <guid>https://www.cs.ubc.ca/~rikblok/research/rik/index.html</guid>
-      <description>See also my Google Scholar profile or my Zotero library.</description>
+      <title>Published</title>
+      <link>https://www.cs.ubc.ca/~rikblok/research/published/index.html</link>
+      <pubDate>Thu, 02 Jan 2025 01:42:05 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/research/published/index.html</guid>
+      <description>My peer-reviewed and published articles</description>
+    </item>
+    <item>
+      <title>Presented</title>
+      <link>https://www.cs.ubc.ca/~rikblok/research/presented/index.html</link>
+      <pubDate>Thu, 02 Jan 2025 01:42:05 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/research/presented/index.html</guid>
+      <description>Work I’ve presented for feedback at seminars, lab meetings, and guest lectures</description>
+    </item>
+    <item>
+      <title>Unpublished notes</title>
+      <link>https://www.cs.ubc.ca/~rikblok/research/notes/index.html</link>
+      <pubDate>Thu, 02 Jan 2025 22:02:46 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/research/notes/index.html</guid>
+      <description>Here are some research-oriented technical notes I’ve written. They’re not peer-reviewed or published.</description>
     </item>
   </channel>
 </rss>

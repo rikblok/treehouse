@@ -1,0 +1,21 @@
+.hugo-cite-group .hugo-cite-citation {
+    background-color: var(--MAIN-BG-color);
+}
+
+/* Used with the equation.html shortcode - Rik, 2025-01-02 */
+.equation-wrapper {
+  width: 100%;
+  table-layout: fixed; /* Ensures table itself is fixed */
+  margin-bottom: 1em; /* Adds space between equations */
+  border-collapse: collapse !important; /* Ensures no space between cells */
+}
+
+.equation-wrapper td {
+  vertical-align: middle; /* Ensures the equation and number are vertically aligned */
+}
+
+.equation-number {
+  padding-left: 1em; /* Keeps the number separated from the equation */
+  white-space: nowrap; /* Prevents the equation number from wrapping */
+  flex-shrink: 0; /* Prevents shrinking of the number cell */
+}

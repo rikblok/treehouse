@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.139.0">
+    <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
+    <meta name="description" content="Discounted Least Squares Curve Fitting">
+    <meta name="author" content="Rik Blok">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blok (1997) :: Rik&#39;s Treehouse">
+    <meta name="twitter:description" content="Discounted Least Squares Curve Fitting">
+    <meta property="og:url" content="https://www.cs.ubc.ca/~rikblok/research/notes/discounted_least_squares/index.html">
+    <meta property="og:site_name" content="Rik&#39;s Treehouse">
+    <meta property="og:title" content="Blok (1997) :: Rik&#39;s Treehouse">
+    <meta property="og:description" content="Discounted Least Squares Curve Fitting">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Research ramblings">
+    <meta property="article:published_time" content="2025-01-02T22:07:32-08:00">
+    <meta property="article:modified_time" content="2025-01-02T22:07:32-08:00">
+    <meta itemprop="name" content="Blok (1997) :: Rik&#39;s Treehouse">
+    <meta itemprop="description" content="Discounted Least Squares Curve Fitting">
+    <meta itemprop="datePublished" content="2025-01-02T22:07:32-08:00">
+    <meta itemprop="dateModified" content="2025-01-02T22:07:32-08:00">
+    <meta itemprop="wordCount" content="3625">
+    <title>Blok (1997) :: Rik&#39;s Treehouse</title>
+    <link href="/~rikblok/css/fontawesome-all.min.css?1737268262" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1737268262" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/auto-complete.css?1737268262" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1737268262" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar.min.css?1737268262" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1737268262" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1737268262" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/www.cs.ubc.ca\/~rikblok';
+      window.relearn.min = `.min`;
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        var select = document.querySelector("#R-select-variant");
+        if (select) {
+          select.value = variant;
+        }
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script><link rel="stylesheet" type="text/css" href="/~rikblok/hugo-cite.css" />
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/~rikblok/css/custom.css" />
+
+
+
+  </head>
+  <body class="mobile-support html" data-url="/~rikblok/research/notes/discounted_least_squares/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#discounted-least-squares-curve-fitting">Discounted Least Squares Curve Fitting</a>
+      <ul>
+        <li><a href="#1-introduction">1. Introduction</a></li>
+        <li><a href="#2-solution">2. Solution</a></li>
+        <li><a href="#3-covariance-matrix">3. Covariance matrix</a></li>
+        <li><a href="#4-storage-and-updating">4. Storage and updating</a></li>
+        <li><a href="#5-memory-effective-number-of-data-points">5. Memory, effective number of data points</a></li>
+        <li><a href="#6-unknown-measurement-errors">6. Unknown measurement errors</a></li>
+        <li><a href="#7-forecasting">7. Forecasting</a></li>
+        <li><a href="#8-implementation">8. Implementation</a></li>
+        <li><a href="#9-summary">9. Summary</a></li>
+        <li><a href="#10-references">10. References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/research/index.html"><span itemprop="name">Research ramblings</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/research/notes/index.html"><span itemprop="name">Unpublished notes</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Blok (1997)</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/research/notes/index.html" title="Unpublished notes (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/science/index.html" title="Scientific scribblings (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable research" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="blok-1997">Blok (1997)</h1>
+
+<!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
+<h2 id="discounted-least-squares-curve-fitting">Discounted Least Squares Curve Fitting</h2>
+<!-- 
+
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#blokdiscounted1997"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Hendrik J. (Rik)"><span itemprop="familyName">Blok</span></span>,&#32;<span itemprop="datePublished">1997</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/WebPage"
+      data-type="webpage"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Blok</span>,&#32;
+    <meta itemprop="givenName" content="Hendrik J. (Rik)" />
+    H.</span>(<span itemprop="datePublished">1997,&#32;7/20</span>).&#32;Retrieved from&#32;
+  <a href="http://www.zoology.ubc.ca/~rikblok/wiki/doku.php?id=random_research:rik_s_notes:discounted_least_squares:start"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://www.zoology.ubc.ca/~rikblok/wiki/doku.php?id=random_research:rik_s_notes:discounted_least_squares:start</a></span>
+
+
+
+
+</span></span>)</span>
+
+ -->
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+<section class="hugo-cite-bibliography">
+  <dl>
+    
+
+      <div id="blokdiscounted1997">
+        <dt>
+          Blok
+
+          
+          (1997)</dt>
+
+        <dd>
+          
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/WebPage"
+      data-type="webpage"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Blok</span>,&#32;
+    <meta itemprop="givenName" content="Hendrik J. (Rik)" />
+    H.</span>(<span itemprop="datePublished">1997,&#32;7/20</span>).&#32;Retrieved from&#32;
+  <a href="http://www.zoology.ubc.ca/~rikblok/wiki/doku.php?id=random_research:rik_s_notes:discounted_least_squares:start"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://www.zoology.ubc.ca/~rikblok/wiki/doku.php?id=random_research:rik_s_notes:discounted_least_squares:start</a></span>
+
+
+
+
+</dd>
+
+      </div>
+  </dl>
+</section>
+
+
+
+<p>Version 1
+&mdash; Rik Blok, 1997-07-20</p>
+<h3 id="1-introduction">1. Introduction</h3>
+<p>I recently wrote some code to make simple forecasts in a time series (a steadily accumulating set of \((x,y)\) data points). For its simplicity, I chose a least-squares fit to a straight line. The underlying behaviour of the system was continuously changing so it was unreasonable to expect the same parameters to be valid for all the data. As new data came in, I expected old data to become irrelevant, and I handled this by only fitting over the last \(N\) data points. Unfortunately, it became evident that this arbitrary parameter \(N\) I had chosen was very important to the fit, often producing pathological results: as \(N\) new data points were accumulated after an <em>outlier</em> (a strongly atypical \(y\)-value), it would suddenly be dropped from consideration and the forecast would undergo a discontinuous &ldquo;jump&rdquo;. I began to wonder if there was a way of steadily <em>discounting</em> the relevance of past data in a smoother and more natural way&hellip;</p>
+<p>(Note: much of the text written here is a blatant copy from Press et al. 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#pressnumerical1992"><span class="visually-hidden">Citation: </span><span itemprop="datePublished">1992</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope 
+      itemtype="https://schema.org/Book"
+      data-type="book"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Press</span>,&#32;
+    <meta itemprop="givenName" content="W. H." />
+    W.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Teukolsky</span>,&#32;
+    <meta itemprop="givenName" content="S. A." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Vetterling</span>,&#32;
+    <meta itemprop="givenName" content="W. T." />
+    W.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Flannery</span>,&#32;
+    <meta itemprop="givenName" content="B. P." />
+    B.</span>&#32;
+    (<span itemprop="datePublished">1992</span>).
+  &#32;<span itemprop="name">
+    <i>Numerical Recipes in C: The Art of Scientific Computing</i></span> (<span>Second</span>).
+  <meta itemprop="contentLocation"
+        value="Cambridge">&#32;
+  <span itemprop="publisher"
+             itemtype="http://schema.org/Organization"
+             itemscope="">
+    <span itemprop="name">Cambridge University Press</span></span>.&#32;Retrieved from&#32;
+  <a href="http://www.nr.com/"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://www.nr.com/</a></span>
+
+
+
+
+</span></span>)</span>
+. They said it so well, I could not word it any better myself. In Chapter 16 they derive the least-squares technique I described above.)</p>
+<h3 id="2-solution">2. Solution</h3>
+<p>We use the index \(i\) to label our data points where \(i=0\) indicates the most recently acquired data and \(i=1,2,3,\ldots\) indicate successively older data.  Each data point consists of a triplet \((x,y,\sigma)\) where \(x\) is the independent variable (eg. time), \(y\) is the dependent variable, and \(\sigma\) is the associated measurement error in \(y\).</p>
+<p>As new data arrives \((x_0,y_0,\sigma_0)\) we shift the indices of prior data to make room, and scale up the errors by some factor \(\gamma\in (0,1)\):</p>
+\[
+  (x_{i+1},y_{i+1},\sigma_{i+1})\leftarrow (x_i, y_i,\sigma_i/\gamma).
+\]<p>If we define \(\sigma_i^*\) as the original value of \(\sigma_0\) then after applying \(i\) of the above operations</p>
+
+<table id="eq-2-1" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+ \sigma_i = \sigma_i^*/\gamma^i 
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(2.1)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>so, since \(\gamma<1\), the historical deviations grow exponentially as new information is acquired.</p>
+<p>We wish to fit data to a model which is a linear combination of <em>any</em> \(M\) specified functions of \(x\).  For example, the functions could be \(1,x,x^2,\ldots,x^{M-1}\), in which case their general linear combination,</p>
+\[
+  y(x) = a_1 + a_2 x + \cdots + a_M x^{M-1}
+\]<p>is a polynomial of degree \(M-1\).  The general form of this kind of model is</p>
+
+<table id="eq-2-2" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  y(x) = \sum_{j=1}^M a_j X_j(x)
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(2.2)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>where \(X_1(x),\ldots,X_M(x)\) are arbitrary fixed functions of \(x\), called the <em>basis functions</em>.  Note that the functions \(X_j(x)\) can be wildly nonlinear functions of \(x\).  In this discussion &ldquo;linear&rdquo; refers only to the model&rsquo;s dependence on its <em>parameters</em> \(a_j\).</p>
+<p>For these linear models we define a merit function</p>
+
+<table id="eq-2-3" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  \chi^2 = \sum_{i=0}^N \left[ \frac{y_i - \sum_j a_j X_j(x_i)}{\sigma_i} \right]^2.
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(2.3)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>We will pick as best parameters those that minimize \(\chi^2\).  There are several different techniques for finding this minimum.  We will focus on one: the <em>singular value decomposition</em> of the <em>normal equations</em>.  To introduce it we need some notation.</p>
+<p>Let \({\bf A}\) be a matrix whose \(N\times M\) components are constructed from the \(M\) basis functions evaluated at the \(N\) abscissas \(x_i\), and from the \(N\) measurement errors \(\sigma_i\), by the prescription</p>
+
+<table id="eq-2-4" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  A_{ij} = \frac{X_j(x_i)}{\sigma_i}.
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(2.4)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>The matrix \({\bf A}\) is called the <em>design matrix</em> of the fitting problem.  Notice that in general \(\bf A\) has more rows than columns, \(N\geq M\), since there must be more data points than model parameters to be solved for.</p>
+<p>Also define a vector \(\bf b\) of length \(N\) by</p>
+\[
+  b_i = \frac{y_i}{\sigma_i}
+\]<p>and denote the \(M\) vector whose components are the parameters to be fitted, \(a_1,\ldots,a_M\), by \(\bf a\).</p>
+<p>If we take the derivative of <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-3">Eq. (2.3)</a> with respect to all \(M\) parameters \(a_j\), we obtain \(M\) equations that must hold at the chi-square minimum,</p>
+
+<table id="eq-2-5" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  0 = \frac{1}{\sigma_i^2} \left[ y_i - \sum_j a_j X_j(x_i) \right] X_k(x_i)\;\; k=1,\ldots,M.
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(2.5)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>Interchanging the order of summations, we can write <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-5">Eq. (2.5)</a> as the matrix equation</p>
+
+<table id="eq-2-6" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  \sum_j \alpha_{kj} a_j = \beta_k
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(2.6)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>where</p>
+
+<table id="eq-2-7" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  \alpha_{kj} = \sum_i \frac{X_j(x_i) X_k(x_i)}{\sigma_i^2} \text{ or equivalently } [\alpha] = {\bf A}^T\cdot {\bf A}
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(2.7)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>an \(M\times M\) matrix, and</p>
+
+<table id="eq-2-8" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  \beta_k = \sum_i \frac{y_i X_k(x_i)}{\sigma_i^2} \text{ or equivalently } [\beta] = {\bf A}^T\cdot {\bf b}
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(2.8)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>a vector of length \(M\).</p>
+<p><a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-5">Eq. (2.5)</a> or <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-6">(2.6)</a> are called the <em>normal equations</em> of the least-squares problem.  They can be solved for the vector parameters \(\bf a\) by <em>singular value decomposition</em> (SVD).  SVD solves fixes many difficulties in the normal equations, including susceptibility to round-off errors.  SVD can be significantly slower than other methods; however, its great advantage, that it (theoretically) <em>cannot fail</em>, more than makes up for the speed disadvantage.  A good review of SVD techniques can be found in Press et al. 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#pressnumerical1992"><span class="visually-hidden">Citation: </span><span itemprop="datePublished">1992</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope 
+      itemtype="https://schema.org/Book"
+      data-type="book"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Press</span>,&#32;
+    <meta itemprop="givenName" content="W. H." />
+    W.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Teukolsky</span>,&#32;
+    <meta itemprop="givenName" content="S. A." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Vetterling</span>,&#32;
+    <meta itemprop="givenName" content="W. T." />
+    W.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Flannery</span>,&#32;
+    <meta itemprop="givenName" content="B. P." />
+    B.</span>&#32;
+    (<span itemprop="datePublished">1992</span>).
+  &#32;<span itemprop="name">
+    <i>Numerical Recipes in C: The Art of Scientific Computing</i></span> (<span>Second</span>).
+  <meta itemprop="contentLocation"
+        value="Cambridge">&#32;
+  <span itemprop="publisher"
+             itemtype="http://schema.org/Organization"
+             itemscope="">
+    <span itemprop="name">Cambridge University Press</span></span>.&#32;Retrieved from&#32;
+  <a href="http://www.nr.com/"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://www.nr.com/</a></span>
+
+
+
+
+</span></span>)</span>
+ Section 2.6.  In matrix form, the normal equations can be written as</p>
+
+<table id="eq-2-9" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  [\alpha]\cdot {\bf a}=[\beta].
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(2.9)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<h3 id="3-covariance-matrix">3. Covariance matrix</h3>
+<p>Let us define</p>
+
+<table id="eq-3-1" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  [C] = [\alpha]^{-1}.
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(3.1)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>Then</p>
+\[
+  {\bf a}=[C]\cdot [\beta] \text{ or } a_j = \sum_k C_{jk} \beta_k
+\]<p>which allows us to determine \(\bf a\)&rsquo;s dependence on the \(y_i\) values.  From <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-7">Eq. (2.7)</a> we see that \([C]\) is independent of \(y_i\) so</p>
+
+<table id="eq-3-2" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  a_j = \sum_j C_{jk} \sum_i A_{ik} \frac{y_i}{\sigma_i}
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(3.2)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>and</p>
+\[
+  \frac{\partial a_j}{\partial y_i} = \sum_k C_{jk} \frac{A_{ik}}{\sigma_i}.
+\]<p>The covariance between two parameters \(a_j\) and \(a_k\) is defined as</p>
+
+<table id="eq-3-3" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+\begin{array}{rcl}
+  \text{Covar}[a_j,a_k] 
+    & \equiv & \sum_i \sigma_i^2 \frac{\partial a_j}{\partial y_i} \frac{\partial a_k}{\partial y_i} \\
+    & = & \sum_i \sigma_i^2 \sum_{lm} C_{jl} \frac{A_{il}}{\sigma_i} \frac{A_{im}}{\sigma_i} \\
+    & = & \sum_{lm} C_{jl} C_{km} \alpha_{ml}
+\end{array}
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(3.3)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>but since \([C]=[\alpha]^{-1}\) so</p>
+\[
+  \sum_m C_{km} \alpha_{ml} = \delta_{kl} \text{ or } [C][\alpha]={\bf 1}
+\]<p>where \(\delta_{kl}\) is the Kronecker delta function.  Hence <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-3-3">Eq. (3.3)</a> reduces to</p>
+
+<table id="eq-3-4" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  \text{Covar}[a_j,a_k] = C_{jk}
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(3.4)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>and we find that \([C]\) is the covariance matrix.  The variance of a single parameter \(a_j\) is simply defined as</p>
+
+<table id="eq-3-5" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  \text{Var}[a_j]=\text{Covar}[a_j,a_j]=C_{jj}.
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(3.5)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<h3 id="4-storage-and-updating">4. Storage and updating</h3>
+<p>So far we have made no mention of \(N\), the number of data points to be fit.  As we will see an advantage of the discounted least squares method is that \(N\) becomes irrelevant.  As data points are accumulated the oldest data becomes decreasingly relevant and eventually contribute negligibly to the fitting procedure.  Hence we can <em>theoretically</em> apply this data to an infinite data set.  But can this be <em>practically</em> implemented?  The answer is&hellip;Yes!</p>
+<p>Notice that as we acquire new data \((x_0,y_0,\sigma_0)\) according to <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-7">Eq. (2.7)</a> and <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-8">(2.8)</a> the matrix \([\alpha]\) and vector \([\beta]\) update as</p>
+
+<table id="eq-4-1" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  \alpha_{kj} \leftarrow A_{0j} A_{0k} + \gamma^2 \alpha_{kj} = \frac{X_j(x_0) X_k(x_0)}{\sigma_0^2} + \gamma^2 \alpha_{kj}
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(4.1)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>and</p>
+
+<table id="eq-4-2" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  \beta_j \leftarrow A_{0j} b_0 + \gamma^2 \beta_j = \frac{X_j(x_0) y_0}{\sigma_0^2} + \gamma^2 \beta_j
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(4.2)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>so it becomes clear that we need not even store the history of data points, but should rather store just \([\alpha]\) and \([\beta]\) and update them as new data is accumulated.</p>
+<p>A useful measure we have neglected to calculate so far is \(\chi^2\),the chi-square statistic itself.  In matrix notation <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-3">Eq. (2.3)</a> can be written</p>
+\[
+\begin{array}{rcl}
+  \chi^2
+    & = & ({\bf a}^T \cdot {\bf A}^T - {\bf b}^T) \cdot ({\bf A} \cdot {\bf a}-{\bf b}) \\
+    & = & {\bf a}^T \cdot {\bf A}^T \cdot {\bf A} \cdot {\bf a} - {\bf b}^T \cdot {\bf A} \cdot {\bf a} - {\bf a}^T \cdot {\bf A}^T \cdot {\bf b} + {\bf b}^T \cdot {\bf b} \\
+    & = & {\bf a}^T \cdot ([\alpha] \cdot {\bf a} - [\beta]) - [\beta]^T \cdot {\bf a} + {\bf b}^T \cdot {\bf b} \\
+    & = & {\bf b}^T \cdot {\bf b} - [\beta]^T \cdot {\bf a}
+\end{array}
+\]<p>which appears to still depend on the data history in the first term.  Let us define this term as a new variable \(\delta\),</p>
+\[
+  \delta \equiv {\bf b}^T \cdot {\bf b} = \sum_i b_i^2.
+\]<p>Then, similarly to <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-4-1">Eq. (4.1)</a> and <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-4-2">(4.2)</a> \(\delta\) can be updated as more information is accumulated</p>
+
+<table id="eq-4-3" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  \delta \leftarrow b_0^2 + \gamma^2 \delta = \frac{y_0^2}{\sigma_0^2} + \gamma^2 \delta.
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(4.3)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<div id="fig-4-1">
+<div class="tab-panel" data-tab-group="d0df1db06ba1d2e5e54dfe0419b6ebed">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="figure-41"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('d0df1db06ba1d2e5e54dfe0419b6ebed','figure-41')"
+    >
+      <span class="tab-nav-text">Figure 4.1</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="figure-41"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<p><a href="#R-image-ffe5f3eba82223d77b86ef444cbe1b84" class="lightbox-link"><img alt="Figure 4.1" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure_4_1.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-ffe5f3eba82223d77b86ef444cbe1b84"><img alt="Figure 4.1" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure_4_1.png"></a></p>
+<p>Figure 4.1: Discounted least-squares fitting has a computational storage advantage over traditional least-squares when \(N>M^2+M+4\) where \(N\) is the number of data points and \(M\) is the number of parameters to be fitted.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<p>So, to store all relevant history information we need only remember \([\alpha]\), \([\beta]\), and \(\delta\) as well as the latest data triplet \((x_0,y_0,\sigma_0)\) for a total of \(M^2+M+4\) numbers, regardless of how many data points have been acquired.  <a href="/~rikblok/research/notes/discounted_least_squares/index.html#fig-4-1">Figure 4.1</a> shows that for many practical problems discounted least-squares fitting requires less storage than other methods.  Although it has not been tested, we expect a similar condition to hold for processing time because the number of calculations depend only on \(M\) instead of \(M\) and \(N\) as in traditional least-squares methods.</p>
+<p>As the reader can justify, all of these values should be initialized (prior to any data) with null values: \([\alpha]={\bf 0}\), \([\beta]={\bf 0}\), and \(\delta=0\).</p>
+<h3 id="5-memory-effective-number-of-data-points">5. Memory, effective number of data points</h3>
+<p>For traditional least-squares fitting it is well known that if the measurement errors of \(y_i\) are distributed normally then the method is a <em>maximum likelihood estimation</em> and the expectation value (average) of <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-3">Eq. (2.3)</a> evaluates to</p>
+\[
+  \left\langle \chi^2 \right\rangle = N-M.
+\]<p>This arises because \((y_i - y(x_i))/\sigma_i\) is distributed normally with mean 0 and variance 1, so the sum of \(N\) variances should equate to \(N\).  The subtraction of \(M\) is necessary because \(M\) parameters can be adjusted to actually reduce the variances further.  For instance, with \(N=M=1\) we can adjust the single parameter such that the curve passes precisely through the point \((x_0,y_0)\), with zero variance.  Similarly, for our method</p>
+
+<table id="eq-5-1" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+\begin{array}{rcl}
+  \left\langle \chi^2 \right\rangle
+    & = & \sum_{i=0}^\infty \gamma^{2 i} \left\langle \left[ \frac{y_i-y(x_i)}{\sigma_i^*}\right]^2 \right\rangle - M \\
+    & = & \sum_{i=0}^\infty \gamma^{2 i} - M \\
+    & = & \frac{1}{1-\gamma^2} - M
+\end{array}
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(5.1)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>which strongly suggests an <em>effective number of data points</em></p>
+
+<table id="eq-5-2" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  N_{eff} \equiv \frac{1}{1-\gamma^2}.
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(5.2)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<h4 id="51-memory">5.1. Memory</h4>
+<p>We now undertake a thought experiment to understand how \(N_{eff}\) comes into play.  Consider a single parameter fit \(X(x_i)=1\) or \(y(x_i)=a\) to a long history of values \(y_i=1\) (regardless of \(x_i\)).  Updating according to <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-4-1">Eq. (4.1)</a>, <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-4-2">(4.2)</a>, and <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-4-3">(4.3)</a> gives</p>
+\[
+\begin{array}{rcr}
+  \alpha & \leftarrow & 1   + \gamma^2 \alpha \\
+  \beta  & \leftarrow & y   + \gamma^2 \beta \\
+  \delta & \leftarrow & y^2 + \gamma^2 \delta
+\end{array}
+\]<p>so after a long history of \(y=1\),</p>
+\[
+\begin{array}{rl}
+  \alpha
+    & = 1 + \gamma^2 \left( 1 + \gamma^2(\cdots)\right) = 1 + \gamma^2 + \gamma^4 + \cdots \\
+    & = \frac{1}{1-\gamma^2} = \beta = \delta
+\end{array}
+\]<p>which has a solution, in one dimension, of</p>
+\[
+  a = \frac{\beta}{\alpha}
+\]<p>or \(y(x)=a=1\).</p>
+<p>Now consider a sudden shift in the data stream to \(y_i=0\) (like a step function).  How will this change our curve fit?  The value of \(\alpha\) remains unchanged but \(\beta\) and \(a\) change as follows:</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">\(y\)</th>
+          <th style="text-align: center">\(\beta\)</th>
+          <th style="text-align: center">\(a\)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">\(\vdots\)</td>
+          <td style="text-align: center">\(\vdots\)</td>
+          <td style="text-align: center">\(\vdots\)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">\(1\)</td>
+          <td style="text-align: center">\(\alpha\)</td>
+          <td style="text-align: center">\(1\)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">\(0\)</td>
+          <td style="text-align: center">\(\gamma^2 \alpha\)</td>
+          <td style="text-align: center">\(\gamma^2\)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">\(0\)</td>
+          <td style="text-align: center">\(\gamma^4 \alpha\)</td>
+          <td style="text-align: center">\(\gamma^4\)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">\(\vdots\)</td>
+          <td style="text-align: center">\(\vdots\)</td>
+          <td style="text-align: center">\(\vdots\)</td>
+      </tr>
+  </tbody>
+</table>
+<p>Notice that \(a\) decays exponentially to the new equilibrium \(a=0\).  The time constant \(\tau\) for the system (time for \(a\) to decay to \(1/e\)) is</p>
+\[
+\begin{array}{l}
+  \left( \gamma^2 \right)^\tau = e^{-1} \\
+  \Rightarrow \tau = \frac{-1}{2 \ln \gamma}
+\end{array}
+\]<p>which is, as <a href="/~rikblok/research/notes/discounted_least_squares/index.html#fig-5-1">Figure 5.1</a> shows, almost identical to \(N_{eff}\) for all \(\gamma\).</p>
+<div id="fig-5-1">
+<div class="tab-panel" data-tab-group="07f5a80438d7df6526681a3497e474a2">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="figure-51"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('07f5a80438d7df6526681a3497e474a2','figure-51')"
+    >
+      <span class="tab-nav-text">Figure 5.1</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="figure-51"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<p><a href="#R-image-8029ceeae735e49030d892eac462d616" class="lightbox-link"><img alt="Figure 5.1" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure_51.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-8029ceeae735e49030d892eac462d616"><img alt="Figure 5.1" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure_51.png"></a></p>
+<p>Figure 5.1: The difference between \(N_{eff}\) and \(\tau\) is strictly less than one.  The main difference between the two is that \(\sigma_{N_{eff}} \rightarrow \infty \) as \(N_{eff}\rightarrow 1\) (as it should) while \(\sigma_\tau = \sqrt{e} \sigma_\tau^*\) for all \(\tau\).  They converge as \(N_{eff}\rightarrow \infty\).</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<p>Thus, \(N_{eff}\) is indeed a practical measure of the effective number of data points in a fit.  The fit is dominated by the most recent data \(i\leq N_{eff}\), and \(N_{eff}\) acts as the <em>memory</em> of the fitting procedure.</p>
+<h3 id="6-unknown-measurement-errors">6. Unknown measurement errors</h3>
+<p>On occasion measurement uncertainties are unknown and least-squares fitting can be used to recover an estimate of these uncertainties.  Be forewarned that this technique assumes normally distributed y data with identical variances.  If this is not the case, the results become meaningless.  It also precludes the use of a &ldquo;goodness-of-fit&rdquo; estimator (such as the incomplete gamma function, see Press et al. 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#pressnumerical1992"><span class="visually-hidden">Citation: </span><span itemprop="datePublished">1992</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope 
+      itemtype="https://schema.org/Book"
+      data-type="book"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Press</span>,&#32;
+    <meta itemprop="givenName" content="W. H." />
+    W.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Teukolsky</span>,&#32;
+    <meta itemprop="givenName" content="S. A." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Vetterling</span>,&#32;
+    <meta itemprop="givenName" content="W. T." />
+    W.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Flannery</span>,&#32;
+    <meta itemprop="givenName" content="B. P." />
+    B.</span>&#32;
+    (<span itemprop="datePublished">1992</span>).
+  &#32;<span itemprop="name">
+    <i>Numerical Recipes in C: The Art of Scientific Computing</i></span> (<span>Second</span>).
+  <meta itemprop="contentLocation"
+        value="Cambridge">&#32;
+  <span itemprop="publisher"
+             itemtype="http://schema.org/Organization"
+             itemscope="">
+    <span itemprop="name">Cambridge University Press</span></span>.&#32;Retrieved from&#32;
+  <a href="http://www.nr.com/"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://www.nr.com/</a></span>
+
+
+
+
+</span></span>)</span>
+ Section 6.2) because it assumes a good fit.</p>
+<p>We begin by assuming \(\sigma_i^*=1\) for all data points and proceeding with our calculations of \(\bf a\) and \(\chi^2\).  If all (unknown) variances are equal \(\sigma^*=\sigma_i^*\) then <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-5-1">Eq. (5.1)</a> actually becomes</p>
+\[
+  \left\langle \chi^2 \right\rangle = (N_{eff} - M) \sigma^{*2}
+\]<p>so the actual data variance should be</p>
+
+<table id="eq-6-1" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  \sigma^{*2} = \frac{\chi^2}{N_{eff}-M}.
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(6.1)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>We can update our parameter error estimates by recognizing that, from <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-3-2">Eq. (3.2)</a> and <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-4">Eq. (2.4)</a>, the covariance matrix is proportional to the variance in the data, so</p>
+
+<table id="eq-6-2" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  C_{jk} \leftarrow \frac{\chi^2}{N_{eff}-M} C_{jk}.
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(6.2)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<h3 id="7-forecasting">7. Forecasting</h3>
+<p>Forecasting via curve fitting is a dangerous proposition because it requires extrapolating into a region beyond the scope of the data, where different rules may apply, and hence, different parameter values.  Nevertheless, it often used simply for its convenience.  We assume the latest parameter estimations apply at the forecasted point \(x\) and simply use <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-2">Eq. (2.2)</a> to predict \(y(x)\).</p>
+<p>The uncertainty in the prediction can be estimated from the covariance matrix.  The definition of variance for <em>any</em> distribution is the expectation value of the squared difference from the mean:</p>
+\[
+  \text{Var}[z] \equiv \left\langle \left( z - \langle z \rangle \right)^2 \right\rangle
+\]<p>and the covariance between two variables is defined as</p>
+\[
+  \text{Covar}[z_1,z_2] \equiv \left\langle \left( z_1 - \langle z_1 \rangle \right) \left( z_2 - \langle z_2 \rangle \right) \right\rangle
+\]<p>so <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-2">Eq. (2.2)</a> has a variance</p>
+\[
+\begin{array}{rcl}
+  \text{Var}[y(x)]
+    & = & \text{Var}\left[ \sum_j a_j X_j(x) \right] \\
+    & = & \left\langle \left( \sum_j a_j X_j(x) - \sum_j \langle a_j \rangle X_j(x) \right) ^2 \right\rangle \\
+    & = & \sum_{jk} X_j(x) \left\langle \left( a_j - \langle a_j \rangle \right) \left( a_k - \langle a_k \rangle \right) \right\rangle X_k(x) \\
+    & = & \sum_{jk} X_j(x) \text{Covar}[a_j,a_k] X_k(x) \\
+    & = & X_j(x) C_{jk} X_k(x)
+\end{array}
+\]<p>where \([C]\) is the covariance matrix discussed in Section 3 with possible updating, in the absence of measurement errors, according to <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-6-2">Eq. (6.2)</a>.</p>
+<p>The above gives the uncertainty in \(y(x)\), but in our derivation we have assumed the observed \(y\)-values were distributed normally around the curve where \(y(x)\) represents the mean of the distribution.  Similarly for our prediction, \(y(x)\) is the prediction of the mean with its own uncertainty—-on top of which there is the measurement uncertainty of data around the mean.  If the expected measurement uncertainty is given by \(\sigma'\) then the predicted observation \(y' \sim N(y(x),\sigma')\) or, with the substitution</p>
+\[
+  z' = y' - y(x)
+\]<p>we assume \(z' \sim N(0,\sigma')\) <em>regardless of the prediction</em> \(y(x)\).  In other words, \(z'\) and \(y(x)\) are mutually independent.</p>
+\[
+\begin{array}{rcl}
+  \text{Var}[y']
+    & = & \text{Var}[y(x) + z'] \\
+    & = & \left\langle \left( y(x) - \langle y(x) \rangle + z' - \langle z' \rangle \right)^2 \right\rangle \\
+    & = & \left\langle \left( y(x) - \langle y(x) \rangle \right)^2 + \left( z' - \langle z' \rangle \right)^2 + 2 \left( y(x) - \langle y(x) \rangle \right) \left( z' - \langle z' \rangle \right) \right\rangle \\
+    & = & \left\langle \left( y(x) - \langle y(x) \rangle \right)^2 \right\rangle + \left\langle \left( z' - \langle z' \rangle \right)^2 \right\rangle + 2 \left\langle \left( y(x) - \langle y(x) \rangle \right) \left( z' - \langle z' \rangle \right) \right\rangle \\
+    & = & \text{Var}[y(x)] + \text{Var}[z'].
+\end{array}
+\]<p>The last step of dropping the covariance term is allowed because when two distributions are independent</p>
+\[
+  \left\langle \left( z_1 - \langle z_1 \rangle \right) \left( z_2 - \langle z_2 \rangle \right) \right\rangle = \left\langle z_1 - \langle z_1 \rangle \right\rangle \left\langle z_2 - \langle z_2 \rangle \right\rangle = 0
+\]<p>so our final results for the forecast \(y'\) at \(x\) are</p>
+
+<table id="eq-7-1" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+\begin{array}{rcl}
+  \langle y' \rangle & = & y(x) = \sum_j a_j X_j(x) \\
+  \text{Var}[y']     & = & \sum_{jk} X_j(x) C_{jk} X_k(x) + \sigma'^2.
+\end{array}
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(7.1)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>If \(\sigma'\) is unknown it should be set to the same scale as historical measurement errors.  If they are unknown, \(\sigma'\) should be estimated from <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-6-1">Eq. (6.1)</a>.</p>
+<h3 id="8-implementation">8. Implementation</h3>
+<p>A sample implementation of the above method, using a polynomial fitting function is included in the DOS program <code>dpolyfit.exe</code>((Download {{:random_research:rik_s_notes:discounted_least_squares:dls.zip|dls.zip}} source code and executable, released to the public domain)).  It is designed to make continuously updated parameter fits from data in the input stream, and output these parameters, or forecasts derived therefrom, to the output stream.  It takes as a command-line parameter an initialization file containing preset parameters for the input format, fitting procedure, and output display.  Common usages of this program are:</p>
+<div class="tab-panel" data-tab-group="ab258287b3a3333b89a712bb47860f05">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="listing-81"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('ab258287b3a3333b89a712bb47860f05','listing-81')"
+    >
+      <span class="tab-nav-text">Listing 8.1</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="listing-81"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<div class="highlight wrap-code"><pre tabindex="0"><code>dpolyfit.exe inifile.ini &lt;in.dat &gt;out.dat
+dpolyfit.exe inifile.ini &lt;in.dat &gt;&gt;out.dat</code></pre></div>
+<p>Listing 8.1: Sample command-line parameters for program, where <code>inifile.ini</code>, <code>in.dat</code>, and <code>out.dat</code> are replaced with desired configuration, input and output files, respectively.  The second version appends output to <code>out.dat</code> rather than overwriting it.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<p>The behaviour of the program is controlled by the initialization file which contains the following options:</p>
+<div class="tab-panel" data-tab-group="94b4e119eb36e554ed5c3f0510893cdd">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="listing-82"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('94b4e119eb36e554ed5c3f0510893cdd','listing-82')"
+    >
+      <span class="tab-nav-text">Listing 8.2</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="listing-82"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-inifile.ini" data-lang="inifile.ini"><span style="display:flex;"><span><span style="color:#a6e22e">[Input] </span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Errors</span><span style="color:#f92672">=</span><span style="color:#e6db74">No	; input s values?</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Fit]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Memory</span><span style="color:#f92672">=</span><span style="color:#e6db74">14	; effective # data points, Neff in Eq. 5.2</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Parameters</span><span style="color:#f92672">=</span><span style="color:#e6db74">7	; # of parameters a to fit, M in Eq. 2.2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Output]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Input</span><span style="color:#f92672">=</span><span style="color:#e6db74">Yes	; print input (x,y,s) triplet to output?</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Parameters</span><span style="color:#f92672">=</span><span style="color:#e6db74">No	; print parameters a and errors to output?</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Forecast</span><span style="color:#f92672">=</span><span style="color:#e6db74">Yes	; print forecasted y to output?</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Forecast Distance</span><span style="color:#f92672">=</span><span style="color:#e6db74">0	; forecast y at x=x0+&#34;Forecast Distance&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">[Abort]	; end program when all of the following are true:</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">x</span><span style="color:#f92672">=</span><span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">y</span><span style="color:#f92672">=</span><span style="color:#e6db74">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sig</span><span style="color:#f92672">=</span><span style="color:#e6db74">0	; only compare s if &#34;[Input] Errors=Yes&#34;</span></span></span></code></pre></div>
+<p>Listing 8.2: Sample initialization file <code>inifile.ini</code>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<p>If &ldquo;<code>[Input] Errors=Yes</code>&rdquo; then the program expects three numbers per data point \((x_0,y_0,\sigma_0)\), each separated by white spaces (eg. &ldquo;<code>1.0  1.2  0.4</code>&rdquo;).  Otherwise, only two are expected \((x_0,y_0)\).</p>
+<p>The option &ldquo;<code>[Fit] Memory=...</code>&rdquo; contains \(N_{eff}\) as in <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-5-2">Eq. (5.2)</a>.  Generally, this must be strictly \(>0\), but if a negative number is entered it is interpreted as \(N_{eff}=\infty\), producing a traditional fit over all data points with no rescaling of the measurement errors.</p>
+<p>If &ldquo;<code>[Output] Input=Yes</code>&rdquo; then the input values \((x_0,y_0,\sigma_0)\) are reproduced as the first three columns of the output file.  Even if \(\sigma_0\) is unspecified, a best estimate is output, based on <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-6-1">Eq. (6.1)</a>.</p>
+<p>If &ldquo;<code>[Output] Parameters=Yes</code>&rdquo; then the next \(2 M\) columns of output are the parameters \(\bf a\) and their respective uncertainties, eg. &ldquo;\(a_1  \delta a_1 \ldots a_M  \delta a_M\)&rdquo;.</p>
+<p>If &ldquo;<code>[Output] Forecast=Yes</code>&rdquo; then the program generates another two columns of output.  It calculates the forecast of \(y\) at \(x=x_0+\)&quot;<code>[Output] Forecast Distance</code>&quot; from <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-7-1">Eq. (7.1)</a> and prints out the forecasted \(y\) and its uncertainty.</p>
+<p>The program ends when the input \((x_0,y_0,\sigma_0)\) or \((x_0,y_0)\) matches the values in &ldquo;<code>[Abort] x=... y=... sig=...</code>&rdquo; or &ldquo;<code>[Abort] x=... y=...</code>&rdquo;, respectively.</p>
+<p>The design of this program might cause some confusion: even though the input data file is a complete set of data, the program only analyzes each data point successively, and all output is based on just this point and prior data.  For example, forecasts are based only on past data, so by the end of the output file, all data points are considered but in the beginning results are based only on a single data point.  The technique derived herein is better suited to time series with slowly accumulating data, rather than a complete data set on startup.</p>
+<h3 id="9-summary">9. Summary</h3>
+<p>As in traditional least-squares methods, by differentiating the \(\chi^2\) merit function (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-3">Eq. (2.3)</a>) of a linear model (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-2">Eq. (2.2)</a>) we were able find a set of linear equations (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-9">Eq. (2.9)</a>) which allowed us to solve for the optimal parameters which minimize \(\chi^2\).  By scaling up the error tolerance of old data as new data is acquired (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-1">Eq. (2.1)</a>) we were able to compact the information such that only an \(M \times M\) matrix \([\alpha]\) (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-4-1">Eq. (4.1)</a>), an \(M\times 1\) vector \([\beta]\) (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-4-2">Eq. (4.2)</a>), and a scalar \(\delta\) (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-4-3">Eq. (4.3)</a>) need be stored to retain the full history of accumulated data.  We found that the inverse of \([\alpha]\) (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-3-1">Eq. (3.1)</a>) held the covariance matrix of the fitted parameters (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-3-4">Eq. (3.4)</a> and <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-3-5">(3.5)</a>).  We were able to compute a <em>memory</em> for this technique (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-5-2">Eq. (5.2)</a>) which is comparable to the number of data points used in traditional least-squares fitting.  By assuming a good fit we were able to estimate the measurement uncertainties if they were unknown, and apply this to reconstruct reasonable deviations in the fitted parameters (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-6-2">Eq. (6.2)</a>).  Finally, by extrapolating with the latest parameter estimates (assuming they were valid in the forecasted domain), we were able to make forecasts and estimate their uncertainties (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-7-1">Eq. (7.1)</a>).</p>
+<p>As my list of references will attest, I have done virtually no research to see whether the <em>discounted least-squares</em> method has already been discovered (as is undoubtedly the case) and what name it goes by.  In deriving this, I did not care if I &ldquo;reinvented the wheel&rdquo; because my goal was to introduce myself to some of the statistical techniques, particularly those used in the derivation of uncertainties.</p>
+<h3 id="10-references">10. References</h3>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+<section class="hugo-cite-bibliography">
+  <dl>
+    
+
+      <div id="blokdiscounted1997">
+        <dt>
+          Blok
+
+          
+          (1997)</dt>
+
+        <dd>
+          
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/WebPage"
+      data-type="webpage"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Blok</span>,&#32;
+    <meta itemprop="givenName" content="Hendrik J. (Rik)" />
+    H.</span>(<span itemprop="datePublished">1997,&#32;7/20</span>).&#32;Retrieved from&#32;
+  <a href="http://www.zoology.ubc.ca/~rikblok/wiki/doku.php?id=random_research:rik_s_notes:discounted_least_squares:start"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://www.zoology.ubc.ca/~rikblok/wiki/doku.php?id=random_research:rik_s_notes:discounted_least_squares:start</a></span>
+
+
+
+
+</dd>
+
+      </div>
+
+      <div id="pressnumerical1992">
+        <dt>
+          Press,&#32;
+          Teukolsky,&#32;
+          Vetterling&#32;&amp;&#32;Flannery
+
+          
+          (1992)</dt>
+
+        <dd>
+          
+
+
+
+
+
+
+
+
+
+
+<span itemscope 
+      itemtype="https://schema.org/Book"
+      data-type="book"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Press</span>,&#32;
+    <meta itemprop="givenName" content="W. H." />
+    W.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Teukolsky</span>,&#32;
+    <meta itemprop="givenName" content="S. A." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Vetterling</span>,&#32;
+    <meta itemprop="givenName" content="W. T." />
+    W.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Flannery</span>,&#32;
+    <meta itemprop="givenName" content="B. P." />
+    B.</span>&#32;
+    (<span itemprop="datePublished">1992</span>).
+  &#32;<span itemprop="name">
+    <i>Numerical Recipes in C: The Art of Scientific Computing</i></span> (<span>Second</span>).
+  <meta itemprop="contentLocation"
+        value="Cambridge">&#32;
+  <span itemprop="publisher"
+             itemtype="http://schema.org/Organization"
+             itemscope="">
+    <span itemprop="name">Cambridge University Press</span></span>.&#32;Retrieved from&#32;
+  <a href="http://www.nr.com/"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://www.nr.com/</a></span>
+
+
+
+
+</dd>
+
+      </div>
+  </dl>
+</section>
+
+
+
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="/~rikblok/index.html">
+Rik&#39;s Treehouse
+          </a>
+        </div>
+        <script>
+          window.index_js_url="/~rikblok/searchindex.en.js?1737268262";
+        </script>
+        <search><form action="/~rikblok/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+        <script>
+          var contentLangs=['en'];
+        </script>
+        <script src="/~rikblok/js/auto-complete.js?1737268262" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.min.js?1737268262" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1737268262" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1737268262" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.en.min.js?1737268262" defer></script>
+        <script src="/~rikblok/js/search.js?1737268262" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <ul>
+          <li><a class="padding" href="/~rikblok/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+        </ul>
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/compute/index.html"><a class="padding" href="/~rikblok/compute/index.html">Computational capers</a></li>
+            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/~rikblok/research/index.html"><a class="padding" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/~rikblok/research/published/index.html"><a class="padding" href="/~rikblok/research/published/index.html">Published</a><ul id="R-subsections-fd150925b32c297bd80b32c85dbf53c7" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/~rikblok/research/presented/index.html"><a class="padding" href="/~rikblok/research/presented/index.html">Presented</a><ul id="R-subsections-0a29c1db3dbf4a3f6a288fc3847b4ef0" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-id="/~rikblok/research/notes/index.html"><a class="padding" href="/~rikblok/research/notes/index.html">Unpublished notes</a><ul id="R-subsections-950ca40a4602333597e39987a4c77254" class="collapsible-menu">
+            <li class="active " data-nav-id="/~rikblok/research/notes/discounted_least_squares/index.html"><a class="padding" href="/~rikblok/research/notes/discounted_least_squares/index.html">Blok (1997)</a></li></ul></li></ul></li>
+            <li class="" data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a></li>
+          </ul>
+        </div>
+    
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/research/notes/discounted_least_squares/index.html" lang="en-us" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.relearn.markVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter">
+        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="/~rikblok/js/clipboard.min.js?1737268262" defer></script>
+    <script src="/~rikblok/js/perfect-scrollbar.min.js?1737268262" defer></script>
+    <script>
+      function useMathJax( config ){
+        window.MathJax = Object.assign( window.MathJax || {}, {
+          tex: {
+            inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
+            displayMath: [['\\[', '\\]'], ['$$', '$$']], 
+          },
+          options: {
+            enableMenu: false 
+          }
+        }, config );
+      }
+      useMathJax( JSON.parse("{}") );
+    </script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1737268262"></script>
+    <script src="/~rikblok/js/theme.js?1737268262" defer></script>
+  </body>
+</html>

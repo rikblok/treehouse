@@ -1,5 +1,0 @@
-AuthUserFile /www/rikblok/restricted/.htpasswd
-AuthGroupFile /dev/null
-AuthName "ISCI 422 Administration"
-AuthType Basic
-Require user rik jeff

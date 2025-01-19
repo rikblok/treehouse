@@ -1,3 +1,19 @@
 .hugo-cite-group .hugo-cite-citation {
     background-color: var(--MAIN-BG-color);
 }
+
+/* Used with the equation.html shortcode - Rik, 2025-01-02 */
+.equation-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.equation-wrapper > span:first-child {
+  flex-grow: 1;
+  text-align: center;
+}
+.equation-number {
+  margin-left: auto;
+  padding-left: 1em;
+}
