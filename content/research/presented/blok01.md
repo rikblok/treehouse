@@ -1,14 +1,14 @@
 +++
 date = '2025-01-02T16:19:52-08:00'
 draft = false
-title = 'Blok (2001)'
-summary = 'Can memes drive genes?'
+title = 'Blok (2001) Can memes drive genes?'
+summary = 'Presentation for Doebeli lab meeting'
 weight = -20011000
 bibFile = "bib-all-better-csl.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 
-## Can memes drive genes?
+## Presentation for Doebeli lab meeting
 
 <!-- 
 {{< cite "blokCan2001" >}}

@@ -8,10 +8,17 @@
     <language>en-us</language>
     <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
     <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
-    <lastBuildDate>Thu, 02 Jan 2025 22:07:32 -0800</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jan 2025 22:46:12 -0800</lastBuildDate>
     <atom:link href="https://www.cs.ubc.ca/~rikblok/research/notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Blok (1997)</title>
+      <title>Blok (2004) Parallel Poisson</title>
+      <link>https://www.cs.ubc.ca/~rikblok/research/notes/parallel_poisson/index.html</link>
+      <pubDate>Sat, 18 Jan 2025 22:46:12 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/research/notes/parallel_poisson/index.html</guid>
+      <description>Updating in simulations of parallel Poisson processes</description>
+    </item>
+    <item>
+      <title>Blok (1997) Discounted Least Squares</title>
       <link>https://www.cs.ubc.ca/~rikblok/research/notes/discounted_least_squares/index.html</link>
       <pubDate>Thu, 02 Jan 2025 22:07:32 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
       <guid>https://www.cs.ubc.ca/~rikblok/research/notes/discounted_least_squares/index.html</guid>

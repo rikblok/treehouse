@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.139.0">
+    <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
+    <meta name="description" content="Updating in simulations of parallel Poisson processes">
+    <meta name="author" content="Rik Blok">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blok (2004) Parallel Poisson :: Rik&#39;s Treehouse">
+    <meta name="twitter:description" content="Updating in simulations of parallel Poisson processes">
+    <meta property="og:url" content="https://www.cs.ubc.ca/~rikblok/research/notes/parallel_poisson/index.html">
+    <meta property="og:site_name" content="Rik&#39;s Treehouse">
+    <meta property="og:title" content="Blok (2004) Parallel Poisson :: Rik&#39;s Treehouse">
+    <meta property="og:description" content="Updating in simulations of parallel Poisson processes">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Research ramblings">
+    <meta property="article:published_time" content="2025-01-18T22:46:12-08:00">
+    <meta property="article:modified_time" content="2025-01-18T22:46:12-08:00">
+    <meta itemprop="name" content="Blok (2004) Parallel Poisson :: Rik&#39;s Treehouse">
+    <meta itemprop="description" content="Updating in simulations of parallel Poisson processes">
+    <meta itemprop="datePublished" content="2025-01-18T22:46:12-08:00">
+    <meta itemprop="dateModified" content="2025-01-18T22:46:12-08:00">
+    <meta itemprop="wordCount" content="3773">
+    <title>Blok (2004) Parallel Poisson :: Rik&#39;s Treehouse</title>
+    <link href="/~rikblok/css/fontawesome-all.min.css?1737935790" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1737935790" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/auto-complete.css?1737935790" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1737935790" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar.min.css?1737935790" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1737935790" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1737935790" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/www.cs.ubc.ca\/~rikblok';
+      window.relearn.min = `.min`;
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        var select = document.querySelector("#R-select-variant");
+        if (select) {
+          select.value = variant;
+        }
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script><link rel="stylesheet" type="text/css" href="/~rikblok/hugo-cite.css" />
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/~rikblok/css/custom.css" />
+
+
+
+  </head>
+  <body class="mobile-support html" data-url="/~rikblok/research/notes/parallel_poisson/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#updating-in-simulations-of-parallel-poisson-processes">Updating in simulations of parallel Poisson processes</a>
+      <ul>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#1-definition">1. Definition</a></li>
+        <li><a href="#2-roulette-wheel-algorithm">2. Roulette wheel algorithm</a></li>
+        <li><a href="#3-rejection-method">3. Rejection method</a></li>
+        <li><a href="#4-faster-implementation-by-sampling-two-events">4. Faster implementation by sampling two events?</a></li>
+        <li><a href="#5-rejection-with-adaptive-correction">5. Rejection with adaptive correction</a></li>
+        <li><a href="#6-roulette-in-a-tree">6. Roulette in a tree</a></li>
+        <li><a href="#7-references">7. References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/research/index.html"><span itemprop="name">Research ramblings</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/research/notes/index.html"><span itemprop="name">Unpublished notes</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Blok (2004) Parallel Poisson</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/research/notes/index.html" title="Unpublished notes (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/research/notes/discounted_least_squares/index.html" title="Blok (1997) Discounted Least Squares (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable research" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="blok-2004-parallel-poisson">Blok (2004) Parallel Poisson</h1>
+
+<!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
+<h2 id="updating-in-simulations-of-parallel-poisson-processes">Updating in simulations of parallel Poisson processes</h2>
+<!-- 
+
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#blokparallel2004"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Hendrik J. (Rik)"><span itemprop="familyName">Blok</span></span>,&#32;<span itemprop="datePublished">2004</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/WebPage"
+      data-type="webpage"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Blok</span>,&#32;
+    <meta itemprop="givenName" content="Hendrik J. (Rik)" />
+    H.</span>(<span itemprop="datePublished">2004,&#32;10/15</span>).&#32;Retrieved from&#32;
+  <a href="http://www.zoology.ubc.ca/~rikblok/wiki/doku.php?id=random_research:rik_s_notes:parallel_poisson:start"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://www.zoology.ubc.ca/~rikblok/wiki/doku.php?id=random_research:rik_s_notes:parallel_poisson:start</a></span>
+
+
+
+
+</span></span>)</span>
+
+ -->
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+<section class="hugo-cite-bibliography">
+  <dl>
+    
+
+      <div id="blokparallel2004">
+        <dt>
+          Blok
+
+          
+          (2004)</dt>
+
+        <dd>
+          
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/WebPage"
+      data-type="webpage"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Blok</span>,&#32;
+    <meta itemprop="givenName" content="Hendrik J. (Rik)" />
+    H.</span>(<span itemprop="datePublished">2004,&#32;10/15</span>).&#32;Retrieved from&#32;
+  <a href="http://www.zoology.ubc.ca/~rikblok/wiki/doku.php?id=random_research:rik_s_notes:parallel_poisson:start"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://www.zoology.ubc.ca/~rikblok/wiki/doku.php?id=random_research:rik_s_notes:parallel_poisson:start</a></span>
+
+
+
+
+</dd>
+
+      </div>
+  </dl>
+</section>
+
+
+
+<p>Version 1
+&mdash; Rik Blok, 2004-10-15</p>
+<h3 id="abstract">Abstract</h3>
+<p>I explore how to efficiently implement Poisson processes in event-driven, multi-agent simulations. The most efficient strategy I am able to find uses a binary tree to implement the roulette wheel algorithm and results in \(O(\log_2 N)\) time to find the next event out of \(N\) total processes. These notes arose from discussions with Mario Pineda, Alistair Blachford, and Michael Doebeli. Unpublished.</p>
+<h3 id="1-definition">1. Definition</h3>
+<p>&mdash; Rik Blok, 2004-09-26</p>
+<p>A Poisson process is a sequence of random events where the probability of an event is constant per unit time. Usually it is described in terms of a sequence of multiple events but in this discussion I will focus on the occurrence of a single event in the sequence. Let \(c(t)\) be the cumulative probability that the event has occurred by time t (starting at \(t = 0\)). Then, by the definition of a Poisson process, the probability of the event occurring between \(t\) and \(t + dt\) is given by the p.d.f.</p>
+\[
+  p(t) dt = (1 − c)r dt
+\]<p>where \(r\) is the average rate of the event sequence. This gives the probability that the event has not occurred yet \((1 − c)\) and then occurs in the specified interval \((r dt)\).</p>
+<p>Since the p.d.f. is the derivative of the cumulative, \(p(t) \equiv dc/dt\), we find that</p>
+\[
+  \frac{dc}{1-c} = r\, dt
+\]<p>so the cumulative distribution is given by</p>
+\[
+  c(t) = 1 - e^{-r t}
+\]<p>and the p.d.f. is</p>
+\[
+  p(t) = r e^{-r t}.
+\]<p>The above gives the distribution for a single event. Below, we expand this to consider a number of possible events, each given by a Poisson process with an unique rate \(r_j\) . The problem is: how do we simulate such a process efficiently?</p>
+<h3 id="2-roulette-wheel-algorithm">2. Roulette wheel algorithm</h3>
+<p>&mdash; Rik Blok, 2004-10-01</p>
+<p>In a discrete-event simulation it is possible to sample random deviates for all possible events and construct an event queue to determine the order or events but it is cumbersome. The roulette wheel algorithm is algorithmically simpler. Given rates \(r_j, j=1\ldots N\), the probability of event i acting first is</p>
+\[
+  \Pr(i\text{ first}) = \frac{r_i}{\sum_j r_j}.
+\]<div id="fig-1">
+<div class="tab-panel" data-tab-group="d3a959aec4bcdff33dc72ef6fc34e8bf">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="figure-1"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('d3a959aec4bcdff33dc72ef6fc34e8bf','figure-1')"
+    >
+      <span class="tab-nav-text">Figure 1</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="figure-1"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<p><a href="#R-image-813c1e0ec59d92b5c98eca5592b26721" class="lightbox-link"><img alt="Figure 1" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure1.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-813c1e0ec59d92b5c98eca5592b26721"><img alt="Figure 1" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure1.png"></a></p>
+<p>Figure 1: To select an event via the Roulette Wheel algorithm pick a random
+number \(u\) between \(0\) and \(\sum_j r_j\). Then it will land within the area delimited by \(r_i\) with probability \(r_i/\sum_j r_j\).</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<p>We can derive this from the Poisson distribution: let \(t_i\) be a random variable representing the waiting time to the first occurrence of event \(i\). Then the probability that event \(i\) is first (marginalizing over \(t_i\)) is</p>
+\[
+\begin{array}{rcl}
+  \Pr(t_i < \{t_j\}_{j\neq i}) & = & \int_0^\infty dt_i p_i(t_i) \prod_{j\neq i} (1 - c_j(t_i)) \\
+    & = & dt_i r_i e^{-\sum_j r_j t_i} \\
+    & = & \frac{r_i}{\sum_j r_j}
+\end{array}
+\]<p>where \(p_i\) and \(c_i\) represent the distributions for event \(i\) with rate \(r_i\). As shown in <a href="/~rikblok/research/notes/parallel_poisson/index.html#fig-1">Figure 1</a>, to pick an event, just pick a uniform deviate \(0 \leq u < \sum_j r_j\), and select the maximum \(i\) such that</p>
+\[
+  \sum_{j\leq i} r_j \leq u.
+\]<p>This method is simple to implement but computationally expensive since it
+requires \(O(N)\) operations (due to the summation) to compute each \(i\).</p>
+<h3 id="3-rejection-method">3. Rejection method</h3>
+<p>&mdash; Rik Blok, 2004-10-01</p>
+<p>An alternative to the roulette wheel is the rejection method. The idea is to
+pick a random event \(i\) and sample whether it passes a trial. We will begin
+by determining what the probability of a successful trial, \(f\), should be. We
+would like the trial to be generic so that it only depends on the event rate,
+\(f(r_i)\). Given \(N\) processes, the probability of a single failed trial is</p>
+\[
+\begin{array}{rcl}
+  \Pr(\text{fail trial}) 
+  & = & \text{for any } j: \Pr(j)\, \Pr(\text{fail given }j) \\
+  & = & \sum_j \frac{1}{N} (1 − f(r_j)) \\
+  & = & 1 − \bar{f}
+\end{array}
+\]<p>where \(\bar{f} = \sum_j f(r_j)/N\).</p>
+<p>The probability of \(k\) failed trials followed by a successful \(i\) event is</p>
+\[
+  \Pr(k\text{ fails then }i) = \left[1 − \bar{f}\right]^k \frac{1}{N} f(r_i).
+\]<p>So the probability of choosing \(i\) for any number \(k\) of failed trials is</p>
+\[
+\begin{array}{rcl}
+  \Pr(i\text{ first}) 
+  & = & \sum_{k \geq 0} \left[1 − \bar{f}\right]^k \frac{1}{N} f(r_i) \\
+  & = & \frac{f(r_i)}{N \bar{f}}.
+\end{array}
+\]<p>Notice that this satisfies the normalization condition: \(\sum_i \Pr(i) = 1\).</p>
+<p>What we’d like to find is a form for the trial probability \(f\) that produces
+the Poisson probability:</p>
+\[
+  \Pr(i\text{ first}) = \frac{r_i}{\sum_j r_j} = \frac{f(r_i)}{\sum_j f(r_j)}.
+\]<p>Since this must hold independently of the rates \(r_j\) we must have \(f(r_j) \propto r_j\) which we can write as</p>
+\[
+  f(r) = \frac{r}{\hat{r}}
+\]<p>for some constant \(\hat{r}\).</p>
+<h4 id="31-efficient-computation">3.1. Efficient computation</h4>
+<div id="fig-2">
+<div class="tab-panel" data-tab-group="fc5cc2e0b58df8dd57aa2454a395f79c">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="figure-2"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('fc5cc2e0b58df8dd57aa2454a395f79c','figure-2')"
+    >
+      <span class="tab-nav-text">Figure 2</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="figure-2"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<p><a href="#R-image-3387edcc85e6b11fa38e77e9ab64e2ca" class="lightbox-link"><img alt="Figure 2" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure2.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-3387edcc85e6b11fa38e77e9ab64e2ca"><img alt="Figure 2" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure2.png"></a></p>
+<p>Figure 2: To select an event via the rejection method pick a random event \(i\)
+and a random deviate \(0 < u < \hat{r}\). Accept if \(u < r_i\) otherwise repeat.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<p>We want to choose \(\hat{r}\) in order to minimize the computational cost of the rejection method. Recall that \(f\) is to be interpreted as a probability so it must obey \(f(r_j) \leq 1\) for all \(r_j\) which means that \(\hat{r} \geq \max(r_j)\). Each time a trial is failed more work is required for a new trial so the number of trials should be minimized. The probability of a single failed trial is \(1−\bar{r}/\hat{r}\) (where \(\bar{r} = \sum_j r_j/N\)) so the prob. of \(k\) trials is</p>
+\[
+\begin{array}{rcl}
+  \Pr(k\text{ trials})
+    & = & \text{for any }i:\Pr(k − 1\text{ fails then success with }i) \\
+    & = & \sum_i \left( 1 − \frac{\bar{r}}{\hat{r}}\right)^{k−1} \frac{1}{N} \frac{r_i}{\bar{r}} \\
+    & = & \left( 1 − \frac{\bar{r}}{\hat{r}}\right)^{k−1} \frac{\bar{r}}{\bar{r}}
+\end{array}
+\]<p>and the expected number of trials is</p>
+
+<table id="eq-1" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+  \langle k \rangle = \sum_k k \Pr(k\text{ trials}) = \frac{\hat{r}}{\bar{r}}.
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(1)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>So we can minimize \(\langle k \rangle\) by reducing \(\hat{r}\) as much as possible, ideally by choosing \(\hat{r} = \max(r_j)\). Then the actual number of trials \(\langle k \rangle\) depends on the distribution of rates. The best case is if \(\max(r_j) \propto \bar{r}\) so that \(\langle k \rangle = O(1)\) is independent of \(N\).</p>
+<p>But if the rates are dynamic, if they change as the simulation progresses,
+then there is an added cost of continually updating \(\hat{r}\). The worst choice would be to check all \(N\) rates and reset \(\hat{r}\) appropriately whenever any rate changed. That would increase the cost of the rejection method to \(O(N)\) operations, no better than the Roulette Wheel.</p>
+<p>An alternative would be to keep the rates sorted so that \(r_j \geq r_{j+1}\) for all \(j\). Then \(\hat{r} = r_1\), always. The cost involved would be that of adding and removing items from a sorted list. (I believe C++’s STL offers a &lsquo;&rsquo;(multi)map&rsquo;&rsquo; container which is implemented as a binary tree giving typically \(O(\log N)\) cost. Hash tables may also be suitable.)</p>
+<p>That was assuming \(\hat{r}/\bar{r}\) was independent of \(N\). More realistically, we might expect the highest rate in the set to scale as \(\hat{r} \propto \bar{r} \log N\) so the total computational expense of this approach would grow as \(O([\log N]^2)\) which is still much better than the Roulette Wheel.</p>
+<h3 id="4-faster-implementation-by-sampling-two-events">4. Faster implementation by sampling two events?</h3>
+<p>&mdash; Rik Blok, 2004-10-05</p>
+<p>I wonder if it is possible to find an even less costly method by sampling multiple event processes and comparing them? To explore this we will consider a
+variant of the rejection method where the trial probability of event \(i\) depends on a second sampled event \(j \neq i, f = f(r_i, r_j)\). If \(i\) is rejected then two new events are drawn. Is there a trial function \(f\) that reproduces the Poisson process?</p>
+<p>Independent of \(j\) the probability of \(i\) passing any single trial is</p>
+\[
+	\Pr(i\text{ this trial}) = \frac{1}{N(N-1)} \sum_{j\neq i} f(r_i,r_j).
+\]<p>The probability of failing a trial, independent of the event \(k\) chosen is</p>
+\[
+\begin{array}{rcl}
+  \Pr(\text{fail})
+    & = & \sum_k \Pr(\text{choose }k) \Pr(\text{fail given }k) \\
+    & = & \sum_{k,l\neq k} \frac{1}{N(N-1)} (1-f(r_k,r_l)) \\
+    & = & 1 - \bar{f}
+\end{array}
+\]<p>where \(\bar{f} = \sum_{k,l}f(r_k,r_l)/N(N-1)\).</p>
+<p>Like the rejection method, the probability of \(m\) failed trials then a successful event \(i\) is</p>
+\[
+  \Pr(m\text{ fails then }i) = \left[ 1-\bar{f} \right]^m \frac{1}{N(N-1)} \sum_{j\neq i} f(r_i,r_j)
+\]<p>so the probability of event \(i\) occurring first is</p>
+\[\begin{array}{rcl}
+  \Pr(i\text{ first}) & = & \sum_m \left[ 1-\bar{f} \right]^m \frac{1}{N(N-1)} \sum_{j\neq i} f(r_i,r_j) \\
+		& = & \frac{1}{\bar{f}} \sum_j \frac{f(r_i,r_j)}{N(N-1)}.
+\end{array}
+\]<p>For this to produce Poisson updating we must have</p>
+\[
+	\frac{r_i}{\sum_k r_k} = \frac{\sum_j f(r_i,r_j)}{\sum_{k,l} f(r_k,r_l)}
+\]<p>or \(r_k \propto \sum_{l\neq k} f(r_k,r_l)\) which means that we can write</p>
+\[
+	f(r_k,r_l) = r_k g(r_l)
+\]<p>for some unknown function \(g\).  Rather than working with \(g\) directly, it is more convenient to work with the partial sum \(G_i=\sum_{j\neq i} g(r_j)\) as we see here:</p>
+\[
+	\frac{r_i}{\sum_k r_k} = \frac{r_i \sum_{j\neq i} g(r_j)}{\sum_k r_k \sum_{l\neq k} g(r_l)} = \frac{r_i G_i}{\sum_k r_k G_k}.
+\]<p>Recall, we are trying to detemine the form of \(G_i\) that reproduces Poisson updating.  For arbitrary rates \(r_k\) the above equation reduces to \(\sum_k G_k = N G_i\) for all \(i\), which can only be satisfied if all \(G_i\) are equal.  In other words, \(g(r) = \text{const.}\) independent of \(r\) so the second sampling is irrelevant and we fall back to the original rejection method.  It appears there is no way to improve on the rejection method by sampling multiple events.</p>
+<h3 id="5-rejection-with-adaptive-correction">5. Rejection with adaptive correction</h3>
+<p>&mdash; Rik Blok, 2004-10-12</p>
+<p>Mario came up with the idea of using the rejection method but relaxing restriction so that \(\hat{r} \geq \max(r)\) is not strictly maintained at exactly \(\max(r)\).  It is cheap to enforce [with each new rate \(r_i\) just set \(\hat{r} = \max(\hat{r},r_i)\) which is \(O(1)\)] but has a hidden cost: wasted rejection trials if \(\hat{r}\) is too large.  Mario&rsquo;s idea was to recalculate \(\hat{r}\) if the failed trials \(k\) were ever found to exceed some arbitrary threshold \(k_\max\).</p>
+<p>That&rsquo;s good but I think we can do even better.  There should be a way to choose how many //wasted// trials are acceptable.  Recall from <a href="/~rikblok/research/notes/parallel_poisson/index.html#eq-1">Eq. 1</a> that \(\langle k\rangle =\hat{r}/\bar{r}\).  Since we can keep track of \(\bar{r}\) in constant \(O(1)\) time [if a rate changes from \(r_\text{old}\) to \(r_\text{new}\) then \(\bar{r} \gets \bar{r} + (r_\text{new} - r_\text{old})/N\) (where `\(\gets\)&rsquo; represents the assignment operator)] it is possible to compute the optimal expected number of trials per event whenever \(\max(r)\) is known,</p>
+
+<table id="eq-2" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">\[
+	k_\text{opt} = \frac{\max(r)}{\bar{r}}.
+\]</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(2)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>Now we assume that \(k_\text{opt}\) remains roughly constant even as the rates change.  Basically we&rsquo;re assuming that \(\max(r) \propto \bar{r}\).  So we only update \(k_\text{opt}\) occasionally, whenever we are sure of \(\max(r)\) (to be discussed).</p>
+<p>Having a fairly accurate \(k_\text{opt}\) lets us estimate how many trials are being wasted because our value of \(\hat{r}\) is too high.  It doesn&rsquo;t tell us what \(\hat{r}\) should be, just when we&rsquo;re spending too much effort in rejection trials.  The goal then, is to determine a criterion for when it is more efficient to correct \(\hat{r}\) by reiterating the entire set of rates \(r_i\) instead of continuing to use our inefficient estimate.</p>
+<p>The first thing we need to know is \(\omega\), the relative cost of one rejection trial versus one iteration of the correction loop:</p>
+\[
+	\omega = \frac{\text{cost(1 rejection trial)}}{\text{cost(1 correction loop)}}.
+\]<p>This could be computed in advance and stored as a constant.</p>
+<p>Then we keep track of the number of trials \(k_e\) actually required for every event \(e\).  After \(E\) total events since the last correction the relative waste \(W\) on failed trials is approximately</p>
+\[
+	W = \sum_{e=1}^E (k_e - k_\text{opt}) \omega.
+\]<p>It would be reasonable to expect the waste over the //next// \(E\) events to be similar.</p>
+<p>In contrast, the (relative) cost of correction is \(N\).  That is also the total cost over the next \(E\) events if we assume the correction will eliminate the waste (optimistic).  We want to minimize the computation over the next \(E\) events, so it is better to correct if the cost of not correcting is higher: \(W > N\).</p>
+<p>Note that we can compute the waste since the last correction, \(W\) cumulatively in \(O(1)\) time after each event by keeping track of the trials \(k\) needed to find it:</p>
+\[
+	W \gets W + (k - k_\text{opt}) \omega.
+\]<p>So after each event our adaptive correction criterion is: if \(W>N\) then correct \(\hat{r}\) and \(k_\text{opt}\).  Note we also correct whenever we encounter a new rate higher than \(\hat{r}\) because it is essentially free.  Whenever a correction occurs we reset the cumulative waste \(W=0\).</p>
+<h4 id="51-implementation-and-test">5.1. Implementation and test</h4>
+<p>A sample implementation of adaptive correction is shown in <a href="/~rikblok/research/notes/parallel_poisson/index.html#list-1">Listing 1</a>.  A simulation based on this code was compiled and run with a range of processes from \(N=1\) to \(N=10^7\).  The process rates were initially sampled (and resampled after each event) from a log-normal distribution with some spread \(\sigma\) (the standard deviation of the normal distribution).  For small \(\sigma\) the rates tend to be narrowly distributed, as \(\sigma\) grows the highest rates can grow to be many orders of magnitude faster than the slowest.  The results are shown in <a href="/~rikblok/research/notes/parallel_poisson/index.html#fig-3">Figure 3</a>.  Note that for small and moderate spreads (\(\leq 2\) orders of magnitude) the simulation speed is \(O(1)\), constant independent of the number of parallel processes, \(N\).</p>
+<div id="list-1">
+<div class="tab-panel" data-tab-group="4d957e526b073a2331923052096dd4e4">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="listing-1"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('4d957e526b073a2331923052096dd4e4','listing-1')"
+    >
+      <span class="tab-nav-text">Listing 1</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="listing-1"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TParallelPoisson</span> {
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Intended usage:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  // setup
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  TParallelPoisson pp(10);	// pass estimated cost
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  unsigned long trials;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  double maxrate, sumrates;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  for (int i=0; i&lt;N; i++)	pp.adjustRate(0,rate[i]);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  // main loop
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  do {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    maxrate = pp.getMaxRate();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    event = rejection_method(N, maxrate, &amp;trials);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if (pp.correctionNeeded(trials)) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      find_max_rate_and_sum_rates(&amp;maxrate,&amp;sumrates);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      pp.setMaxRate(maxrate,sumrates);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    for (EACH_RATE_CHANGED_BY_EVENT) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      pp.adjustRate(oldrate,newrate);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  }while (!HELL_FROZEN_OVER);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> waste;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> sumrates;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> avgrate;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> numprocesses;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> opttrials;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> maxrate;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> cost;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setMaxRateInt</span>(<span style="color:#66d9ef">double</span> newmaxrate) {
+</span></span><span style="display:flex;"><span>      maxrate <span style="color:#f92672">=</span> newmaxrate;
+</span></span><span style="display:flex;"><span>      opttrials <span style="color:#f92672">=</span> maxrate <span style="color:#f92672">/</span> avgrate;
+</span></span><span style="display:flex;"><span>      waste <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    TParallelPoisson(<span style="color:#66d9ef">double</span> newcost) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      reset();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">reset</span>() {
+</span></span><span style="display:flex;"><span>      waste<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      sumrates<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      avgrate<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      numprocesses<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      opttrials<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      maxrate<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      cost<span style="color:#f92672">=</span>newcost;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getMaxRate</span>() {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> maxrate;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">correctionNeeded</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> trials) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// after rejection trials update waste cumulator 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// and report if correction necessary
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      waste <span style="color:#f92672">+=</span> cost <span style="color:#f92672">*</span> ((<span style="color:#66d9ef">double</span>)trials <span style="color:#f92672">-</span> opttrials);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> (waste <span style="color:#f92672">&gt;</span> numprocesses);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setMaxSumRate</span>(<span style="color:#66d9ef">double</span> newmaxrate, <span style="color:#66d9ef">double</span> newsumrates) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// sets maxrate (and sumrates if passed)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      maxrate <span style="color:#f92672">=</span> newmaxrate;
+</span></span><span style="display:flex;"><span>      sumrates <span style="color:#f92672">=</span> newsumrates;
+</span></span><span style="display:flex;"><span>      avgrate <span style="color:#f92672">=</span> sumrates <span style="color:#f92672">/</span> numprocesses;
+</span></span><span style="display:flex;"><span>      opttrials <span style="color:#f92672">=</span> maxrate <span style="color:#f92672">/</span> avgrate;
+</span></span><span style="display:flex;"><span>      waste <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">adjustRate</span>(<span style="color:#66d9ef">double</span> oldrate, <span style="color:#66d9ef">double</span> newrate) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// returns true if maxrate reset
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      numprocesses <span style="color:#f92672">+=</span> (newrate<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>) <span style="color:#f92672">-</span> (oldrate<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>      sumrates <span style="color:#f92672">+=</span> newrate <span style="color:#f92672">-</span> oldrate;
+</span></span><span style="display:flex;"><span>      avgrate <span style="color:#f92672">=</span> sumrates <span style="color:#f92672">/</span> numprocesses;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (newrate <span style="color:#f92672">&gt;=</span> maxrate)  setMaxRateInt(newrate);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> (newrate <span style="color:#f92672">&gt;=</span> maxrate);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getOptTrials</span>(){ <span style="color:#66d9ef">return</span> opttrials;  }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">poorPerformance</span>()  {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> (opttrials<span style="color:#f92672">*</span>cost <span style="color:#f92672">&gt;</span> numprocesses);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};</span></span></code></pre></div>
+<p>Listing 1: C++ implementation of adaptive correction rejection method.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div id="fig-3">
+<div class="tab-panel" data-tab-group="5ed29ff60fbbd2f933f84218cca3537b">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="figure-3"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('5ed29ff60fbbd2f933f84218cca3537b','figure-3')"
+    >
+      <span class="tab-nav-text">Figure 3</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="figure-3"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<p><a href="#R-image-f586c5a7830ec15403f7b41c94b68beb" class="lightbox-link"><img alt="Figure 3" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure3.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-f586c5a7830ec15403f7b41c94b68beb"><img alt="Figure 3" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure3.png"></a></p>
+<p>Figure 3: Performance of adaptive correction rejection method as a function of the number of parallel processes, \(N\).  For low to moderate \(N\) and spreads the running time is roughly constant.  Rates are sampled from log-normal distribution [exponential of normally-distributed deviates with mean zero and variance \(\sigma^2\)].  The spread is estimated to be the ratio of the 95th upper- versus lower-percentiles of the normal distributions, \(e^{+2\sigma}/e^{-2\sigma}=e^{+4\sigma}\).  \(10^6\) events were simulated and on each event the associated rate was resampled.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<p>Unfortunately, for large spreads the news is not as good: recall from <a href="/~rikblok/research/notes/parallel_poisson/index.html#eq-2">Eq. 2</a> the expected number of trials grows as the ratio of the maximum rate over the average rate.  If the rates are widely distributed then the highest may be orders of magnitude above average.  In the tests this was simulated by setting \(\sigma\) large and <a href="/~rikblok/research/notes/parallel_poisson/index.html#fig-3">Figure 3</a> demonstrates that this had a severe impact on performance (top curve) for all \(N\). So the efficiency of adaptive correction depends critically on the distribution of rates; ideally, it would be better to have a method that didn&rsquo;t depend on the distribution (which may not be known in advance).</p>
+<h3 id="6-roulette-in-a-tree">6. Roulette in a tree</h3>
+<p>&mdash; Rik Blok, 2004-10-14</p>
+<p>I&rsquo;ve thought of a faster way to implement the roulette wheel method.  It relies on storing partial sums on a balanced binary tree structure and should run in \(O(\log_2 N)\) time, independent of the distribution of rates.  Unlike the adaptive correction rejection method the rates are now explicitly stored and manipulated as part of the data structure and each process must be labelled by an index \(i=1,\ldots, N\) in order to access its corresponding rate.</p>
+<p>The tree, shown in <a href="/~rikblok/research/notes/parallel_poisson/index.html#fig-4">Figure 4</a>, is important because it is guaranteed to be as well balanced as possible for any number of processes, \(N\).  Further, it is easy to add or remove processes as necessary.  (Removing is done by setting the appropriate rate to zero but leaving it in the tree.) Locating a node is also efficient, requiring \(O(\log_2 N)\) operations.</p>
+<div id="fig-4">
+<div class="tab-panel" data-tab-group="3c05196d43f2c21aa19360a9798fd8b2">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="figure-4"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('3c05196d43f2c21aa19360a9798fd8b2','figure-4')"
+    >
+      <span class="tab-nav-text">Figure 4</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="figure-4"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<p><a href="#R-image-20bdc53d19fc253e6542b3d0daaa6556" class="lightbox-link"><img alt="Figure 4" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure4.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-20bdc53d19fc253e6542b3d0daaa6556"><img alt="Figure 4" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure4.png"></a></p>
+<p>Figure 4: A binary tree with a one-to-one mapping onto positive integers.  Each node has two children indicated by the branches 0 and 1.  To locate the node representing an index we represent the index in binary.  Starting at the root (which is always index 1) we follow the branches by reading the binary representation from right to left until we reach the final 1.  For instance, the highlighted path to \(i=14\) (1110 in binary) is \(0\rightarrow 1 \rightarrow 1\).</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div id="fig-5">
+<div class="tab-panel" data-tab-group="5727d0fe053ffcb8c2b6737fed3fca49">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="figure-5"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('5727d0fe053ffcb8c2b6737fed3fca49','figure-5')"
+    >
+      <span class="tab-nav-text">Figure 5</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="figure-5"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<p><a href="#R-image-bf4b33f8bcb0e33b5b27049cbd372993" class="lightbox-link"><img alt="Figure 5" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure5.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-bf4b33f8bcb0e33b5b27049cbd372993"><img alt="Figure 5" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure5.png"></a></p>
+<p>Figure 5: A single node in the binary tree used to optimize the roulette wheel algorithm.  Each node \(A\) contains a rate \(r_A\), sum of rates \(\Sigma_A\), and links to its parent \(P\) and children \(C_0\) and \(C_1\).  \(\Sigma_A\) is the sum of all the rates down the branch of \(A\), including \(r_A\) itself, \(\Sigma_A = r_A + \Sigma_{C_0} + \Sigma_{C_1}\).  Any non-existant nodes are assumed to have \(r=\Sigma=0\).</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<p>But the real value of the binary tree is in how it &ldquo;divides and conquers&rdquo; the roulette wheel.  We store in each node the rate of the associated process \(r_A\) and the sum of the rates in all nodes beneath it \(\Sigma_A\) as shown in <a href="/~rikblok/research/notes/parallel_poisson/index.html#fig-5">Figure 5</a>.  Recall, in the roulette wheel we draw a single random number \(u\) between zero and the sum of all rates and then iterate through each process to determine which one \(u\) &ldquo;landed&rdquo; on.  The binary tree reduces that process because we can determine in one comparison whether \(u\) landed on any processes along a branch.  If it did, then we proceed down that branch and compare again, recursively, to find the node that \(u\) selects.</p>
+<p>For a given node \(A\) (with children \(C_0\) and \(C_1\) as shown in <a href="/~rikblok/research/notes/parallel_poisson/index.html#fig-5">Figure 5</a>) and random \(u\) in \([0,\Sigma_A)\) there are three possibilities: if we line up the probabilities \(r_A\), \(\Sigma_{C_0}\), and \(\Sigma_{C_1}\) for the roulette wheel (see <a href="/~rikblok/research/notes/parallel_poisson/index.html#fig-6">Figure 6</a>) then \(u\) will land in the domain of \(r_A\) or \(\Sigma_{C_0}\) or \(\Sigma_{C_1}\).  The algorithm to choose a random event follows:</p>
+<ol start="0">
+<li>Start at root of tree, \(A=\text{root}\).</li>
+<li>If \(u < r_A\)	then choose \(A\).</li>
+<li>Otherwise, \(u\gets u - r_A\) (so that \(u < \Sigma_{C_0} + \Sigma_{C_1}\)).</li>
+<li>If \(u < \Sigma_{C_0}\) then set focal node \(A=C_0\) and repeat from Step 1.</li>
+<li>Otherwise, set \(u\gets u - \Sigma_{C_0}\) (so that \(u < \Sigma_{C_1}\)), set focal node \(A=C_1\), and repeat from Step 1.</li>
+</ol>
+<p>The full code is given in <a href="/~rikblok/research/notes/parallel_poisson/index.html#list-2">Listing 2</a>.</p>
+<div id="fig-6">
+<div class="tab-panel" data-tab-group="935402f29e1970e55fa4ae78d62e7f22">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="figure-6"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('935402f29e1970e55fa4ae78d62e7f22','figure-6')"
+    >
+      <span class="tab-nav-text">Figure 6</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="figure-6"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<p><a href="#R-image-41a13f17421f2d2f519053a174c081ff" class="lightbox-link"><img alt="Figure 6" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure6.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-41a13f17421f2d2f519053a174c081ff"><img alt="Figure 6" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure6.png"></a></p>
+<p>Figure 6: To select an event via the binary tree Roulette Wheel algorithm pick a random number \(u\) between 0 and \(\Sigma_A = r_A + \Sigma_{C_0} + \Sigma_{C_1}\).  The area it lands in indicates the course of action (choose \(A\) or branches \(C_0\) or \(C_1\), respectively).</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div id="list-2">
+<div class="tab-panel" data-tab-group="6f5b14d5b84ddf746f64897ad94118ab">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="listing-2-parallelpoissonh"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('6f5b14d5b84ddf746f64897ad94118ab','listing-2-parallelpoissonh')"
+    >
+      <span class="tab-nav-text">Listing 2: parallelpoisson.h</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="listing-2-parallelpoissonh"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TPPNode</span> {
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// nodes for TParallelPoisson tree.  Each node uses ~32 bytes.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    TPPNode <span style="color:#f92672">*</span>odd;
+</span></span><span style="display:flex;"><span>    TPPNode <span style="color:#f92672">*</span>even;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    TPPNode <span style="color:#f92672">*</span>parent;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> index;  <span style="color:#75715e">// &gt;= 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">double</span> rate;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> sum;
+</span></span><span style="display:flex;"><span>    TPPNode(TPPNode <span style="color:#f92672">*</span>newparent <span style="color:#f92672">=</span> NULL, <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> path <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x1</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      parent <span style="color:#f92672">=</span> newparent;
+</span></span><span style="display:flex;"><span>      rate <span style="color:#f92672">=</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      odd <span style="color:#f92672">=</span> even<span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// reverse path to get index
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span> (index <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; path <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>; path <span style="color:#f92672">=</span> (path <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>        index <span style="color:#f92672">=</span> (index <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">|</span> (path <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x1</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">~</span>TPPNode() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// destructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (odd)  <span style="color:#66d9ef">delete</span> odd;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (even)  <span style="color:#66d9ef">delete</span> even;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    TPPNode <span style="color:#f92672">*</span><span style="color:#a6e22e">getNode</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> find, <span style="color:#66d9ef">bool</span> create,
+</span></span><span style="display:flex;"><span>                     <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> path <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x1</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// returns pointer to node with index==find
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// creates node(s) if create==true, 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// else returns NULL if not found
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (find <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>;
+</span></span><span style="display:flex;"><span>      path <span style="color:#f92672">=</span> path <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">1</span>;  <span style="color:#75715e">// shift bits
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (find <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x1</span>)  {
+</span></span><span style="display:flex;"><span>        path <span style="color:#f92672">|=</span> <span style="color:#ae81ff">0x1</span>;  <span style="color:#75715e">// append 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>odd) {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>create)  <span style="color:#66d9ef">return</span> NULL;
+</span></span><span style="display:flex;"><span>          odd <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TPPNode(<span style="color:#66d9ef">this</span>, path);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> odd<span style="color:#f92672">-&gt;</span>getNode(find<span style="color:#f92672">&gt;&gt;</span><span style="color:#ae81ff">1</span>, create, path);
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>even) {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>create)  <span style="color:#66d9ef">return</span> NULL;
+</span></span><span style="display:flex;"><span>          even <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TPPNode(<span style="color:#66d9ef">this</span>, path);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> even<span style="color:#f92672">-&gt;</span>getNode(find<span style="color:#f92672">&gt;&gt;</span><span style="color:#ae81ff">1</span>, create, path);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">choose</span>(<span style="color:#66d9ef">double</span> roulette) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (roulette <span style="color:#f92672">&lt;</span> rate)  <span style="color:#66d9ef">return</span> index;
+</span></span><span style="display:flex;"><span>      roulette <span style="color:#f92672">-=</span> rate;  <span style="color:#75715e">// now roulette &lt; odd-&gt;sum + even-&gt;sum
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">double</span> oddsum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, evensum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (odd)  oddsum <span style="color:#f92672">=</span> odd<span style="color:#f92672">-&gt;</span>sum;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (even)  evensum<span style="color:#f92672">=</span> even<span style="color:#f92672">-&gt;</span>sum;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (roulette <span style="color:#f92672">&lt;</span> oddsum)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> odd<span style="color:#f92672">-&gt;</span>choose(roulette);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> even<span style="color:#f92672">-&gt;</span>choose(roulette <span style="color:#f92672">-</span> oddsum);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TParallelPoisson</span> {
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Intended usage:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  // setup
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  TParallelPoisson pp;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  unsigned long event;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  double time = 0;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  for (int i=1; i&lt;=N; i++)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    pp.setRate(i,rate[i]);  // note: must be base 1!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  // main loop
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  do {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    event = pp.choose(uniform_deviate());
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    time += pp.eventTime(uniform_deviate());
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    do_stuff(event);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    for (EACH_RATE_CHANGED_BY_EVENT) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      pp.setRate(i,rate[i]);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  } while (!HELL_FROZEN_OVER);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    TPPNode <span style="color:#f92672">*</span>root;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    TParallelPoisson() {  <span style="color:#75715e">// constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      root <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TPPNode;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">~</span>TParallelPoisson() {  <span style="color:#75715e">// destructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (root)  <span style="color:#66d9ef">delete</span> root;
+</span></span><span style="display:flex;"><span>      root <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">reset</span>() {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (root)  <span style="color:#66d9ef">delete</span> root;
+</span></span><span style="display:flex;"><span>      root <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>      root <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TPPNode;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">eventTime</span>(<span style="color:#66d9ef">double</span> u) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// returns time to first event.  Assumes 0 &lt;= u &lt; 1.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>root)      <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>(root<span style="color:#f92672">-&gt;</span>sum))  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>log(<span style="color:#ae81ff">1.0</span><span style="color:#f92672">-</span>u)<span style="color:#f92672">/</span>(root<span style="color:#f92672">-&gt;</span>sum);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getRate</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> i) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// gets rate of node i (zero if not found)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      TPPNode <span style="color:#f92672">*</span>node<span style="color:#f92672">=</span>root<span style="color:#f92672">-&gt;</span>getNode(i,false); <span style="color:#75715e">// don&#39;t create node
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>node)  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> node<span style="color:#f92672">-&gt;</span>rate;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">setRate</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> i, <span style="color:#66d9ef">double</span> newrate) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// sets rate of node i, returns old rate
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      TPPNode <span style="color:#f92672">*</span>node<span style="color:#f92672">=</span>root<span style="color:#f92672">-&gt;</span>getNode(i,true); <span style="color:#75715e">// create node if needed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">double</span> oldrate <span style="color:#f92672">=</span> node<span style="color:#f92672">-&gt;</span>rate;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">double</span> dr <span style="color:#f92672">=</span> newrate <span style="color:#f92672">-</span> oldrate;
+</span></span><span style="display:flex;"><span>      node<span style="color:#f92672">-&gt;</span>rate <span style="color:#f92672">=</span> newrate;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">for</span> (; node; node <span style="color:#f92672">=</span> node<span style="color:#f92672">-&gt;</span>parent)  node<span style="color:#f92672">-&gt;</span>sum <span style="color:#f92672">+=</span> dr;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> oldrate;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">modRate</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> i, <span style="color:#66d9ef">double</span> deltarate) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// adjust rate of node i, returns new rate
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      TPPNode <span style="color:#f92672">*</span>node<span style="color:#f92672">=</span>root<span style="color:#f92672">-&gt;</span>getNode(i,true); <span style="color:#75715e">// create node if needed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">double</span> newrate <span style="color:#f92672">=</span> node<span style="color:#f92672">-&gt;</span>rate <span style="color:#f92672">+</span> deltarate;
+</span></span><span style="display:flex;"><span>      node<span style="color:#f92672">-&gt;</span>rate <span style="color:#f92672">=</span> newrate;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">for</span> (; node; node <span style="color:#f92672">=</span> node<span style="color:#f92672">-&gt;</span>parent)  node<span style="color:#f92672">-&gt;</span>sum <span style="color:#f92672">+=</span> deltarate;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> newrate;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> <span style="color:#a6e22e">choose</span>(<span style="color:#66d9ef">double</span> u) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// chooses which event happens next, assumes 0 &lt;= u &lt; 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>root)  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;  <span style="color:#75715e">// error value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>(root<span style="color:#f92672">-&gt;</span>sum))  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;  <span style="color:#75715e">// error value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">return</span> root<span style="color:#f92672">-&gt;</span>choose(u <span style="color:#f92672">*</span> root<span style="color:#f92672">-&gt;</span>sum);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};</span></span></code></pre></div>
+<p>Listing 2: C++ implementation of binary tree roulette wheel method.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<h3 id="7-references">7. References</h3>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+<section class="hugo-cite-bibliography">
+  <dl>
+    
+
+      <div id="blokparallel2004">
+        <dt>
+          Blok
+
+          
+          (2004)</dt>
+
+        <dd>
+          
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/WebPage"
+      data-type="webpage"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Blok</span>,&#32;
+    <meta itemprop="givenName" content="Hendrik J. (Rik)" />
+    H.</span>(<span itemprop="datePublished">2004,&#32;10/15</span>).&#32;Retrieved from&#32;
+  <a href="http://www.zoology.ubc.ca/~rikblok/wiki/doku.php?id=random_research:rik_s_notes:parallel_poisson:start"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://www.zoology.ubc.ca/~rikblok/wiki/doku.php?id=random_research:rik_s_notes:parallel_poisson:start</a></span>
+
+
+
+
+</dd>
+
+      </div>
+  </dl>
+</section>
+
+
+
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="/~rikblok/index.html">
+Rik&#39;s Treehouse
+          </a>
+        </div>
+        <script>
+          window.index_js_url="/~rikblok/searchindex.en.js?1737935790";
+        </script>
+        <search><form action="/~rikblok/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+        <script>
+          var contentLangs=['en'];
+        </script>
+        <script src="/~rikblok/js/auto-complete.js?1737935790" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.min.js?1737935790" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1737935790" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1737935790" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.en.min.js?1737935790" defer></script>
+        <script src="/~rikblok/js/search.js?1737935790" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <ul>
+          <li><a class="padding" href="/~rikblok/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+        </ul>
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/compute/index.html"><a class="padding" href="/~rikblok/compute/index.html">Computational capers</a></li>
+            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/~rikblok/research/index.html"><a class="padding" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/~rikblok/research/published/index.html"><a class="padding" href="/~rikblok/research/published/index.html">Published</a><ul id="R-subsections-fd150925b32c297bd80b32c85dbf53c7" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/~rikblok/research/presented/index.html"><a class="padding" href="/~rikblok/research/presented/index.html">Presented</a><ul id="R-subsections-0a29c1db3dbf4a3f6a288fc3847b4ef0" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-id="/~rikblok/research/notes/index.html"><a class="padding" href="/~rikblok/research/notes/index.html">Unpublished notes</a><ul id="R-subsections-950ca40a4602333597e39987a4c77254" class="collapsible-menu">
+            <li class="active " data-nav-id="/~rikblok/research/notes/parallel_poisson/index.html"><a class="padding" href="/~rikblok/research/notes/parallel_poisson/index.html">Blok (2004) Parallel Poisson</a></li>
+            <li class="" data-nav-id="/~rikblok/research/notes/discounted_least_squares/index.html"><a class="padding" href="/~rikblok/research/notes/discounted_least_squares/index.html">Blok (1997) Discounted Least Squares</a></li></ul></li></ul></li>
+            <li class="" data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a></li>
+          </ul>
+        </div>
+    
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/research/notes/parallel_poisson/index.html" lang="en-us" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.relearn.markVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter">
+        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="/~rikblok/js/clipboard.min.js?1737935790" defer></script>
+    <script src="/~rikblok/js/perfect-scrollbar.min.js?1737935790" defer></script>
+    <script>
+      function useMathJax( config ){
+        window.MathJax = Object.assign( window.MathJax || {}, {
+          tex: {
+            inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
+            displayMath: [['\\[', '\\]'], ['$$', '$$']], 
+          },
+          options: {
+            enableMenu: false 
+          }
+        }, config );
+      }
+      useMathJax( JSON.parse("{}") );
+    </script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1737935790"></script>
+    <script src="/~rikblok/js/theme.js?1737935790" defer></script>
+  </body>
+</html>

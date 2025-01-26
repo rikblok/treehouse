@@ -1,7 +1,7 @@
 +++
 date = '2025-01-02T22:07:32-08:00'
 draft = false
-title = 'Blok (1997)'
+title = 'Blok (1997) Discounted Least Squares'
 summary = 'Discounted Least Squares Curve Fitting'
 weight = -19970720
 bibFile = "bib-all-better-csl.json"

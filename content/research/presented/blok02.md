@@ -1,14 +1,14 @@
 +++
 date = '2025-01-02T20:08:02-08:00'
 draft = false
-title = 'Blok (2002)'
-summary = 'Statistical properties of financial timeseries'
+title = 'Blok (2002) Statistical properties of financial timeseries'
+summary = 'PIMS-MITACS Math Finance Seminar'
 weight = -20020606 
 bibFile = "bib-all-better-csl.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 
-## Statistical properties of financial timeseries
+## PIMS-MITACS Math Finance Seminar
 
 <!-- 
 {{< cite "blokStatistical2002" >}}
