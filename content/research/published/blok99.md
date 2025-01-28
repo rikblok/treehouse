@@ -4,7 +4,7 @@ draft = false
 title = 'Blok & Bergersen (1999)'
 summary = 'Synchronous versus asynchronous updating in the "game of Life"'
 weight = -19990401
-bibFile = "bib-all-better-csl.json"
+bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 

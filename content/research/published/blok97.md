@@ -4,7 +4,7 @@ draft = false
 title = 'Blok & Bergersen (1997)'
 summary = 'Effect of boundary conditions on scaling in the "game of Life"'
 weight = -19970501
-bibFile = "bib-all-better-csl.json"
+bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 

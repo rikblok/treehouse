@@ -4,7 +4,7 @@ draft = false
 title = 'Blok (2002) Statistical properties of financial timeseries'
 summary = 'PIMS-MITACS Math Finance Seminar'
 weight = -20020606 
-bibFile = "bib-all-better-csl.json"
+bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 

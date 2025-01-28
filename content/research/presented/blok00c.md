@@ -4,7 +4,7 @@ draft = false
 title = 'Blok (2000) Final PhD oral defense'
 summary = 'On the nature of the stock market: Simulations and experiments'
 weight = -20000901
-bibFile = "bib-all-better-csl.json"
+bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 

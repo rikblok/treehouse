@@ -4,7 +4,7 @@ draft = false
 title = "Blok (1998) Extra! Extra! Critical update on 'Life'"
 summary = "Presentation for Peter Wall Inst. Adv. Science, Crisis Points Group, UBC"
 weight = -19980318 
-bibFile = "bib-all-better-csl.json"
+bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 

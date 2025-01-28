@@ -11,7 +11,7 @@ Links:
 * From https://labs.loupbrun.ca/hugo-cite/
 > git submodule add https://github.com/baekgaard/hugo-cite.git themes/hugo-cite    ← fixes some deprecated fns in original loup-brun repo
 * Zotero > Install plugin: Better Bibtex for Zotero (https://retorque.re/zotero-better-bibtex/index.html)    ← for readable id keys
-* Zotero > File > Export Library... > Format: Better CSL JSON > [OK] > .../treehouse/assets/bib-all-better-csl.json
+* Zotero > File > Export Library... > Format: Better CSL JSON > [OK] > .../treehouse/assets/bib-zotero-better-cson.json
 * edit hugo.toml:
 	theme = ['hugo-theme-relearn', 'hugo-cite']
 * create and edit layouts/partials/custom-header.html :
@@ -28,7 +28,7 @@ Links:
 * edit markdown, e.g.:
 	+++
 	...
-	bibFile = "bib-all-better-csl.json"
+	bibFile = "bib-zotero-better-cson.json"
 	+++
 	<!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 

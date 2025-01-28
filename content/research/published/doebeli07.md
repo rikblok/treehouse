@@ -4,7 +4,7 @@ draft = false
 title = 'Doebeli, Blok, Leimar & Dieckmann (2007)'
 summary = 'Multimodal pattern formation in phenotype distributions of sexual populations'
 weight = -20070200
-bibFile = "bib-all-better-csl.json"
+bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 

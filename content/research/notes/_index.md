@@ -4,7 +4,7 @@ draft = false
 title = 'Unpublished notes'
 summary = "Here are some research-oriented technical notes I've written. They're not peer-reviewed or published."
 weight = 30
-bibFile = "bib-all-better-csl.json"
+bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 

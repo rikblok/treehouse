@@ -4,7 +4,7 @@ draft = false
 title = 'Blok (2004) Parallel Poisson'
 summary = 'Updating in simulations of parallel Poisson processes'
 weight = -20041015
-bibFile = "bib-all-better-csl.json"
+bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 

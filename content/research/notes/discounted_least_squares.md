@@ -4,7 +4,7 @@ draft = false
 title = 'Blok (1997) Discounted Least Squares'
 summary = 'Discounted Least Squares Curve Fitting'
 weight = -19970720
-bibFile = "bib-all-better-csl.json"
+bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 

@@ -4,7 +4,7 @@ draft = false
 title = 'Presented'
 summary = "Work I've presented for feedback at seminars, lab meetings, and guest lectures"
 weight = 20
-bibFile = "bib-all-better-csl.json"
+bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 

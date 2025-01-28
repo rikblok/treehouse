@@ -4,7 +4,7 @@ draft = false
 title = 'Published'
 summary = 'My peer-reviewed and published articles'
 weight = 10
-bibFile = "bib-all-better-csl.json"
+bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 

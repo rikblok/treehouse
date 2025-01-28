@@ -4,7 +4,7 @@ draft = false
 title = 'Blok (2001) Can memes drive genes?'
 summary = 'Presentation for Doebeli lab meeting'
 weight = -20011000
-bibFile = "bib-all-better-csl.json"
+bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 

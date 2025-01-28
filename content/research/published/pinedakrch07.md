@@ -4,7 +4,7 @@ draft = false
 title = 'Pineda-Krch, Blok, Dieckmann & Doebeli (2007)'
 summary = 'A tale of two cycles - distinguishing quasi-cycles and limit cycles in finite predator-prey populations'
 weight = -20070100
-bibFile = "bib-all-better-csl.json"
+bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 

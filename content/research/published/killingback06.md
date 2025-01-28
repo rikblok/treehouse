@@ -4,7 +4,7 @@ draft = false
 title = 'Killingback, Blok & Doebeli (2006)'
 summary = 'Scale-free extinction dynamics in spatially structured host–parasitoid systems'
 weight = -20060821
-bibFile = "bib-all-better-csl.json"
+bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 

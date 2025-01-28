@@ -4,7 +4,7 @@ draft = false
 title = 'Blok (2003) Self-affine timeseries analysis'
 summary = 'Guest lecture for U.B.C. Physics 510: Stochastic Processes in Physics'
 weight = -20030425
-bibFile = "bib-all-better-csl.json"
+bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 
