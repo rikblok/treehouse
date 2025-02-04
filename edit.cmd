@@ -11,9 +11,7 @@ goto end
 :begin
 if not "%1"=="" goto usage
 cd "%~dp0"
-start "Hugo server" hugo server
-echo Hugo server started...
-echo.
+call serve.cmd
  
 :runbrowser
 echo Your web browser will now open http://localhost:1313/~rikblok/

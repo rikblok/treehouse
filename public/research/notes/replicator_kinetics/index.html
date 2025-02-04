@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.139.0">
+    <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
+    <meta name="description" content="Deriving the replicator equation from birth-death processes">
+    <meta name="author" content="Rik Blok">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blok (2013) Replicator Kinetics :: Rik&#39;s Treehouse">
+    <meta name="twitter:description" content="Deriving the replicator equation from birth-death processes">
+    <meta property="og:url" content="https://www.cs.ubc.ca/~rikblok/research/notes/replicator_kinetics/index.html">
+    <meta property="og:site_name" content="Rik&#39;s Treehouse">
+    <meta property="og:title" content="Blok (2013) Replicator Kinetics :: Rik&#39;s Treehouse">
+    <meta property="og:description" content="Deriving the replicator equation from birth-death processes">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Research ramblings">
+    <meta property="article:published_time" content="2025-02-04T11:30:01-08:00">
+    <meta property="article:modified_time" content="2025-02-04T11:30:01-08:00">
+    <meta itemprop="name" content="Blok (2013) Replicator Kinetics :: Rik&#39;s Treehouse">
+    <meta itemprop="description" content="Deriving the replicator equation from birth-death processes">
+    <meta itemprop="datePublished" content="2025-02-04T11:30:01-08:00">
+    <meta itemprop="dateModified" content="2025-02-04T11:30:01-08:00">
+    <meta itemprop="wordCount" content="2141">
+    <title>Blok (2013) Replicator Kinetics :: Rik&#39;s Treehouse</title>
+    <link href="/~rikblok/css/fontawesome-all.min.css?1738698899" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1738698899" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/auto-complete.css?1738698899" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1738698899" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar.min.css?1738698899" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1738698899" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1738698899" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/www.cs.ubc.ca\/~rikblok';
+      window.relearn.min = `.min`;
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        var select = document.querySelector("#R-select-variant");
+        if (select) {
+          select.value = variant;
+        }
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script><link rel="stylesheet" type="text/css" href="/~rikblok/hugo-cite.css" />
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/~rikblok/css/custom.css" />
+
+
+
+  </head>
+  <body class="mobile-support html" data-url="/~rikblok/research/notes/replicator_kinetics/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#deriving-the-replicator-equation-from-birth-death-processes">Deriving the replicator equation from birth-death processes</a>
+      <ul>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#1-introduction">1 Introduction</a></li>
+        <li><a href="#2-select-births-ecological-deaths">2 Select births, ecological deaths</a></li>
+        <li><a href="#3-replacement">3 Replacement</a></li>
+        <li><a href="#4-select-deaths-ecological-births">4 Select deaths, ecological births</a></li>
+        <li><a href="#5-select-births-with-a-separate-game">5 Select births with a separate game</a></li>
+        <li><a href="#6-select-births-into-available-holes">6 Select births into available &ldquo;holes&rdquo;</a></li>
+        <li><a href="#7-summary">7 Summary</a></li>
+        <li><a href="#8-appendix">8 Appendix</a></li>
+        <li><a href="#9-references">9 References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/research/index.html"><span itemprop="name">Research ramblings</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/research/notes/index.html"><span itemprop="name">Unpublished notes</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Blok (2013) Replicator Kinetics</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/research/notes/index.html" title="Unpublished notes (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/research/notes/parallel_poisson/index.html" title="Blok (2004) Parallel Poisson (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable research" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="blok-2013-replicator-kinetics">Blok (2013) Replicator Kinetics</h1>
+
+<!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
+<h2 id="deriving-the-replicator-equation-from-birth-death-processes">Deriving the replicator equation from birth-death processes</h2>
+<!-- 
+
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#blokparallel2004"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Hendrik J. (Rik)"><span itemprop="familyName">Blok</span></span>,&#32;<span itemprop="datePublished">2004</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/WebPage"
+      data-type="webpage"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Blok</span>,&#32;
+    <meta itemprop="givenName" content="Hendrik J. (Rik)" />
+    H.</span>(<span itemprop="datePublished">2004,&#32;10/15</span>).&#32;Retrieved from&#32;
+  <a href="https://www.cs.ubc.ca/~rikblok/research/notes/parallel_poisson/index.html"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://www.cs.ubc.ca/~rikblok/research/notes/parallel_poisson/index.html</a></span>
+
+
+
+
+</span></span>)</span>
+
+
+2025-02-04: TODO: Save this webpage to Zotero then update citation
+ -->
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+<section class="hugo-cite-bibliography">
+  <dl>
+    
+
+      <div id="blokparallel2004">
+        <dt>
+          Blok
+
+          
+          (2004)</dt>
+
+        <dd>
+          
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/WebPage"
+      data-type="webpage"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Blok</span>,&#32;
+    <meta itemprop="givenName" content="Hendrik J. (Rik)" />
+    H.</span>(<span itemprop="datePublished">2004,&#32;10/15</span>).&#32;Retrieved from&#32;
+  <a href="https://www.cs.ubc.ca/~rikblok/research/notes/parallel_poisson/index.html"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://www.cs.ubc.ca/~rikblok/research/notes/parallel_poisson/index.html</a></span>
+
+
+
+
+</dd>
+
+      </div>
+  </dl>
+</section>
+
+
+
+<p>Version 1
+&mdash; Rik Blok, 2013-07-12</p>
+<h3 id="abstract">Abstract</h3>
+<p>I&rsquo;ve long felt that reaction kinetics, a formalism for describing agent-based models, would fit naturally with evolutionary game theory, but I&rsquo;ve had trouble seeing the connections.  Here I explore several possible systems of reactions that yield evolutionary dynamics consistent with the replicator equation.  They are also useful for studying finite, structured populations.  Some of these approaches also exhibit plausible ecological dynamics in the absence of selection.</p>
+<h3 id="1-introduction">1 Introduction</h3>
+<p>Evolutionary game theory uses the [[wp&gt;replicator equation]] to formalize the dynamics of selected heritable traits in a population.  It is frequently used to predict the [[wp&gt;evolutionarily stable state]] of an infinite, well-mixed population.  Often it is interesting to study cases where the population is finite or not well-mixed, where the replicator equation isn&rsquo;t suitable.  Such a case is better suited to an [[wp&gt;agent-based model]] where each individual in a population is explicitly accounted.</p>
+<p>There are a variety of approaches to agent-based modeling but I am keen on [[wp&gt;reaction kinetics]] because it is simple to understand, easy to apply, and behaves predictably in the limit of a large, well-mixed population.  Also, the underlying mechanisms have clear interpretations if the reactions are [[wp&gt;elementary reaction| elementary]].</p>
+<p>It would be useful to have a reaction-kinetic framework for game theory and the replicator equation.  It could complement [[wp&gt;Moran process|other agent-based formalisms]] for studying finite, structured populations.  Below I will show a reaction kinetics approach to game theory that captures some important properties of the replicator equation.</p>
+<p>I have three goals:</p>
+<ul>
+<li>Selection should act in a [[wp&gt;replicator equation]]-like manner, with the same behaviour at least up to a time-rescaling,</li>
+<li>In the absence of selection, the density should obey the [[wp&gt;logistic equation]], and</li>
+<li>The reactions should be simple, preferably [[wp&gt;elementary reaction| elementary]].</li>
+</ul>
+<p>In the following sections we will explore several ways to define birth-death reactions, analyzing them to see how well they meet the above goals.</p>
+<ul>
+<li>[[#Select births, ecological deaths]]</li>
+<li>[[#Replacement]]</li>
+<li>[[#Select deaths, ecological births]]</li>
+<li>[[#Select births with a separate game]]</li>
+<li>[[#Select births into available &ldquo;holes&rdquo;]]</li>
+</ul>
+<p>I use the term &ldquo;select&rdquo; to indicate processes that select for traits (differential fitness) and &ldquo;ecological&rdquo; to mean processes that affect all individuals equally, independent of their type.</p>
+<h3 id="2-select-births-ecological-deaths">2 Select births, ecological deaths</h3>
+<p>Consider a population of heritable types where an individual of type \(i\), \(X_i\), acquires a //payoff// \(P_{ij}\) against \(X_j\) in pairwise interactions.  Further assume that an individual&rsquo;s birthrate is determined by its payoff.  Conversely, the deathrate depends only on the total population density, $n$:
+&lt;WRAP center round box 90%&gt;
+\begin{eqnarray}
+X_i + X_j &amp; \xrightarrow{P_{ij}} &amp; 2 X_i + X_j   &amp; \text{(birth)} \
+X_i       &amp; \xrightarrow{\delta(n)} &amp; \emptyset. &amp; \text{(death)}
+\end{eqnarray}
+</WRAP>
+The birth process performs evolutionary selection, while the death process is purely ecological (because it drives population density but not frequency of types, on average).  The deathrate could be any non-negative function (even $\delta(n)=0$ leaving only the birth process and a geometrically increasing population).</p>
+<h4 id="21-rate-equations">2.1 Rate equations</h4>
+<p>These two processes can be applied to simulate a finite population, or analyzed in the limit of an infinite, well-mixed population.  Then we find the dynamics are very similar to the replicator equation and reproduce some important properties thereof.  The [[wp&gt;Law of mass action]] allows to compute the rate equation for the density \(x_i=[X_i]\) of type \(i\):
+\begin{equation}
+\frac{dx_i}{dt} = x_i \left( \sum_j P_{ij} x_j - \delta(n) \right)
+\end{equation}
+where the total population density is \(n\equiv \sum_k x_k\) and follows
+\begin{equation}
+\frac{dn}{dt} = \sum_k \frac{dx_k}{dt} = \sum_{jk} P_{kj} x_j x_k - n \delta(n).
+\end{equation}</p>
+<h4 id="22-fitness">2.2 Fitness</h4>
+<p>Let $y_i=x_i/n$ be the frequency of type $i$.  We define its fitness
+\begin{equation}
+f_i\equiv \sum_j P_{ij} y_j
+\label{eq:fi}
+\end{equation}
+as its per-capita average birthrate and the mean fitness
+\begin{equation}
+\bar{f} \equiv \sum_k f_k y_k
+\label{eq:fbar}
+\end{equation}
+is the overall population per-capita average birthrate.</p>
+<p>Then the frequency of type $i$ obeys
+\begin{eqnarray}
+\frac{dy_i}{dt} &amp; = &amp; \frac{1}{n} \left[ \frac{dx_i}{dt} - y_i \frac{dn}{dt} \right]
+\label{eq:dyidt} \
+&amp; = &amp; n \left[ y_i \left( \sum_j P_{ij} y_j - \frac{1}{n} \delta(n) \right) - y_i \left( \sum_{jk} P_{kj} y_j y_k - \frac{1}{n} \delta(n) \right) \right] \<br>
+&amp; = &amp; n y_i (f_i - \bar{f}).
+\label{eq:modifiedreplicatoreq}
+\end{eqnarray}</p>
+<p>For comparison, the replicator equation is $dy_i/dt = y_i (f_i - \bar{f})$, differing only by a factor $n$.  So our &ldquo;replicator kinetics&rdquo; have exactly the same stability properties as the replicator equation, the only difference is that the rate of evolution varies with the population size.  In particular, the evolutionarily stable state is the same in both frameworks.</p>
+<h4 id="23-ecology">2.3 Ecology</h4>
+<p>In terms of fitness $f$ the density rate equation becomes
+\begin{equation}
+\frac{dn}{dt} = n \left(n \bar{f}  - \delta(n) \right)
+\end{equation}
+where $\bar{f}$ itself varies with the population structure.</p>
+<p>In the special case where we neglect selection $P_{ij}\equiv r=\text{constant}$ for all $i,j$ so only ecology pertains, then $\bar{f}=r$ and the ecological dynamics become
+\begin{equation}
+\frac{dn}{dt} = r n^2 \left(1 - \frac{n}{K} \right)
+\end{equation}
+where $K \equiv r n^2 / \delta(n)$.  If $\delta(n) \propto n^2$ then $K$ is a constant carrying capacity.  The dynamics are similar to logistic except the quadratic factor depresses the growth rate when the population is small, a [[wp&gt;Allee_effect#Strong_vs._weak_Allee_effects | weak Allee effect]].</p>
+<h4 id="24-bounded-population">2.4 Bounded population</h4>
+\[
+  3 X \xrightarrow{\text{constant}} 2 X
+\]<p>
+or equivalently $\delta(n) \propto n^2$, where $X$ represents an individual of any type.</p>
+<h3 id="3-replacement">3 Replacement</h3>
+\[
+X_i + X_j + X_k \xrightarrow{P_{ij}} 2 X_i + X_j \; \text{ (replacement)} 
+\]<p>
+</WRAP></p>
+<p>\(X_k\) is simply a bystander who may be replaced by a child of \(X_i\), depending on its payoff against \(X_j\).  In this case the population size is fixed so we recover exactly the replicator equation, without a fluctuating rate depending on the population size as in Equation $\ref{eq:modifiedreplicatoreq}$.</p>
+<h3 id="4-select-deaths-ecological-births">4 Select deaths, ecological births</h3>
+<p>We could also design a system with an ecological (non-selective) birth process and a selective death process (that depends on payoffs).  Let $\pi \geq \max_{i,j} P_{ij}$ be a constant.  Then
+&lt;WRAP center round box 90%&gt;
+\begin{eqnarray}
+X_i &amp; \xrightarrow{\beta(n)} &amp; 2 X_i         &amp; \text{(birth)} \
+X_i + X_j &amp; \xrightarrow{\pi - P_{ij}} &amp; X_j &amp; \text{(death)}
+\end{eqnarray}
+</WRAP>
+where $\beta(n)$ is a birthrate that may depend on the population density but not its composition.  For a stable, finite population it requires that $\beta(n) \prec n$ grows slower than $n$, such as spontaneous birth, $\beta(n) =\text{constant}$.</p>
+<p>In this system, a higher payoff reduces the death rate, increasing the survival time.</p>
+<h4 id="41-ecology">4.1 Ecology</h4>
+<p>Let&rsquo;s consider again the dynamics without selection: $P_{ij} = \text{constant} &lt; \pi$ for all $i,j$ so $\bar{f} = \text{constant}$.  Then we can define $K=\beta(n)/(\pi-\bar{f})$ and &mdash; applying Equations $\ref{eq:fi}$, $\ref{eq:fbar}$, and $\ref{eq:dyidt}$ to the rate equations &mdash; we find
+\begin{equation}
+\frac{dn}{dt} = \beta(n) n \left(1 - \frac{n}{K} \right).
+\end{equation}
+If we have a constant birthrate $\beta(n)\equiv r = \text{constant}$ then we exactly recover the logistic equation.</p>
+<h3 id="5-select-births-with-a-separate-game">5 Select births with a separate game</h3>
+<p>Is it possible to formulate a system with logistic ecological behaviour but with selection acting on births instead of deaths?  It&rsquo;s tricky because evolutionary game theory requires pairwise interactions but the birth process must be first-order (spontaneous).  To achieve this we need to separate the &ldquo;game&rdquo; from the births: Let&rsquo;s introduce pairwise interactions that determine the birthrates of individuals as follows:
+&lt;WRAP center round box 90%&gt;
+\begin{eqnarray}
+Z_{ik} + Z_{jl} &amp; \xrightarrow{\gamma} &amp; Z_{ij} + Z_{jl} &amp; \text{(game)} \
+Z_{ij}          &amp; \xrightarrow{P_{ij}} &amp; 2 Z_{ij}        &amp; \text{(birth)} \
+Z_{ij}          &amp; \xrightarrow{\delta(n)} &amp; \emptyset.   &amp; \text{(death)}
+\end{eqnarray}
+</WRAP>
+We use $Z$ to denote these individuals because they carry two pieces of information: their own type and the type of their last co-player in the game.  The density of type $i$ (regardless of last co-player) is now $x_i = \sum_j z_{ij}$ and $n = \sum_i x_i$.</p>
+<p>In terms of the frequencies $w_{ij} \equiv z_{ij}/n$ and $y_i \equiv x_i/n = \sum_j w_{ij}$, after some work (see [[#Appendix]]) we find
+\begin{equation}
+\frac{dy_i}{dt} = \sum_j P_{ij} w_{ij} - y_i \sum_{kl} P_{kl} w_{kl}.
+\end{equation}</p>
+<p>If we define the fitness of type $i$
+\begin{equation}
+f_i\equiv \frac{1}{y_i} \sum_j P_{ij} w_{ij}
+\label{eq:separategamefitness}
+\end{equation}
+as its per-capita average birthrate and the mean fitness
+\begin{equation}
+\bar{f} \equiv \sum_i f_i y_i = \sum_{ij} P_{ij} w_{ij}
+\end{equation}
+then we find
+\begin{eqnarray}
+\frac{dy_i}{dt} &amp; = &amp; y_i ( f_i - \bar{f})
+\label{eq:separategamereplicator} \
+\frac{dn}{dt} &amp; = &amp; n (\bar{f} - \delta(n)).
+\end{eqnarray}</p>
+<h4 id="51-ecology">5.1 Ecology</h4>
+<p>Without selection, so  $P_{ij}\equiv r=\text{constant}$ for all $i,j$, we require $\delta(n)=r n/K$ to get the logistic equation
+\begin{equation}
+\frac{dn}{dt} = r n \left(1 - \frac{n}{K} \right).
+\label{eq:separategameecology}
+\end{equation}
+To achieve that each individual should compete with all others through a reaction like,
+\begin{eqnarray}
+Z_{ik} + Z_{jl} &amp; \xrightarrow{\delta} &amp; Z_{jl}.   &amp; \text{(competitive death)}
+\end{eqnarray}</p>
+<h3 id="6-select-births-into-available-holes">6 Select births into available &ldquo;holes&rdquo;</h3>
+<p>The logistic equation derives from two simple reaction kinetic approaches: $N \rightleftharpoons 2 N$ or with explicit ecological &ldquo;holes&rdquo;, $H$: $N+H\rightarrow 2 N, N\rightarrow H$.  Here the &ldquo;holes&rdquo; serve to limit the population without explicit competition; a successful birth won&rsquo;t occur without a hole for the offspring to occupy.  Since the total population of holes and individuals is conserved, the population is controlled.  The former approach is similar to [[#Select births, ecological deaths]], suggesting that we should also consider the latter.</p>
+<p>&lt;WRAP center round box 90%&gt;
+\begin{eqnarray}
+X_i + X_j + H &amp; \xrightarrow{P_{ij}} &amp; 2 X_i + X_j   &amp; \text{(birth)} \
+X_i       &amp; \xrightarrow{\delta(n)} &amp; H.     &amp; \text{(death)}
+\end{eqnarray}
+</WRAP></p>
+<p>If the total population, including &ldquo;holes&rdquo; is conserved, $K\equiv \sum_l x_l + h$, then the rate equations for this reaction set can be written, substituting $h=K-\sum_l x_l$, as:
+\begin{equation}
+\frac{dx_i}{dt} = x_i \left( (K - \sum_l x_l) \sum_j P_{ij} x_j - \delta(n) \right)
+\end{equation}
+where the total population density \(n\) follows
+\begin{equation}
+\frac{dn}{dt} = \sum_k \frac{dx_k}{dt} = (K - \sum_l x_l) \sum_{jk} P_{kj} x_j x_k - n \delta(n).
+\end{equation}</p>
+<p>The rate equation for the frequency comes out more complicated than before but it&rsquo;s still &ldquo;replicator-like&rdquo; in the sense that the equilibria and stabilities are the same as the replicator equation:
+\begin{equation}
+\frac{dy_i}{dt} = n y_i (f_i - \bar{f}) (K - n \sum_l y_l).
+\end{equation}</p>
+<h4 id="61-discussion">6.1 Discussion</h4>
+<p>In this section we went back to select births and ecological deaths but separated the &ldquo;game&rdquo; (assignment of birthrates) from the birth process.  With a slightly modified fitness function (Equation $\ref{eq:separategamefitness}$) we were able to achieve all of our goals: (1) replicator equation-like frequency dynamics (Equation $\ref{eq:separategamereplicator}$), and (2) logistic ecological behaviour (Equation $\ref{eq:separategameecology}$), with (3) only elementary reactions.</p>
+<h3 id="7-summary">7 Summary</h3>
+<p>We have looked at four different systems of elementary reactions that produce replicator equation-like dynamics (having the same stability properties, only different in the rate of approach).  Two of theses cases also have the pleasing property that they &ldquo;fall back&rdquo; to logistic population dynamics in the absence of selection.  A third is logistic with a weak Allee effect.  The last, [[#Replacement]], is less realistic in that the population size is fixed.</p>
+$$ X_i + X_j + X_k \xrightarrow{P_{ij}} 2 X_i + X_j $$<p>                                                                                                                                                                                                              |  Yes               |  None (constant population size)                                             |
+|  [[#Select deaths, ecological births]]    | \begin{eqnarray*} X_i &amp; \xrightarrow{\beta} &amp; 2 X_i         &amp; \text{(birth)} \ X_i + X_j &amp; \xrightarrow{\pi - P_{ij}} &amp; X_j &amp; \text{(death)}  \end{eqnarray*}                                                                                                      |  Yes               |  Logistic                                                                    |
+|  [[#Select births with a separate game]]  | \begin{eqnarray*}   Z_{ik} + Z_{jl} &amp; \xrightarrow{\gamma} &amp; Z_{ij} + Z_{jl} &amp; \text{(game)} \   Z_{ij}          &amp; \xrightarrow{P_{ij}} &amp; 2 Z_{ij}        &amp; \text{(birth)} \   Z_{ik} + Z_{jl} &amp; \xrightarrow{\delta} &amp; Z_{jl} &amp; \text{(death)}  \end{eqnarray*}  |  Yes               |  Logistic                                                                    |</p>
+<p>Here are some ideas for future consideration:</p>
+<ul>
+<li>Can this approach be extended to N-player games (eg. the public goods game)?</li>
+<li>Is there a general &ldquo;solution&rdquo; for a finite population, eg. Fokker-Planck?</li>
+</ul>
+<h3 id="8-appendix">8 Appendix</h3>
+<h4 id="81-derivation-of-rate-equation-for-frequency-of-type-in-case-of-select-births-with-a-separate-game">8.1 Derivation of rate equation for frequency of type in case of select births with a separate game</h4>
+<p>In terms of the frequencies $w_{ij} \equiv z_{ij}/n$ and $y_i \equiv x_i/n = \sum_j w_{ij}$
+\begin{eqnarray}
+\frac{dz_{ij}}{dt} &amp; = &amp; \gamma \sum_{kl} ( z_{ik} z_{jl} - z_{ij} z_{kl} ) + P_{ij} z_{ij} - \delta(n) z_{ij} \
+&amp; = &amp; \gamma ( x_i x_j - z_{ij} n ) + (P_{ij} - \delta(n)) z_{ij}.
+\label{eq:dzijdt}
+\end{eqnarray}</p>
+<p>\begin{eqnarray}
+\frac{dw_{ij}}{dt} &amp; = &amp; \frac{1}{n} \left[ \frac{dz_{ij}}{dt} - w_{ij} \frac{dn}{dt} \right] \
+\frac{dx_i}{dt} &amp; = &amp; \sum_j \frac{dz_{ij}}{dt} \
+&amp; = &amp; \gamma (x_i n - n x_i) + \sum_j P_{ij} z_{ij} - \delta(n) x_i \
+&amp; = &amp; \sum_j P_{ij} z_{ij} - \delta(n) x_i. \
+\frac{dn}{dt} &amp; = &amp; \sum_i \frac{dx_i}{dt} \
+&amp; = &amp; n \left( \sum_{ij} P_{ij} w_{ij} - \delta(n) \right).
+\end{eqnarray}
+From Equation $\ref{eq:dzijdt}$
+\begin{eqnarray}
+\frac{dz_{ij}}{dt} &amp; = &amp; \gamma n^2 ( y_i y_j - w_{ij} ) + n (P_{ij} - \delta(n)) w_{ij} \
+\frac{dw_{ij}}{dt} &amp; = &amp; \frac{1}{n} \left[ \frac{dz_{ij}}{dt} - w_{ij} \frac{dn}{dt} \right] \
+&amp; = &amp; \gamma n (y_i y_j - w_{ij}) + (P_{ij} - \delta(n)) w_{ij} - w_{ij} \sum_{kl} P_{kl} w_{kl} + \delta(n) w_{ij} \
+\frac{dy_i}{dt}    &amp; = &amp; \sum_j P_{ij} w_{ij} - y_i \sum_{kl} P_{kl} w_{kl}.
+\end{eqnarray}</p>
+<h3 id="9-references">9 References</h3>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+<section class="hugo-cite-bibliography">
+  <dl>
+    
+
+      <div id="blokparallel2004">
+        <dt>
+          Blok
+
+          
+          (2004)</dt>
+
+        <dd>
+          
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/WebPage"
+      data-type="webpage"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Blok</span>,&#32;
+    <meta itemprop="givenName" content="Hendrik J. (Rik)" />
+    H.</span>(<span itemprop="datePublished">2004,&#32;10/15</span>).&#32;Retrieved from&#32;
+  <a href="https://www.cs.ubc.ca/~rikblok/research/notes/parallel_poisson/index.html"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://www.cs.ubc.ca/~rikblok/research/notes/parallel_poisson/index.html</a></span>
+
+
+
+
+</dd>
+
+      </div>
+  </dl>
+</section>
+
+
+
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="/~rikblok/index.html">
+Rik&#39;s Treehouse
+          </a>
+        </div>
+        <script>
+          window.index_js_url="/~rikblok/searchindex.en.js?1738698899";
+        </script>
+        <search><form action="/~rikblok/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+        <script>
+          var contentLangs=['en'];
+        </script>
+        <script src="/~rikblok/js/auto-complete.js?1738698899" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.min.js?1738698899" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1738698899" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1738698899" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.en.min.js?1738698899" defer></script>
+        <script src="/~rikblok/js/search.js?1738698899" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <ul>
+          <li><a class="padding" href="/~rikblok/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+        </ul>
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/compute/index.html"><a class="padding" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/~rikblok/research/index.html"><a class="padding" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/~rikblok/research/published/index.html"><a class="padding" href="/~rikblok/research/published/index.html">Published</a><ul id="R-subsections-fd150925b32c297bd80b32c85dbf53c7" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/~rikblok/research/presented/index.html"><a class="padding" href="/~rikblok/research/presented/index.html">Presented</a><ul id="R-subsections-0a29c1db3dbf4a3f6a288fc3847b4ef0" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-id="/~rikblok/research/notes/index.html"><a class="padding" href="/~rikblok/research/notes/index.html">Unpublished notes</a><ul id="R-subsections-950ca40a4602333597e39987a4c77254" class="collapsible-menu">
+            <li class="active " data-nav-id="/~rikblok/research/notes/replicator_kinetics/index.html"><a class="padding" href="/~rikblok/research/notes/replicator_kinetics/index.html">Blok (2013) Replicator Kinetics</a></li>
+            <li class="" data-nav-id="/~rikblok/research/notes/parallel_poisson/index.html"><a class="padding" href="/~rikblok/research/notes/parallel_poisson/index.html">Blok (2004) Parallel Poisson</a></li>
+            <li class="" data-nav-id="/~rikblok/research/notes/discounted_least_squares/index.html"><a class="padding" href="/~rikblok/research/notes/discounted_least_squares/index.html">Blok (1997) Discounted Least Squares</a></li></ul></li></ul></li>
+            <li class="" data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a></li>
+          </ul>
+        </div>
+    
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/research/notes/replicator_kinetics/index.html" lang="en-us" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.relearn.markVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter">
+        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="/~rikblok/js/clipboard.min.js?1738698899" defer></script>
+    <script src="/~rikblok/js/perfect-scrollbar.min.js?1738698899" defer></script>
+    <script>
+      function useMathJax( config ){
+        window.MathJax = Object.assign( window.MathJax || {}, {
+          tex: {
+            inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
+            displayMath: [['\\[', '\\]'], ['$$', '$$']], 
+          },
+          options: {
+            enableMenu: false 
+          }
+        }, config );
+      }
+      useMathJax( JSON.parse("{}") );
+    </script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1738698899"></script>
+    <script src="/~rikblok/js/theme.js?1738698899" defer></script>
+  </body>
+</html>

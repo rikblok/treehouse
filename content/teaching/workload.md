@@ -45,4 +45,4 @@ Chart shows 3-month maximum workload.
 
 {{< /tabs >}}
 
-Under light workloads expect a response within a few days.  I should be able to get back to you within a week under moderate workloads.  But when my workload is heavy it could take a few weeks.  Also check my schedule: I may be in a meeting or out of town.
+Under light workloads expect a response within a few days.  I should be able to get back to you within a week under moderate workloads.  But when my workload is heavy it could take a few weeks.

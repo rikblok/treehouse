@@ -8,8 +8,15 @@
     <language>en-us</language>
     <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
     <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
-    <lastBuildDate>Sat, 18 Jan 2025 22:46:12 -0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 Feb 2025 11:30:01 -0800</lastBuildDate>
     <atom:link href="https://www.cs.ubc.ca/~rikblok/research/notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blok (2013) Replicator Kinetics</title>
+      <link>https://www.cs.ubc.ca/~rikblok/research/notes/replicator_kinetics/index.html</link>
+      <pubDate>Tue, 04 Feb 2025 11:30:01 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/research/notes/replicator_kinetics/index.html</guid>
+      <description>Deriving the replicator equation from birth-death processes</description>
+    </item>
     <item>
       <title>Blok (2004) Parallel Poisson</title>
       <link>https://www.cs.ubc.ca/~rikblok/research/notes/parallel_poisson/index.html</link>

@@ -1,0 +1,201 @@
+<?
+$title='Trends in Computing';
+$parent='../compute';
+include 'jsmath.php';
+include 'head.php';
+include 'data.php';
+include 'cite.php';
+include 'footnote.php';
+$lossPerYear=1.0-exp(-8.317766/$dtAvg);	// percent value lost per year
+function doublingtime($dt)
+// pretty prints the doubling time
+{
+	echo "Doubling time: $dt";
+	echo footref("1");
+}
+?>
+<script language="JavaScript" type="text/javascript"><!--
+function roundOff(value, precision)
+// rounds off floating point numbers for display
+{
+		value = "" + value //convert value to string
+		precision = parseInt(precision);
+		var whole = "" + Math.round(value * Math.pow(10, precision));
+		var decPoint = whole.length - precision;
+		if(decPoint != 0) {
+				result = whole.substring(0, decPoint);
+				result += ".";
+				result += whole.substring(decPoint, whole.length);
+		} else {
+				result = whole;
+		}
+		return result;
+}
+
+function calcTotalValue()
+// calculates and displays total value of computer given yearly upgrades
+{
+	document.BottomLine.TotalValue.value=Math.round(document.BottomLine.Upgrade.value/<?=$lossPerYear;?>,2);
+}
+
+function calcUpgrade()
+// calculates and displays upgrade cost per year given total computer value
+{
+	document.BottomLine.Upgrade.value=Math.round(document.BottomLine.TotalValue.value*<?=$lossPerYear;?>,2);
+}
+// --></script>
+<NOSCRIPT>
+<I>If you can read this your browser does not support JavaScript. This page uses JavaScript to display computed values.  This page should still display normally but the form buttons won't do anything.</I><p>
+</NOSCRIPT>
+
+I've heard it said that computers were doubling in performance every 18
+months (see <A HREF="http://en.wikipedia.org/wiki/Moore%27s_Law">Moore's Law</A> and <A HREF="http://en.wikipedia.org/wiki/Parkinson%27s_law">Parkinson's Law of Data</A>); that is, in 18 months you could buy a computer twice as powerful/fast as today for the same price. I was curious to see if this was true so I started tracking the prices of individual components on a monthly basis. I am biased towards <a href="http://en.wikipedia.org/wiki/Wintel">Wintel</a> PCs with a total price under $2000 Canadian, so I track components typical for such machines.<P>
+
+<?	include 'toc.php';	?>
+
+<?	tochead(array('name'=>'Motherboards'));	?>
+<IMG SRC="Motherboard.gif"><p>
+
+Units: MHz/$, megaHertz per dollar (Cdn)<BR>
+<?doublingtime($dtMotherboard)?>
+
+<p>Motherboard performance, measured in MHz/$, is currently doubling every <?=$dtMotherboard;?>. Notice that I am measuring performance for the motherboard as a whole, not just the CPU. There have been fluctuations but the trend does look more or less exponential. A friend of mine (Andy Horton) pointed out there was a noticeable dip every year around December. This is most likely due to prices being jacked up for Christmas sales.<p>
+
+Processor speed depends on how many transistors can be fit on a chip, which has a theoretical maximum set by quantum mechanics. If the circuits get too close together the electrons will start "tunneling" through barriers and the chip won't function properly. I'm not sure what the limit is, but as we approach it, expect the doubling time to stretch out--at least until manufacturers find a new way to get around (or take advantage of) this problem.<p>
+
+Of course, every new generation of processor may perform better (or worse!) than the last, even at the same clock speed so I weighted the clock speed by an estimation of how fast each chip architecture is compared to a current chip:<p>
+
+<CENTER><TABLE BORDER width="50%">
+<TR><TD ALIGN=RIGHT><B><U>Architecture</U></b><TD><b><U>Speed Factor</U></B>
+<tr><td align=right>i8086		<td>0.0048
+<tr><td align=right>i286		<td>0.022
+<TR><TD ALIGN=RIGHT>i386sx		<TD>0.030
+<TR><TD ALIGN=RIGHT>i386dx		<TD>0.045
+<TR><TD ALIGN=RIGHT>i486dx		<TD>0.091
+<TR><TD ALIGN=RIGHT>i486dx2		<TD>0.076
+<TR><TD ALIGN=RIGHT>i486dx4		<TD>0.060
+<TR><TD ALIGN=RIGHT>Pentium		<TD>0.18
+<tr><td align=right>Pentium MMX	<td>0.21
+<tr><td align=right>Pentium 2	<td>0.24
+<tr><td align=right>Pentium 3	<td>0.27
+<tr><td align=right>AMD Duron	<td>0.28
+<tr><td align=right>Pentium 4	<td>0.22	<? /* 0.218 */ ?>
+<tr><td align=right>AMD Athlon XP<sup>1</sup><td>0.24
+<tr><td align=right>Intel Core 2 Duo<sup>2</sup><td>1.00
+
+<CAPTION align=bottom>Estimated relative speed factors of past chip architectures
+(at same clock speeds).<br>
+<sup>1</sup> <small>Scaled by <a href="http://en.wikipedia.org/wiki/PR_rating">performance rating</a> (eg. 1800+) not actual clock speed (eg. 1.53GHz).</small><br>
+<sup>2</sup> <small>Based on 64-bit, multicore benchmark.</small></CAPTION>
+
+<? /* speed rated by SiSoft Sandra's CPU Arithmetic Benchmark, average of integer and floating point */ ?>
+</TABLE></CENTER>
+
+<p>So a typical 33MHz 386sx only runs about as fast as a typical 4.8MHz Pentium MMX.
+
+<p>Comparing different processors opens up a can of worms such as the impact of other components (eg. RAM, front-side bus, etc.) on performance.  But, I don't really care about all this...I just want to get an estimate of the <i>typical</i> speed of these machines so I just get my numbers by comparing benchmarks for typically-configured machines.
+
+<?	tochead(array('name'=>'RAM'));	?>
+<IMG SRC="RAM.gif"><P>
+
+Units: <a href="http://www.wikipedia.org/wiki/Binary_prefix#IEC_standard_prefixes">MiB</a>/$, <a href="http://www.wikipedia.org/wiki/Binary_prefix#IEC_standard_prefixes">mebiBytes</a> per dollar (Cdn)<BR>
+<?doublingtime($dtRAM);?>
+
+<p>RAM performance, measured in <a href="http://www.wikipedia.org/wiki/Binary_prefix#IEC_standard_prefixes">MiB</a>/$, is currently doubling every <?=$dtRAM;?>...but it's a real wild ride! Notice that the graph is virtually flat until November 1995 and then explodes upwards. As I understand it this is due to a monopoly on SIMM modules which toppled around then. At the time (October 1995) the doubling time was a whopping 53 &plusmn; 9 months! After some fluctuations when the market opened up, it looks like RAM performance grew at a natural rate for a while.<P>
+
+<p>There was an huge hiccup at the end of 2001 which was apparently due to <a href="http://www.theregister.co.uk/2004/02/27/memory_makers_hit_by_pricefixing/">price fixing</a>.  At the time of writing (late 2004) the performance still hasn't recovered.
+
+<p>Again, performance depends on how many transistors can be fit on a chip
+which has a theoretical maximum. Unlike motherboard performance, however,
+I don't expect this to slow down the RAM performance doubling time because--Hey!--the manufacturers can always just add more memory banks, right?<p>
+
+<?	tochead(array('name'=>'Hard&nbsp;Drives'));	?>
+<IMG SRC="HardDrive.gif"><P>
+
+Units: GB/$, megaBytes per dollar (Cdn)<BR>
+<?doublingtime($dtHardDrive);?>
+
+<p>Hard drive capacity, measured in GB/$, is currently doubling every <?=$dtHardDrive;?>. The graph exhibits classic exponential growth, suggesting that there are no undue political or economical pressures on hard drive performance...just the good old law of supply and demand combined with an unlimited (for now) technological potential. I assume there is another quantum limit for how much information you can store on magnetic media but there is no evidence in the graph that we are anywhere near it.<p>
+
+<?	tochead(array('name'=>'Modems'));	?>
+<IMG SRC="Modem.gif"><P>
+
+Units: kbps/$, kilobits per second per dollar (Cdn)<BR>
+<?doublingtime($dtModem);?>
+
+<p>The estimated doubling time for modem performance is <?=$dtModem;?>.  But you just have to look at the graph to realize exponential growth isn't a good fit.  Modems have peaked, and are now on the decline.  It appears nobody's working on improving the technology anymore since broadband connections have become common. I'll keep tracking them because it might be interesting to see whether performance (per dollar) decreases as technology approaches obsolescence.</p>
+
+<p>Note that 56kbps modems don't actually run at that rate, it's just a <i>theoretical</i> maximum (and a nice marketing ploy).  The fastest my modem ever connected at (and maintained) was 46kbps so that's the speed I use when calculating performance.</p>
+
+<?	tochead(array('name'=>'The&nbsp;Bottom&nbsp;Line'));	?>
+
+The average doubling time for the motherboard, memory, and hard drive is currently <?=$dtAvg1;?> months. Sounds good, right? Well, the down side is that you'll have to keep laying out cash to keep your computer current. In that amount of time your brand-spanking new computer will only be half as "good" as the latest. (Actually I'm neglecting a lot of components like monitors and sound cards, but this should still be a good estimate.) This is the same as saying a computer loses <?=round(100.0*$lossPerYear,0);?>% of its value each year. To maintain it you will have to regularly lay out some cash for upgrades. If you make consistent annual upgrades to your system then it is possible to calculate the eventual value of your computer (regardless of the initial outlay).
+
+<FORM name="BottomLine">
+<TABLE WIDTH="100%" >
+<TR>
+<TD>If every year you spend $<INPUT name="Upgrade" value="" size=4> in
+upgrading,</TD>
+
+<TD ALIGN=RIGHT><INPUT type="button" value="Calculate total value" onClick="calcTotalValue()"></TD>
+</TR>
+
+<TR>
+<TD>then the value of your system will approach $<INPUT name="TotalValue" value="" 
+size=5>.</TD>
+
+<TD ALIGN=RIGHT><INPUT type="button" value="Calculate upgrade costs" onClick="calcUpgrade()"></TD>
+</TR>
+</TABLE>
+</FORM>
+
+If you're laying out that kind of cash you might as well buy an entirely new system every <?=round(12.0/$lossPerYear,0);?> months! (That's neglecting the money you'll get back for selling your old computer. If you factor it in then you should replace your system even more often--every time the performance doubles, every <?=$dtAvg1;?> months!)<P>
+
+Most people use a combination of the above strategies: they upgrade a bit to slow the decline of their system, and when it just gets too outdated
+they replace it.<P>
+
+When buying a new system, be careful of unscrupulous vendors that may take advantage of this rapid drop in prices to make money. After the price is settled and the down payment made, some vendors may delay ordering the system for a week or two. In the meantime the value of your system drops marginally. Then the vendors buy at the lower price, but sell to you at the original higher price, and skim a profit off the top. For a $2000 machine, a two week delay will earn them roughly $<?=round(0.5*2000.0/ $dtAvg,0);?>. Not much, but still something to watch out for.
+
+<?	tochead(array('name'=>'Math&nbsp;Stuff'));	?>
+
+<p>I got all my numbers by looking through advertisements in the local edition of <a href="http://www.hubcanada.com">HUB: Digital Living</a>.  I compiled the data and made estimates of what the actual doubling time is, as follows. If there is a doubling trend then the performance (per dollar) should follow
+
+<TABLE WIDTH="100%" ><TR>
+<TD WIDTH="90%"><center><? jsmathdisplay('\mathrm{perf}(t)=\mathrm{perf}(0)e^{t/\tau}') ?></CENTER>
+<TD><CENTER>(1)</CENTER>
+</TABLE>
+
+where the time constant <? jsmathinline('\tau') ?>relates to the doubling time via <? jsmathinline('t_\mathrm{double} = \tau \ln(2)') ?>.
+Taking the logarithm of both sides gives
+
+<TABLE WIDTH="100%" ><TR>
+<TD WIDTH="90%"><CENTER><? jsmathdisplay('\ln\left(\mathrm{perf}(t)\right)=t/\tau+\ln\left(\mathrm{perf}(0)\right)') ?></CENTER>
+<TD><CENTER>(2)</CENTER>
+</TABLE>
+
+which is just the straight line equation
+
+<TABLE WIDTH="100%" ><TR>
+<TD WIDTH="90%"><CENTER><? jsmathdisplay('y(t)=mt+b') ?></CENTER>
+<TD><CENTER>(3)</CENTER>
+</TABLE>
+
+where <? jsmathinline('m=1/\tau') ?>. So all we have to do is take the logarithm of the performance data and fit it to a straight line to get the parameters <? jsmathinline('m') ?> and <? jsmathinline('b') ?>, which allow us to calculate <? jsmathinline('t_\mathrm{double}') ?>. The exact calculations for fitting to a straight line can be found in any statistics textbook or try <?=cite(array('tag'=>'press92','note'=>'Chapter 15'));?>.</p>
+
+<p>Also given therein is a procedure to estimate the uncertainties in the parameters even without knowing the measurement errors. So it is possible to calculate the uncertainty in the slope <? jsmathinline('m') ?> which is related to the uncertainty in the doubling time by 
+
+<TABLE WIDTH="100%" ><TR>
+<TD WIDTH="90%"><CENTER><? jsmathdisplay('\frac{\sigma_{t_\mathrm{double}}}{t_\mathrm{double}} = \frac{\sigma_\tau}{\tau} = \frac{\sigma_m}{m}.') ?></CENTER>
+<TD><CENTER>(4)</CENTER>
+</TABLE>
+
+By using this method the "goodness of fit" is incorporated into the doubling time uncertainty: a large uncertainty means a poor fit.</p>
+
+<?
+tochead(array('name'=>'Notes'));	
+echo footnote("1");
+?>
+
+The doubling time is calculated from the slope of the trend line fitted using a discounted least squares (DLS) technique described in <?=cite(array('tag'=>'blok97b'));?> with a memory of <?=$dlsMemory?>.  DLS fitting smoothly discounts historical data with an exponential window to emphasize the most recent trend.
+
+<?	include 'foot.php';	?>

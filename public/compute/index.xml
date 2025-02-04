@@ -8,7 +8,14 @@
     <language>en-us</language>
     <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
     <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
-    <lastBuildDate></lastBuildDate>
+    <lastBuildDate>Sun, 20 Mar 2011 00:05:35 -0800</lastBuildDate>
     <atom:link href="https://www.cs.ubc.ca/~rikblok/compute/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Trends in Computing (2011)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/compute/trends/index.html</link>
+      <pubDate>Sun, 20 Mar 2011 00:05:35 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/compute/trends/index.html</guid>
+      <description>Years ago I heard it said that computers were doubling in performance every year or two; that is, two years from now you could buy a computer twice as powerful/fast as today for the same price or less. I was curious to see if this was true so I started tracking the prices of individual components on a monthly basis.</description>
+    </item>
   </channel>
 </rss>

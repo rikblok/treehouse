@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Trends in Computing (2011) :: Rik&#39;s Treehouse</title>
+    <link>https://www.cs.ubc.ca/~rikblok/compute/trends/index.html</link>
+    <description>Years ago I heard it said that computers were doubling in performance every year or two; that is, two years from now you could buy a computer twice as powerful/fast as today for the same price or less. I was curious to see if this was true so I started tracking the prices of individual components on a monthly basis.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
+    <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://www.cs.ubc.ca/~rikblok/compute/trends/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

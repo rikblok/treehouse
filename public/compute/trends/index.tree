@@ -1,0 +1,2 @@
+<?include "${basedir}compute.tree";echo "<a href=\"${base}ComputingTrends/index.html\">Trends in Computing</a> &gt; ";
+?>
