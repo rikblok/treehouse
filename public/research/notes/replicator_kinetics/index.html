@@ -23,13 +23,13 @@
     <meta itemprop="description" content="Deriving the replicator equation from birth-death processes">
     <meta itemprop="datePublished" content="2025-02-04T11:30:01-08:00">
     <meta itemprop="dateModified" content="2025-02-04T11:30:01-08:00">
-    <meta itemprop="wordCount" content="2141">
+    <meta itemprop="wordCount" content="2190">
     <title>Blok (2013) Replicator Kinetics :: Rik&#39;s Treehouse</title>
-    <link href="/~rikblok/css/fontawesome-all.min.css?1738698899" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1738698899" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/auto-complete.css?1738698899" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1738698899" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/perfect-scrollbar.min.css?1738698899" rel="stylesheet">
-    <link href="/~rikblok/css/theme.min.css?1738698899" rel="stylesheet">
-    <link href="/~rikblok/css/format-html.min.css?1738698899" rel="stylesheet" id="R-format-style">
+    <link href="/~rikblok/css/fontawesome-all.min.css?1738718902" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1738718902" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/auto-complete.css?1738718902" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1738718902" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar.min.css?1738718902" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1738718902" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1738718902" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..\/..';
@@ -113,6 +113,7 @@
         <li><a href="#7-summary">7 Summary</a></li>
         <li><a href="#8-appendix">8 Appendix</a></li>
         <li><a href="#9-references">9 References</a></li>
+        <li><a href="#10-footnotes">10 Footnotes</a></li>
       </ul>
     </li>
   </ul>
@@ -192,7 +193,10 @@
 </span></span>)</span>
 
 
-2025-02-04: TODO: Save this webpage to Zotero then update citation
+2025-02-04: 
+* TODO: replace WRAP
+* TODO: replace ref
+* TODO: Save this webpage to Zotero then update citation
  -->
 
   
@@ -255,35 +259,35 @@
 <h3 id="abstract">Abstract</h3>
 <p>I&rsquo;ve long felt that reaction kinetics, a formalism for describing agent-based models, would fit naturally with evolutionary game theory, but I&rsquo;ve had trouble seeing the connections.  Here I explore several possible systems of reactions that yield evolutionary dynamics consistent with the replicator equation.  They are also useful for studying finite, structured populations.  Some of these approaches also exhibit plausible ecological dynamics in the absence of selection.</p>
 <h3 id="1-introduction">1 Introduction</h3>
-<p>Evolutionary game theory uses the [[wp&gt;replicator equation]] to formalize the dynamics of selected heritable traits in a population.  It is frequently used to predict the [[wp&gt;evolutionarily stable state]] of an infinite, well-mixed population.  Often it is interesting to study cases where the population is finite or not well-mixed, where the replicator equation isn&rsquo;t suitable.  Such a case is better suited to an [[wp&gt;agent-based model]] where each individual in a population is explicitly accounted.</p>
-<p>There are a variety of approaches to agent-based modeling but I am keen on [[wp&gt;reaction kinetics]] because it is simple to understand, easy to apply, and behaves predictably in the limit of a large, well-mixed population.  Also, the underlying mechanisms have clear interpretations if the reactions are [[wp&gt;elementary reaction| elementary]].</p>
-<p>It would be useful to have a reaction-kinetic framework for game theory and the replicator equation.  It could complement [[wp&gt;Moran process|other agent-based formalisms]] for studying finite, structured populations.  Below I will show a reaction kinetics approach to game theory that captures some important properties of the replicator equation.</p>
+<p>Evolutionary game theory uses the <a href="https://en.wikipedia.org/wiki/replicator%20equation" rel="external" target="_blank">replicator equation</a> to formalize the dynamics of selected heritable traits in a population.  It is frequently used to predict the <a href="https://en.wikipedia.org/wiki/evolutionarily%20stable%20state" rel="external" target="_blank">evolutionarily stable state</a> of an infinite, well-mixed population.  Often it is interesting to study cases where the population is finite or not well-mixed, where the replicator equation isn&rsquo;t suitable.  Such a case is better suited to an <a href="https://en.wikipedia.org/wiki/agent-based%20model" rel="external" target="_blank">agent-based model</a> where each individual in a population is explicitly accounted.</p>
+<p>There are a variety of approaches to agent-based modeling but I am keen on <a href="https://en.wikipedia.org/wiki/reaction%20kinetics" rel="external" target="_blank">reaction kinetics</a> because it is simple to understand, easy to apply, and behaves predictably in the limit of a large, well-mixed population.  Also, the underlying mechanisms have clear interpretations if the reactions are <a href="https://en.wikipedia.org/wiki/elementary%20reaction" rel="external" target="_blank">elementary</a>.</p>
+<p>It would be useful to have a reaction-kinetic framework for game theory and the replicator equation.  It could complement <a href="https://en.wikipedia.org/wiki/Moran%20process" rel="external" target="_blank">other agent-based formalisms</a> for studying finite, structured populations.  Below I will show a reaction kinetics approach to game theory that captures some important properties of the replicator equation.</p>
 <p>I have three goals:</p>
-<ul>
-<li>Selection should act in a [[wp&gt;replicator equation]]-like manner, with the same behaviour at least up to a time-rescaling,</li>
-<li>In the absence of selection, the density should obey the [[wp&gt;logistic equation]], and</li>
-<li>The reactions should be simple, preferably [[wp&gt;elementary reaction| elementary]].</li>
-</ul>
+<ol>
+<li>Selection should act in a <a href="https://en.wikipedia.org/wiki/replicator%20equation" rel="external" target="_blank">replicator equation</a>-like manner, with the same behaviour at least up to a time-rescaling,</li>
+<li>In the absence of selection, the density should obey the <a href="https://en.wikipedia.org/wiki/Logistic_function#Logistic_differential_equation" rel="external" target="_blank">logistic equation</a>, and</li>
+<li>The reactions should be simple, preferably <a href="https://en.wikipedia.org/wiki/elementary%20reaction" rel="external" target="_blank">elementary</a>.</li>
+</ol>
 <p>In the following sections we will explore several ways to define birth-death reactions, analyzing them to see how well they meet the above goals.</p>
 <ul>
-<li>[[#Select births, ecological deaths]]</li>
-<li>[[#Replacement]]</li>
-<li>[[#Select deaths, ecological births]]</li>
-<li>[[#Select births with a separate game]]</li>
-<li>[[#Select births into available &ldquo;holes&rdquo;]]</li>
+<li><a href="/~rikblok/research/notes/replicator_kinetics/index.html#2-select-births-ecological-deaths">Select births, ecological deaths</a></li>
+<li><a href="/~rikblok/research/notes/replicator_kinetics/index.html#3-replacement">Replacement</a></li>
+<li><a href="/~rikblok/research/notes/replicator_kinetics/index.html#4-select-deaths-ecological-births">Select deaths, ecological births</a></li>
+<li><a href="/~rikblok/research/notes/replicator_kinetics/index.html#5-select-births-with-a-separate-game">Select births with a separate game</a></li>
+<li><a href="/~rikblok/research/notes/replicator_kinetics/index.html#6-select-births-into-available-holes">Select births into available &ldquo;holes&rdquo;</a></li>
 </ul>
 <p>I use the term &ldquo;select&rdquo; to indicate processes that select for traits (differential fitness) and &ldquo;ecological&rdquo; to mean processes that affect all individuals equally, independent of their type.</p>
 <h3 id="2-select-births-ecological-deaths">2 Select births, ecological deaths</h3>
-<p>Consider a population of heritable types where an individual of type \(i\), \(X_i\), acquires a //payoff// \(P_{ij}\) against \(X_j\) in pairwise interactions.  Further assume that an individual&rsquo;s birthrate is determined by its payoff.  Conversely, the deathrate depends only on the total population density, $n$:
+<p>Consider a population of heritable types where an individual of type \(i\), \(X_i\), acquires a <em>payoff</em> \(P_{ij}\) against \(X_j\) in pairwise interactions.  Further assume that an individual&rsquo;s birthrate is determined by its payoff.  Conversely, the deathrate depends only on the total population density, $n$:
 &lt;WRAP center round box 90%&gt;
 \begin{eqnarray}
-X_i + X_j &amp; \xrightarrow{P_{ij}} &amp; 2 X_i + X_j   &amp; \text{(birth)} \
+X_i + X_j &amp; \xrightarrow{P_{ij}} &amp; 2 X_i + X_j   &amp; \text{(birth)} \cr
 X_i       &amp; \xrightarrow{\delta(n)} &amp; \emptyset. &amp; \text{(death)}
 \end{eqnarray}
 </WRAP>
 The birth process performs evolutionary selection, while the death process is purely ecological (because it drives population density but not frequency of types, on average).  The deathrate could be any non-negative function (even $\delta(n)=0$ leaving only the birth process and a geometrically increasing population).</p>
 <h4 id="21-rate-equations">2.1 Rate equations</h4>
-<p>These two processes can be applied to simulate a finite population, or analyzed in the limit of an infinite, well-mixed population.  Then we find the dynamics are very similar to the replicator equation and reproduce some important properties thereof.  The [[wp&gt;Law of mass action]] allows to compute the rate equation for the density \(x_i=[X_i]\) of type \(i\):
+<p>These two processes can be applied to simulate a finite population, or analyzed in the limit of an infinite, well-mixed population.  Then we find the dynamics are very similar to the replicator equation and reproduce some important properties thereof.  The <a href="https://en.wikipedia.org/wiki/Law%20of%20mass%20action" rel="external" target="_blank">Law of mass action</a> allows to compute the rate equation for the density \(x_i=[X_i]\) of type \(i\):
 \begin{equation}
 \frac{dx_i}{dt} = x_i \left( \sum_j P_{ij} x_j - \delta(n) \right)
 \end{equation}
@@ -306,8 +310,8 @@ is the overall population per-capita average birthrate.</p>
 <p>Then the frequency of type $i$ obeys
 \begin{eqnarray}
 \frac{dy_i}{dt} &amp; = &amp; \frac{1}{n} \left[ \frac{dx_i}{dt} - y_i \frac{dn}{dt} \right]
-\label{eq:dyidt} \
-&amp; = &amp; n \left[ y_i \left( \sum_j P_{ij} y_j - \frac{1}{n} \delta(n) \right) - y_i \left( \sum_{jk} P_{kj} y_j y_k - \frac{1}{n} \delta(n) \right) \right] \<br>
+\label{eq:dyidt} \cr
+&amp; = &amp; n \left[ y_i \left( \sum_j P_{ij} y_j - \frac{1}{n} \delta(n) \right) - y_i \left( \sum_{jk} P_{kj} y_j y_k - \frac{1}{n} \delta(n) \right) \right] \cr
 &amp; = &amp; n y_i (f_i - \bar{f}).
 \label{eq:modifiedreplicatoreq}
 \end{eqnarray}</p>
@@ -322,7 +326,7 @@ where $\bar{f}$ itself varies with the population structure.</p>
 \begin{equation}
 \frac{dn}{dt} = r n^2 \left(1 - \frac{n}{K} \right)
 \end{equation}
-where $K \equiv r n^2 / \delta(n)$.  If $\delta(n) \propto n^2$ then $K$ is a constant carrying capacity.  The dynamics are similar to logistic except the quadratic factor depresses the growth rate when the population is small, a [[wp&gt;Allee_effect#Strong_vs._weak_Allee_effects | weak Allee effect]].</p>
+where $K \equiv r n^2 / \delta(n)$.  If $\delta(n) \propto n^2$ then $K$ is a constant carrying capacity.  The dynamics are similar to logistic except the quadratic factor depresses the growth rate when the population is small, a <a href="https://en.wikipedia.org/wiki/Allee_effect#Strong_vs._weak_Allee_effects" rel="external" target="_blank">weak Allee effect</a>.</p>
 <h4 id="24-bounded-population">2.4 Bounded population</h4>
 \[
   3 X \xrightarrow{\text{constant}} 2 X
@@ -338,7 +342,7 @@ X_i + X_j + X_k \xrightarrow{P_{ij}} 2 X_i + X_j \; \text{ (replacement)}
 <p>We could also design a system with an ecological (non-selective) birth process and a selective death process (that depends on payoffs).  Let $\pi \geq \max_{i,j} P_{ij}$ be a constant.  Then
 &lt;WRAP center round box 90%&gt;
 \begin{eqnarray}
-X_i &amp; \xrightarrow{\beta(n)} &amp; 2 X_i         &amp; \text{(birth)} \
+X_i &amp; \xrightarrow{\beta(n)} &amp; 2 X_i         &amp; \text{(birth)} \cr
 X_i + X_j &amp; \xrightarrow{\pi - P_{ij}} &amp; X_j &amp; \text{(death)}
 \end{eqnarray}
 </WRAP>
@@ -354,13 +358,13 @@ If we have a constant birthrate $\beta(n)\equiv r = \text{constant}$ then we exa
 <p>Is it possible to formulate a system with logistic ecological behaviour but with selection acting on births instead of deaths?  It&rsquo;s tricky because evolutionary game theory requires pairwise interactions but the birth process must be first-order (spontaneous).  To achieve this we need to separate the &ldquo;game&rdquo; from the births: Let&rsquo;s introduce pairwise interactions that determine the birthrates of individuals as follows:
 &lt;WRAP center round box 90%&gt;
 \begin{eqnarray}
-Z_{ik} + Z_{jl} &amp; \xrightarrow{\gamma} &amp; Z_{ij} + Z_{jl} &amp; \text{(game)} \
-Z_{ij}          &amp; \xrightarrow{P_{ij}} &amp; 2 Z_{ij}        &amp; \text{(birth)} \
+Z_{ik} + Z_{jl} &amp; \xrightarrow{\gamma} &amp; Z_{ij} + Z_{jl} &amp; \text{(game)} \cr
+Z_{ij}          &amp; \xrightarrow{P_{ij}} &amp; 2 Z_{ij}        &amp; \text{(birth)} \cr
 Z_{ij}          &amp; \xrightarrow{\delta(n)} &amp; \emptyset.   &amp; \text{(death)}
 \end{eqnarray}
 </WRAP>
 We use $Z$ to denote these individuals because they carry two pieces of information: their own type and the type of their last co-player in the game.  The density of type $i$ (regardless of last co-player) is now $x_i = \sum_j z_{ij}$ and $n = \sum_i x_i$.</p>
-<p>In terms of the frequencies $w_{ij} \equiv z_{ij}/n$ and $y_i \equiv x_i/n = \sum_j w_{ij}$, after some work (see [[#Appendix]]) we find
+<p>In terms of the frequencies $w_{ij} \equiv z_{ij}/n$ and $y_i \equiv x_i/n = \sum_j w_{ij}$, after some work (see <a href="/~rikblok/research/notes/replicator_kinetics/index.html#8-appendix">Appendix</a>) we find
 \begin{equation}
 \frac{dy_i}{dt} = \sum_j P_{ij} w_{ij} - y_i \sum_{kl} P_{kl} w_{kl}.
 \end{equation}</p>
@@ -376,7 +380,7 @@ as its per-capita average birthrate and the mean fitness
 then we find
 \begin{eqnarray}
 \frac{dy_i}{dt} &amp; = &amp; y_i ( f_i - \bar{f})
-\label{eq:separategamereplicator} \
+\label{eq:separategamereplicator} \cr
 \frac{dn}{dt} &amp; = &amp; n (\bar{f} - \delta(n)).
 \end{eqnarray}</p>
 <h4 id="51-ecology">5.1 Ecology</h4>
@@ -390,10 +394,10 @@ To achieve that each individual should compete with all others through a reactio
 Z_{ik} + Z_{jl} &amp; \xrightarrow{\delta} &amp; Z_{jl}.   &amp; \text{(competitive death)}
 \end{eqnarray}</p>
 <h3 id="6-select-births-into-available-holes">6 Select births into available &ldquo;holes&rdquo;</h3>
-<p>The logistic equation derives from two simple reaction kinetic approaches: $N \rightleftharpoons 2 N$ or with explicit ecological &ldquo;holes&rdquo;, $H$: $N+H\rightarrow 2 N, N\rightarrow H$.  Here the &ldquo;holes&rdquo; serve to limit the population without explicit competition; a successful birth won&rsquo;t occur without a hole for the offspring to occupy.  Since the total population of holes and individuals is conserved, the population is controlled.  The former approach is similar to [[#Select births, ecological deaths]], suggesting that we should also consider the latter.</p>
+<p>The logistic equation derives from two simple reaction kinetic approaches: $N \rightleftharpoons 2 N$ or with explicit ecological &ldquo;holes&rdquo;, $H$: $N+H\rightarrow 2 N, N\rightarrow H$.  Here the &ldquo;holes&rdquo; serve to limit the population without explicit competition; a successful birth won&rsquo;t occur without a hole for the offspring to occupy.  Since the total population of holes and individuals is conserved, the population is controlled.  The former approach is similar to <a href="/~rikblok/research/notes/replicator_kinetics/index.html#2-select-births-ecological-deaths">Select births, ecological deaths</a>, suggesting that we should also consider the latter.</p>
 <p>&lt;WRAP center round box 90%&gt;
 \begin{eqnarray}
-X_i + X_j + H &amp; \xrightarrow{P_{ij}} &amp; 2 X_i + X_j   &amp; \text{(birth)} \
+X_i + X_j + H &amp; \xrightarrow{P_{ij}} &amp; 2 X_i + X_j   &amp; \text{(birth)} \cr
 X_i       &amp; \xrightarrow{\delta(n)} &amp; H.     &amp; \text{(death)}
 \end{eqnarray}
 </WRAP></p>
@@ -412,36 +416,69 @@ where the total population density \(n\) follows
 <h4 id="61-discussion">6.1 Discussion</h4>
 <p>In this section we went back to select births and ecological deaths but separated the &ldquo;game&rdquo; (assignment of birthrates) from the birth process.  With a slightly modified fitness function (Equation $\ref{eq:separategamefitness}$) we were able to achieve all of our goals: (1) replicator equation-like frequency dynamics (Equation $\ref{eq:separategamereplicator}$), and (2) logistic ecological behaviour (Equation $\ref{eq:separategameecology}$), with (3) only elementary reactions.</p>
 <h3 id="7-summary">7 Summary</h3>
-<p>We have looked at four different systems of elementary reactions that produce replicator equation-like dynamics (having the same stability properties, only different in the rate of approach).  Two of theses cases also have the pleasing property that they &ldquo;fall back&rdquo; to logistic population dynamics in the absence of selection.  A third is logistic with a weak Allee effect.  The last, [[#Replacement]], is less realistic in that the population size is fixed.</p>
-$$ X_i + X_j + X_k \xrightarrow{P_{ij}} 2 X_i + X_j $$<p>                                                                                                                                                                                                              |  Yes               |  None (constant population size)                                             |
-|  [[#Select deaths, ecological births]]    | \begin{eqnarray*} X_i &amp; \xrightarrow{\beta} &amp; 2 X_i         &amp; \text{(birth)} \ X_i + X_j &amp; \xrightarrow{\pi - P_{ij}} &amp; X_j &amp; \text{(death)}  \end{eqnarray*}                                                                                                      |  Yes               |  Logistic                                                                    |
-|  [[#Select births with a separate game]]  | \begin{eqnarray*}   Z_{ik} + Z_{jl} &amp; \xrightarrow{\gamma} &amp; Z_{ij} + Z_{jl} &amp; \text{(game)} \   Z_{ij}          &amp; \xrightarrow{P_{ij}} &amp; 2 Z_{ij}        &amp; \text{(birth)} \   Z_{ik} + Z_{jl} &amp; \xrightarrow{\delta} &amp; Z_{jl} &amp; \text{(death)}  \end{eqnarray*}  |  Yes               |  Logistic                                                                    |</p>
+<p>We have looked at four different systems of elementary reactions that produce replicator equation-like dynamics (having the same stability properties, only different in the rate of approach).  Two of theses cases also have the pleasing property that they &ldquo;fall back&rdquo; to logistic population dynamics in the absence of selection.  A third is logistic with a weak Allee effect.  The last, <a href="/~rikblok/research/notes/replicator_kinetics/index.html#3-replacement">Replacement</a>, is less realistic in that the population size is fixed.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">System</th>
+          <th style="text-align: center">Processes<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></th>
+          <th style="text-align: center">Replicator-like?</th>
+          <th style="text-align: center">Ecology<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><a href="/~rikblok/research/notes/replicator_kinetics/index.html#2-select-births-ecological-deaths">Select births, ecological deaths</a></td>
+          <td style="text-align: center">\begin{eqnarray*} X_i + X_j &amp; \xrightarrow{P_{ij}} &amp; 2 X_i + X_j &amp; \text{(birth)} \cr X_i + 2 X &amp; \xrightarrow{\delta} &amp; 2 X. &amp; \text{(death)} \end{eqnarray*}</td>
+          <td style="text-align: center">Yes</td>
+          <td style="text-align: center">Logistic with weak Allee effect</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><a href="/~rikblok/research/notes/replicator_kinetics/index.html#3-replacement">Replacement</a></td>
+          <td style="text-align: center">$$ X_i + X_j + X_k \xrightarrow{P_{ij}} 2 X_i + X_j $$</td>
+          <td style="text-align: center">Yes</td>
+          <td style="text-align: center">None (constant population size)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><a href="/~rikblok/research/notes/replicator_kinetics/index.html#4-select-deaths-ecological-births">Select deaths, ecological births</a></td>
+          <td style="text-align: center">\begin{eqnarray*} X_i &amp; \xrightarrow{\beta} &amp; 2 X_i &amp; \text{(birth)} \cr X_i + X_j &amp; \xrightarrow{\pi - P_{ij}} &amp; X_j &amp; \text{(death)} \end{eqnarray*}</td>
+          <td style="text-align: center">Yes</td>
+          <td style="text-align: center">Logistic</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><a href="/~rikblok/research/notes/replicator_kinetics/index.html#5-select-births-with-a-separate-game">Select births with a separate game</a></td>
+          <td style="text-align: center">\begin{eqnarray*}   Z_{ik} + Z_{jl} &amp; \xrightarrow{\gamma} &amp; Z_{ij} + Z_{jl} &amp; \text{(game)} \cr Z_{ij} &amp; \xrightarrow{P_{ij}} &amp; 2 Z_{ij} &amp; \text{(birth)} \cr Z_{ik} + Z_{jl} &amp; \xrightarrow{\delta} &amp; Z_{jl} &amp; \text{(death)} \end{eqnarray*}</td>
+          <td style="text-align: center">Yes</td>
+          <td style="text-align: center">Logistic</td>
+      </tr>
+  </tbody>
+</table>
 <p>Here are some ideas for future consideration:</p>
 <ul>
-<li>Can this approach be extended to N-player games (eg. the public goods game)?</li>
+<li>Can this approach be extended to \(N\)-player games (eg. the public goods game)?</li>
 <li>Is there a general &ldquo;solution&rdquo; for a finite population, eg. Fokker-Planck?</li>
 </ul>
 <h3 id="8-appendix">8 Appendix</h3>
 <h4 id="81-derivation-of-rate-equation-for-frequency-of-type-in-case-of-select-births-with-a-separate-game">8.1 Derivation of rate equation for frequency of type in case of select births with a separate game</h4>
 <p>In terms of the frequencies $w_{ij} \equiv z_{ij}/n$ and $y_i \equiv x_i/n = \sum_j w_{ij}$
 \begin{eqnarray}
-\frac{dz_{ij}}{dt} &amp; = &amp; \gamma \sum_{kl} ( z_{ik} z_{jl} - z_{ij} z_{kl} ) + P_{ij} z_{ij} - \delta(n) z_{ij} \
+\frac{dz_{ij}}{dt} &amp; = &amp; \gamma \sum_{kl} ( z_{ik} z_{jl} - z_{ij} z_{kl} ) + P_{ij} z_{ij} - \delta(n) z_{ij} \cr
 &amp; = &amp; \gamma ( x_i x_j - z_{ij} n ) + (P_{ij} - \delta(n)) z_{ij}.
 \label{eq:dzijdt}
 \end{eqnarray}</p>
 <p>\begin{eqnarray}
-\frac{dw_{ij}}{dt} &amp; = &amp; \frac{1}{n} \left[ \frac{dz_{ij}}{dt} - w_{ij} \frac{dn}{dt} \right] \
-\frac{dx_i}{dt} &amp; = &amp; \sum_j \frac{dz_{ij}}{dt} \
-&amp; = &amp; \gamma (x_i n - n x_i) + \sum_j P_{ij} z_{ij} - \delta(n) x_i \
-&amp; = &amp; \sum_j P_{ij} z_{ij} - \delta(n) x_i. \
-\frac{dn}{dt} &amp; = &amp; \sum_i \frac{dx_i}{dt} \
+\frac{dw_{ij}}{dt} &amp; = &amp; \frac{1}{n} \left[ \frac{dz_{ij}}{dt} - w_{ij} \frac{dn}{dt} \right] \cr
+\frac{dx_i}{dt} &amp; = &amp; \sum_j \frac{dz_{ij}}{dt} \cr
+&amp; = &amp; \gamma (x_i n - n x_i) + \sum_j P_{ij} z_{ij} - \delta(n) x_i \cr
+&amp; = &amp; \sum_j P_{ij} z_{ij} - \delta(n) x_i. \cr
+\frac{dn}{dt} &amp; = &amp; \sum_i \frac{dx_i}{dt} \cr
 &amp; = &amp; n \left( \sum_{ij} P_{ij} w_{ij} - \delta(n) \right).
 \end{eqnarray}
 From Equation $\ref{eq:dzijdt}$
 \begin{eqnarray}
-\frac{dz_{ij}}{dt} &amp; = &amp; \gamma n^2 ( y_i y_j - w_{ij} ) + n (P_{ij} - \delta(n)) w_{ij} \
-\frac{dw_{ij}}{dt} &amp; = &amp; \frac{1}{n} \left[ \frac{dz_{ij}}{dt} - w_{ij} \frac{dn}{dt} \right] \
-&amp; = &amp; \gamma n (y_i y_j - w_{ij}) + (P_{ij} - \delta(n)) w_{ij} - w_{ij} \sum_{kl} P_{kl} w_{kl} + \delta(n) w_{ij} \
+\frac{dz_{ij}}{dt} &amp; = &amp; \gamma n^2 ( y_i y_j - w_{ij} ) + n (P_{ij} - \delta(n)) w_{ij} \cr
+\frac{dw_{ij}}{dt} &amp; = &amp; \frac{1}{n} \left[ \frac{dz_{ij}}{dt} - w_{ij} \frac{dn}{dt} \right] \cr
+&amp; = &amp; \gamma n (y_i y_j - w_{ij}) + (P_{ij} - \delta(n)) w_{ij} - w_{ij} \sum_{kl} P_{kl} w_{kl} + \delta(n) w_{ij} \cr
 \frac{dy_i}{dt}    &amp; = &amp; \sum_j P_{ij} w_{ij} - y_i \sum_{kl} P_{kl} w_{kl}.
 \end{eqnarray}</p>
 <h3 id="9-references">9 References</h3>
@@ -501,6 +538,18 @@ From Equation $\ref{eq:dzijdt}$
 
 
 
+<h3 id="10-footnotes">10 Footnotes</h3>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Reactions written in tems of preferred elementary reactions.  All rates parameters are constant, independent of population density or structure.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>In the absence of selective pressure, $P_{ij}=\text{constant}$.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 
   <footer class="footline">
   </footer>
@@ -517,7 +566,7 @@ Rik&#39;s Treehouse
           </a>
         </div>
         <script>
-          window.index_js_url="/~rikblok/searchindex.en.js?1738698899";
+          window.index_js_url="/~rikblok/searchindex.en.js?1738718902";
         </script>
         <search><form action="/~rikblok/search/index.html" method="get">
           <div class="searchbox default-animation">
@@ -530,12 +579,12 @@ Rik&#39;s Treehouse
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="/~rikblok/js/auto-complete.js?1738698899" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.min.js?1738698899" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1738698899" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1738698899" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.en.min.js?1738698899" defer></script>
-        <script src="/~rikblok/js/search.js?1738698899" defer></script>
+        <script src="/~rikblok/js/auto-complete.js?1738718902" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.min.js?1738718902" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1738718902" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1738718902" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.en.min.js?1738718902" defer></script>
+        <script src="/~rikblok/js/search.js?1738718902" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -610,8 +659,8 @@ Rik&#39;s Treehouse
         </div>
       </div>
     </aside>
-    <script src="/~rikblok/js/clipboard.min.js?1738698899" defer></script>
-    <script src="/~rikblok/js/perfect-scrollbar.min.js?1738698899" defer></script>
+    <script src="/~rikblok/js/clipboard.min.js?1738718902" defer></script>
+    <script src="/~rikblok/js/perfect-scrollbar.min.js?1738718902" defer></script>
     <script>
       function useMathJax( config ){
         window.MathJax = Object.assign( window.MathJax || {}, {
@@ -626,7 +675,7 @@ Rik&#39;s Treehouse
       }
       useMathJax( JSON.parse("{}") );
     </script>
-    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1738698899"></script>
-    <script src="/~rikblok/js/theme.js?1738698899" defer></script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1738718902"></script>
+    <script src="/~rikblok/js/theme.js?1738718902" defer></script>
   </body>
 </html>

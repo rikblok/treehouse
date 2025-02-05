@@ -18,16 +18,20 @@ echo Your web browser will now open http://localhost:1313/~rikblok/
 echo.
 start "Browser" http://localhost:1313/~rikblok/
 
-:cmd
-echo Command-line window will now open
-echo.
-start "Command-line" cmd.exe 
-
+:: skip github [2025-02-04]
+goto cmd
 :github
 echo Starting GitHub Desktop
 echo.
 
 call "U:\Google Drive\Windows\Cmd\isRunning.cmd" "GitHubDesktop.exe"
-if errorlevel 1 github "%~dpn0"
+if errorlevel 1 github
+
+:cmd
+echo Command-line window will now open
+echo `exit` command-line when done editing
+echo Close server (Ctrl+C) and `serve` on command-line to restart
+echo.
+start "Command-line" cmd.exe 
 
 :end
