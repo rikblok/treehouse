@@ -10,7 +10,14 @@ theme = ['hugo-theme-relearn', 'hugo-cite']
     email = 'rik.blok@ubc.ca'
     name = 'Rik Blok'
 	phone = '604-736-6343'
-	
+  [params.page]
+    showTableOfContents = true
+  [params.sidebar]
+    enable = true
+    menu = "main,content,toc"
+  [params.toc]
+    sidebar = true
+
 [markup]
   [markup.goldmark]
   [markup.goldmark.renderer]
@@ -21,4 +28,3 @@ theme = ['hugo-theme-relearn', 'hugo-cite']
         [markup.goldmark.extensions.passthrough.delimiters]
           block = [['\[', '\]'], ['$$', '$$']]
           inline = [['\(', '\)']]
-

@@ -11,12 +11,7 @@ bibFile = "bib-zotero-better-cson.json"
 ## Deriving the replicator equation from birth-death processes
 
 <!-- 
-{{< cite "blokParallel2004" >}}
-
-2025-02-04: 
-* TODO: replace WRAP
-* TODO: replace ref
-* TODO: Save this webpage to Zotero then update citation
+{{< cite "blokReplicator2013" >}}
  -->
 {{< bibliography cited >}}
 
@@ -57,12 +52,10 @@ I use the term "select" to indicate processes that select for traits (differenti
 ### 2 Select births, ecological deaths
 
 Consider a population of heritable types where an individual of type \(i\), \(X_i\), acquires a *payoff* \(P_{ij}\) against \(X_j\) in pairwise interactions.  Further assume that an individual's birthrate is determined by its payoff.  Conversely, the deathrate depends only on the total population density, $n$:
-<WRAP center round box 90%>
 \begin{eqnarray}
 X_i + X_j & \xrightarrow{P_{ij}} & 2 X_i + X_j   & \text{(birth)} \cr
 X_i       & \xrightarrow{\delta(n)} & \emptyset. & \text{(death)} 
 \end{eqnarray}
-</WRAP>
 The birth process performs evolutionary selection, while the death process is purely ecological (because it drives population density but not frequency of types, on average).  The deathrate could be any non-negative function (even $\delta(n)=0$ leaving only the birth process and a geometrically increasing population).
 
 
@@ -81,25 +74,31 @@ where the total population density is \(n\equiv \sum_k x_k\) and follows
 #### 2.2 Fitness
 
 Let $y_i=x_i/n$ be the frequency of type $i$.  We define its fitness
+
+{{< equation number="2.1" >}}
 \begin{equation}
   f_i\equiv \sum_j P_{ij} y_j
-  \label{eq:fi}
 \end{equation}
+{{< /equation >}}
+
 as its per-capita average birthrate and the mean fitness
+
+{{< equation number="2.2" >}}
 \begin{equation}
   \bar{f} \equiv \sum_k f_k y_k
-  \label{eq:fbar}
 \end{equation}
+{{< /equation >}}
+
 is the overall population per-capita average birthrate.
 
 Then the frequency of type $i$ obeys
+{{< equation number="2.3" >}}
 \begin{eqnarray}
-  \frac{dy_i}{dt} & = & \frac{1}{n} \left[ \frac{dx_i}{dt} - y_i \frac{dn}{dt} \right]
-  \label{eq:dyidt} \cr
+  \frac{dy_i}{dt} & = & \frac{1}{n} \left[ \frac{dx_i}{dt} - y_i \frac{dn}{dt} \right] \cr
   & = & n \left[ y_i \left( \sum_j P_{ij} y_j - \frac{1}{n} \delta(n) \right) - y_i \left( \sum_{jk} P_{kj} y_j y_k - \frac{1}{n} \delta(n) \right) \right] \cr
   & = & n y_i (f_i - \bar{f}).
-  \label{eq:modifiedreplicatoreq}
 \end{eqnarray}
+{{< /equation >}}
 
 For comparison, the replicator equation is $dy_i/dt = y_i (f_i - \bar{f})$, differing only by a factor $n$.  So our "replicator kinetics" have exactly the same stability properties as the replicator equation, the only difference is that the rate of evolution varies with the population size.  In particular, the evolutionarily stable state is the same in both frameworks.
 
@@ -130,31 +129,27 @@ or equivalently $\delta(n) \propto n^2$, where $X$ represents an individual of a
 
 ### 3 Replacement
 
-By coupling births and deaths into a replacement process we can also recover our modified replicator equation (Eq. $\ref{eq:modifiedreplicatoreq}$) from a single process:
-<WRAP center round box 90%>
+By coupling births and deaths into a replacement process we can also recover our modified replicator equation (Eq. [2.3](#eq-2-3)) from a single process:
 \[
 X_i + X_j + X_k \xrightarrow{P_{ij}} 2 X_i + X_j \; \text{ (replacement)} 
 \]
-</WRAP>
 
-\(X_k\) is simply a bystander who may be replaced by a child of \(X_i\), depending on its payoff against \(X_j\).  In this case the population size is fixed so we recover exactly the replicator equation, without a fluctuating rate depending on the population size as in Equation $\ref{eq:modifiedreplicatoreq}$.
+\(X_k\) is simply a bystander who may be replaced by a child of \(X_i\), depending on its payoff against \(X_j\).  In this case the population size is fixed so we recover exactly the replicator equation, without a fluctuating rate depending on the population size as in Equation [2.3](#eq-2-3).
 
 ### 4 Select deaths, ecological births
 
 We could also design a system with an ecological (non-selective) birth process and a selective death process (that depends on payoffs).  Let $\pi \geq \max_{i,j} P_{ij}$ be a constant.  Then 
-<WRAP center round box 90%>
 \begin{eqnarray}
 X_i & \xrightarrow{\beta(n)} & 2 X_i         & \text{(birth)} \cr
 X_i + X_j & \xrightarrow{\pi - P_{ij}} & X_j & \text{(death)} 
 \end{eqnarray}
-</WRAP>
 where $\beta(n)$ is a birthrate that may depend on the population density but not its composition.  For a stable, finite population it requires that $\beta(n) \prec n$ grows slower than $n$, such as spontaneous birth, $\beta(n) =\text{constant}$.
 
 In this system, a higher payoff reduces the death rate, increasing the survival time.
 
 #### 4.1 Ecology
 
-Let's consider again the dynamics without selection: $P_{ij} = \text{constant} < \pi$ for all $i,j$ so $\bar{f} = \text{constant}$.  Then we can define $K=\beta(n)/(\pi-\bar{f})$ and --- applying Equations $\ref{eq:fi}$, $\ref{eq:fbar}$, and $\ref{eq:dyidt}$ to the rate equations --- we find
+Let's consider again the dynamics without selection: $P_{ij} = \text{constant} < \pi$ for all $i,j$ so $\bar{f} = \text{constant}$.  Then we can define $K=\beta(n)/(\pi-\bar{f})$ and --- applying Equations [2.1](#eq-2-1), [2.2](#eq-2-2), and [2.3](#eq-2-3) to the rate equations --- we find
 \begin{equation}
   \frac{dn}{dt} = \beta(n) n \left(1 - \frac{n}{K} \right).
 \end{equation}
@@ -164,13 +159,11 @@ If we have a constant birthrate $\beta(n)\equiv r = \text{constant}$ then we exa
 ### 5 Select births with a separate game
 
 Is it possible to formulate a system with logistic ecological behaviour but with selection acting on births instead of deaths?  It's tricky because evolutionary game theory requires pairwise interactions but the birth process must be first-order (spontaneous).  To achieve this we need to separate the "game" from the births: Let's introduce pairwise interactions that determine the birthrates of individuals as follows:
-<WRAP center round box 90%>
 \begin{eqnarray}
   Z_{ik} + Z_{jl} & \xrightarrow{\gamma} & Z_{ij} + Z_{jl} & \text{(game)} \cr
   Z_{ij}          & \xrightarrow{P_{ij}} & 2 Z_{ij}        & \text{(birth)} \cr
   Z_{ij}          & \xrightarrow{\delta(n)} & \emptyset.   & \text{(death)} 
 \end{eqnarray}
-</WRAP>
 We use $Z$ to denote these individuals because they carry two pieces of information: their own type and the type of their last co-player in the game.  The density of type $i$ (regardless of last co-player) is now $x_i = \sum_j z_{ij}$ and $n = \sum_i x_i$.
 
 In terms of the frequencies $w_{ij} \equiv z_{ij}/n$ and $y_i \equiv x_i/n = \sum_j w_{ij}$, after some work (see [Appendix](#8-appendix)) we find
@@ -179,29 +172,35 @@ In terms of the frequencies $w_{ij} \equiv z_{ij}/n$ and $y_i \equiv x_i/n = \su
 \end{equation}
 
 If we define the fitness of type $i$
+{{< equation number="5.1">}}
 \begin{equation}
   f_i\equiv \frac{1}{y_i} \sum_j P_{ij} w_{ij}
-  \label{eq:separategamefitness}
 \end{equation}
+{{< /equation >}}
+
 as its per-capita average birthrate and the mean fitness
 \begin{equation}
   \bar{f} \equiv \sum_i f_i y_i = \sum_{ij} P_{ij} w_{ij}
 \end{equation}
 then we find
+{{< equation number="5.2">}}
 \begin{eqnarray}
-  \frac{dy_i}{dt} & = & y_i ( f_i - \bar{f}) 
-  \label{eq:separategamereplicator} \cr
+  \frac{dy_i}{dt} & = & y_i ( f_i - \bar{f}) \cr
   \frac{dn}{dt} & = & n (\bar{f} - \delta(n)).
 \end{eqnarray}
+{{< /equation >}}
 
 
 #### 5.1 Ecology
 
 Without selection, so  $P_{ij}\equiv r=\text{constant}$ for all $i,j$, we require $\delta(n)=r n/K$ to get the logistic equation
+
+{{< equation number="5.3" >}}
 \begin{equation}
   \frac{dn}{dt} = r n \left(1 - \frac{n}{K} \right).
-  \label{eq:separategameecology}
 \end{equation}
+{{< /equation >}}
+
 To achieve that each individual should compete with all others through a reaction like,
 \begin{eqnarray}
   Z_{ik} + Z_{jl} & \xrightarrow{\delta} & Z_{jl}.   & \text{(competitive death)} 
@@ -212,31 +211,29 @@ To achieve that each individual should compete with all others through a reactio
 
 The logistic equation derives from two simple reaction kinetic approaches: $N \rightleftharpoons 2 N$ or with explicit ecological "holes", $H$: $N+H\rightarrow 2 N, N\rightarrow H$.  Here the "holes" serve to limit the population without explicit competition; a successful birth won't occur without a hole for the offspring to occupy.  Since the total population of holes and individuals is conserved, the population is controlled.  The former approach is similar to [Select births, ecological deaths](#2-select-births-ecological-deaths), suggesting that we should also consider the latter.
 
-<WRAP center round box 90%>
 \begin{eqnarray}
 X_i + X_j + H & \xrightarrow{P_{ij}} & 2 X_i + X_j   & \text{(birth)} \cr
 X_i       & \xrightarrow{\delta(n)} & H.     & \text{(death)} 
 \end{eqnarray}
-</WRAP>
 
 If the total population, including "holes" is conserved, $K\equiv \sum_l x_l + h$, then the rate equations for this reaction set can be written, substituting $h=K-\sum_l x_l$, as:
 \begin{equation}
-  \frac{dx_i}{dt} = x_i \left( (K - \sum_l x_l) \sum_j P_{ij} x_j - \delta(n) \right)
+  \frac{dx_i}{dt} = x_i \left( \left(K - \sum_l x_l\right) \sum_j P_{ij} x_j - \delta(n) \right)
 \end{equation}
 where the total population density \(n\) follows
 \begin{equation}
-  \frac{dn}{dt} = \sum_k \frac{dx_k}{dt} = (K - \sum_l x_l) \sum_{jk} P_{kj} x_j x_k - n \delta(n).
+  \frac{dn}{dt} = \sum_k \frac{dx_k}{dt} = \left(K - \sum_l x_l\right) \sum_{jk} P_{kj} x_j x_k - n \delta(n).
 \end{equation}
 
 The rate equation for the frequency comes out more complicated than before but it's still "replicator-like" in the sense that the equilibria and stabilities are the same as the replicator equation:
 \begin{equation}
-  \frac{dy_i}{dt} = n y_i (f_i - \bar{f}) (K - n \sum_l y_l).
+  \frac{dy_i}{dt} = n y_i \left(f_i - \bar{f}\right) \left(K - n \sum_l y_l\right).
 \end{equation}
 
 
 #### 6.1 Discussion
 
-In this section we went back to select births and ecological deaths but separated the "game" (assignment of birthrates) from the birth process.  With a slightly modified fitness function (Equation $\ref{eq:separategamefitness}$) we were able to achieve all of our goals: (1) replicator equation-like frequency dynamics (Equation $\ref{eq:separategamereplicator}$), and (2) logistic ecological behaviour (Equation $\ref{eq:separategameecology}$), with (3) only elementary reactions.
+In this section we went back to select births and ecological deaths but separated the "game" (assignment of birthrates) from the birth process.  With a slightly modified fitness function (Equation [5.1](#eq-5-1)) we were able to achieve all of our goals: (1) replicator equation-like frequency dynamics (Equation [5.2](#eq-5-2)), and (2) logistic ecological behaviour (Equation [5.3](#eq-5-3)), with (3) only elementary reactions.
 
 ### 7 Summary
 
@@ -264,11 +261,12 @@ Here are some ideas for future consideration:
 #### 8.1 Derivation of rate equation for frequency of type in case of select births with a separate game
 
 In terms of the frequencies $w_{ij} \equiv z_{ij}/n$ and $y_i \equiv x_i/n = \sum_j w_{ij}$
+{{< equation number="8.1">}}
 \begin{eqnarray}
   \frac{dz_{ij}}{dt} & = & \gamma \sum_{kl} ( z_{ik} z_{jl} - z_{ij} z_{kl} ) + P_{ij} z_{ij} - \delta(n) z_{ij} \cr
   & = & \gamma ( x_i x_j - z_{ij} n ) + (P_{ij} - \delta(n)) z_{ij}.
-  \label{eq:dzijdt}
 \end{eqnarray}
+{{< /equation >}}
 
 \begin{eqnarray}
   \frac{dw_{ij}}{dt} & = & \frac{1}{n} \left[ \frac{dz_{ij}}{dt} - w_{ij} \frac{dn}{dt} \right] \cr
@@ -278,7 +276,7 @@ In terms of the frequencies $w_{ij} \equiv z_{ij}/n$ and $y_i \equiv x_i/n = \su
   \frac{dn}{dt} & = & \sum_i \frac{dx_i}{dt} \cr
     & = & n \left( \sum_{ij} P_{ij} w_{ij} - \delta(n) \right).
 \end{eqnarray}
-From Equation $\ref{eq:dzijdt}$
+From Equation [8.1](#eq-8-1)
 \begin{eqnarray}
   \frac{dz_{ij}}{dt} & = & \gamma n^2 ( y_i y_j - w_{ij} ) + n (P_{ij} - \delta(n)) w_{ij} \cr
   \frac{dw_{ij}}{dt} & = & \frac{1}{n} \left[ \frac{dz_{ij}}{dt} - w_{ij} \frac{dn}{dt} \right] \cr
