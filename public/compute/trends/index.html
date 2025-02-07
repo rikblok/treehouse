@@ -20,14 +20,14 @@
     <meta itemprop="description" content="Years ago I heard it said that computers were doubling in performance every year or two; that is, two years from now you could buy a computer twice as powerful/fast as today for the same price or less. I was curious to see if this was true so I started tracking the prices of individual components on a monthly basis.">
     <meta itemprop="datePublished" content="2011-03-20T00:05:35-08:00">
     <meta itemprop="dateModified" content="2011-03-20T00:05:35-08:00">
-    <meta itemprop="wordCount" content="1557">
+    <meta itemprop="wordCount" content="1569">
     <title>Trends in Computing (2011) :: Rik&#39;s Treehouse</title>
     <link href="/~rikblok/compute/trends/index.xml" rel="alternate" type="application/rss+xml" title="Trends in Computing (2011) :: Rik&#39;s Treehouse">
-    <link href="/~rikblok/css/fontawesome-all.min.css?1738825193" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1738825193" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/auto-complete.css?1738825193" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1738825193" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/perfect-scrollbar.min.css?1738825193" rel="stylesheet">
-    <link href="/~rikblok/css/theme.min.css?1738825193" rel="stylesheet">
-    <link href="/~rikblok/css/format-html.min.css?1738825193" rel="stylesheet" id="R-format-style">
+    <link href="/~rikblok/css/fontawesome-all.min.css?1738891319" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1738891319" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/auto-complete.css?1738891319" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1738891319" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar.min.css?1738891319" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1738891319" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1738891319" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..';
@@ -99,7 +99,18 @@
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li><a href="#bandwidth">Bandwidth</a></li>
+    <li>
+      <ul>
+        <li><a href="#motherboards">Motherboards</a></li>
+        <li><a href="#ram">RAM</a></li>
+        <li><a href="#storage">Storage</a></li>
+        <li><a href="#bandwidth">Bandwidth</a></li>
+        <li><a href="#modems">Modems</a></li>
+        <li><a href="#the-bottom-line">The Bottom Line</a></li>
+        <li><a href="#math-stuff">Math Stuff</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
                 </div>
@@ -136,83 +147,438 @@
 <h1 id="trends-in-computing-2011">Trends in Computing (2011)</h1>
 
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
-<p>&mdash; Rik Blok, 2011-03-20</p>
-<p>Years ago I heard it said that computers were doubling in performance every year or two (a claim related&ndash;but not identical&ndash;to [[wp&gt;Moore&rsquo;s Law]]); that is, two years from now you could buy a computer twice as powerful/fast as today for the same price or less. I was curious to see if this was true so I started tracking the prices of individual components on a monthly basis. I am biased towards [[wp&gt;Wintel]] PCs with a total price under $2000 Canadian, so I track components typical for such machines.</p>
-<p>===== Motherboards =====</p>
-<p>{{http://www.zoology.ubc.ca/~rikblok/ComputingTrends/Motherboard.gif | Historical motherboard performance}}</p>
-<div right centeralign round box>
-^                                                                                     Architecture ^ Speed Factor  ^
-|                                                                                            i8086 | 0.0025        |
-|                                                                                             i286 | 0.011         |
-|                                                                                           i386sx | 0.016         |
-|                                                                                           i386dx | 0.023         |
-|                                                                                           i486dx | 0.047         |
-|                                                                                          i486dx2 | 0.039         |
-|                                                                                          i486dx4 | 0.031         |
-|                                                                                          Pentium | 0.093         |
-|                                                                                      Pentium MMX | 0.11          |
-|                                                                                        Pentium 2 | 0.12          |
-|                                                                                        Pentium 3 | 0.14          |
-|                                                                                        AMD Duron | 0.14          |
-|  AMD Athlon XP((Scaled by performance rating (eg. 1800+) not actual clock speed (eg. 1.53GHz).)) | 0.13          |
-|                                                                                 Intel Core 2 Duo | 0.51          |
-|                                                                                Intel Core 2 Quad | 0.72          |
-|                                                                                    Intel Core i5 | 0.90          |
-|                                                                                    Intel Core i7 | 1.00          |
-<p>Estimated relative speed factors\ of past chip architectures\ (if running at the same clock speeds).</p>
+<p>&mdash; Rik Blok, 2011-03-20 (with data thru 2021-01)</p>
+
+<details open class=" box cstyle notices note">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-exclamation-circle"></i> 
+    Note
+  </summary>
+  <div class="box-content">
+<p>I wrote the text on this page between 1993 and 2011, when computer components were changing rapidly.  I continued collecting data and updating the statistics and figures thru 2021, when the trends were already showing a dramatic slowdown.  Now, looking back on this page from 2025, it&rsquo;s remarkable how different the current trends are.</p>
+<p>&mdash; Rik Blok, 2025-02-06</p>
+  </div>
+</details>
+<p>Years ago I heard it said that computers were doubling in performance every year or two (a claim related&ndash;but not identical&ndash;to <a href="https://en.wikipedia.org/wiki/Moore's%20Law" rel="external" target="_blank">Moore&rsquo;s Law</a>); that is, two years from now you could buy a computer twice as powerful/fast as today for the same price or less. I was curious to see if this was true so I started tracking the prices of individual components on a monthly basis. I am biased towards [[wp&gt;Wintel]] PCs with a total price under $2000 Canadian, so I track components typical for such machines.</p>
+<h3 id="motherboards">Motherboards</h3>
+<div id="fig-motherboard">
+<div class="tab-panel" data-tab-group="a97386142db8bbb9e200a1a56b516586">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="motherboards"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('a97386142db8bbb9e200a1a56b516586','motherboards')"
+    >
+      <span class="tab-nav-text">Motherboards</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="motherboards"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<p><a href="#R-image-fa6e81e662ef38d0d79457aa7b64fb6a" class="lightbox-link"><img alt="Motherboard.gif" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="Motherboard.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-fa6e81e662ef38d0d79457aa7b64fb6a"><img alt="Motherboard.gif" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="Motherboard.gif"></a>
+Figure 1: Historical motherboard performance</p>
+      </div>
+    </div>
+  </div>
 </div>
-<p>Units: MHz/$, megaHertz per dollar (Cdn)\
-Doubling time: &lt;phpinc=babbling_in_binary/trends_in_computing/dtmotherboard.php&gt;((The doubling time is calculated from the slope of the trend line fitted using a [[random_research:rik_s_notes:discounted_least_squares:start | discounted least squares (DLS) technique]] with a memory of 18 months. DLS fitting smoothly discounts historical data with an exponential window to emphasize the most recent trend.))</p>
-<p>Motherboard performance, measured in MHz/$, is currently doubling every &lt;phpinc=babbling_in_binary/trends_in_computing/dtmotherboard.php&gt; months. Notice that I am measuring performance for the motherboard as a whole, not just the CPU. There have been fluctuations but the trend does look more or less exponential. A friend of mine (Andy Horton) pointed out there was a noticeable dip every year around December. This is most likely due to prices being jacked up for Christmas sales.</p>
+</div>
+<ul>
+<li>Units: MHz/$, megaHertz per dollar (Cdn)</li>
+<li>Doubling time: 1564 ± 5180 months<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> (flat)</li>
+</ul>
+<p>Motherboard performance, measured in MHz/$, is currently doubling every 1564 ± 5180 months<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> (flat). Notice that I am measuring performance for the motherboard as a whole, not just the CPU. <strike>There have been fluctuations but the trend does look more or less exponential.</strike> A friend of mine (Andy Horton) pointed out there was a noticeable dip every year around December. This is most likely due to prices being jacked up for Christmas sales.</p>
 <p>Processor speed depends on how many transistors can be fit on a chip, which has a theoretical maximum set by quantum mechanics. If the circuits get too close together the electrons will start &ldquo;tunneling&rdquo; through barriers and the chip won&rsquo;t function properly. I&rsquo;m not sure what the limit is, but as we approach it, expect the doubling time to stretch out&ndash;at least until manufacturers find a new way to get around (or take advantage of) this problem.</p>
 <p>Of course, every new generation of processor may perform better (or worse!) than the last, even at the same clock speed so I weighted the clock speed by an estimation of how fast each chip architecture is compared to a current chip:</p>
+<div id="table-speed">
+<div class="tab-panel" data-tab-group="4a0d1d6e1367b717daf1c26095e6c0af">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="speed-factors"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('4a0d1d6e1367b717daf1c26095e6c0af','speed-factors')"
+    >
+      <span class="tab-nav-text">Speed factors</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="speed-factors"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">Architecture</th>
+          <th style="text-align: center">Speed Factor</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">i8086</td>
+          <td style="text-align: center">0.0025</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">i286</td>
+          <td style="text-align: center">0.011</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">i386sx</td>
+          <td style="text-align: center">0.016</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">i386dx</td>
+          <td style="text-align: center">0.023</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">i486dx</td>
+          <td style="text-align: center">0.047</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">i486dx2</td>
+          <td style="text-align: center">0.039</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">i486dx4</td>
+          <td style="text-align: center">0.031</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Pentium</td>
+          <td style="text-align: center">0.093</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Pentium MMX</td>
+          <td style="text-align: center">0.11</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Pentium 2</td>
+          <td style="text-align: center">0.12</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Pentium 3</td>
+          <td style="text-align: center">0.14</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">AMD Duron</td>
+          <td style="text-align: center">0.14</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">AMD Athlon XP</td>
+          <td style="text-align: center">0.13</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Intel Core 2 Duo</td>
+          <td style="text-align: center">0.51</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">ntel Core 2 Quad</td>
+          <td style="text-align: center">0.72</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Intel Core i5</td>
+          <td style="text-align: center">0.90</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Intel Core i7</td>
+          <td style="text-align: center">1.00</td>
+      </tr>
+  </tbody>
+</table>
+<p>Table 1: Estimated relative speed factors of past chip architectures (if running at the same clock speeds).  Athlon speed is scaled by performance rating (eg. 1800+) not actual clock speed (eg. 1.53GHz).</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 <p>So a 2.4GHz Core 2 Duo E6600 will perform about five times as fast as an Athlon XP 2000+.</p>
-<p>Comparing different processors opens up a can of worms such as the impact of other components (eg. RAM, front-side bus, etc.) on performance. But, I don&rsquo;t really care about all this&hellip;I just want to get an estimate of the //typical// speed of these machines so I just get my numbers by comparing application and game benchmarks for typically-configured machines.</p>
-<p>===== RAM =====</p>
-<p>{{http://www.zoology.ubc.ca/~rikblok/ComputingTrends/RAM.gif  |Historical RAM performance}}</p>
-<p>Units: [[wp&gt;Binary_prefix#IEC_standard_prefixes | MiB]]/$, [[wp&gt;Binary_prefix#IEC_standard_prefixes | mebiBytes]] per dollar (Cdn)\
-Doubling time: &lt;phpinc=babbling_in_binary/trends_in_computing/dtram.php&gt;((The doubling time is calculated from the slope of the trend line fitted using a [[random_research:rik_s_notes:discounted_least_squares:start | discounted least squares (DLS) technique]] with a memory of 18 months. DLS fitting smoothly discounts historical data with an exponential window to emphasize the most recent trend.))</p>
-<p>RAM performance, measured in [[wp&gt;Binary_prefix#IEC_standard_prefixes | MiB]]/$, is currently doubling every &lt;phpinc=babbling_in_binary/trends_in_computing/dtram.php&gt;&hellip;but it&rsquo;s a real wild ride! Notice that the graph is virtually flat until November 1995 and then explodes upwards. As I understand it this is due to a monopoly on SIMM modules which toppled around then. At the time (October 1995) the doubling time was a whopping 53 ± 9 months! After some fluctuations when the market opened up, it looks like RAM performance grew at a natural rate for a while.</p>
-<p>There was an huge hiccup at the end of 2001 which was apparently due to [[http://www.theregister.co.uk/2004/02/27/memory_makers_hit_by_pricefixing/ | price fixing]].</p>
+<p>Comparing different processors opens up a can of worms such as the impact of other components (eg. RAM, front-side bus, etc.) on performance. But, I don&rsquo;t really care about all this&hellip;I just want to get an estimate of the <em>typical</em> speed of these machines so I just get my numbers by comparing application and game benchmarks for typically-configured machines.</p>
+<h3 id="ram">RAM</h3>
+<div id="fig-ram">
+<div class="tab-panel" data-tab-group="dd4b371abeec00219e23632a604b67cc">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="ram"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('dd4b371abeec00219e23632a604b67cc','ram')"
+    >
+      <span class="tab-nav-text">RAM</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="ram"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<p><a href="#R-image-4c3763a123624f2605bbcc75fcb4ac47" class="lightbox-link"><img alt="RAM.gif" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="RAM.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-4c3763a123624f2605bbcc75fcb4ac47"><img alt="RAM.gif" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="RAM.gif"></a>
+Figure 2: Historical RAM performance</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<ul>
+<li>Units: <a href="https://en.wikipedia.org/wiki/Binary_prefix#IEC_standard_prefixes" rel="external" target="_blank">MiB</a>/$, <a href="https://en.wikipedia.org/wiki/Binary_prefix#IEC_standard_prefixes" rel="external" target="_blank">mebiBytes</a> per dollar (Cdn)</li>
+<li>Doubling time: 53 ± 19 months<sup id="fnref2:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+</ul>
+<p>RAM performance, measured in <a href="https://en.wikipedia.org/wiki/Binary_prefix#IEC_standard_prefixes" rel="external" target="_blank">MiB</a>/$, is currently doubling every 53 ± 19 months&hellip;but it&rsquo;s a real wild ride! Notice that the graph is virtually flat until November 1995 and then explodes upwards. As I understand it this is due to a monopoly on SIMM modules which toppled around then. At the time (October 1995) the doubling time was a whopping 53 ± 9 months! After some fluctuations when the market opened up, it looks like RAM performance grew at a natural rate for a while.</p>
+<p>There was an huge hiccup at the end of 2001 which was apparently due to <a href="http://www.theregister.co.uk/2004/02/27/memory_makers_hit_by_pricefixing/" rel="external" target="_blank">price fixing</a>.</p>
 <p>Again, performance depends on how many transistors can be fit on a chip which has a theoretical maximum. Unlike motherboard performance, however, I don&rsquo;t expect this to slow down the RAM performance doubling time because&ndash;Hey!&ndash;the manufacturers can always just add more memory banks, right?</p>
-<p>===== Hard Drives =====</p>
-<p>{{http://www.zoology.ubc.ca/~rikblok/ComputingTrends/HardDrive.gif | Historical hard drive performance}}</p>
-<p>Units: GB/$, gigabytes per dollar (Cdn)\
-Doubling time: &lt;phpinc=babbling_in_binary/trends_in_computing/dtharddrive.php&gt;((The doubling time is calculated from the slope of the trend line fitted using a [[random_research:rik_s_notes:discounted_least_squares:start | discounted least squares (DLS) technique]] with a memory of 18 months. DLS fitting smoothly discounts historical data with an exponential window to emphasize the most recent trend.))</p>
-<p>Hard drive capacity, measured in GB/$, is currently doubling every &lt;phpinc=babbling_in_binary/trends_in_computing/dtharddrive.php&gt;. The graph was showing exponential growth until late 2011 when [[http://www.nytimes.com/2011/11/07/business/global/07iht-floods07.html?pagewanted=all | flooding in Thailand]] caused production shortages.</p>
-<h2 id="bandwidth">Bandwidth</h2>
-<p>{{http://www.zoology.ubc.ca/~rikblok/ComputingTrends/Bandwidth.gif | Historical bandwidth performance}}</p>
-<p>Units: kbps/$/month, kilobits per second per dollar (Cdn) per month\
-Doubling time: &lt;phpinc=babbling_in_binary/trends_in_computing/dtbandwidth.php&gt;((The doubling time is calculated from the slope of the trend line fitted using a [[random_research:rik_s_notes:discounted_least_squares:start | discounted least squares (DLS) technique]] with a memory of 18 months. DLS fitting smoothly discounts historical data with an exponential window to emphasize the most recent trend.))</p>
-<p>Bandwidth (the speed of an internet connection) is difficult to measure because it depends on your internet provider, and current conditions (eg. is there heavy usage?) so I don&rsquo;t have as good of data. But the data I do have suggests the doubling time for bandwidth performance (versus monthly fees) is &lt;phpinc=babbling_in_binary/trends_in_computing/dtbandwidth.php&gt;. I calculate my bandwidth by doing speed tests weekly and then taking the median value from the last five weeks to reduce the noise.</p>
-<p>===== Modems =====</p>
-<p>{{http://www.zoology.ubc.ca/~rikblok/ComputingTrends/Modem.gif | Historical modem performance}}</p>
-<p>Units: kbps/$, kilobits per second per dollar (Cdn)\
-Doubling time: &lt;phpinc=babbling_in_binary/trends_in_computing/dtmodem.php&gt;((The doubling time is calculated from the slope of the trend line fitted using a [[random_research:rik_s_notes:discounted_least_squares:start | discounted least squares (DLS) technique]] with a memory of 18 months. DLS fitting smoothly discounts historical data with an exponential window to emphasize the most recent trend.))</p>
-<p>They&rsquo;ve stopped advertising dial-up modems in my local sources so I&rsquo;m not tracking this technology anymore. But before they were obsoleted the estimated doubling time for modem performance was &lt;phpinc=babbling_in_binary/trends_in_computing/dtmodem.php&gt;. But you just have to look at the graph to realize exponential growth isn&rsquo;t a good fit. Did modem performance plateau due to technical or economic factors, I wonder?</p>
+<h3 id="storage">Storage</h3>
+<div id="fig-storage">
+<div class="tab-panel" data-tab-group="0fa24392f248835f1414a6733c2b4336">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="storage"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('0fa24392f248835f1414a6733c2b4336','storage')"
+    >
+      <span class="tab-nav-text">Storage</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="storage"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<p><a href="#R-image-11efbae8dd35c1d4edfa08fcb293b986" class="lightbox-link"><img alt="HardDrive.gif" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="HardDrive.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-11efbae8dd35c1d4edfa08fcb293b986"><img alt="HardDrive.gif" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="HardDrive.gif"></a>
+Figure 3: Historical storage performance</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<ul>
+<li>Units: GB/$, gigabytes per dollar (Cdn)</li>
+<li>Doubling time: -85 ± 34 months<sup id="fnref3:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> (declining)</li>
+</ul>
+<p>Hard drive capacity, measured in GB/$, is currently doubling every -85 ± 34 months (declining). The graph was showing exponential growth until late 2011 when <a href="http://www.nytimes.com/2011/11/07/business/global/07iht-floods07.html?pagewanted=all" rel="external" target="_blank">flooding in Thailand</a> caused production shortages.</p>
+<h3 id="bandwidth">Bandwidth</h3>
+<div id="fig-bandwidth">
+<div class="tab-panel" data-tab-group="0e2c9fde272bb3782b592fb9aed0fec4">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="bandwidth"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('0e2c9fde272bb3782b592fb9aed0fec4','bandwidth')"
+    >
+      <span class="tab-nav-text">Bandwidth</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="bandwidth"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<p><a href="#R-image-68d5c232c706d1fc87084550232417ca" class="lightbox-link"><img alt="Bandwidth.gif" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="Bandwidth.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-68d5c232c706d1fc87084550232417ca"><img alt="Bandwidth.gif" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="Bandwidth.gif"></a>
+Figure 4: Historical bandwidth performance</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<ul>
+<li>Units: kbps/$/month, kilobits per second per dollar (Cdn) per month</li>
+<li>Doubling time: 56 ± 14 months<sup id="fnref4:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+</ul>
+<p>Bandwidth (the speed of an internet connection) is difficult to measure because it depends on your internet provider, and current conditions (eg. is there heavy usage?) so I don&rsquo;t have as good of data. But the data I do have suggests the doubling time for bandwidth performance (versus monthly fees) is 56 ± 14 months. I calculate my bandwidth by doing speed tests weekly and then taking the median value from the last five weeks to reduce the noise.</p>
+<h3 id="modems">Modems</h3>
+<div id="fig-modems">
+<div class="tab-panel" data-tab-group="69eaacc8598565bfd74576904f7a1b9f">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="modems"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('69eaacc8598565bfd74576904f7a1b9f','modems')"
+    >
+      <span class="tab-nav-text">Modems</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="modems"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<p><a href="#R-image-ae94b5fa95e67f9707b444bfae8e221a" class="lightbox-link"><img alt="Modem.gif" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="Modem.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-ae94b5fa95e67f9707b444bfae8e221a"><img alt="Modem.gif" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="Modem.gif"></a>
+Figure 5: Historical modem performance</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<ul>
+<li>Units: kbps/$, kilobits per second per dollar (Cdn)</li>
+<li>Doubling time: 200 ± 77 months<sup id="fnref5:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+</ul>
+<p>They&rsquo;ve stopped advertising dial-up modems in my local sources so I&rsquo;m not tracking this technology anymore. But before they were obsoleted the estimated doubling time for modem performance was 200 ± 77 months. But you just have to look at the graph to realize exponential growth isn&rsquo;t a good fit. Did modem performance plateau due to technical or economic factors, I wonder?</p>
 <p>Note that 56kbps modems never actually ran at that rate, it&rsquo;s just a theoretical maximum (and a nice marketing ploy). The fastest my modem ever connected at (and maintained) was 46kbps so that&rsquo;s the speed I used when calculating performance.</p>
-<p>===== The Bottom Line =====</p>
-<p>The average doubling time for the motherboard, memory, and hard drive is currently &lt;phpinc=babbling_in_binary/trends_in_computing/dtavg1.php&gt; months. Sounds good, right? Well, the down side is that you&rsquo;ll have to keep laying out cash to keep your computer current. In that amount of time your brand-spanking new computer will only be half as &ldquo;good&rdquo; as the latest. (Actually I&rsquo;m neglecting a lot of components like monitors and sound cards, but this should still be a good estimate.) This is the same as saying a computer loses &lt;phpinc=babbling_in_binary/trends_in_computing/lossperyear.php&gt;% of its value each year. To maintain it you will have to regularly lay out some cash for upgrades.</p>
-<p>If you&rsquo;re laying out that kind of cash you might as well buy an entirely new system every &lt;phpinc=babbling_in_binary/trends_in_computing/dtnewsystem.php&gt; months! (That&rsquo;s neglecting the money you&rsquo;ll get back for selling your old computer. If you factor it in then you should replace your system even more often&ndash;every time the performance doubles, every &lt;phpinc=babbling_in_binary/trends_in_computing/dtavg1.php&gt; months!) Most people use a combination of the above strategies: they upgrade a bit to slow the decline of their system, and when it just gets too outdated they replace it.</p>
-<p>When buying a new system, be careful of unscrupulous vendors that may take advantage of this rapid drop in prices to make money. After the price is settled and the down payment made, some vendors may delay ordering the system for a week or two. In the meantime the value of your system drops marginally. Then the vendors buy at the lower price, but sell to you at the original higher price, and skim a profit off the top. For a $2000 machine, a two week delay will earn them roughly $&lt;phpinc=babbling_in_binary/trends_in_computing/skimprofit.php&gt;. Not much, but still something to watch out for.</p>
-<p>===== Math Stuff =====</p>
+<h3 id="the-bottom-line">The Bottom Line</h3>
+<p>The average doubling time for the motherboard, memory, and hard drive is currently 511 months. Sounds good, right? Well, the down side is that you&rsquo;ll have to keep laying out cash to keep your computer current. In that amount of time your brand-spanking new computer will only be half as &ldquo;good&rdquo; as the latest. (Actually I&rsquo;m neglecting a lot of components like monitors and sound cards, but this should still be a good estimate.) This is the same as saying a computer loses 1.6% of its value each year. To maintain it you will have to regularly lay out some cash for upgrades.</p>
+<p>If you&rsquo;re laying out that kind of cash you might as well buy an entirely new system every 743 months! (That&rsquo;s neglecting the money you&rsquo;ll get back for selling your old computer. If you factor it in then you should replace your system even more often&ndash;every time the performance doubles, every 511 months!) Most people use a combination of the above strategies: they upgrade a bit to slow the decline of their system, and when it just gets too outdated they replace it.</p>
+<p>When buying a new system, be careful of unscrupulous vendors that may take advantage of this rapid drop in prices to make money. After the price is settled and the down payment made, some vendors may delay ordering the system for a week or two. In the meantime the value of your system drops marginally. Then the vendors buy at the lower price, but sell to you at the original higher price, and skim a profit off the top. For a \$2000 machine, a two week delay will earn them roughly \$1.96. Not much, but still something to watch out for.</p>
+<h3 id="math-stuff">Math Stuff</h3>
+<p>The component prices come from advertisements in local shops. I compiled the data and made estimates of what the actual doubling time, \(\tau\), is, as follows. If there is a doubling trend over time, \(t\), then the performance (per dollar), \(P(t)\),  should increase as</p>
 \[
   P(t) = P(0) 2^{t/\tau}.
-\]\[
+\]<p>Taking the logarithm of both sides gives</p>
+\[
   \log_2(P(t))=t/\tau + \log_2(P(0)) 
-\]\[
+\]<p>which is just the straight line equation</p>
+\[
   y(t)=mt+b
-\]<p>
-where \(m=1/\tau\). So all we have to do is take the logarithm of the performance data and fit it to a straight line to get the parameters \(m\) and \(b\), which allow us to calculate \(\tau\). The exact calculations for fitting to a straight line can be found in any statistics textbook or try [(ref:Press92)], Chapter 15.</p>
+\]<p>where \(m=1/\tau\). So all we have to do is take the logarithm of the performance data and fit it to a straight line to get the parameters \(m\) and \(b\), which allow us to calculate \(\tau\). The exact calculations for fitting to a straight line can be found in any statistics textbook or try Press et al. 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#pressnumerical1992"><span class="visually-hidden">Citation: </span><span itemprop="datePublished">1992</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope 
+      itemtype="https://schema.org/Book"
+      data-type="book"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Press</span>,&#32;
+    <meta itemprop="givenName" content="W. H." />
+    W.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Teukolsky</span>,&#32;
+    <meta itemprop="givenName" content="S. A." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Vetterling</span>,&#32;
+    <meta itemprop="givenName" content="W. T." />
+    W.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Flannery</span>,&#32;
+    <meta itemprop="givenName" content="B. P." />
+    B.</span>&#32;
+    (<span itemprop="datePublished">1992</span>).
+  &#32;<span itemprop="name">
+    <i>Numerical Recipes in C: The Art of Scientific Computing</i></span> (<span>Second</span>).
+  <meta itemprop="contentLocation"
+        value="Cambridge">&#32;
+  <span itemprop="publisher"
+             itemtype="http://schema.org/Organization"
+             itemscope="">
+    <span itemprop="name">Cambridge University Press</span></span>.&#32;Retrieved from&#32;
+  <a href="http://www.nr.com/"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://www.nr.com/</a></span>
+
+
+
+
+</span></span>)</span>
+, Chapter 15.</p>
+<p>Also given therein is a procedure to estimate the uncertainties in the parameters even without knowing the measurement errors. So it is possible to calculate the uncertainty in the slope \(m\) which is related to the uncertainty in the doubling time by</p>
 \[
 \frac{\sigma_\tau}{\tau} = \frac{\sigma_m}{m}.
-\]<p>
-By using this method the &ldquo;goodness of fit&rdquo; is incorporated into the doubling time uncertainty: a large uncertainty means a poor fit.</p>
-<p>====== Share =======</p>
-<p>Like this page?  Share it!</p>
-<p><del>lsb</del></p>
-<p>====== Comments ======</p>
-<p><del>DISQUS</del></p>
+\]<p>By using this method the &ldquo;goodness of fit&rdquo; is incorporated into the doubling time uncertainty: a large uncertainty means a poor fit.</p>
+<h3 id="references">References</h3>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+<section class="hugo-cite-bibliography">
+  <dl>
+    
+
+      <div id="pressnumerical1992">
+        <dt>
+          Press,&#32;
+          Teukolsky,&#32;
+          Vetterling&#32;&amp;&#32;Flannery
+
+          
+          (1992)</dt>
+
+        <dd>
+          
+
+
+
+
+
+
+
+
+
+
+<span itemscope 
+      itemtype="https://schema.org/Book"
+      data-type="book"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Press</span>,&#32;
+    <meta itemprop="givenName" content="W. H." />
+    W.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Teukolsky</span>,&#32;
+    <meta itemprop="givenName" content="S. A." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Vetterling</span>,&#32;
+    <meta itemprop="givenName" content="W. T." />
+    W.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Flannery</span>,&#32;
+    <meta itemprop="givenName" content="B. P." />
+    B.</span>&#32;
+    (<span itemprop="datePublished">1992</span>).
+  &#32;<span itemprop="name">
+    <i>Numerical Recipes in C: The Art of Scientific Computing</i></span> (<span>Second</span>).
+  <meta itemprop="contentLocation"
+        value="Cambridge">&#32;
+  <span itemprop="publisher"
+             itemtype="http://schema.org/Organization"
+             itemscope="">
+    <span itemprop="name">Cambridge University Press</span></span>.&#32;Retrieved from&#32;
+  <a href="http://www.nr.com/"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://www.nr.com/</a></span>
+
+
+
+
+</dd>
+
+      </div>
+  </dl>
+</section>
+
+
+
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>The doubling time is calculated from the slope of the trend line fitted using a <a href="/~rikblok/research/notes/discounted_least_squares/index.html">discounted least squares (DLS) technique</a> with a memory of 18 months. DLS fitting smoothly discounts historical data with an exponential window to emphasize the most recent trend.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref4:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref5:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 
   <footer class="footline">
   </footer>
@@ -229,7 +595,7 @@ Rik&#39;s Treehouse
           </a>
         </div>
         <script>
-          window.index_js_url="/~rikblok/searchindex.en.js?1738825193";
+          window.index_js_url="/~rikblok/searchindex.en.js?1738891319";
         </script>
         <search><form action="/~rikblok/search/index.html" method="get">
           <div class="searchbox default-animation">
@@ -242,12 +608,12 @@ Rik&#39;s Treehouse
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="/~rikblok/js/auto-complete.js?1738825193" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.min.js?1738825193" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1738825193" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1738825193" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.en.min.js?1738825193" defer></script>
-        <script src="/~rikblok/js/search.js?1738825193" defer></script>
+        <script src="/~rikblok/js/auto-complete.js?1738891319" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.min.js?1738891319" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1738891319" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1738891319" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.en.min.js?1738891319" defer></script>
+        <script src="/~rikblok/js/search.js?1738891319" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -317,8 +683,8 @@ Rik&#39;s Treehouse
         </div>
       </div>
     </aside>
-    <script src="/~rikblok/js/clipboard.min.js?1738825193" defer></script>
-    <script src="/~rikblok/js/perfect-scrollbar.min.js?1738825193" defer></script>
+    <script src="/~rikblok/js/clipboard.min.js?1738891319" defer></script>
+    <script src="/~rikblok/js/perfect-scrollbar.min.js?1738891319" defer></script>
     <script>
       function useMathJax( config ){
         window.MathJax = Object.assign( window.MathJax || {}, {
@@ -333,7 +699,7 @@ Rik&#39;s Treehouse
       }
       useMathJax( JSON.parse("{}") );
     </script>
-    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1738825193"></script>
-    <script src="/~rikblok/js/theme.js?1738825193" defer></script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1738891319"></script>
+    <script src="/~rikblok/js/theme.js?1738891319" defer></script>
   </body>
 </html>
