@@ -1,0 +1,40 @@
+<?
+include 'function-pre.php';
+
+$name="GetParam">
+
+$declaration="
+object.GetParam(name)
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+" . pt() . "name
+" . pd() . "Required.  The name of a model parameter (without the trailing <tt>[]</tt> properties, case insensitive).
+";
+
+$returnValue="
+A character string returning the value of the named parameter.  If the parameter is not found, returns an empty string, &quot;&quot;.
+";
+
+<? /*$remarks="
+";*/ ?>
+
+$example="
+' [VBScript]
+
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+
+' demonstrate method
+WScript.Echo "World Width = " & R2DToo.GetParam("World Width")
+
+' unload
+Set R2DToo = nothing
+";
+
+$seeAlso="
+" . ref("SetParam">.
+";

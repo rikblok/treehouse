@@ -1,0 +1,55 @@
+<?
+include 'function-pre.php';
+
+$name="onAgentDestroy";
+
+$declaration="
+void __stdcall onAgentDestroy(
+	int x,       	// x-coordinate of agent
+	int y       	// y-coordinate of agent
+);
+";
+
+$parameters="
+" . pt() . "x
+" . pd() . "X-coordinate of agent (zero based).
+" . pt() . "y
+" . pd() . "Y-coordinate of agent (zero based).
+";
+
+$remarks="
+This optional function may be provided by the model.  It is called by the simulation just before each agent is destroyed at the end of a simulation.  This is a good place to clean up any memory allocated with " . ref("onAgentCreate") . ".
+";
+
+$revisions="
+API v1.5<ul><li>new!
+	</ul>
+";
+
+$example="
+double *extraData[256][256];
+//---------------------------------------------------------------------------
+void __stdcall " . ref("onAgentCreate") . "(int x, int y)
+{
+    setStateCount(x,y, 2);
+    //          pos index  name          initial value
+    assignState(x,y,  0,   \"alive\",      flip(*" . ref("getParamRef") . "(\"Initial Population\"));
+    assignState(x,y,  1,   \"alive nbrs\", 0);
+    
+    // allocate some extra storage for agent (x,y)
+    extraData[x][y] = new double[10];
+}
+//---------------------------------------------------------------------------
+void __stdcall " . ref("onAgentDestroy") . "(int x, int y)
+{
+    delete [] extraData[x][y];
+}
+//---------------------------------------------------------------------------
+";
+
+$seeAlso="
+" . ref("onAgentCreate") . ".
+";
+
+include 'function-post.php';
+?>

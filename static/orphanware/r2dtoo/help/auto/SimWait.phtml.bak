@@ -1,0 +1,43 @@
+<?
+include 'function-pre.php';
+
+$name="SimWait">
+
+$declaration="
+object.SimWait()
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+";
+
+$returnValue="
+None.
+";
+
+$remarks="
+Waits until simulation is paused before returning.  Intended to be used with " . ref("StopIfAdd"> but will also return if user presses <i>Pause Simulation</i> button.
+";
+
+$example="
+' [VBScript]
+
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+
+' set stop condition
+R2DToo.StopIfAdd(\"Tick &gt;= 1000\")
+' run and wait...
+R2DToo.SimRun()
+R2DToo.SimWait()
+WScript.Echo "Simulation paused!"
+
+' unload
+Set R2DToo = nothing
+";
+
+$seeAlso="
+" . ref("SimRun") . ", " . ref("SimRunWait") . ", " . ref("SimStep") . ", " . ref("StopIfAdd">.
+";

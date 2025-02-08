@@ -1,0 +1,77 @@
+<?
+include 'function-pre.php';
+
+$name="getParamAbout";
+
+$declaration="
+char* __stdcall getParamAbout(
+	char* name    // name of parameter
+);
+";
+
+$parameters="
+" . pt() . "name
+" . pd() . "Name of parameter of interest.
+";
+
+$returnValue="
+A character string returning information on parameter with name <tt>name</tt>.
+";
+
+$remarks="
+This optional function may be provided by the model.  For each valid parameter name (neglecting properties) the function should return a character string with background information on that model parameter.  The information is displayed in R2DToo's &quot;New Simulation&quot; dialog box to help the user.  
+
+<p>You may want to read the parameter values from within <tt>getParamAbout</tt>.  If so, always use " . ref("getParamVal") . " and <b>never</b> use the " . ref("getParamRef") . "!  This is because <tt>getParamAbout</tt> is intended to be used while the &quot;New Simulation&quot; dialog is being displayed, and the parameters shown there are only copies of the actual parameters.  " . ref("getParamRef") . " will return pointers to the actual parameters, not the copies being displayed and manipulated in the dialog.  " . ref("getParamVal") . " does not have this problem, it knows when the dialog is open and returns the appropriate results.  See the example for a demonstration.
+";
+
+$revisions="
+API v1.5<ul><li>new!  Replaces <tt>aboutParam</tt>.
+	</ul>
+";
+
+$example="
+#include &lt;string.h&gt;    // for strcmp(a,b) which returns 0 if a==b
+//---------------------------------------------------------------------------
+char* __stdcall getParamAbout(char* name)
+{
+    if (!strcmp(name,\"World Width\"))
+        return \"Columns of agents across the grid.\";
+    if (!strcmp(name,\"World Height\"))
+        return \"Rows of agents down the grid.\";
+    if (!strcmp(name,\"Neighbourhood Type\")) {
+        switch(int(" . ref("getParamVal") . "(name))) {
+            case 0: return  \"Non-spatial, all agents can interact.\";
+            case 1: return  \"1 dimension (horizontal).  Periodic boundaries. \"
+                            \"Each row is separate.\";
+            case 2: return  \"2 dimensions, Moore neighbourhood. 4 nearest and \"
+                            \"4 diagonal neighbours. Periodic boundaries.\";
+            case 3: return  \"Symmetric Erdos-Renyi random graph.  Links are \"
+                            \"reciprocal.\";
+            case 4: return  \"Deterministic scale-free network with clustering.\";
+        }
+    }
+    if (!strcmp(name,\"Neighbourhood Range\")) {
+        switch(int(" . ref("getParamVal") . "(\"Neighbourhood Type\"))) {
+            case 0: return  \"Disregarded.\";
+            case 1: return  \"(Rounded down to integer value.)  Number of \"
+                            \"neighbours on each side.  Total # neighbours = \"
+                            \"2*range.\";
+            case 2: return  \"(Rounded down to integer value.)  Range of \"
+                            \"neighbourhood.  Total # neighbours = \"
+                            \"(2*range+1)^2-1.\";
+            case 3: return  \"Average number of links per node.\";
+            case 4: return  \"(Rounded down to integer value.)  Length of \"
+                            \"smallest clusters (squares).\";
+        }
+    }
+    return \"Unknown.\";
+}
+//---------------------------------------------------------------------------
+";
+
+$seeAlso="
+" . ref("getModelAbout") . ", " . ref("getAgentAbout") . ", " . ref("getParamVal") . ".
+";
+
+include 'function-post.php';
+?>

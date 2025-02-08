@@ -1,0 +1,51 @@
+<?
+
+$name="onMouseUp">
+
+$declaration="
+void __stdcall onMouseUp(
+    int button,     // mouse button that was released
+    int x,          // x-coordinate of agent under mouse
+    int y,          // y-coordinate of agent under mouse
+    int modifiers); // modifier keys pressed
+";
+
+$parameters="
+" . pt() . "button
+" . pd() . "Mouse button that was released.  Either <tt>ssBtnLeft</tt> or <tt>ssBtnRight</tt>.
+" . pt() . "x
+" . pd() . "X-coordinate of agent (zero based) under mouse cursor.
+" . pt() . "y
+" . pd() . "Y-coordinate of agent (zero based) under mouse cursor.
+" . pt() . "modifiers
+" . pd() . "Keys that are being pressed (eg. Ctrl, Alt, Shift, or mouse button).  Some combination of the following values (defined in <tt>api2model.h</tt>):
+	<dl>" . pt() . "ssKbdShift" . pd() . "Shift key
+		" . pt() . "ssKbdAlt" . pd() . "Alt key
+		" . pt() . "ssKbdCtrl" . pd() . "Ctrl key
+		" . pt() . "ssBtnLeft" . pd() . "left (primary) mouse button
+		" . pt() . "ssBtnRight" . pd() . "right (alternate) mouse button
+	</dl>
+";
+
+$remarks="
+This optional function may be provided by the model.  It is called every time the user releases a mouse button over the view portal.  Use the <tt>modifiers</tt> to detect if modifier keys are being pressed simultaneously.  For example, if the <tt>Ctrl</tt> key is being pressed then the bitwise operation <tt>(modifiers &amp; ssKbdCtrl)</tt> will evaluate to <tt>true</tt>.
+";
+
+$revisions="
+API v1.6<ul><li>new!
+	</ul>
+";
+
+$example="
+//---------------------------------------------------------------------------
+void __stdcall onMouseUp(int button, int x, int y, int modifiers)
+{
+    int nbrCount;
+    pState *nbr;
+    pState a = xyAgent(x,y,nbr,nbrCount);
+    if (button==ssBtnLeft)  { if (modifiers & ssKbdShift) a[0] += 10; else a[0]++; }
+    if (button==ssBtnRight) { if (modifiers & ssKbdShift) a[0] -= 10; else a[0]--; }
+}
+//---------------------------------------------------------------------------
+";
+

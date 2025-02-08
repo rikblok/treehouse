@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<title>Automation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="revisit-after" content="30 days">
+<meta name="document-date" content="06 Nov 2004 14:49:37 GMT">
+<meta name="robots" content="all"><meta name="language" content="English">
+<base target="_top"><meta name="document-date" content="30 Apr 2004 13:47:00 13AprBST-8"></head>
+<body background="../bg.jpg"><a name="top"><table width="100%"><tr><td><small><small><b><a href="../../../../index.html">Rik's Treehouse</a> &gt; <a href="../../../../compute.html">Babbling in Binary</a> &gt; <a href="../../../../software/index.html">My Software</a> &gt; <a href="../../../../software/orphan.html">Orphanware</a> &gt; <a href="../../../../software/r2dtoo/index.html">R2DToo</a> &gt; <a href="../../../../software/r2dtoo/help/index.html">R2DToo Help</a> &gt; Automation</b></small></small></td></tr></table><img src="../../../../images/top-blank.gif" align="right" width="11" height="10"  alt=""><hr><center><h1>Automation</h1></center>
+<table width="100%" cellspacing="2" cellpadding="8"><tr><td valign="top" bgcolor="#ddddff"><small><small><a href="#Introduction">Introduction</a><br></small></small><small><small><a href="#Reference">Reference</a><br></small></small><small><small>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Server&nbsp;Registration">Server&nbsp;Registration</a><br></small></small><small><small>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Creating&nbsp;and&nbsp;Releasing">Creating&nbsp;and&nbsp;Releasing</a><br></small></small><small><small>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Methods">Methods</a><br></small></small></td><td width="*" valign="top"><a name="Introduction"><h2>Introduction</h2>
+R2DToo version 1.7 introduces a new feature, automation, which allows the end user to control R2DToo via another program or script.  This functionality replaces the <i>Experiment form</i> while offering a much richer interface.
+
+<p>Automation is intended to allow the researcher to run R2DToo over long periods with no user intervention.  A possible application would be spanning the model's parameter space via repeated runs with incremented parameters between each run.
+
+<p>R2DToo provides automation through MS-Windows' OLE/COM functionality.  This exposes certain <i>methods</i> (or functions) to client applications, to automate steps like pressing the <i>Run Simulation</i> button.  Using OLE/COM allows the user to automate R2DToo with any language they prefer.  In particular, if the <a href="http://msdn.microsoft.com/scripting/">Windows Scripting Host</a> is installed, then simple <a href="http://msdn.microsoft.com/scripting/vbscript/">VBScripts</a> or <a href="http://msdn.microsoft.com/scripting/jscript/">JScripts</a> can drive R2DToo (or <a href="http://aspn.activestate.com/ASPN/Perl/Products/ActivePerl/Components/Windows/PerlScript.html">PerlScripts</a>, <a href="http://www.python.org/windows/win32com/ActiveXScripting.html">Python</a>, etc.).  The following pages will demonstrate driving R2DToo using VBScript (a scripting language based on Visual Basic).
+
+<a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Reference"><h2>Reference</h2>
+In the following sections the terms <i>server</i> and <i>client</i> may be bandied about.  For your information <i>server</i> refers to R2DToo, the program itself and the <i>client</i> is the application or script that is interfacing with R2DToo to control it.  Remember it this way: the client asks the server to do stuff.
+
+<a name="Server&nbsp;Registration"><h3>Server&nbsp;Registration</h3>
+To use the automation features you must first register R2DToo as an <i>automation server</i>.  This was done automatically if you checked the &quot;Register as automation server (for scripting)&quot; option when R2DToo was installed.  Otherwise, you need to run R2DToo with the command-line option <tt>/regserver</tt>.
+
+<p>To unregister the server (to uninstall for example) run it with the option <tt>/unregserver</tt>.
+
+<a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Creating&nbsp;and&nbsp;Releasing"><h3>Creating&nbsp;and&nbsp;Releasing</h3>
+<p>Once R2DToo has been registered as an automation server, it can be started by creating a new automation object of type <tt>R2DToo.FrontEnd</tt>.</p>
+
+<table width="100%" border="1"><tr><td>
+<h4>VBScript Example</h4>
+<listing>
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject("R2DToo.FrontEnd")
+...
+</listing>
+</td></tr></table>
+
+<p>The automation object will fail to be created if it cannot locate a valid <tt>model.dll</tt> file.  To run R2DToo with a particular model that <tt>model.dll</tt> must be in the current working directory when R2DToo is loaded.  With <a href="http://msdn.microsoft.com/scripting/">Windows Scripting Host</a> version 5.6 or higher this is achieved with the <tt>CurrentDirectory</tt> method as demonstrated in the following example.</p>
+
+<table width="100%" border="1"><tr><td>
+<h4>VBScript Example</h4>
+<listing>
+Dim R2DToo
+Dim WshShell
+Set WshShell = WScript.CreateObject("WScript.Shell")
+' Set WshShell.CurrentDirectory to folder containing model.dll to load that model into R2DToo.
+' Requires Windows Scripting Host 5.6 or newer (http://msdn.microsoft.com/scripting/).
+WshShell.CurrentDirectory = "C:\Program Files\R2DToo\Models\ConwaysLife"
+' load
+CreateObject("R2DToo.FrontEnd")
+...
+</listing>
+</td></tr></table>
+
+<p>Releasing the <tt>R2DToo.FrontEnd</tt> object automatically closes R2DToo.</p>
+<table width="100%" border="1"><tr><td>
+<h4>VBScript Example</h4>
+<listing>
+...
+' unload
+Set R2DToo = nothing
+</listing>
+</td></tr></table>
+
+<a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Methods"><h3>Methods</h3>
+The following methods (functions) are available to the automation client.  Currently the list consists only of methods necessary for running experiments and recording data.  Few methods to manipulate the user interface are currently available.  This is because the end user can still interact with R2DToo while it is automated, adjusting the interface to their preference.
+
+<ul><li><a href="AboutModel.html">AboutModel</a>
+	<li><a href="GetLoadModelErr.html">GetLoadModelErr</a>
+	<li><a href="GetParam.html">GetParam</a>
+	<li><a href="GetState.html">GetState</a>
+	<li><a href="GetTick.html">GetTick</a>
+	<li><a href="LoadModel.html">LoadModel</a>
+	<li><a href="Refresh.html">Refresh</a>
+	<li><a href="SetParam.html">SetParam</a>
+	<li><a href="SetState.html">SetState</a>
+	<li><a href="SimNew.html">SimNew</a>
+	<li><a href="SimPause.html">SimPause</a>
+	<li><a href="SimRun.html">SimRun</a>
+	<li><a href="SimRunWait.html">SimRunWait</a>
+	<li><a href="SimStep.html">SimStep</a>
+	<li><a href="SimWait.html">SimWait</a>
+	<li><a href="StopIfAdd.html">StopIfAdd</a>
+	<li><a href="StopIfRemoveAll.html">StopIfRemoveAll</a>
+	<li><a href="TimeSeriesAdd.html">TimeSeriesAdd</a>
+	<li><a href="TimeSeriesClear.html">TimeSeriesClear</a>
+	<li><a href="TimeSeriesExport.html">TimeSeriesExport</a>
+	<li><a href="TimeSeriesRemoveAll.html">TimeSeriesRemoveAll</a>
+	<li><a href="UiMinimal.html">UiMinimal</a>
+</ul>
+
+</td></tr></table><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="90%" align="center"><table width="100%"><tr valign="top"><td align="left">
+<small><small><a name="bottom"><a href="../../../../office.html">[Rik's Office Hours]</a> <a href="../../../../contact.html">[Contact Rik]</a><br>Last updated: Fri Apr 30 2004, 1:47pm</small></small></td><td align="right">
+<FORM align="right" method=GET action="http://www.google.com/search"><table align="right"><tr><td>
+<INPUT TYPE=text name=q size=25 maxlength=255 value="">
+<input type=hidden name=sitesearch value="http://www.zoology.ubc.ca"><input type=hidden name="hq" value="inurl:rikblok"><INPUT type=hidden name=filter value="0"><INPUT type=submit name=btnG VALUE="Search">
+</td></tr></TABLE></FORM>
+</td></tr></table>
+
+
+</body></html>

@@ -1,0 +1,42 @@
+<?
+
+$name="onModelLoad">
+
+$declaration="
+void __stdcall onModelLoad(void);
+";
+
+$remarks="
+This optional function may be provided by the model.  It is called just after the model is loaded.  Use it to add model parameters with the functions " . ref("setParamCount"> and " . ref("assignParam">.  Since this function is only called once it is also a good place to allocate temporary workspace or seed a random number generator, such as <tt>randomize</tt>, if required.
+";
+
+$revisions="
+API v1.5<ul><li>new!
+	</ul>
+";
+
+$example="
+float *workspace = NULL;
+
+void __stdcall onModelLoad(void)
+{
+    setParamCount(4);
+    //      index  name [constraints]             default value
+    assignParam(0, "World Width [int,&gt;0]",        30);
+    assignParam(1, "World Height [int,&gt;0]",       30);
+    assignParam(2, "Initial Density [&gt;0,&lt;1]",  0.5);
+    assignParam(3, "Fade Rate [int, &gt;0,&lt;=255]",255);
+
+    workspace = new float[100];
+    randomize();
+}
+
+void __stdcall onModelUnload(void)
+{
+    delete [] workspace;
+}
+";
+
+$seeAlso="
+" . ref("onModelUnload">, " . ref("setParamCount">, " . ref("assignParam">.
+";

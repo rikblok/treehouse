@@ -1,0 +1,49 @@
+<?
+include 'function-pre.php';
+
+$name="TimeSeriesRemoveAll";
+
+$declaration="
+object.TimeSeriesRemoveAll()
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+";
+
+$returnValue="
+None.
+";
+
+$remarks="
+Removes all timeseries added by the user or with " . ref("TimeSeriesAdd">.";
+
+$example="
+' [VBScript]
+
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+
+' set data to record
+R2DToo.TimeSeriesAdd(\"Average alive\")
+' run...
+R2DToo.SimRun()
+' ...wait for 60 seconds...
+WScript.Sleep(60000)
+' ...stop
+R2DToo.SimPause()
+' drop all timeseries
+R2DToo.TimeSeriesRemoveAll()
+
+' unload
+Set R2DToo = nothing
+";
+
+$seeAlso="
+" . ref("TimeSeriesAdd") . ", " . ref("TimeSeriesClear") . ", " . ref("TimeSeriesExport") . ".
+";
+
+include 'function-post.php';
+?>

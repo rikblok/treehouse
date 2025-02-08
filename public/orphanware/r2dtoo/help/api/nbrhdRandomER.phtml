@@ -1,0 +1,36 @@
+<?
+include 'function-pre.php';
+
+$name="nbrhdRandomER";
+
+$declaration="
+void __stdcall nbrhdRandomER(
+	float linksPerNode, // average number of neighbours for each site
+	bool symmetric      // whether links are symmetric or not
+);
+";
+
+$parameters="
+" . pt() . "linksPerNode
+" . pd() . "Number of links (neighbours) each site has, an average.
+" . pt() . "symmetric
+" . pd() . "<tt>true</tt> if links are symmetric (reciprocal), otherwise <tt>false</tt>.
+";
+
+$remarks="
+This function is available through the API.  It can be called within the model-supplied routine " . ref("setNbrhd") . " to set the neighbourhood to an Erdos-Renyi random graph in which each agent is randomly connected to other agents (never itself) selected from anywhere on the lattice (non-local).  The probability of a link between any two agents is <tt>linksPerNode</tt>/(<i>N</i>-1) where <i>N</i> is the number of agents in the simulation.
+
+<p>If <tt>symmetric=true</tt> then all links are reciprocal: <var>a</var> is a neighbour of <var>b</var> if and only if <var>b</var> is a neighbour of <var>a</var>.  Otherwise the links are directed.
+";
+
+$example="
+void __stdcall setNbrhd(double *param)
+{
+    nbrhdRandomER(1.5,true);
+}
+";
+
+$seeAlso=nbrhdSeeAlso();
+
+include 'function-post.php';
+?>

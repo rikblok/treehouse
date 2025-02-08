@@ -1,0 +1,45 @@
+<?
+include 'function-pre.php';
+
+$name="GetState";
+
+$declaration="
+object.GetState(x,y,name)
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+" . pt() . "x,y
+" . pd() . "Required.  Coordinates of agent.
+" . pt() . "name
+" . pd() . "Required.  The name of an agent state variable (case insensitive).
+";
+
+$returnValue="
+A character string returning the value of the named state variable for the agent at (<tt>x</tt>,<tt>y</tt>).  If the state is not found or <tt>x</tt> or <tt>y</tt> are out of range, returns an empty string, &quot;&quot;.
+";
+
+<? /*$remarks="
+";*/ ?>
+
+$example="
+' [VBScript]
+
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+
+' demonstrate method
+WScript.Echo \"alive(5,12) = \" & R2DToo.GetState(5,12,\"alive\")
+
+' unload
+Set R2DToo = nothing
+";
+
+$seeAlso="
+" . ref("SetState") . ".
+";
+
+include 'function-post.php';
+?>

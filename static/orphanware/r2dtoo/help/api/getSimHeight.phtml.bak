@@ -1,0 +1,32 @@
+<?
+
+$name="getSimHeight">
+
+$declaration="
+int __stdcall getSimHeight(void);
+";
+
+$remarks="
+This function must be provided by the model.  It is called together with " . ref("getSimWidth"> at the start of every new simulation to set the size of the simulation space.  <tt>getSimHeight</tt> should return a positive integer indicating the vertical dimension of the simulation world.  Minimum allowed value is one.
+";
+
+$revisions="
+API v1.5<ul><li>new!  Replaces <tt>simBegin</tt>.
+	</ul>
+";
+
+$example="
+//---------------------------------------------------------------------------
+int __stdcall " . ref("getSimHeight">(void)
+/*  Returns vertical extent of simulation space. (Required.)   */
+{   return int(*" . ref("getParamRef">("World Height")); }
+//---------------------------------------------------------------------------
+int __stdcall " . ref("getSimWidth">(void)
+/*  Returns horizontal extent of simulation space. (Required.) */
+{   return int(*" . ref("getParamRef">("World Width"));  }
+//---------------------------------------------------------------------------
+";
+
+$seeAlso="
+" . ref("getSimWidth">.
+";

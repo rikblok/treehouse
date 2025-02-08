@@ -1,0 +1,40 @@
+<?
+include 'function-pre.php';
+
+$name="AboutModel">
+
+$declaration="
+object.AboutModel(info)
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+" . pt() . "info
+" . pd() . "Required.  One of <tt>&quot;name&quot;</tt>, <tt>&quot;version&quot;</tt>, <tt>&quot;copyright&quot;</tt>, <tt>&quot;comments&quot;</tt>, or <tt>&quot;url&quot;</tt> (case insensitive).
+";
+
+$returnValue="
+A character string returning the appropriate information about the model.  If <tt>info</tt> not found, returns an empty string, &quot;&quot;.
+";
+
+<? /*$remarks="
+";*/ ?>
+
+$example="
+' [VBScript]
+
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+
+' demonstrate method
+WScript.Echo "R2DToo loaded with model: " & R2DToo.AboutModel("Name") & " " & R2DToo.AboutModel("Version")
+
+' unload
+Set R2DToo = nothing
+";
+
+<? /*$seeAlso="
+" . ref("">.
+";*/ ?>

@@ -1,0 +1,15 @@
+<?
+
+$name="tParam">
+
+$declaration="
+typedef double tParam;
+";
+
+$remarks="
+Parameters are of type double-precision floating point.  Defined in <tt>api2model.h</tt>.
+";
+
+$seeAlso="
+" . ref("pParam">
+";

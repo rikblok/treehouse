@@ -1,0 +1,15 @@
+<?
+
+$name="pParam">
+
+$declaration="
+typedef double* pParam;
+";
+
+$remarks="
+pParam is a pointer to a parameter.  Defined in <tt>api2model.h</tt>.
+";
+
+$seeAlso="
+" . ref("tParam">
+";

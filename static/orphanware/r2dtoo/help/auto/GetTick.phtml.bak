@@ -1,0 +1,37 @@
+<?
+include 'function-pre.php';
+
+$name="GetTick";
+
+$declaration="
+object.GetTick()
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+";
+
+$returnValue="
+A character string returning the current simulation tick (time).
+";
+
+<? /*$remarks="
+";*/ ?>
+
+$example="
+' [VBScript]
+
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+
+' demonstrate method
+WScript.Echo \"Tick = \" & R2DToo.GetTick()
+
+' unload
+Set R2DToo = nothing
+";
+
+include 'function-post.php';
+?>

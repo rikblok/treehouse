@@ -1,0 +1,45 @@
+<?
+include 'function-pre.php';
+
+$name="SimNew";
+
+$declaration="
+object.SimNew()
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+";
+
+$returnValue="
+None.
+";
+
+$remarks="
+Creates a new simulation with the current parameter values.  Waits until complete before returning.
+";
+
+$example="
+' [VBScript]
+
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+
+' first set model parameters
+R2DToo.SetParam \"World Width\",  128
+R2DToo.SetParam \"World Height\", 128
+' then create new simulation
+R2DToo.SimNew()
+
+' unload
+Set R2DToo = nothing
+";
+
+$seeAlso="
+" . ref("SetParam") . ".
+";
+
+include 'function-post.php';
+?>

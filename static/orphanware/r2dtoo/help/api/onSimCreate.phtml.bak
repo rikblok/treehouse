@@ -1,0 +1,64 @@
+<?
+include 'function-pre.php';
+
+$name="onSimCreate";
+
+$declaration="
+void __stdcall onSimCreate(void);
+";
+
+$remarks="
+This optional function may be provided by the model.  It is called just after a new simulation has been created (but before the agents have been created).  You can use this function to set global variables (shortcuts) to the model parameters.  Also, set local neighbourhoods in this function with the <a href=\"#seeAlso\"><tt>nbrhd*</tt></a> functions, as demonstrated in the example below.
+";
+
+$revisions="
+API v1.5<ul><li>new!  Replaces <tt>simBegin</tt> and <tt>setNbrhd</tt>.
+	</ul>
+";
+
+$example="
+unsigned short fadeRate;
+double *workspace = NULL;
+//---------------------------------------------------------------------------
+void __stdcall onSimCreate(void)
+{
+    // shortcuts
+    fadeRate = (unsigned short)(*" . ref("getParamRef") . "(\"Fade Rate\"));
+    
+    // allocate workspace
+    workspace = new double[100];
+
+    // set nbr shortcuts for each agent.  Much faster than calling agentAtXY().
+    int range = int(*" . ref("getParamRef") . "(\"Neighbourhood Range\"));    // truncated
+    switch (int(*" . ref("getParamRef") . "(\"Neighbourhood Type\"))) {
+        case 0: /* mean-field, ignore */
+                break;
+        case 1: nbrhd1D(range,btPeriodic);      
+                break;
+        case 2: nbrhdMoore(range,btPeriodic);   
+                break;
+        case 3: // use floating point \"Neighbourhood Range\"
+                nbrhdRandomER(*" . ref("getParamRef") . "(\"Neighbourhood Range\"),true); 
+                break;
+        case 4: // demonstrates how multiple neighbourhoods can be overlapped
+                nbrhdBlocks(range,range);
+                nbrhdFractal(range,range,true,true);
+                break;
+    }
+}
+//---------------------------------------------------------------------------
+void __stdcall onSimDestroy(void);
+{
+    // free workspace
+    delete [] workspace;
+    workspace = NULL;
+}
+//---------------------------------------------------------------------------
+";
+
+$seeAlso="
+" . ref("onSimReady") . ", " . ref("onSimDestroy") . ", " . nbrhdSeeAlso();
+
+include 'function-template.php';
+?>
+

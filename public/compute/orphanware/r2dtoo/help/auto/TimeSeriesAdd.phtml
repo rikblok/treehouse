@@ -1,0 +1,57 @@
+<?
+include 'function-pre.php';
+
+$name="TimeSeriesAdd";
+
+$declaration="
+object.TimeSeriesAdd(series)
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+" . pt() . "series
+" . pd() . "Character string with the following format: <tt>&quot;operation state&quot;</tt><br>
+where
+<table border=0>
+	<tr valign=\"top\"><td><tt>operation</tt> </td><td> is one of the operations found in the <a href=\"../timeseries.html#lbOperation\">TimeSeries Operation Listbox</a>.  (Case sensitive.)</td></tr>
+	<tr valign=\"top\"><td><tt>state</tt> </td><td> is one of the states found in the <a href=\"../timeseries.html#lbState\">TimeSeries State Listbox</a>.  (Case sensitive.)</td></tr>
+</table>
+";
+
+$returnValue="
+Returns 1 on success, 0 on fail (eg. if <tt>operation</tt> or <tt>state</tt> not recognized, or if the <a href=\"../timeseries.html#Buttons\">maximum</a> number of series have already been added).
+";
+
+$remarks="
+Adds a timeseries to plot, providing a convenient way to record experimental data.  Use " . ref("TimeSeriesExport") . " to output the accumulated data to a file.
+";
+
+$example="
+' [VBScript]
+
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+
+' set data to record
+R2DToo.TimeSeriesAdd(\"Average alive\")
+' run...
+R2DToo.SimRun()
+' ...wait for 60 seconds...
+WScript.Sleep(60000)
+' ...stop
+R2DToo.SimPause()
+' append to file
+R2DToo.TimeSeriesExport(\"out.dat\",\"append\")
+
+' unload
+Set R2DToo = nothing
+";
+
+$seeAlso="
+" . ref("TimeSeriesClear") . ", " . ref("TimeSeriesExport") . ", " . ref("TimeSeriesRemoveAll") . ".
+";
+
+include 'function-post.php';
+?>

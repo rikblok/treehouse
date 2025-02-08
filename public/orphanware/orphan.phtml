@@ -1,0 +1,44 @@
+<?
+$title="Orphanware";
+$parent="index";
+$icon="${basedir}images/kitten.gif";
+include 'head.php';
+include 'childlink.php';
+?>
+
+<p>This page contains software I am no longer developing or maintaining.</p>
+
+<? 
+childlink(array(
+	'title'=>"Toolbar",
+	'icon'=>"toolbar/icon.gif",
+	'url'=>"toolbar/index.html",
+	'text'=>"<i>Toolbar</i> (alias <i>Rik's Toolbar</i>) provides a way to add a customized floating toolbar to any application.  When a button is pressed a pre-defined sequence of keystrokes is sent to the desired window."
+));
+
+childlink(array(
+	'title'=>"R2DToo (2001-2003)",
+	'icon'=>"r2dtoo/R2DToo.gif",
+	'url'=>"r2dtoo/index.html",
+	'text'=>"<i><u>R</u>ik's <u>2D</u> simulation <u>Too</u>l</i> lets you build and run your own cellular automata or other  spatial network simulations.  R2DToo is designed for scientists, to help with constructing, running, and collecting data from simulations with features such as live time series plots of interesting statistics and automation to let the user run experiments repeatedly without requiring user interaction.
+"
+));
+
+childlink(array(
+	'title'=>"RunIEAs (2001-2002)",
+	'icon'=>"runieas/runieas.gif",
+	'url'=>"runieas/index.html",
+	'text'=>"Ok, you want to let other people run Internet Explorer on your computer but you want to let them have their own favorites, home page, etc.  <b>Microsoft's solution?</b>  <i>Save what you're doing...log off current user...wait...log on as other user...wait...run IE...Done!</i>  <b>My solution?</b>  <i>RunIEAs &lt;other user&gt;...Done!</i>"
+));
+
+childlink(array(
+	'title'=>"TeX Equation Previewer (1999-2000)",
+	'icon'=>"eqnpreview/icon.gif",
+	'url'=>"eqnpreview/index.html",
+	'text'=>"View and edit TeX equations before compiling your source.  View your equation as you type in (almost) real time.  Copies modified text to the clipboard for quick use in your favorite text editor."
+));
+
+childlink(array());
+
+include 'foot.php';	
+?>

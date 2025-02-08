@@ -1,0 +1,51 @@
+<?
+
+$name="getTickRef">
+
+$declaration="
+pParam __stdcall getTickRef(void);
+";
+
+$returnValue="
+A pointer (reference) to the simulation time (tick).
+";
+
+$remarks="
+This function is available through the API.  Use it to retrieve a pointer <i>shortcut</i> to the simulation time (tick). Once you have the pointer you can access (read or write) the tick directly through the shortcut without needing any more function calls.
+";
+
+$revisions="
+API v1.6<ul><li>new!
+	</ul>
+";
+
+$example="
+pParam pTick;
+//---------------------------------------------------------------------------
+void __stdcall onSimCreate(void)
+{
+	pTick = getTickRef();
+}
+//---------------------------------------------------------------------------
+bool iterate(pState state, int x, int y, pState *nbr, int nbrCount, int feaMode)
+// one iteration of the Mandelbrot set
+{
+	if (feaMode!=feaContinue)	return true;
+	tParam r = state[2], i = state[3];
+	state[2] = state[0] + r*r - i*i;
+	state[3] = state[1] + 2.0*r*i;
+	state[4] = state[2]*state[2] + state[3]*state[3];
+	if (state[4]>5)	state[5] = *pTick;
+	return true;
+}
+//---------------------------------------------------------------------------
+void __stdcall onTick(double &time)
+{
+	forEachAgent(iterate);
+}
+//---------------------------------------------------------------------------
+";
+
+$seeAlso="
+" . ref("getTickVal">.
+";

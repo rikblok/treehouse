@@ -1,0 +1,98 @@
+<?
+$title="Automation";
+$parent="../index";
+$background="../bg.jpg";
+include 'head.php';
+include 'download.php';
+include 'url.php';
+include 'toc.php';
+
+tochead(array('name'=>"Introduction"));
+?>
+
+R2DToo version 1.7 introduces a new feature, automation, which allows the end user to control R2DToo via another program or script.  This functionality replaces the <i>Experiment form</i> while offering a much richer interface.
+
+<p>Automation is intended to allow the researcher to run R2DToo over long periods with no user intervention.  A possible application would be spanning the model's parameter space via repeated runs with incremented parameters between each run.
+
+<p>R2DToo provides automation through MS-Windows' OLE/COM functionality.  This exposes certain <i>methods</i> (or functions) to client applications, to automate steps like pressing the <i>Run Simulation</i> button.  Using OLE/COM allows the user to automate R2DToo with any language they prefer.  In particular, if the <a href="http://msdn.microsoft.com/scripting/">Windows Scripting Host</a> is installed, then simple <a href="http://msdn.microsoft.com/scripting/vbscript/">VBScripts</a> or <a href="http://msdn.microsoft.com/scripting/jscript/">JScripts</a> can drive R2DToo (or <a href="http://aspn.activestate.com/ASPN/Perl/Products/ActivePerl/Components/Windows/PerlScript.html">PerlScripts</a>, <a href="http://www.python.org/windows/win32com/ActiveXScripting.html">Python</a>, etc.).  The following pages will demonstrate driving R2DToo using VBScript (a scripting language based on Visual Basic).
+
+<?	tochead(array('name'=>"Reference")); ?>
+
+In the following sections the terms <i>server</i> and <i>client</i> may be bandied about.  For your information <i>server</i> refers to R2DToo, the program itself and the <i>client</i> is the application or script that is interfacing with R2DToo to control it.  Remember it this way: the client asks the server to do stuff.
+
+<?	tochead(array('name'=>"Server&nbsp;Registration", 'level'=>'3')); ?>
+
+To use the automation features you must first register R2DToo as an <i>automation server</i>.  This was done automatically if you checked the &quot;Register as automation server (for scripting)&quot; option when R2DToo was installed.  Otherwise, you need to run R2DToo with the command-line option <tt>/regserver</tt>.
+
+<p>To unregister the server (to uninstall for example) run it with the option <tt>/unregserver</tt>.
+
+<?	tochead(array('name'=>"Creating&nbsp;and&nbsp;Releasing", 'level'=>'3')); ?>
+
+<p>Once R2DToo has been registered as an automation server, it can be started by creating a new automation object of type <tt>R2DToo.FrontEnd</tt>.</p>
+
+<table width="100%" border="1"><tr><td>
+<h4>VBScript Example</h4>
+<listing>
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject("R2DToo.FrontEnd")
+...
+</listing>
+</td></tr></table>
+
+<p>The automation object will fail to be created if it cannot locate a valid <tt>model.dll</tt> file.  To run R2DToo with a particular model that <tt>model.dll</tt> must be in the current working directory when R2DToo is loaded.  With <a href="http://msdn.microsoft.com/scripting/">Windows Scripting Host</a> version 5.6 or higher this is achieved with the <tt>CurrentDirectory</tt> method as demonstrated in the following example.</p>
+
+<table width="100%" border="1"><tr><td>
+<h4>VBScript Example</h4>
+<listing>
+Dim R2DToo
+Dim WshShell
+Set WshShell = WScript.CreateObject("WScript.Shell")
+' Set WshShell.CurrentDirectory to folder containing model.dll to load that model into R2DToo.
+' Requires Windows Scripting Host 5.6 or newer (http://msdn.microsoft.com/scripting/).
+WshShell.CurrentDirectory = "C:\Program Files\R2DToo\Models\ConwaysLife"
+' load
+CreateObject("R2DToo.FrontEnd")
+...
+</listing>
+</td></tr></table>
+
+<p>Releasing the <tt>R2DToo.FrontEnd</tt> object automatically closes R2DToo.</p>
+<table width="100%" border="1"><tr><td>
+<h4>VBScript Example</h4>
+<listing>
+...
+' unload
+Set R2DToo = nothing
+</listing>
+</td></tr></table>
+
+<?	tochead(array('name'=>"Methods", 'level'=>'3')); ?>
+
+The following methods (functions) are available to the automation client.  Currently the list consists only of methods necessary for running experiments and recording data.  Few methods to manipulate the user interface are currently available.  This is because the end user can still interact with R2DToo while it is automated, adjusting the interface to their preference.
+
+<ul><li><a href="AboutModel.html">AboutModel</a>
+	<li><a href="GetLoadModelErr.html">GetLoadModelErr</a>
+	<li><a href="GetParam.html">GetParam</a>
+	<li><a href="GetState.html">GetState</a>
+	<li><a href="GetTick.html">GetTick</a>
+	<li><a href="LoadModel.html">LoadModel</a>
+	<li><a href="Refresh.html">Refresh</a>
+	<li><a href="SetParam.html">SetParam</a>
+	<li><a href="SetState.html">SetState</a>
+	<li><a href="SimNew.html">SimNew</a>
+	<li><a href="SimPause.html">SimPause</a>
+	<li><a href="SimRun.html">SimRun</a>
+	<li><a href="SimRunWait.html">SimRunWait</a>
+	<li><a href="SimStep.html">SimStep</a>
+	<li><a href="SimWait.html">SimWait</a>
+	<li><a href="StopIfAdd.html">StopIfAdd</a>
+	<li><a href="StopIfRemoveAll.html">StopIfRemoveAll</a>
+	<li><a href="TimeSeriesAdd.html">TimeSeriesAdd</a>
+	<li><a href="TimeSeriesClear.html">TimeSeriesClear</a>
+	<li><a href="TimeSeriesExport.html">TimeSeriesExport</a>
+	<li><a href="TimeSeriesRemoveAll.html">TimeSeriesRemoveAll</a>
+	<li><a href="UiMinimal.html">UiMinimal</a>
+</ul>
+
+<?	include 'foot.php';	?>

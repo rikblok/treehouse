@@ -1,0 +1,58 @@
+<?
+include 'function-pre.php';
+
+$name="anyAgent";
+
+$declaration="
+pState __stdcall anyAgent(
+	pState state,  	// return any agent except this one
+	int &x,      	// x-coordinate of returned agent
+	int &y,      	// y-coordinate of returned agent
+	pState* &nbr,  	// neighbours of returned agent
+	int &nbrCount	// number of neighbours
+);
+";
+
+$parameters="
+" . pt() . "state
+" . pd() . "The function will never return the agent with this state.  Set <tt>state=NULL</tt> in order not to exclude any agent.
+" . pt() . "x
+" . pd() . "X-coordinate of returned agent.  Passed by reference.
+" . pt() . "y
+" . pd() . "Y-coordinate of returned agent.  Passed by reference.
+" . pt() . "nbr
+" . pd() . "On exit <tt>nbr[0..nbrCount-1]</tt> are the neighbours of returned agent.  Passed by reference.
+" . pt() . "nbrCount
+" . pd() . "On exit holds the number of agents of returned agent.  Passed by reference.
+";
+
+$returnValue="
+Returns a random agent except the one with state variable <tt>state</tt> (if <tt>state</tt> not <tt>NULL</tt>).
+<p>On fail, returns <tt>NULL</tt>.
+";
+
+$remarks="
+This function is available through the API.  It can be used in the model-supplied routine " . ref("onTick") . " to pick a random agent or to randomly choose a second agent for the first to interact with.
+";
+
+$example="
+" . ref("pState") . " a, b;
+int ax, ay, bx, by;
+" . ref("pState") . " *aNbr, *bNbr;
+int aNbrCount, bNbrCount;
+a = anyAgent(NULL, ax, ay, aNbr, aNbrCount);   // any agent anywhere
+do {
+    b = anyAgent(a, bx, by, bNbr, bNbrCount);  // any agent except a
+    bool bIsNbrOfA = false;
+    for (int i=0; i&lt;aNbrCount; i++)
+        bIsNbrOfA |= (b==aNbr[i]);
+} while (bIsNbrOfA);
+// now b != a and b not in neighbourhood of a
+";
+
+$seeAlso="
+" . ref("onTick") . ", " . ref("xyAgent") . ".
+";
+
+include 'function-post.php';
+?>

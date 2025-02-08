@@ -1,0 +1,57 @@
+<?
+include 'function-pre.php';
+
+$name="setStateCount";
+
+$declaration="
+pState __stdcall setStateCount(
+	int x,   	// x-coordinate of agent
+	int y,   	// y-coordinate of agent
+	int count	// number of state variables
+);
+";
+
+$parameters="
+" . pt() . "x
+" . pd() . "X-coordinate of agent (base zero).
+" . pt() . "y
+" . pd() . "Y-coordinate of agent (base zero).
+" . pt() . "count
+" . pd() . "Number of state variables to allocate space for.
+";
+
+$returnValue="
+A pointer to the allocated <tt>state</tt> array for the agent at (<tt>x,y</tt>) (array of " . ref("tState") . ").
+";
+
+$remarks="
+This function is available through the API.  Use it <i>only</i> from within " . ref("onAgentCreate") . " to set the size of the agent state array.  Use the same value for all agents.  After calling this function you may assign state variables (" . ref("assignState") . ") for state indices <tt>0..count-1</tt>.
+";
+
+$example="
+double *extraData[256][256];
+//---------------------------------------------------------------------------
+void __stdcall " . ref("onAgentCreate") . "(int x, int y)
+{
+    setStateCount(x,y, 2);
+    //          pos index  name          initial value
+    assignState(x,y,  0,   \"alive\",      flip(*" . ref("getParamRef") . "(\"Initial Population\"));
+    assignState(x,y,  1,   \"alive nbrs\", 0);
+    
+    // allocate some extra storage for agent (x,y)
+    extraData[x][y] = new double[10];
+}
+//---------------------------------------------------------------------------
+void __stdcall " . ref("onAgentDestroy") . "(int x, int y)
+{
+    delete [] extraData[x][y];
+}
+//---------------------------------------------------------------------------
+";
+
+$seeAlso="
+" . ref("onAgentCreate") . ", " . ref("assignState") . ".
+";
+
+include 'function-post.php';
+?>

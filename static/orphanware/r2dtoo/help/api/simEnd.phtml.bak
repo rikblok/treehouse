@@ -1,0 +1,11 @@
+<?
+
+$name="simEnd">
+
+$remarks="
+This function is obsolete.  Use " . ref("onSimDestroy"> instead.
+";
+
+$seeAlso="
+" . ref("onSimDestroy">.
+";

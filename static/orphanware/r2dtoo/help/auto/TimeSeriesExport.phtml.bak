@@ -1,0 +1,54 @@
+<?
+include 'function-pre.php';
+
+$name="TimeSeriesExport">
+
+$declaration="
+object.TimeSeriesExport(filename, appendmode)
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+" . pt() . "filename
+" . pd() . "Character string holding the (path and) name of the destination file.
+" . pt() . "appendmode
+" . pd() . "<tt>&quot;append&quot;</tt> to append the data to the file or <tt>&quot;overwrite&quot;</tt> (or anything else) to replace the file.
+";
+
+$returnValue="
+Returns 1 on success, 0 on fail.
+";
+
+$remarks="
+Dumps the timeseries to the file <tt>filename</tt>.  If <tt>appendmode=&quot;append&quot;</tt> then appends data to file (if it exists), otherwise replaces existing file.
+";
+
+$example="
+' [VBScript]
+
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+
+' set data to record
+R2DToo.TimeSeriesAdd(\"Average alive\")
+' run...
+R2DToo.SimRun()
+' ...wait for 60 seconds...
+WScript.Sleep(60000)
+' ...stop
+R2DToo.SimPause()
+' append to file
+R2DToo.TimeSeriesExport(\"out.dat\",\"append\")
+
+' unload
+Set R2DToo = nothing
+";
+
+$seeAlso="
+" . ref("TimeSeriesAdd") . ", " . ref("TimeSeriesClear") . ", " . ref("TimeSeriesRemoveAll") . ".
+";
+
+include 'function-post.php';
+?>

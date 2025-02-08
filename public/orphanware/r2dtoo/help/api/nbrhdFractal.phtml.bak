@@ -1,0 +1,40 @@
+<?
+<file include="math.hti">
+
+$name="nbrhdFractal">
+
+$declaration="
+void __stdcall nbrhdFractal(
+	int xRange,   // horizontal range
+	int yRange,   // vertical range
+	bool uplink,  // are my ancestors my neighbours?
+	bool downlink // are my descendents my neighbours?
+);
+";
+
+$parameters="
+" . pt() . "xRange, yRange
+" . pd() . "Range of neighbourhood in horizontal and vertical directions, respectively.
+" . pt() . "uplink, downlink
+" . pd() . "Determines whether links are propagated <i>up</i> the fractal structure to the <i>root</i> or <i>down</i> to the <i>leaves</i>, or both.  <small>(Why computer scientists don't make good gardeners: they plant all their trees upside down!)</small>
+";
+
+$remarks="
+This function is available through the API.  It can be called within the model-supplied routine " . ref("onSimCreate") . " to generate a deterministic, scale-free network.  The grid is divided into blocks of <tt>xRange</tt><times><tt>yRange</tt> sites linked to their &quot;parents&quot; (the top left site in each block).  This pattern is repeated with blocks of <tt>xRange</tt><sup>2</sup><times><tt>yRange</tt><sup>2</sup> and so on, up to the system size, when the uppermost left site is linked to all other sites of the lattice.  By definition this creates a scale-free (power law) distribution of links.  
+
+<p align="center"><img src="nbrhdFractal.gif"><br>
+Sample neighbourhood structure for <tt>xRange</tt>=<tt>yRange</tt>=2.</p>
+";
+
+$example="
+void __stdcall setNbrhd(double *param)
+{
+    // clustered, scale-free network
+    nbrhdBlocks(2,3);            // clustered
+    nbrhdFractal(2,3,true,true); // scale-free
+}
+";
+
+$seeAlso="
+<file include="nbrhdSeeAlso.hti">
+";

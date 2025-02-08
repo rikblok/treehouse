@@ -1,0 +1,37 @@
+<?
+include 'function-pre.php';
+
+$name="onSimDestroy";
+
+$declaration="
+void __stdcall onSimDestroy(void);
+";
+
+$remarks="
+This optional function may be provided by the model.  It is called at the end of every simulation (for instance, before a new simulation replaces an old one or when the program is closed).  It is intended to provide a place to clean up after a simulation.  This function is called before the agent array is freed.
+";
+
+$example="
+double *workspace = NULL;
+//---------------------------------------------------------------------------
+void __stdcall onSimCreate(void)
+{
+    // allocate workspace
+    workspace = new double[100];
+}
+//---------------------------------------------------------------------------
+void __stdcall onSimDestroy(void);
+{
+    // free workspace
+    delete [] workspace;
+    workspace = NULL;
+}
+//---------------------------------------------------------------------------
+";
+
+$seeAlso="
+" . ref("onSimCreate") . ", " . ref("onSimReady") . ".
+";
+
+include 'function-post.php';
+?>

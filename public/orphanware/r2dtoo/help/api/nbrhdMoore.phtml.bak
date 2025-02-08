@@ -1,0 +1,43 @@
+<?
+<file include="math.hti">
+
+$name="nbrhdMoore">
+
+$declaration="
+void __stdcall nbrhdMoore(
+	int range,      	// range of neighbourhood
+	int boundaryType	// type of boundary on world
+);
+";
+
+$parameters="
+" . pt() . "range
+" . pd() . "Range of Moore neighbourhood.
+" . pt() . "boundaryType
+" . pd() . "Type of boundary to impose on world.  See Remarks.
+";
+
+$remarks="
+This function is available through the API.  It can be called within the model-supplied routine " . ref("onSimCreate") . " to set the neighbourhood of each agent to a Moore neighbourhood of range <tt>range</tt>.  This consists of all sites reachable within <tt>range</tt> steps <i>up, down, or diagonally</i> (forming a square of side <tt>2<times>range+1</tt> excepting the center cell).
+
+<p>The neighbours are indexed from left to right and top to bottom.  For example, if <tt>range=1</tt> the neighbour indices of agent <var>a</var> are
+
+<p><table align="center" border="1">
+<tr><td>0</td><td>1</td><td>2</td></tr>
+<tr><td>3</td><td><var>a</var></td><td>4</td></tr>
+<tr><td>5</td><td>6</td><td>7</td></tr>
+</table>
+
+<file include="boundaryType.ht">
+";
+
+$example="
+void __stdcall setNbrhd(double *param)
+{
+    nbrhdMoore(1,btEmpty);
+}
+";
+
+$seeAlso="
+<file include="nbrhdSeeAlso.hti">
+";

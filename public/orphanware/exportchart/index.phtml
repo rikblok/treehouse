@@ -1,0 +1,88 @@
+<?
+include_once 'url.php';
+include_once 'download.php';
+
+$title="ExportChart";
+$dir="${basedir}download/";
+$file="XptCh12b.zip";
+$version="1.2b";
+$platform="MS Excel 97/2000";
+$license="fws";
+
+$desc="
+<i>ExportChart Excel Add-In</i>.  Save your Excel charts to Gif files for use in web pages or graphic programs.  Requires Microsoft Excel 97 or 2000.
+";
+
+$new="
+1.2b  February 9, 2001
+<ul><li>added German translation of add-in.  Thanks to ";
+$new .= mailto(array('name'=>"Edgar Hoffmann", 'link'=>"Edgar.Hoffmann@markant.de")) . '.';
+$new .= "
+	<li>moved each language translation into separate zip file and renamed each to ExportChart.xla.  This way each new translation doesn't require a new version to be released.
+</ul>
+1.2   January 8, 2001
+<ul><li>added Polish version of add-in.  Thanks to ";
+$new .= mailto(array('name'=>"Jaroslaw Maslanka", 'link'=>"jaroslaw.maslanka@tpg.pl")) . '.';
+$new .= "
+	<li>added global language variables to simplify conversions to other languages
+</ul>
+
+1.1   December 3, 1999
+<ul><li>added Dutch version of add-in.  Thanks to ";
+$new .= mailto(array('name'=>"Bert Rijpkema", 'link'=>"rijpkema@pronergi.demon.nl")) . '.';
+$new .= "
+</ul>
+
+v1.0c October 18, 1999
+<ul><li>fixed: <tt>Auto_Close()</tt> would report an error if the <tt>Export Chart...</tt> menu item was not found (eg. if the user cancelled an exit and then tried to exit later)
+</ul>
+
+v1.0b October 7, 1999
+<ul><li>oops!  A pre-release accidentally got released as v1.0!  It should work now.
+</ul>
+
+v1.0  October 4, 1999
+<ul><li>first release
+</ul>
+";
+
+$dl = download(array('noclose'=>true, 'rows'=>2, 'noecho'=>true));
+unset($platform);
+unset($license);
+$dl .= download(array(
+	'noopen'=>true,
+	'description'=>"Dutch translation",
+	'file'=>"XptChDut12b.zip",
+	'title'=>'',
+	'icon'=>"${basedir}images/flags/nl.gif",
+	'noclose'=>true,
+	'rows'=>2,
+	'noecho'=>true
+));
+$dl .= download(array(
+	'noopen'=>true,
+	'description'=>"German translation",
+	'file'=>"XptChGer12b.zip",
+	'title'=>'',
+	'icon'=>"${basedir}images/flags/de.gif",
+	'rows'=>2,
+	'noclose'=>true,
+	'noecho'=>true
+));
+$dl .= download(array(
+	'noopen'=>true,
+	'description'=>"Polish translation",
+	'file'=>"XptChPol12b.zip",
+	'title'=>'',
+	'icon'=>"${basedir}images/flags/pl.gif",
+	'rows'=>2,
+	'noecho'=>true
+));
+
+$screen = "
+<p align=\"center\"><a href=\"ExportChart.gif\"><img src=\"ExportChart_s.gif\"></a><br>
+The <tt>Save</tt> dialog is presented when the user clicks on <tt>Export chart...</tt> in the <tt>Chart</tt> menu.</p>
+";
+
+include "../software-template.php";
+?>

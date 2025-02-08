@@ -1,0 +1,42 @@
+<?
+include 'function-pre.php';
+
+$name="setParamCount";
+
+$declaration="
+pParam __stdcall setParamCount(
+	int count	// number of parameters
+);
+";
+
+$parameters="
+" . pt() . "count
+" . pd() . "Number of parameters to allocate space for.
+";
+
+$returnValue="
+A pointer to the allocated <tt>param</tt> array (array of " . ref("tParam") . ").
+";
+
+$remarks="
+This function is available through the API.  Use it <i>only</i> from within " . ref("initParams") . " to set the size of the model parameter array.  After calling this function you may assign parameters (" . ref("assignParam") . ") for parameter indices <tt>0..count-1</tt>.
+";
+
+$example="
+void __stdcall initParams(void)
+{
+    setParamCount(4);
+    //      index  name [constraints]            default value
+    assignParam(0, \"World Width [int,&gt;0]\",       30);
+    assignParam(1, \"World Height [int,&gt;0]\",      30);
+    assignParam(2, \"Initial Density [&gt;0,&lt;1]\",    0.5);
+    assignParam(3, \"Fade Rate [int, &gt;0,&lt;=255]\",  255);
+}
+";
+
+$seeAlso="
+" . ref("initParams") . ", " . ref("assignParam") . ".
+";
+
+include 'function-post.php';
+?>

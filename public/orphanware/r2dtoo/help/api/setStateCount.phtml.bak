@@ -1,0 +1,46 @@
+<?
+include 'function-pre.php';
+
+$name="setStateCount";
+
+$declaration="
+pState __stdcall setStateCount(
+	int x,   	// x-coordinate of agent
+	int y,   	// y-coordinate of agent
+	int count	// number of state variables
+);
+";
+
+$parameters="
+" . pt() . "x
+" . pd() . "X-coordinate of agent (base zero).
+" . pt() . "y
+" . pd() . "Y-coordinate of agent (base zero).
+" . pt() . "count
+" . pd() . "Number of state variables to allocate space for.
+";
+
+$returnValue="
+A pointer to the allocated <tt>state</tt> array for the agent at (<tt>x,y</tt>) (array of " . ref("tState") . ").
+";
+
+$remarks="
+This function is available through the API.  Use it <i>only</i> from within " . ref("initState") . " to set the size of the agent state array.  Use the same value for all agents.  After calling this function you may assign state variables (" . ref("assignState") . ") for state indices <tt>0..count-1</tt>.
+";
+
+$example="
+void __stdcall initAgent(int x, int y, " . ref("pParam") . " param)
+{
+    setStateCount(x,y, 2);
+    //          pos index  name          initial value
+    assignState(x,y,  0,   \"alive\",      flip(param[2]));
+    assignState(x,y,  1,   \"alive nbrs\", 0);
+}
+";
+
+$seeAlso="
+" . ref("initState") . ", " . ref("assignState") . ".
+";
+
+include 'function-post.php';
+?>

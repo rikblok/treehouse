@@ -1,0 +1,66 @@
+<?
+include 'function-pre.php';
+
+$name="onTick";
+
+$declaration="
+void __stdcall onTick(
+	double &time  	// simulation time
+);
+";
+
+$parameters="
+" . pt() . "time
+" . pd() . "Simulation time.
+";
+
+$remarks="
+<tt>onTick()</tt> is the model's main loop: it is called repeatedly while the simulation is running.  Set the variable <tt>time</tt> to override the default increment.  On exit from the function <tt>time</tt> is compared to its value on entry and, if it has not been increased by <tt>onTick()</tt>, it is automatically incremented by one unit.
+";
+
+$revisions="
+API v1.5<ul><li>new!  Replaces <tt>timestep</tt>.
+	</ul>
+";
+
+$example="
+//---------------------------------------------------------------------------
+bool stage1(" . ref("pState") . " state, int x, int y, " . ref("pState") . " *nbr, int nbrCount,
+            int feaMode)
+// count live neighbours (called in onTick)
+{
+    if (feaMode!=feaContinue)	return true;
+    // store # live neighbours in state[1]
+    state[1] = 0;
+    for (int i=0; i&lt;nbrCount; i++)	state[1] += nbr[i][0];
+    return true;
+}
+//---------------------------------------------------------------------------
+bool stage2(" . ref("pState") . " state, int x, int y, " . ref("pState") . " *nbr, int nbrCount,
+            int feaMode)
+// update alive/dead state (called in onTick)
+{
+    if (feaMode!=feaContinue)	return true;
+    // Conway's game of Life
+    if (state[1] == 3)	   	state[0] = 1;
+    else if (state[1] != 2)	state[0] = 0;
+    // else no change (count==2)
+    return true;
+}
+//---------------------------------------------------------------------------
+void __stdcall onTick(double &time)
+{
+    forEachAgent(stage1);      	// count live neighbours
+    forEachAgent(stage2);      	// update alive/dead state
+    // next line not required
+    // time++;
+}
+//---------------------------------------------------------------------------
+";
+
+$seeAlso="
+" . ref("forEachAgent") . ".
+";
+
+include 'function-post.php';
+?>

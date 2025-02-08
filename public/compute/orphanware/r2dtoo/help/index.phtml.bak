@@ -1,0 +1,15 @@
+<?
+include 'head.php'; // title="R2DToo Help" parent="../index" background="bg.jpg">
+
+<h2>Index</h2>
+<ul><li><a href="interface.html">The Interface</a>
+	<file include="interface.ht" indexing="true">
+	<li><a href="auto/index.html">Automation</a>
+<? /*		<table border="0" cellpadding="0" cellspacing="0"><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td><file include="auto/index.ht.toc" tocpage="auto/index.html"></td></tr></table> */ ?>
+	<li><a href="api/index.html">For the programmer</a>
+<? /*		<table border="0" cellpadding="0" cellspacing="0"><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;</td><td><file include="api/index.ht.toc" tocpage="api/index.html"></td></tr></table> */ ?>
+	<li><a href="support.html">Support</a>
+	<li><a href="credits.html">Credits</a>
+</ul>
+
+<?	include 'foot.php';	?>

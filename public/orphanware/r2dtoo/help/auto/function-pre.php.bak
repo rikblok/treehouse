@@ -1,0 +1,48 @@
+<?
+function ref($name) {
+	return "<a href=\"$name.html\"><tt>$name</tt></a>";
+}
+
+function pt() {
+	return '<dt><tt>';
+}
+function pd() {
+	return '</tt><dd>';
+}
+
+function nbrhdSeeAlso() {
+	global $name;
+	$nbrhdSeeAlso='';
+	if ($name != "onSimCreate")	$nbrhdSeeAlso .= ref("onSimCreate") . ", ";
+	if ($name != "nbrhd1D")		$nbrhdSeeAlso .= ref("nbrhd1D") . ", ";
+	if ($name != "nbrhdBlocks")	$nbrhdSeeAlso .= ref("nbrhdBlocks") . ", ";
+	if ($name != "nbrhdCCDM")	$nbrhdSeeAlso .= ref("nbrhdCCDM") . ", ";
+	if ($name != "nbrhdFractal")$nbrhdSeeAlso .= ref("nbrhdFractal") . ", ";
+	if ($name != "nbrhdMoore")	$nbrhdSeeAlso .= ref("nbrhdMoore") . ", ";
+	if ($name != "nbrhdRandom")	$nbrhdSeeAlso .= ref("nbrhdRandom") . ", ";
+	if ($name != "nbrhdRandomER") {
+		$nbrhdSeeAlso .= ref("nbrhdRandomER");
+		if ($name == "nbrhdVonNeumann")	$nbrhdSeeAlso .= ".";
+		else							$nbrhdSeeAlso .= ", ";
+	}
+	if ($name != "nbrhdVonNeumann")	$nbrhdSeeAlso .= ref("nbrhdVonNeumann") . ".";
+	return $nbrhdSeeAlso;
+}
+
+function boundaryType() {
+//	$boundaryType = tochead(array('name'=>'Boundaries', 'level'=>'3', 'noecho'=>true));
+	$boundaryType .= "<h3>Boundaries</h3>";
+	$boundaryType .= "
+		Boundaries are handled by the <tt>boundaryType</tt> parameter which may be one of the following:
+
+		<p><pl>
+		" . pt() . "btPeriodic
+		" . pd() . "All borders wrap around forming a torus.
+		" . pt() . "btEmpty
+		" . pd() . "Agents at the edge have fewer neighbours.
+	</pl>
+	";
+
+	return $boundaryType;
+}
+?>

@@ -1,0 +1,128 @@
+<?
+$title="Time Series Form"; 
+$parent="interface";
+$background="bg.jpg";
+include 'head.php';
+include 'cite.php';
+include 'toc.php';
+?>
+
+The Time Series form allows the user to monitor the time evolution of statistical properties of all agents.  Interaction with the Main form is still possible while the Time Series form is visible.  
+
+<p><center>
+<a href="timeseries.html#Menubar"><img src="timeseries_menubar.gif" border=0></a><br>
+<a href="timeseries.html#Toolbar"><img src="timeseries_toolbar.gif" border=0></a><br>
+<a href="timeseries.html#Tabs"><img src="timeseries_tabs.gif" border=0></a><br>
+</center>
+
+<?	tochead(array('name'=>"Menubar")); ?>
+
+The menubar allows for manipulation and recording of the graph.  The menu items are:
+<dl><dt><tt>File</tt>
+	<dd><dl>
+		<dt><tt>Export Data to...</tt>
+		<dd>Exports the graph data to an ASCII data file chosen by the user, with model parameters and plotted statistics in columns separated by tab characters.  If the file exists the user has the option of overwriting or appending to it.  
+		<dt><tt>Close Window</tt>
+		<dd>Hides the Time Series form.
+	</dl>
+	<dt><tt>Graph</tt>
+	<dd><dl>
+		<dt><tt>Print</tt>
+		<dd>Prints the current graph to the default printer.
+		<dt><tt>Copy</tt>
+		<dd>Copies the current graph to the clipboard as a scalable picture (Windows metafile).
+		<dt><tt>Clear</tt>
+		<dd>Clears the graph data.
+		<dt><tt>Draw Lines</tt>
+		<dd>Toggles drawing the data series with lines joining the points.
+		<dt><tt>Draw Points</tt>
+		<dd>Toggles drawing points on the graph.  (For large datasets this significantly slows the framerate.)
+		<dt><tt>Monochrome</tt>
+		<dd>Toggles between drawing the series in monochrome (with different line styles) or colour.  Monochrome may be more suitable for printing.
+		<dt><tt>Grid</tt>
+		<dd>Toggles drawing of background grid on the graph.
+	</dl>
+	<dt><tt>Help</tt>
+	<dl>Attempts to open this help file.
+</dl>
+
+<?	tochead(array('name'=>"Toolbar")); ?>
+
+The toolbar duplicates some of the more common menu items for ease of use:
+<dl><dt><img src="timeseries_bExport.gif"> Export Data Button
+	<dd>Same as <tt>File|Export Data to...</tt> menu item.
+	<dt><img src="timeseries_bPrint.gif"> Print Button
+	<dd>Same as <tt>Graph|Print</tt> menu item.
+	<dt><img src="timeseries_bCopy.gif"> Copy Button
+	<dd>Same as <tt>Graph|Copy</tt> menu item.
+	<dt><img src="timeseries_bClear.gif"> Clear Button
+	<dd>Same as <tt>Graph|Clear</tt> menu item.
+	<dt><img src="timeseries_bDrawLines.gif"> Draw Lines Button
+	<dd>Same as <tt>Graph|Draw Lines</tt> menu item.
+	<dt><img src="timeseries_bDrawPoints.gif"> Draw Points Button
+	<dd>Same as <tt>Graph|Draw Points</tt> menu item.
+	<dt><img src="timeseries_bMono.gif"> Monochrome Button
+	<dd>Same as <tt>Graph|Monochrome</tt> menu item.
+	<dt><img src="timeseries_bDrawGrid.gif"> Draw Grid Button
+	<dd>Same as <tt>Graph|Grid</tt> menu item.
+</dl>
+
+<?	tochead(array('name'=>"Tabs")); ?>
+
+<?	tochead(array('name'=>"Series&nbsp;Tab", 'level'=>"3")); ?>
+
+<center><img src="timeseries_series.gif"></center>
+
+<p>The Series tab has four sections.  They are:
+<ul><li><a href="timeseries.html#Buttons">Buttons</a>
+	<li><a href="timeseries.html#lbOperation">Operation Listbox</a>
+	<li><a href="timeseries.html#lbState">State Listbox</a>
+	<li><a href="timeseries.html#lbSeries">Series Listbox</a>
+</ul>
+
+<a name="Buttons"><h4>Buttons</h4></a>
+
+<dl><dt><img src="timeseries_bAdd.gif"> Add Series Button
+	<dd>Add a pair from the Operation/State listboxes to the Series listbox for plotting.  One item must be selected from each of the Operation and State listboxes.  The program allows up to ten series to be plotted.
+	<dt><img src="timeseries_bRemove.gif"> Remove Series Button
+	<dd>Remove a series from the Series listbox and the graph.  An item must be selected from the Series listbox before pressing this button.
+</dl>
+
+<a name="lbOperation"><h4>Operation Listbox</h4></a>
+
+The operation indicates which statistic is to be applied to the dataset consisting of the entire lattice of agents.  The operations include:
+<dl><dt><tt>Minimum</tt>
+	<dt><tt>Maximum</tt>
+	<dt><tt>Average</tt>
+	<dd>These operations calculate the minimum/maximum/average of the specified state computed over all agents.
+	<dt><tt>Variance</tt>
+	<dd>Calculates the variance of the dataset using the corrected two-pass algorithm <cite tag="press92" note="Ch. 14">.  The standard deviation is the square root of the variance.  This and the other higher moments reduce the simulation framerate.
+	<dt><tt>Skewness</tt>
+	<dd>Calculates the lopsidedness of the dataset (third moment).  Returns a negative (positive) value if the <i>tail</i> of the distribution is left- (right-) biased.  The value is significant if its magnitude exceeds <var>sqrt(15/N)</var> where <var>N</var> is the number of agents.
+	<dt><tt>Kurtosis</tt>
+	<dd>Calculates the excess weight in the tails of the dataset (fourth moment).  A positive (negative) value indicates an excess (deficiency) of large outliers compared to a Gaussian distribution.  The value is significant at a magnitude of <var>sqrt(96/N)</var> where <var>N</var> is the number of agents.
+	<dt><tt>Parameter</tt>
+	<dd>This item lets you plot the time evolution of a global model parameter, instead of statistics of the agent state variables.  When this item is selected the <a href="#lbState">State Listbox</a> contains a list of all the model parameters, any of which may be chosen to track.
+</dl>
+
+<a name="lbState"><h4>State Listbox</h4></a>
+
+The State listbox simply lists all the state variables intrinsic to each agent.  For a description of the variables see the model's documentation.
+
+<p>When the <a href="#lbOperation">Operation Listbox</a> has the <tt>Parameter</tt> operation selected, this listbox instead contains a list of all the global model parameters.
+
+<p>Note that applying the above mathematical operations to a state variable is only meaningful if the state (an integer) is a simple numerical quantity.  If it is a representation of some property (such as an integer representation of a bitstring) applying the above operations may not be useful.
+
+<a name="lbSeries"><h4>Series Listbox</h4></a>
+
+The series listbox simply lists all operation/state pairs which will be plotted on the graph.  The same series are listed in the graph's legend.
+
+<?	tochead(array('name'=>"Graph&nbsp;Tab", 'level'=>"3")); ?>
+
+<center><img src="timeseries_graph.gif"></center>
+
+<p>The graph tab simply contains a scientific graph containing all the data currently being plotted.  Use the <a href="#Series&nbsp;Tab">Series tab</a> to add or remove series to plot.  To change the appearance of the graph or print/copy it, use the <a href="#Menubar"><tt>Graph</tt></a> menu.
+
+<p>By default the graph automatically rescales to include all data points.  However, the user may zoom in on a particular region by dragging a rectangle across a section of the graph, with the primary mouse button held down.  To revert to automatic scaling click anywhere on the graph.
+
+<?	include 'foot.php';	?>

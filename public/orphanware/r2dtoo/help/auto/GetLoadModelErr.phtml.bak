@@ -1,0 +1,50 @@
+<?
+include 'function-pre.php';
+
+$name="GetLoadModelErr">
+
+$declaration="
+object.GetLoadModelErr()
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+";
+
+$returnValue="
+A character string explaining any errors that occurred when trying to load the last model.  If no errors occurred, returns an empty string, &quot;&quot;.
+";
+
+<? /*$remarks="
+";*/ ?>
+
+$revisions="
+v1.8<ul><li>new!
+	</ul>
+";
+
+$example="
+' [VBScript]
+
+Dim R2DToo
+Dim WshShell
+Set WshShell = WScript.CreateObject("WScript.Shell")
+
+WScript.Echo "Loading R2DToo..."
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+WScript.Echo "Loading model Conway's Life..."
+If R2DToo.LoadModel(WshShell.CurrentDirectory & "\..\Models\ConwaysLife\model.dll") Then
+	WScript.Echo "R2DToo loaded with model: " & R2DToo.AboutModel("Name") & " " & R2DToo.AboutModel("Version")
+Else
+	Wscript.Echo R2DToo.GetLoadModelErr()
+	Set R2DToo = nothing
+	Wscript.Quit(1)
+End If
+
+...
+";
+
+$seeAlso="
+" . ref("LoadModel">.
+";

@@ -1,0 +1,31 @@
+<?
+$title="User-Supplied Configurations";
+$parent="../index";
+include 'head.php';
+include 'download.php';
+
+Here are some configuration files supplied by generous users to work with <a href="../index.html">Toolbar</a>.
+
+<?
+$platform = "<a href=\"../index.html\">Toolbar</a>";
+$license="fws";
+$icon="../icon.gif";
+
+download(array( 
+	'file'=>"webcolors.ini",
+	'title'=>"webcolors",
+	'version'=>"1.1",
+	'description'=>"An HTML color picker that provides the 216 web-safe colors.  From Bryan Collins.",
+	'screenshot'=>"webcolors.gif"
+));
+
+download(array( 
+	'file'=>"ToolbarEditor.ini",
+	'title'=>"Toolbar Editor",
+	'version'=>"1.1",
+	'description'=>"A toolbar to help with the creation/editing of Toolbar configuration files.  From Tom Stout.",
+	'screenshot'=>"ToolbarEditor.gif"
+));
+
+include 'foot.php';	
+?>

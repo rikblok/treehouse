@@ -1,0 +1,49 @@
+<?
+include 'function-pre.php';
+
+$name="getAgentHint";
+
+$declaration="
+char* __stdcall getAgentHint(
+    int x,        // x-coordinate of agent
+    int y,        // y-coordinate of agent
+    pState state  // array of agent state variables
+);
+";
+
+$parameters="
+" . pt() . "x,y
+" . pd() . "Coordinates of agent.
+" . pt() . "state
+" . pd() . "Array of agent state variables.
+";
+
+$returnValue="
+A character string returning information to be displayed in hint box when the user hovers mouse over an agent.
+";
+
+$remarks="
+This optional function may be provided by the model.  It is called when the user hovers the mouse cursor over an agent in the view portal.  This function should return a brief character string providing information about the agent.
+";
+
+$revisions="
+API v1.6<ul><li>new!
+	</ul>
+";
+
+$example="
+char* __stdcall getAgentHint(int x, int y, " . ref("pState") . " state)
+{
+    char buffer[256] = \"\";
+    // return position and \"Alive\" if state[0]>0 else \"Dead\"
+    sprintf(buffer,\"(%d,%d)\n%s\",x,y, (state[0] ? \"Alive\" : \"Dead\"));
+    return &buffer[0];
+}
+";
+
+$seeAlso="
+" . ref("getAgentAbout") . ".
+";
+
+include 'function-post.php';
+?>

@@ -1,0 +1,52 @@
+<?
+
+$name="getParamRef">
+
+$declaration="
+pParam __stdcall getParamRef(
+    char* name    // parameter name
+);
+";
+
+$parameters="
+" . pt() . "name
+" . pd() . "Name of a valid parameter.
+";
+
+$returnValue="
+A pointer (reference) to the parameter <tt>name</tt> or <tt>NULL</tt> if not found.
+";
+
+$remarks="
+This function is available through the API.  Use it to retrieve a pointer <i>shortcut</i> to a parameter. Once you have the pointer you can access (read or write) the parameter directly through the shortcut without needing any more function calls.
+
+<p>If a parameter named <tt>name</tt> can't be found, the function returns <tt>NULL</tt>.</p>
+";
+
+$revisions="
+API v1.5<ul><li>new!
+	</ul>
+";
+
+$example="
+pParam shortcut;
+//---------------------------------------------------------------------------
+void __stdcall onSimCreate(void)
+{
+	shortcut = getParamRef("Some global quantity");
+}
+//---------------------------------------------------------------------------
+void __stdcall onTick(double &time)
+{
+    if (*shortcut &gt; 1) {           // if parameter "Some global quantity" &gt; 1
+        forEachAgent(handleType1);
+    } else {
+        forEachAgent(handleType2); 
+    }
+}
+//---------------------------------------------------------------------------
+";
+
+$seeAlso="
+" . ref("initParams">, " . ref("assignParam">, " . ref("getParamVal">.
+";

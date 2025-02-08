@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<title>forEachAgent</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="revisit-after" content="30 days">
+<meta name="document-date" content="06 Nov 2004 14:49:37 GMT">
+<meta name="robots" content="all"><meta name="language" content="English">
+<base target="_top"><meta name="document-date" content="30 Apr 2004 13:37:00 13AprBST-8"></head>
+<body background="../bg.jpg"><a name="top"><table width="100%"><tr><td><small><small><b><a href="../../../../index.html">Rik's Treehouse</a> &gt; <a href="../../../../compute.html">Babbling in Binary</a> &gt; <a href="../../../../software/index.html">My Software</a> &gt; <a href="../../../../software/orphan.html">Orphanware</a> &gt; <a href="../../../../software/r2dtoo/index.html">R2DToo</a> &gt; <a href="../../../../software/r2dtoo/help/index.html">R2DToo Help</a> &gt; <a href="../../../../software/r2dtoo/help/api/index.html">For the Programmer</a> &gt; forEachAgent</b></small></small></td></tr></table><img src="../../../../images/top-blank.gif" align="right" width="11" height="10"  alt=""><hr><center><h1>forEachAgent</h1></center>
+<table width="100%" cellspacing="2" cellpadding="8"><tr><td valign="top" bgcolor="#ddddff"><small><small><a href="#Declaration">Declaration</a><br></small></small><small><small><a href="#Parameters">Parameters</a><br></small></small><small><small><a href="#Remarks">Remarks</a><br></small></small><small><small><a href="#Revisions">Revisions</a><br></small></small><small><small><a href="#Example">Example</a><br></small></small><small><small><a href="#See&nbsp;Also">See&nbsp;Also</a><br></small></small></td><td width="*" valign="top"><a name="Declaration"><h2>Declaration</h2><pre>
+void __stdcall forEachAgent(
+	bool (*func)(pState,int,int,pState*,int,int)	// name of function
+);
+</pre><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Parameters"><h2>Parameters</h2><dl>
+<dt><tt>func
+</tt><dd>The name of a function to apply to each agent in turn.  (See <a href="#Remarks">Remarks</a>.)  
+</dl><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Remarks"><h2>Remarks</h2>
+This function is available through the API.  It provides an efficient way to process every agent in turn.  
+
+<blockquote>
+<h3>func</h3>
+<tt>func</tt> is the name of a function with the following declaration:
+<pre>
+bool func(
+	pState state,  	// array of agent state variables
+	int x,        	// X-coordinate of agent
+	int y,        	// Y-coordinate of agent
+	pState *nbr,   	// array of neighbours
+	int nbrCount, 	// size of nbr array, nbr[0..nbrCount-1]
+	int feaMode   	// calling mode, one of feaBegin, feaContinue or feaEnd
+);
+</pre>
+
+The parameters <tt>param, state, x, y, nbr,</tt> and <tt>nbrCount</tt> are passed into the function with the appropriate values to enable processing of each agent.  The function is called first with parameter <tt>feaMode=feaBegin</tt> (and an arbitrary agent), then once for each agent with <tt>feaMode=feaContinue</tt> and finally, once more with <tt>feaMode=feaEnd</tt> (and the last agent again).  See <a href="forEachAgentVar.html"><tt>forEachAgentVar</tt></a>for an example of how to use <tt>feaMode</tt>.
+
+<p>The function must return a boolean value.  The return value is ignored when <tt>feaMode</tt> is not <tt>feaContinue</tt>.  When <tt>feaMode=feaContinue</tt> a return value of <tt>true</tt> indicates that the next agent in the sequence should be processed, <tt>false</tt> tells <tt>forEachAgent</tt> to prematurely abort processing of the agents.  In this case, <tt>func</tt> will only be called one more time with the same agent and <tt>feaMode=feaEnd</tt>.
+</blockquote>
+<a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Revisions"><h2>Revisions</h2>
+API v1.5<ul><li>no longer passes <tt>param</tt> to <tt>func</tt>
+	</ul>
+<a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Example"><h2>Example</h2><listing>
+bool stage1(<a href="pState.html"><tt>pState</tt></a> state, int x, int y, <a href="pState.html"><tt>pState</tt></a> *nbr, int nbrCount,
+            int feaMode)
+// count live neighbours (called in onTick)
+{
+    if (feaMode!=feaContinue)	return true;
+    // store # live neighbours in state[1]
+    state[1] = 0;
+    for (int i=0; i&lt;nbrCount; i++)	state[1] += nbr[i][0];
+    return true;
+}
+bool stage2(<a href="pState.html"><tt>pState</tt></a> state, int x, int y, <a href="pState.html"><tt>pState</tt></a> *nbr, int nbrCount,
+            int feaMode)
+// update alive/dead state (called in onTick)
+{
+    if (feaMode!=feaContinue)	return true;
+    // Conway's game of Life
+    if (state[1] == 3)	   	state[0] = 1;
+    else if (state[1] != 2)	state[0] = 0;
+    // else no change (count==2)
+    return true;
+}
+void __stdcall onTick(double &time)
+{
+    forEachAgent(stage1);      	// count live neighbours
+    forEachAgent(stage2);      	// update alive/dead state
+}
+</listing><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="See&nbsp;Also"><h2>See&nbsp;Also</h2>
+<a href="forEachAgentVar.html"><tt>forEachAgentVar</tt></a>, <a href="onTick.html"><tt>onTick</tt></a>.
+</td></tr></table><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="90%" align="center"><table width="100%"><tr valign="top"><td align="left">
+<small><small><a name="bottom"><a href="../../../../office.html">[Rik's Office Hours]</a> <a href="../../../../contact.html">[Contact Rik]</a><br>Last updated: Fri Apr 30 2004, 1:37pm</small></small></td><td align="right">
+<FORM align="right" method=GET action="http://www.google.com/search"><table align="right"><tr><td>
+<INPUT TYPE=text name=q size=25 maxlength=255 value="">
+<input type=hidden name=sitesearch value="http://www.zoology.ubc.ca"><input type=hidden name="hq" value="inurl:rikblok"><INPUT type=hidden name=filter value="0"><INPUT type=submit name=btnG VALUE="Search">
+</td></tr></TABLE></FORM>
+</td></tr></table>
+
+
+</body></html>

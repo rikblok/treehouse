@@ -1,0 +1,82 @@
+<?
+
+$name="forEachAgentVar">
+
+$declaration="
+void __stdcall forEachAgentVar(
+	bool (*func)(pState,int,int,pState*,         // name of function
+	             int,int,double*,int),      
+	double* var,                                 // workspace
+	int varCount                                 // size of workspace
+);
+";
+
+$parameters="
+" . pt() . "func
+" . pd() . "The name of a function to apply to each agent in turn.
+" . pt() . "var
+" . pd() . "Allocated array of storage space for extra parameters.
+" . pt() . "varCount
+" . pd() . "Size of array, var[0..varCount-1].
+";
+
+$remarks="
+This function is available through the API.  It provides an efficient way to process every agent in turn.
+
+<blockquote>
+<h3>func</h3>
+<tt>func</tt> is the name of a function with the following declaration:
+<pre>
+bool func(
+	pState state,  	// array of agent state variables
+	int x,        	// X-coordinate of agent
+	int y,        	// Y-coordinate of agent
+	pState *nbr,   	// array of neighbours
+	int nbrCount, 	// size of nbr array, nbr[0..nbrCount-1]
+	int feaMode,   	// calling mode, one of feaBegin, feaContinue or feaEnd
+	double *var,  	// workspace
+	int varCount  	// size of workspace
+);
+</pre>
+
+The details of this function are the same as that for " . ref("forEachAgent"> except for the addition of two extra parameters, <tt>var</tt> and <tt>varCount</tt>.  <tt>var[0..varCount-1]</tt> is an array of double values (allocated by the model programmer) which are passed through the call to <tt>forEachAgentVar</tt> to the function <tt>func</tt>, providing storage space.
+</blockquote>
+";
+
+$example="
+bool calcAverage(" . ref("pState"> state, int x, int y, " . ref("pState"> *nbr,
+                 int nbrCount, int feaMode, double *var, int varCount)
+// Used by onTick.  Assumes varCount >= 1.
+{
+    static double n;
+    switch (feaMode) {
+        case feaBegin:    var[0] = 0;
+                          n=0;
+                          break;
+        case feaContinue: var[0] += state[0];
+                          n++;
+                          break;
+        case feaEnd:      var[0] /= n;
+    }
+    return true;
+}
+void __stdcall onTick(double &time)
+{
+    // standard way to call forEachAgentVar
+    double *ave = new double[1];
+    forEachAgentVar(calcAverage,ave,1);
+    delete [] ave;
+    // or a shortcut if just one variable passed in
+    double ave2;
+    forEachAgentVar(calcAverage,&ave2,1);
+}
+";
+
+$revisions="
+API v1.5<ul><li>no longer passes <tt>param</tt> to <tt>func</tt>
+	</ul>
+";
+
+$seeAlso="
+" . ref("forEachAgent">.
+";

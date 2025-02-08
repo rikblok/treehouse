@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<title>R2DToo</title><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="revisit-after" content="30 days">
+<meta name="document-date" content="06 Nov 2004 14:49:37 GMT">
+<meta name="robots" content="all"><meta name="language" content="English">
+<base target="_top"><meta name="document-date" content="03 Apr 2005 04:49:00 4AprBST-8"></head>
+<body background="../../images/bg.jpg"><a name="top"><img src="R2DToo.gif" align="right" width="32" height="32" ><table width="100%"><tr><td><small><small><b><a href="../../index.html">Rik's Treehouse</a> &gt; <a href="../../compute.html">Babbling in Binary</a> &gt; <a href="../../software/index.html">My Software</a> &gt; <a href="../../software/orphan.html">Orphanware</a> &gt; R2DToo</b></small></small></td></tr></table><img src="../../images/top-blank.gif" align="right" width="11" height="10"  alt=""><hr><center><h1>R2DToo</h1></center><center><h1>2001-2003</h1></center><table width="100%" cellspacing="2" cellpadding="8"><tr><td valign="top" bgcolor="#ddddff"><small><small><a href="#Orphanware">Orphanware</a><br></small></small><small><small><a href="#Features">Features</a><br></small></small><small><small><a href="#Description">Description</a><br></small></small><small><small><a href="#Release&nbsp;Notes">Release&nbsp;Notes</a><br></small></small><small><small><a href="#Download">Download</a><br></small></small><small><small><a href="#Screenshots">Screenshots</a><br></small></small></td><td width="*" valign="top"><a name="Orphanware"><h2>Orphanware</h2><em>This software is no longer being developed or maintained. Since discovering <a href="http://ccl.northwestern.edu/netlogo/">NetLogo</a> I haven't looked back.  I still use <u>R2DToo</u> for some tasks where speed is critical but generally I find NetLogo a much more flexible and rewarding environment.  And it is being actively developed.<p> If you would like to take over project development, please <a href="mailto:&#114;&#105;&#107;&#046;&#098;&#108;&#111;&#107;&#064;&#117;&#098;&#099;&#046;&#099;&#097;">&#108;&#101;&#116;&#032;&#109;&#101;&#032;&#107;&#110;&#111;&#119;</a>.</em><a href="#top"><img src="../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Features"><h2>Features</h2>
+<ul><li><i>Automation!</i> Now you can run long experiments without requiring user intervention.  Just write a script to control R2DToo.
+	<li><i>Speed!</i>  By decoupling the graphics R2DToo can devote 99% of the CPU time to running the simulation.  And since the model is compiled it runs much faster than Java-based simulations.
+	<li><i>Networks!</i> The R2DToo API, available to the model programmer, includes many built-in interaction networks including scale-free.
+	<li><i>Free!</i> You can use and share R2DToo as you like.  It even comes with the source code.
+</ul>
+<a href="#top"><img src="../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Description"><h2>Description</h2>
+<i><u>R</u>ik's <u>2D</u> simulation <u>Too</u>l</i> lets you build and run your own cellular automata or other  spatial network simulations.  R2DToo is designed for scientists, to help with constructing, running, and collecting data from simulations with features such as live <a href="help/timeseries.html#GraphTab">time series plots</a> of interesting statistics and <a href="help/auto/index.html">automation</a> to let the user run experiments repeatedly without requiring user interaction.
+
+<ul><li><a href="help/index.html">R2DToo Help</a>
+	<li><a href="../../lib/blok02b.html">Rock, paper and scissors in space: A demonstration of R2DToo</a>
+	<li><a href="models/index.html">R2DToo Models</a>
+	<li><a href="http://www.topica.com/lists/r2dtoo/read">Browse the R2DToo mailing list</a>
+	<li><a href="mailto:r2dtoo-subscribe@topica.com">Subscribe to the R2DToo mailing list</a>
+	<li><a href="help/api/index.html#Borland C++ Compiler">Free Borland C++ Compiler</a> for writing your own models
+</ul>
+
+<p>The power of R2DToo is that it is mostly just a front-end for the simulation code which is compiled separately and loaded into the program.  So you, the programmer, are free to make the underlying simulation as complicated as you like.  R2DToo is ideal for simulations involving a fixed, discrete network of nodes because it provides special tools that simplify coding and greatly enhance performance.  It has grown from it's roots as a 2-dimensional simulation package to support a variety of <a href="help/api/index.html#api2model-nbr">neighbourhoods</a> (1D, 2D Moore, von Neumann, scale-free random network, etc.).  
+
+<p>However, R2DToo may be a good choice even if your model does not employ a fixed interaction network because it offers a consistent user interface and takes full advantage of the machine's processing power.  At it's fastest setting it automatically reduces the computing time devoted to updating the display in order to give 99% of the CPU time to the simulation itself...so your simulation can run at 99% of it's theoretical speed without compromising the user interface!  (You can also adjust this setting so that no frames are dropped.)
+
+<p>Unfortunately, R2DToo is only available for MS-Windows platforms.  If you need a portable environment you might try <a href="http://www.brook.edu/dybdocroot/es/dynamics/models/ascape/">Ascape</a> which is built on Java so it can run on almost any machine.  So, you might ask, why should I use R2DToo?  Because it is <i>fast</i>.  My test results estimate it is 50-60 times faster than Ascape. <small><small>(R2DToo 1.3 vs. Ascape 1.9.1, tested with Conway's Game of Life, all graphics disabled.)</small></small>  Does it matter given the speed of today's computers?  It depends on the task, but even if computer performance is <a href="../../ComputingTrends/index.html">doubling every year</a>, R2DToo can let you do experiments today that you might not be able to do for <u>6 years</u> with other tools!
+<a href="#top"><img src="../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Release&nbsp;Notes"><h2>Release&nbsp;Notes</h2>
+<h4>v1.9	March 9, 2003</h4>
+<ul><li>cosmetic changes (bigger, prettier buttons).
+	<li>fixed: some corrections in help files.
+	<li>fixed: occasional loss of user responsiveness.  Reduced thread priorities to lowest.
+	<li>fixed: (I think.) Exceptions when starting with no model loaded and ancillary forms visible.
+	<li>added automation method <a href="help/auto/Refresh.html">Refresh</a> to update display, eg. after <a href="help/auto/SetState.html">SetState</a>.
+	<li>added &quot;R2DToo Help&quot; item to start menu group.
+	<li>added hints while hovering over view portal (provided by model function <a href="help/api/getAgentHint.html">getAgentHint</a>).
+	<li>added &quot;Mandelbrot Set&quot; model to install package.
+	<li>API v1.6:
+	<ul><li>new functions <a href="help/api/getTickRef.html">getTickRef</a> & <a href="help/api/getTickVal.html">getTickVal</a> provided.
+		<li>speed improvements to some nbrhd*() functions.
+		<li>new function <a href="help/api/doSimPause.html">doSimPause</a> provided to model.
+		<li>new model event handlers <a href="help/api/onSimReady.html">onSimReady</a> & <a href="help/api/onMouseUp.html">onMouseUp</a>.
+		<li>new model function <a href="help/api/getAgentHint.html">getAgentHint</a>.
+	</ul>
+</ul>
+
+<p>For older release notes see <a href="ReadMe.txt">ReadMe.txt</a>.</p>
+<a href="#top"><img src="../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Download"><h2>Download</h2><p><a name="R2DToo">&nbsp;<table width="100%" border="1"><tr valign="middle"><td width="20%" align="center" rowspan="5"><table border=0><tr><td align="center"><a style="text-decoration:none" href= "../../download/r2dtoo-setup.exe"><small><small><img src="R2DToo.gif" border=0 alt="r2dtoo-setup.exe" hspace=2 vspace=2><br><b>r2dtoo-setup.exe</b><br>1.64 MB<br>Apr 30, 2004</small></small></a></td></tr></table></td><td align="center" bgcolor="e6e6ff">R2DToo version 1.9 for Windows 9x/ME/NT/2000/XP</td></tr><tr><td bgcolor="e6ffe6" align="center">Freeware (with source code)</td></tr></table></p><a href="#top"><img src="../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Screenshots"><h2>Screenshots</h2>
+Here are some sample screens from the model &quot;Conway's Life&quot;:
+
+<table border=0 cellpadding=16 width="100%"><tr><td width="100%" align="center" colspan="2">
+<a href="screens/fMain.gif"><img src="screens/sfMain.gif" alt="Click to zoom" border=0></a><br>
+The main window.
+</td></tr><tr><td width="50%" align="center">
+<a href="screens/dNew.gif"><img src="screens/sdNew.gif" alt="Click to zoom" border=0></a><br>
+Control the parameters of a new simulation.
+</td><td width="50%" align="center">
+<a href="screens/fTimeSeries.gif"><img src="screens/sfTimeSeries.gif" alt="Click to zoom" border=0></a><br>
+Plot statistics and save/print them.
+</td></tr><tr><td width="50%" align="center">
+<a href="screens/fInspect.gif"><img src="screens/sfInspect.gif" alt="Click to zoom" border=0></a><br>
+Inspect individual sites.
+</td><td width="50%" align="center">
+<a href="screens/fStop.gif"><img src="screens/sfStop.gif" alt="Click to zoom" border=0></a><br>
+Tell the simulation to stop when a condition is met.
+</td></tr><tr><td width="50%" align="center">
+<a href="screens/fAboutTool.gif"><img src="screens/sfAboutTool.gif" alt="Click to zoom" border=0></a><br>
+R2DToo's &quot;About&quot; box.
+</td><td width="50%" align="center">
+<a href="screens/fAboutModel.gif"><img src="screens/sfAboutModel.gif" alt="Click to zoom" border=0></a><br>
+Add an &quot;About&quot; box for your model, with a hyperlink to your site.
+</td></tr></table>
+</td></tr></table><a href="#top"><img src="../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="90%" align="center">		<table width="100%"><tr valign="top"><td align="left">
+<small><small><a name="bottom"><a href="../../office.html">[Rik's Office Hours]</a> <a href="../../contact.html">[Contact Rik]</a><br>Last updated: Sun Apr 3 2005, 4:49am</small></small>		</td><td align="right">
+				<FORM align="right" method=GET action="http://www.google.com/search"><table align="right"><tr><td>
+		<INPUT TYPE=text name=q size=25 maxlength=255 value="">
+		<input type=hidden name=sitesearch value="http://www.zoology.ubc.ca">		<input type=hidden name="hq" value="inurl:rikblok">		<INPUT type=hidden name=filter value="0">		<INPUT type=submit name=btnG VALUE="Search">
+		</td></tr></TABLE></FORM>
+				</td></tr></table>
+
+
+</body></html>

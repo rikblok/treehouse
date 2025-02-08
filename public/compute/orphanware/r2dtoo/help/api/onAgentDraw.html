@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<title>onAgentDraw</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="revisit-after" content="30 days">
+<meta name="document-date" content="06 Nov 2004 14:49:37 GMT">
+<meta name="robots" content="all"><meta name="language" content="English">
+<base target="_top"><meta name="document-date" content="30 Apr 2004 13:42:00 13AprBST-8"></head>
+<body background="../bg.jpg"><a name="top"><table width="100%"><tr><td><small><small><b><a href="../../../../index.html">Rik's Treehouse</a> &gt; <a href="../../../../compute.html">Babbling in Binary</a> &gt; <a href="../../../../software/index.html">My Software</a> &gt; <a href="../../../../software/orphan.html">Orphanware</a> &gt; <a href="../../../../software/r2dtoo/index.html">R2DToo</a> &gt; <a href="../../../../software/r2dtoo/help/index.html">R2DToo Help</a> &gt; <a href="../../../../software/r2dtoo/help/api/index.html">For the Programmer</a> &gt; onAgentDraw</b></small></small></td></tr></table><img src="../../../../images/top-blank.gif" align="right" width="11" height="10"  alt=""><hr><center><h1>onAgentDraw</h1></center>
+<table width="100%" cellspacing="2" cellpadding="8"><tr><td valign="top" bgcolor="#ddddff"><small><small><a href="#Declaration">Declaration</a><br></small></small><small><small><a href="#Parameters">Parameters</a><br></small></small><small><small><a href="#Remarks">Remarks</a><br></small></small><small><small><a href="#Revisions">Revisions</a><br></small></small><small><small><a href="#Example">Example</a><br></small></small></td><td width="*" valign="top"><a name="Declaration"><h2>Declaration</h2><pre>
+void __stdcall onAgentDraw(
+    int x,              // x-coordinate of agent
+    int y,              // y-coordinate of agent
+    pState state,       // array of agent state variables
+    unsigned short &r,  // red intensity
+    unsigned short &g,  // green intensity
+    unsigned short &b   // blue intensity
+);
+</pre><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Parameters"><h2>Parameters</h2><dl>
+<dt><tt>x,y
+</tt><dd>Coordinates of agent.
+<dt><tt>state
+</tt><dd>Array of agent state variables.
+<dt><tt>r
+</tt><dd>Intensity of red colour.  Passed by reference.
+<dt><tt>g
+</tt><dd>Intensity of green colour.  Passed by reference.
+<dt><tt>b
+</tt><dd>Intensity of blue colour.  Passed by reference.
+</dl><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Remarks"><h2>Remarks</h2>
+This function must be provided by the model.  It is called by the simulation to set the drawing colour for each site of the portal, depending on the <tt>state</tt> of the agent at the site.  On enter <tt>r</tt>, <tt>g</tt> and <tt>b</tt> hold the colour after the last refresh and on exit they should hold the new colour values (each in the range 0..255).  Each site defaults to black (<tt>r,g,b</tt>)=(0,0,0) on simulation start.
+
+<p>Note: it may seem more rational to assign each agent color state variables and have them updated simultaneously with the agent instead of providing this routine to update the color separately, but there is a reason for this approach: it is <i>potentially</i> faster.  Since the graphic updates are detached from agent updates (except at the fastest framerate) there could be many agent updates between every frame.  Performing all the calculations to set the agent color for frames which are never drawn would then be wasting CPU time.
+</p>
+<a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Revisions"><h2>Revisions</h2>
+API v1.5<ul><li>new!  Replaces <tt>colorAgent</tt>.
+    </ul>
+<a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Example"><h2>Example</h2><listing>
+void __stdcall onAgentDraw(int x, int y, <a href="pState.html"><tt>pState</tt></a> state, unsigned short &r, 
+                           unsigned short &g, unsigned short &b)
+{
+    if (state[0]) { // alive
+        b=255;                              // newborns start blue
+        if (++r&gt;255) r=255; else return; // then go to violet
+        if (++g&gt;255) g=255; else return; // finally go to white
+    } else {
+        // dead: fade to black
+        if (r-- == 0) r=0;
+        if (g-- == 0) g=0;
+        if (b-- == 0) b=0;
+    }
+}
+</listing></td></tr></table><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="90%" align="center"><table width="100%"><tr valign="top"><td align="left">
+<small><small><a name="bottom"><a href="../../../../office.html">[Rik's Office Hours]</a> <a href="../../../../contact.html">[Contact Rik]</a><br>Last updated: Fri Apr 30 2004, 1:42pm</small></small></td><td align="right">
+<FORM align="right" method=GET action="http://www.google.com/search"><table align="right"><tr><td>
+<INPUT TYPE=text name=q size=25 maxlength=255 value="">
+<input type=hidden name=sitesearch value="http://www.zoology.ubc.ca"><input type=hidden name="hq" value="inurl:rikblok"><INPUT type=hidden name=filter value="0"><INPUT type=submit name=btnG VALUE="Search">
+</td></tr></TABLE></FORM>
+</td></tr></table>
+
+
+</body></html>

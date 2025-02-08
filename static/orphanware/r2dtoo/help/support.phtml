@@ -1,0 +1,18 @@
+<?
+$title="Support";
+$parent="index";
+$background="bg.jpg";
+include 'head.php';
+include 'url.php';
+?>
+
+Here are some resources in case you have read the help file and are still having trouble using R2DToo or developing your model:
+<dl><dt><a href= "<?=$baseurl;?>software/r2dtoo/models/index.html">R2DToo Models</a>
+	<dd>Examples of how to write models.  The easiest way to get started on your own model is to start fiddling with the source code of one of these models (such as <i>Conway's Game of Life</i>).  They also demonstrate how to use the Borland compiler to build your source.
+	<dt><a href= "http://www.topica.com/lists/r2dtoo/read">R2DToo Mailing List Archive</a>
+	<dd>Peruse the archives of the R2DToo mailing list.  Someone may well have already solved your problem!
+	<dt><?=mailto(array('link'=>"r2dtoo-subscribe@topica.com", 'name'=>"R2DToo Mailing List Subscription")); ?></a>
+	<dd>Subscribe to the R2DToo mailing list by sending an email to <?=mailto(array('name'=>"r2dtoo-subscribe@topica.com")); ?>.  Then you can post messages to the list by sending an email to <?=mailto(array('name'=>"r2dtoo@topica.com")); ?>.
+</dl>
+
+<?	include 'foot.php';	?>

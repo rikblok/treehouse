@@ -1,0 +1,46 @@
+<file template="../orphan.htt">
+include 'url.php';
+
+<set title="RunIEAs">
+<set dates="2001 - 2002">
+<set dir="${basedir}download/">
+<set file="runieas11b.zip">
+<set version="1.1b">
+<set platform="win9x">
+<set license="fws">
+<set dl="">
+<set icon="runieas.gif">
+
+<block orphanReason>
+I have upgraded to Windows 2000 so I can't use RunIEAs.
+</block>
+
+<block desc>
+<p>Ok, you want to let other people run Internet Explorer on your computer but you want to let them have their own favorites, home page, etc.  <b>Microsoft's solution?</b>  <i>Save what you're doing...log off current user...wait...log on as other user...wait...run IE...Done!</i>  <b>My solution?</b>  <i>RunIEAs &lt;other user&gt;...Done!</i>
+
+<p>RunIEAs gives Internet Explorer the power of personalized user profiles, similar to Netscape and Opera.  It works by modifying a few registry settings to mimic another user while running IE then restores the original settings when IE shuts down.
+
+<p>This program will only work on MS Windows 95/98/ME based systems, not NT/2000/XP (because of security issues).  But users of NT/2000/XP can use the command <i>runas</i> anyway, so that's not really a concern.  This program is not for novices...you should at least understand what the system registry is if you want to use this program.  You may also want to have a look at the source code (included) to see how it works.
+</block>
+
+<block new>
+v1.1b	May 10, 2002
+<ul><li>fixed: menuorder registry key was being merged between users instead of being replaced
+</ul>
+
+v1.1 June 18, 2001
+<ul><li>if IE already running just passes extra command-line parameters to IE and immediately exits (no changes to registry)
+</ul>
+
+v1.0c June 10, 2001
+<ul><li>fixed: menu order was lost between sessions
+</ul>
+
+v1.0b June 5, 2001
+<ul><li>fixed: passing of extra command-line parameters to IE not working properly
+</ul>
+
+v1.0  June 4, 2001
+<ul><li>first release
+</ul>
+</block>

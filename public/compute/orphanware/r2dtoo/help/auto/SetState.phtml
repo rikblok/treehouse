@@ -1,0 +1,53 @@
+<?
+include 'function-pre.php';
+
+$name="SetState";
+
+$declaration="
+object.SetState(x,y,name,value)
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+" . pt() . "x,y
+" . pd() . "Required.  Coordinates of agent.  The top-left corner is (0,0).
+" . pt() . "name
+" . pd() . "Required.  The name of an agent state variable (case insensitive).
+" . pt() . "value
+" . pd() . "Required.  The value to set the parameter to.
+";
+
+$returnValue="
+Returns 1 on success, 0 on fail.
+";
+
+$remarks="
+Attempts to set state variable <tt>name</tt>=<tt>value</tt> for agent at (<tt>x</tt>,<tt>y</tt>).  If the state is not found or <tt>x</tt> or <tt>y</tt> are out of range then fails.  Performs no bounds or error checking on <tt>value</tt> except to ensure it is a number.  To refresh the display call " . ref("Refresh") . " after " . ref("SetState") . ".
+";
+
+$example="
+' [VBScript]
+
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+
+' demonstrate method
+If R2DToo.SetState(5,12,\"alive\",1) Then
+	R2DToo.Refresh
+    WScript.Echo \"Success!\"
+Else
+	WScript.Echo \"Failed!\"
+End If
+
+' unload
+Set R2DToo = nothing
+";
+
+$seeAlso="
+" . ref("GetState") . ", " . ref("Refresh") . ".
+";
+
+include 'function-post.php';
+?>

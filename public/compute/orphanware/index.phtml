@@ -1,0 +1,35 @@
+<?
+$title="My Software";
+$parent="../compute";
+$icon="../images/disk.gif";
+include 'head.php';
+include 'childlink.php';
+?>
+
+<p>Programs I've written and other files.  Until I get <i>really</i> poor (or write something <i>really</i> cool) I'll try to keep everything free. Help yourself!</p>
+
+<?
+childlink(array(
+	'title'=>"ExportChart",
+	'icon'=>"../images/disk.gif",
+	'url'=>"exportchart/index.html",
+	'text'=>"<i>ExportChart Excel 97 Add-In</i>.  Save your Excel charts to Gif files for use in web pages or graphic programs.  Requires Microsoft Excel 97 (or later?)."
+));
+
+childlink(array(
+	'title'=>"More Software",
+	'icon'=>"../images/disk.gif",
+	'url'=>"../files.html",
+	'text'=>"This is my original software page.  I'm slowly moving each program to its own home page so this page will eventually be replaced by the new &quot;My Software&quot; page.  In the meantime, any programs you can't find there will still be available on this page."
+));
+
+childlink(array(
+	'title'=>"Orphanware",
+	'icon'=>"${basedir}images/kitten.gif",
+	'url'=>"orphan.html",
+	'text'=>"This page contains software I am no longer developing or maintaining."
+));
+
+childlink(array());
+include 'foot.php';	
+?>

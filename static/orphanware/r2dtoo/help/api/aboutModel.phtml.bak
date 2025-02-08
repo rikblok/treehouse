@@ -1,0 +1,17 @@
+<?
+function ref($name) {
+	return "<a href=\"$name.html\"><tt>$name</tt></a>";
+}
+
+$name="aboutModel";
+
+$remarks="
+This function is obsolete.  Use " . ref("getModelAbout") . " instead.
+";
+
+$seeAlso="
+" . ref("getModelAbout") . ".
+";
+
+include 'function.php';
+?>

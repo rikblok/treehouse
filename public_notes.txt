@@ -7,6 +7,16 @@ Links:
 * https://fontawesome.com/v6/search?m=free	← find free icon for {{% icon icon="..." %}}
 
 
+2025-02-08 External links in menus
+* If you want to add a menu link to an external page (e.g., "Orphanware"):
+* Create a new page, e.g.
+> hugo new --kind "Page" compute/orphanware/eqnpreview.md
+* Add a menuUrl to the page's header info.  E.g., in eqnpreview.md:
+menuUrl = '/~rikblok/orphanware/eqnpreview/'
+* Store the external pages in /static.  E.g., in `static/orphanware/eqnpreview`
+* Just make sure the new Hugo page isn't also generated at that location.  E.g. creating the new page at `orphanware/eqnpreview.md` would create a loop where the page refreshes to itself in a loop (because Hugo generates the html version of the md page at `static/orphanware/eqnpreview/index.html`)
+
+ 
 2024-12-29 Citations
 * From https://labs.loupbrun.ca/hugo-cite/
 > git submodule add https://github.com/baekgaard/hugo-cite.git themes/hugo-cite    ← fixes some deprecated fns in original loup-brun repo
@@ -42,6 +52,7 @@ Links:
   * e.g., "{{< siteparam author.email >}}"
 * Also supports FontAwesome free icons: https://mcshelby.github.io/hugo-theme-relearn/shortcodes/icon/index.html
   * e.g., "{{% icon icon="fa-regular fa-envelope" %}}"
+
 
 2024-12-26 To create new content
 * open command-line at Hugo root folder "treehouse":

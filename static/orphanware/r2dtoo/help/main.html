@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<title>Main Form</title><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="revisit-after" content="30 days">
+<meta name="document-date" content="06 Nov 2004 14:49:37 GMT">
+<meta name="robots" content="all"><meta name="language" content="English">
+<base target="_top"><meta name="document-date" content="30 Apr 2004 14:33:00 14AprBST-8"></head>
+<body background="bg.jpg"><a name="top"><table width="100%"><tr><td><small><small><b><a href="../../../index.html">Rik's Treehouse</a> &gt; <a href="../../../compute.html">Babbling in Binary</a> &gt; <a href="../../../software/index.html">My Software</a> &gt; <a href="../../../software/orphan.html">Orphanware</a> &gt; <a href="../../../software/r2dtoo/index.html">R2DToo</a> &gt; <a href="../../../software/r2dtoo/help/index.html">R2DToo Help</a> &gt; <a href="../../../software/r2dtoo/help/interface.html">The Interface</a> &gt; Main Form</b></small></small></td></tr></table><img src="../../../images/top-blank.gif" align="right" width="11" height="10"  alt=""><hr><center><h1>Main Form</h1></center><table width="100%" cellspacing="2" cellpadding="8"><tr><td valign="top" bgcolor="#ddddff"><small><small><a href="#Titlebar">Titlebar</a><br></small></small><small><small><a href="#Menubar">Menubar</a><br></small></small><small><small><a href="#Toolbar">Toolbar</a><br></small></small><small><small><a href="#Portal">Portal</a><br></small></small><small><small><a href="#Statusbar">Statusbar</a><br></small></small></td><td width="*" valign="top">
+<p>The interface is presented as a number of forms or windows.  This section describes the main form.
+
+<p><center>
+<a href="main.html#Titlebar"><img src="main-titlebar.gif" alt="Titlebar" border=0></a><br>
+<a href="main.html#Menubar"><img src="main-menubar.gif" alt="Menubar" border=0></a><br>
+<a href="main.html#Toolbar"><img src="main-toolbar.gif" alt="Toolbar" border=0></a><br>
+<a href="main.html#Portal"><img src="main-portal.gif" alt="Portal" border=0></a><br>
+<a href="main.html#Statusbar"><img src="main-statusbar.gif" alt="Statusbar" border=0></a><br>
+</center>
+
+<a name="Titlebar"><h2>Titlebar</h2>
+The titlebar displays the name of the model currently loaded (in this case &quot;Conway's Game of Life&quot;) and, if a configuration file has been loaded or saved, the name of the file.
+
+<a href="#top"><img src="../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Menubar"><h2>Menubar</h2>
+All of the functionality of the program can be accessed through the menubar.  The menu items are:
+<dl><dt><tt>File</tt>
+	<dd><dl>
+		<dt><tt>Load Model...</tt>
+		<dd>Choose a model file (model.dll) to load.
+		<dt><tt>Load Parameters...</tt>
+		<dd>Load a set of parameters from a configuration file.
+		<dt><tt>Save Parameters...</tt>
+		<dd>Save the current parameter values to a configuration file.  If no file is indicated in the titlebar, this item behaves the same as <tt>File|Save as...</tt>
+		<dt><tt>Save Parameters As...</tt>
+		<dd>Save the current parameter values to a file specified by the user.
+		<dt><tt>Exit</tt>
+		<dd>Quit the program.
+	</dl>
+	<dt><tt>View</tt>
+	<dd><dl>
+		<dt><tt>Portal</tt>
+		<dd>Displays a submenu allowing the user to adjust the scaling of the view portal.  (<tt>100%</tt> displays one site per pixel, while <tt>Stretch</tt> adjusts the size of the portal to exactly occupy the space available.
+		<dt><tt>Increase/Decrease Framerate</tt>
+		<dd>The program devotes a certain fraction of its run-time to updating the display when the simulation is running.  These items adjust the fraction, effectively increasing or decreasing the number of frames displayed per unit time.  At maximum framerate the display is updated after every iteration.  At minimum framerate the simulation should theoretically run at 99% of it's top speed (though practical considerations may reduce this somewhat) devoting only 1% of the CPU time to refreshing the display.
+		<dt><tt>Inspect Sites</tt>
+		<dd>Displays the <a href="inspect.html">Inspect Sites Form</a>.
+		<dt><tt>Time Series</tt>
+		<dd>Displays the <a href="timeseries.html">Time Series Form</a>.
+	</dl>
+	<dt><tt>Simulation</tt>
+	<dd><dl>
+		<dt><tt>New</tt>
+		<dd>Displays the <a href="new.html">New Simulation Dialog</a>.
+		<dt><tt>Run</tt>
+		<dd>Begins repeated iteration of the updating rules applied to the sites.
+		<dt><tt>Pause</tt>
+		<dd>Pauses the simulation.  To continue simply select <tt>Simulation|Run</tt>.
+		<dt><tt>Step</tt>
+		<dd>Executes a single iteration of the rules.  Allows the user to watch the dynamics on a step-by-step basis.
+		<dt><tt>Stop Conditions...</tt>
+		<dd>Displays the <a href="stopconditions.html">Stop Conditions</a>.  Stop Conditions allow the user to signal the simulation to pause automatically when certain conditions are met.
+	</dl><dt><tt>Help</tt>
+	<dd><dl>
+		<dt><tt>Program Help</tt>
+		<dd>Attempts to open the R2DToo Help file.
+		<dt><tt>Model Help</tt>
+		<dt>Attempts to open the Model Help file by searching for <tt>help\index.html</tt> from the model folder.
+		<dt><tt>About the Program</tt>
+		<dd>Displays some background information about the program including the version number, build date, <a href="api/index.html">API</a> version number, and a link to the program's webpage.
+		<dt><tt>About the Model</tt>
+		<dd>Displays some background information about the model including the version number, author, comments, and a link to the model's webpage.
+	</dl>
+</dl>
+
+<a href="#top"><img src="../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Toolbar"><h2>Toolbar</h2>
+The toolbar duplicates some of the more common menu items for ease of use:
+<dl><dt><img src="main_bNew.gif"> New Button
+	<dd>Same as <tt>Simulation|New</tt> menu item.
+	<dt><img src="main_bOpen.gif"> Open Button
+	<dd>Same as <tt>File|Open Parameters</tt> menu item.
+	<dt><img src="main_bSave.gif"> Save Button
+	<dd>Same as <tt>File|Save Parameters</tt> menu item.
+	<dt><img src="main_bRun.gif"> Run Button
+	<dd>Same as <tt>Simulation|Run</tt> menu item.
+	<dt><img src="main_bPause.gif"> Pause Button
+	<dd>Same as <tt>Simulation|Pause</tt> menu item.
+	<dt><img src="main_bStep.gif"> Step Button
+	<dd>Same as <tt>Simulation|Step</tt> menu item.
+	<dt><img src="main_tbFramerate.gif"> Framerate Trackbar
+	<dd>Slide the trackbar to the right (left) to increase (decrease) the framerate.  Same as <tt>View|Increase/Decrease Framerate</tt> menu items.
+	<dt><img src="main_bInspectSites.gif"> Inspect Sites Button
+	<dd>Same as <tt>View|Inspect Sites</tt> menu item.
+	<dt><img src="main_bTimeSeries.gif"> Time Series Button
+	<dd>Same as <tt>View|Time Series</tt> menu item.
+</dl>
+
+<a href="#top"><img src="../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Portal"><h2>Portal</h2>
+The portal gives a bird's eye view of the entire lattice.  Read the model documentation to learn the meaning of the colours.  Use the menu items under <tt>View|Portal</tt> to change the scale of the view portal.
+
+<a href="#top"><img src="../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Statusbar"><h2>Statusbar</h2>
+The statusbar displays information for the user:
+<dl><dt><img src="main_spInfo.gif"> Information Panel
+	<dd>Displays information about the current state of the simulation.
+	<dt><img src="main_spTime.gif"> Tick Panel
+	<dd>Displays the number of ticks (time steps) through which the simulation has proceeded.  See the model documentation for the definition of a tick.
+	<dt><img src="main_spFramerate.gif"> Framerate Panel
+	<dd>Indicates the rate at which frames are being shown in <tt>fps</tt>=frames per second or <tt>fpm</tt>=frames per minute.  Use the menu items <tt>View|Increase/Decrease Framerate</tt> to change this value.
+	<dt><img src="main_spSteprate.gif"> Tickrate Panel
+	<dd>Indicates how quickly the simulation is proceeding, in <tt>tps</tt>=ticks per second or <tt>tpm</tt> ticks per minute.  Decreasing the framerate releases more processing power for the simulation, potentially increasing the tickrate.
+	<dt><img src="main_spSizegrip.gif"> Size Grip
+	<dd>Use the size grip to adjust the size of the form, and therefore, the view portal.
+</dl>
+
+<p>The user may also doubleclick the statusbar to toggle display of the view portal.  This is equivalent to adjusting the size of the form with the sizegrip.
+
+</td></tr></table><a href="#top"><img src="../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="90%" align="center">		<table width="100%"><tr valign="top"><td align="left">
+<small><small><a name="bottom"><a href="../../../office.html">[Rik's Office Hours]</a> <a href="../../../contact.html">[Contact Rik]</a><br>Last updated: Fri Apr 30 2004, 2:33pm</small></small>		</td><td align="right">
+				<FORM align="right" method=GET action="http://www.google.com/search"><table align="right"><tr><td>
+		<INPUT TYPE=text name=q size=25 maxlength=255 value="">
+		<input type=hidden name=sitesearch value="http://www.zoology.ubc.ca">		<input type=hidden name="hq" value="inurl:rikblok">		<INPUT type=hidden name=filter value="0">		<INPUT type=submit name=btnG VALUE="Search">
+		</td></tr></TABLE></FORM>
+				</td></tr></table>
+
+
+</body></html>

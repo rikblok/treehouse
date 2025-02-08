@@ -1,0 +1,13 @@
+<?
+$title="Inspect Sites Form";
+$parent="interface";
+$background="bg.jpg";
+include 'head.php';
+
+<center><img src="inspect.gif"></center>
+
+<p>The Inspect Sites form simply displays the internal state of whichever agent the mouse is currently hovering over giving the user more information than is available from the view portal alone.  For a description of the state variables see the model's help file.  The form contents update automatically whenever the state of the agent changes.  (The X and Y Position indices are relative to the top left corner of the portal.)  
+
+<p>The colour of the top region of the form corresponds to the colour of the site the mouse is currently hovering over.
+
+<?	include 'foot.php';	?>

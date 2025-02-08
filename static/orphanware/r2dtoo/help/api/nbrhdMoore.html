@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<title>nbrhdMoore</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="revisit-after" content="30 days">
+<meta name="document-date" content="06 Nov 2004 14:49:37 GMT">
+<meta name="robots" content="all"><meta name="language" content="English">
+<base target="_top"><meta name="document-date" content="30 Apr 2004 13:41:00 13AprBST-8"></head>
+<body background="../bg.jpg"><a name="top"><table width="100%"><tr><td><small><small><b><a href="../../../../index.html">Rik's Treehouse</a> &gt; <a href="../../../../compute.html">Babbling in Binary</a> &gt; <a href="../../../../software/index.html">My Software</a> &gt; <a href="../../../../software/orphan.html">Orphanware</a> &gt; <a href="../../../../software/r2dtoo/index.html">R2DToo</a> &gt; <a href="../../../../software/r2dtoo/help/index.html">R2DToo Help</a> &gt; <a href="../../../../software/r2dtoo/help/api/index.html">For the Programmer</a> &gt; nbrhdMoore</b></small></small></td></tr></table><img src="../../../../images/top-blank.gif" align="right" width="11" height="10"  alt=""><hr><center><h1>nbrhdMoore</h1></center>
+<table width="100%" cellspacing="2" cellpadding="8"><tr><td valign="top" bgcolor="#ddddff"><small><small><a href="#Declaration">Declaration</a><br></small></small><small><small><a href="#Parameters">Parameters</a><br></small></small><small><small><a href="#Remarks">Remarks</a><br></small></small><small><small><a href="#Example">Example</a><br></small></small><small><small><a href="#See&nbsp;Also">See&nbsp;Also</a><br></small></small></td><td width="*" valign="top"><a name="Declaration"><h2>Declaration</h2><pre>
+void __stdcall nbrhdMoore(
+	int range,      	// range of neighbourhood
+	int boundaryType	// type of boundary on world
+);
+</pre><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Parameters"><h2>Parameters</h2><dl>
+<dt><tt>range
+</tt><dd>Range of Moore neighbourhood.
+<dt><tt>boundaryType
+</tt><dd>Type of boundary to impose on world.  See Remarks.
+</dl><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Remarks"><h2>Remarks</h2>
+This function is available through the API.  It can be called within the model-supplied routine <a href="onSimCreate.html"><tt>onSimCreate</tt></a> to set the neighbourhood of each agent to a Moore neighbourhood of range <tt>range</tt>.  This consists of all sites reachable within <tt>range</tt> steps <i>up, down, or diagonally</i> (forming a square of side <tt>2&#215;range+1</tt> excepting the center cell).
+
+<p>The neighbours are indexed from left to right and top to bottom.  For example, if <tt>range=1</tt> the neighbour indices of agent <var>a</var> are
+
+<p><table align="center" border="1">
+<tr><td>0</td><td>1</td><td>2</td></tr>
+<tr><td>3</td><td><var>a</var></td><td>4</td></tr>
+<tr><td>5</td><td>6</td><td>7</td></tr>
+</table>
+
+<h3>Boundaries</h3>
+		Boundaries are handled by the <tt>boundaryType</tt> parameter which may be one of the following:
+
+		<p><pl>
+		<dt><tt>btPeriodic
+		</tt><dd>All borders wrap around forming a torus.
+		<dt><tt>btEmpty
+		</tt><dd>Agents at the edge have fewer neighbours.
+	</pl>
+	<a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Example"><h2>Example</h2><listing>
+void __stdcall setNbrhd(double *param)
+{
+    nbrhdMoore(1,btEmpty);
+}
+</listing><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="See&nbsp;Also"><h2>See&nbsp;Also</h2><a href="onSimCreate.html"><tt>onSimCreate</tt></a>, <a href="nbrhd1D.html"><tt>nbrhd1D</tt></a>, <a href="nbrhdBlocks.html"><tt>nbrhdBlocks</tt></a>, <a href="nbrhdCCDM.html"><tt>nbrhdCCDM</tt></a>, <a href="nbrhdFractal.html"><tt>nbrhdFractal</tt></a>, <a href="nbrhdRandom.html"><tt>nbrhdRandom</tt></a>, <a href="nbrhdRandomER.html"><tt>nbrhdRandomER</tt></a>, <a href="nbrhdVonNeumann.html"><tt>nbrhdVonNeumann</tt></a>.</td></tr></table><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="90%" align="center"><table width="100%"><tr valign="top"><td align="left">
+<small><small><a name="bottom"><a href="../../../../office.html">[Rik's Office Hours]</a> <a href="../../../../contact.html">[Contact Rik]</a><br>Last updated: Fri Apr 30 2004, 1:41pm</small></small></td><td align="right">
+<FORM align="right" method=GET action="http://www.google.com/search"><table align="right"><tr><td>
+<INPUT TYPE=text name=q size=25 maxlength=255 value="">
+<input type=hidden name=sitesearch value="http://www.zoology.ubc.ca"><input type=hidden name="hq" value="inurl:rikblok"><INPUT type=hidden name=filter value="0"><INPUT type=submit name=btnG VALUE="Search">
+</td></tr></TABLE></FORM>
+</td></tr></table>
+
+
+</body></html>

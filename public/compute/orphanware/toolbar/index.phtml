@@ -1,0 +1,85 @@
+<?
+$title="Toolbar";
+$dates="1999-2003";
+$dir="${basedir}download/";
+$icon="icon.gif";
+$version="1.4c";
+$file="tlbar14c.exe";
+$platform="win32";
+$dl="";
+$license="fws";
+
+$orphanReason="<p>Sorry, I'm not maintaining Toolbar anymore.  I highly recommend <a href=\"http://www.autohotkey.com/\">AutoHotkey</a>&mdash;it's much more powerful and configurable than Toolbar ever was!</p>";
+
+$desc = "
+<i>Toolbar</i> (alias <i>Rik's Toolbar</i>) provides a way to add a customized floating toolbar to any application.  When a button is pressed a pre-defined sequence of keystrokes is sent to the desired window.  All options for the buttons and what they do may be altered within the configuration file.  See the <a href=\"#links\">links</a> for useful configurations submitted by users.
+";
+
+$new = "
+v1.4c  September 29, 2003<br>
+<ul><li>fixed: broken installer
+</ul>
+
+v1.4b  November 16, 2002<br>
+<ul><li>fixed: broken <tt>RUN</tt> command
+</ul>
+
+v1.4  September 30, 2002<br>
+<ul><li>switched implementations of PushKeys to Alan Warriner's TPushKeys
+	<li>now supports Right-Alt key (use the &quot;!&quot; modifier) for international keyboards (equivalent to Ctrl+Alt)
+	<li>new installer with uninstall support
+</ul>
+
+v1.3  July 17, 2002<br>
+<ul><li>added popup menu (right-click)
+	<li>added menu item &quot;Create Desktop Shortcut&quot; to create a shortcut on the desktop for this particular toolbar configuration
+	<li>added menu item &quot;Minimize to Tray&quot; to hide toolbar temporarily in the tray. Left-click on the icon to restore it.
+	<li>added menu item &quot;About Toolbar&quot; to provide program information
+	<li>support for command-line options <tt>-s[=desktop]</tt> or <tt>-s=startmenu[:folder]</tt> to create shortcuts automatically.  If folder specified with <tt>-s=startmenu</tt> option then icon put in <tt>Start Menu &gt; Programs &gt; folder</tt>.
+</ul>
+
+v1.2c November 25, 2000<br>
+<ul><li>now rescales window to keep it on screen.  Should prevent some exceptions (error messages).
+	<li>fixed: crashes when closing and scrollbars visible.  Was caused by deallocating buttons before form closed.
+</ul>
+v1.2b August 29, 2000
+<ul><li>added <tt>Sleep</tt> integer option to ini file to slow down typing rate
+</ul>
+v1.2  August 27, 2000
+<ul><li>supports separate destination windows for each button
+	<li><tt>{RUN ...}</tt> command to execute other programs
+	<li>no longer uses <tt>ButtonCount=</tt> item
+</ul>
+v1.1  February 16, 2000
+<ul><li>recompiled with German keyboard support (ToolbarG.exe)
+</ul>
+v1.0c February 24, 1999
+<ul><li>added <tt>StayOnTop</tt> and <tt>TaskbarButton</tt> boolean options to ini file
+</ul>
+v1.0b February 13, 1999
+<ul><li>added Pushkeys.hlp to root folder for help with keystrokes
+</ul>
+v1.0  January 4, 1999
+<ul><li>first release
+</ul>
+";
+
+$screen = "
+<p align=\"center\"><img src=\"latexGreek.gif\"><br>
+Toolbar running with the configuration file <tt>samples\\LaTeX\\greek.ini</tt>.</p>
+
+<p align=\"center\"><img src=\"htmlFormat.gif\"><br>
+...the configuration file <tt>samples\\HTML\\format.ini</tt>.</p>
+
+<p align=\"center\"><img src=\"netscape.gif\"><br>
+...the configuration file <tt>samples\\netscape.ini</tt>.</p>
+";
+
+$links = "
+<ul><li><a href=\"user/index.html\">User-supplied Configurations</a>
+</ul>
+";
+
+include '../orphan-template.php';
+//include '../software-template.php';
+?>

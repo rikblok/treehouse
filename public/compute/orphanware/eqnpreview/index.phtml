@@ -1,0 +1,36 @@
+<?
+include_once 'url.php';
+$title="TeX Equation Previewer";
+$dir="${basedir}download/";
+$file="EqPrv10c.zip";
+$version="1.0c";
+$icon="icon.gif";
+$platform="win32";
+$license="fws";
+$dl="";
+$dates="1999-2000";
+$desc="View and edit TeX equations before compiling your source.  View your equation as you type in (almost) real time.  Copies modified text to the clipboard for quick use in your favorite text editor.  Requires <a href= \"http://www.microsoft.com/windows/ie/default.htm\">Microsoft Internet Explorer 4.01 or higher</a> and <a href= \"http://www.integretechpub.com/products/#techexplorer\">techexplorer Hypermedia Browser</a> (both free).  Source code included.";
+
+$desc .= "<p>For recent versions of Internet Explorer (v5.5 or higher) you will need the Integre version of <a href= \"http://www.integretechpub.com/products/#techexplorer\">techexplorer</a>.  Older releases (by IBM) operated as old (v4.7 or lower) Netscape-style which new versions of IE don't work with.  However, the Integre release of techexplorer is an ActiveX control and should work with all versions of IE.";
+
+$new="
+v1.0c October 29, 2000
+<ul><li>catches exceptions (better stability)
+</ul>
+
+v1.0b April 1, 1999
+<ul><li>minimize with Esc key
+</ul>
+
+v1.0  March 31, 1999
+<ul><li>first release
+</ul>
+";
+
+$screen="
+<p align=\"center\"><img src=\"EqnPreview.gif\"><br>
+TeX commands are entered in the top frame of the main window and IBM techexplorer renders the result in the IE frame underneath.</p>
+";
+
+include '../orphan-template.php';
+?>

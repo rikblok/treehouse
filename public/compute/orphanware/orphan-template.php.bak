@@ -1,0 +1,16 @@
+<?
+$parent="../orphan";
+include_once "head.php";
+if (isset($dates))	echo "<center><h1>$dates</h1></center>";
+include_once "toc.php";
+include_once 'url.php';
+
+tochead(array('name'=>"Orphanware"));
+echo '<i>This software is no longer being developed or maintained. ';
+if (isset($orphanReason))	echo $orphanReason;
+echo ' If you would like to take over project development, please ';
+echo mailto(array('link'=>$email, 'name'=>"let me know"));
+echo '.</i>';
+
+include 'software-template.php';
+?>

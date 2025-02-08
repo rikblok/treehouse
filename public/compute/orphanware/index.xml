@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Orphanware :: Rik&#39;s Treehouse</title>
+    <link>https://www.cs.ubc.ca/~rikblok/compute/orphanware/index.html</link>
+    <description>This page contains software I am no longer developing or maintaining.  Enter at your own risk 😉</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
+    <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
+    <lastBuildDate>Mon, 29 Sep 2003 00:01:54 -0800</lastBuildDate>
+    <atom:link href="https://www.cs.ubc.ca/~rikblok/compute/orphanware/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Toolbar (1999 - 2003)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/compute/orphanware/toolbar/index.html</link>
+      <pubDate>Mon, 29 Sep 2003 00:01:54 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/compute/orphanware/toolbar/index.html</guid>
+      <description>Toolbar (alias Rik’s Toolbar) provides a way to add a customized floating toolbar to any application. When a button is pressed a pre-defined sequence of keystrokes is sent to the desired window.</description>
+    </item>
+    <item>
+      <title>R2DToo (2001 - 2003)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/compute/orphanware/r2dtoo/index.html</link>
+      <pubDate>Wed, 09 Apr 2003 00:01:54 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/compute/orphanware/r2dtoo/index.html</guid>
+      <description>Rik’s 2D simulation Tool lets you build and run your own cellular automata or other spatial network simulations. R2DToo is designed for scientists, to help with constructing, running, and collecting data from simulations with features such as live time series plots of interesting statistics and automation to let the user run experiments repeatedly without requiring user interaction.</description>
+    </item>
+    <item>
+      <title>RunIEAs (2001 - 2002)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/compute/orphanware/runieas/index.html</link>
+      <pubDate>Fri, 10 May 2002 00:01:54 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/compute/orphanware/runieas/index.html</guid>
+      <description>Ok, you want to let other people run Internet Explorer on your computer but you want to let them have their own favorites, home page, etc. Microsoft’s solution? Save what you’re doing…log off current user…wait…log on as other user…wait…run IE…Done! My solution? RunIEAs …Done!</description>
+    </item>
+    <item>
+      <title>ExportChart (1999 - 2001)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/compute/orphanware/exportchart/index.html</link>
+      <pubDate>Fri, 09 Feb 2001 00:01:54 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/compute/orphanware/exportchart/index.html</guid>
+      <description>ExportChart Excel Add-In. Save your Excel charts to Gif files for use in web pages or graphic programs. Requires Microsoft Excel 97 or 2000.</description>
+    </item>
+    <item>
+      <title>TeX Equation Previewer (1999 - 2000)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/compute/orphanware/eqnpreview/index.html</link>
+      <pubDate>Sun, 29 Oct 2000 00:01:54 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/compute/orphanware/eqnpreview/index.html</guid>
+      <description>View and edit TeX equations before compiling your source. View your equation as you type in (almost) real time. Copies modified text to the clipboard for quick use in your favorite text editor.</description>
+    </item>
+  </channel>
+</rss>

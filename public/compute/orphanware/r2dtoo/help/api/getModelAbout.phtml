@@ -1,0 +1,56 @@
+<?
+include 'function-pre.php';
+
+$name="getModelAbout";
+
+$declaration="
+char* __stdcall getModelAbout(
+	int line	// indicates what information to return
+);
+";
+
+$parameters="
+" . pt() . "line
+" . pd() . "One of the following values (defined in <tt>api2model.h</tt>):
+	<dl>" . pt() . "amName" . pd() . "model name
+		" . pt() . "amVersion" . pd() . "model version information
+		" . pt() . "amCopyright" . pd() . "author's name and/or copyright
+		" . pt() . "amComments" . pd() . "extra comments
+		" . pt() . "amUrl" . pd() . "uniform resource locator (web address) for model
+	</dl>
+";
+
+$returnValue="
+A character string returning the appropriate information, depending on the <tt>line</tt> parameter.  If the value of <tt>line</tt> is not recognized a default empty string (&quot;&quot;) should be returned (for compatibility with future versions of the API which may ask for more information).
+";
+
+$remarks="
+This optional function may be provided by the model.  For each possible value of the parameter the function should return a character string indicating the appropriate information.  The data is formatted and displayed in R2DToo's &quot;About the Model&quot; dialog box.  
+";
+
+$revisions="
+API v1.5<ul><li>renamed from <tt>aboutModel</tt>.
+	</ul>
+";
+
+$example="
+char* __stdcall getModelAbout(int line)
+{
+    switch (line) {
+        case amName:      return \"My model's name\";
+        case amVersion:   return \"Version 1.0\";
+        case amCopyright: return \"by Me, Myself and I\";
+        case amComments:  return \"\";
+        case amUrl:       return \"$baseurl\";
+        default:          return \"\"; // for compatibility with future versions
+    }
+}
+";
+
+
+$seeAlso="
+" . ref("getParamAbout") . ", " . ref("getAgentAbout") . ".
+";
+
+include 'function-post.php';
+?>

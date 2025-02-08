@@ -1,0 +1,68 @@
+;	AutoMoney.wbt - automates the Payment Calendar in Microsoft Money 97.
+;	Released to the public domain by Rik Blok <rikblok@mail.com>, 1997.
+MoneyApp="C:\Program Files\Microsoft Money\MSMONEY.EXE"
+MoneyWin="~Microsoft Money"
+twiddle=5		; time to twiddle your thumbs
+
+; parameter checking
+Terminate(param0 <> 1, "AutoMoney",'Usage: AutoMoney <Money File>')
+file=param1
+Terminate(!FileExist(file), "AutoMoney",'Usage: AutoMoney <Money File>')
+WinTitle("","AutoMoney - %file%")
+
+; close MS Money if running
+If AppExist(MoneyApp)
+	WinClose(MoneyWin)
+	TimeDelay(twiddle)
+EndIf
+
+; open file with MS Money
+Run(MoneyApp,file)
+TimeDelay(twiddle)
+
+; switch to Payment Calendar
+SendKey("!gp")			; Goto|Payment Calendar
+SendKey("{HOME}")		; go to top of list
+
+; check each transaction listed (assume ordered by date)
+Today=TimeYmdHms()
+Done=@FALSE
+While !Done
+	TimeDelay(twiddle)
+	SendKey("!i")			; edit current transaction
+	SendKey("{TAB}^c")		; select date and copy to clipboard
+	TimeDelay(1)
+	SendKey("~")			; close edit window
+	Date = ClipGet()		; read transaction date from clipboard
+	GoSub ConvertDate		; convert to YY:MM:DD
+	
+	; if past due or due today then enter it!
+	; Assumes transactions sorted by date and
+	; will be deleted from Payment Calendar when entered.
+	; Note: this line generated an error once on Feb. 13/1997
+	If TimeDiffDays(Date,Today) < 1
+		SendKey("!eo")		; Edit|Enter Only This One
+		SendKey("~")		; Enter
+	Else
+		Done=@TRUE
+	EndIf
+EndWhile
+
+; exit Money
+TimeDelay(twiddle)
+WinClose(MoneyWin)
+
+Exit
+
+:ConvertDate
+; converts "m/d/yy" to "YY:MM:DD"
+	y=ItemExtract(3,Date,"/")
+	m=ItemExtract(1,Date,"/")
+	d=ItemExtract(2,Date,"/")
+	; prefix zeroes
+	If StrLen(m)==1 Then m=StrCat("0",m)
+	If StrLen(d)==1 Then d=StrCat("0",d)
+	;merge
+	Date=StrCat(y,":",m,":",d)
+	Drop(y,m,d)
+Return

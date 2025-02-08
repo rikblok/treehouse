@@ -1,0 +1,93 @@
+<?
+$title="Models";
+$parent="../index";
+include 'head.php';
+include 'download.php';
+include "cite.php";
+include "toc.php";
+?>
+
+<p>Here you can find simulation models that will work with <a href="..">R2DToo</a>.  Each model is a self-extracting archive that installs a shortcut on the desktop after the files are extracted.  The models come with source code; see the <a href="../help/api/index.html#Compilers">API Help</a> for instructions on how to compile the source (in case you want to modify it).</p>
+
+<?
+$platform="R2DToo";
+$license="fws";
+$icon="../R2DToo.gif";
+
+tochead(array('name'=>"kauffman95-ch4"));
+
+download(array( 
+	'file'=>"kauffman95-ch4.exe",
+	'title'=>"kauffman95-ch4",
+	'version'=>"1.4",
+	'description'=>"Random Boolean network model described in Chapter 4 of Stuart Kauffman's book &quot;At Home in the Universe&quot;" . cite(array('tag'=>"kauffman95")) . '.',
+	'latest'=>"New color scheme and updated help.",
+	'screenshot'=>"kauffman95-ch4.gif"
+));
+
+tochead(array('name'=>"Mandelbrot Set"));
+
+download(array( 
+	'file'=>"mandelbrotset.exe",
+	'title'=>"Mandelbrot Set",
+	'version'=>"1.0",
+	'description'=>"Displays the Mandelbrot set.  Use the mouse to zoom.  (Requires R2DToo v1.9.)",
+	'screenshot'=>"mandelbrotset.jpg"
+));
+
+tochead(array('name'=>"Conway's Game of Life"));
+
+download(array( 
+	'file'=>"conwayslife.exe",
+	'title'=>"Conway's Game of Life",
+	'version'=>"1.4",
+	'description'=>"Conway's Life with a fading effect.",
+	'latest'=>"Tweaked algorithm for 30%+ speed boost.",
+	'screenshot'=>"conwayslife.gif"
+));
+
+tochead(array('name'=>"Wolfram's 1D CA"));
+
+download(array(
+	'file'=>"wolfram1d.exe",
+	'title'=>"Wolfram's 1D CA",
+	'version'=>"1.0",
+	'description'=>"Some of the 1-dimensional cellular automata found in Stephen Wolfram's book, <i>A New Kind of Science</i> (2002).",
+	'screenshot'=>"wolfram1d.gif"
+));
+
+tochead(array('name'=>"Nicholson-Bailey"));
+
+download(array( 
+	'file'=>"nicholsonbailey.exe",
+	'title'=>"Nicholson-Bailey",
+	'version'=>"1.0",
+	'description'=>"A spatial Nicholson-Bailey simulation.  Inspired by Comins, <i>et al.</i>, 1992 " . cite(array('tag'=>"comins92")) . '.',
+	'latest'=>"Compatible with API v1.5 (R2DToo v1.8)",
+	'screenshot'=>"nicholsonbailey.gif"
+));
+
+tochead(array('name'=>"Spatial Prisoners' Dilemma"));
+
+download(array( 
+	'file'=>"prisonersdilemma.exe",
+	'title'=>"Spatial Prisoners' Dilemma",
+	'version'=>"1.2",
+	'description'=>"Spatial version of Prisoner's Dilemma debated in " . cite(array('tag'=>"nowak92")) . " and " . cite(array('tag'=>"huberman93")) . '.',
+	'latest'=>"Compatible with API v1.5 (R2DToo v1.8)",
+	'screenshot'=>"prisonersdilemma.gif"
+));
+
+tochead(array('name'=>"Spatial Roshambo")); 
+
+download(array( 
+	'file'=>"roshambo.exe",
+	'title'=>"Spatial Roshambo",
+	'version'=>"1.1",
+	'description'=>"Evolutionary Rock-Paper-Scissors game on various interaction networks (non-local, spatial, random graph, and scale-free network).",
+	'latest'=>"Compatible with API v1.5 (R2DToo v1.8)",
+	'screenshot'=>"roshambo.gif"
+));
+
+include 'foot.php';	
+?>

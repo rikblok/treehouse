@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<title>SetState</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="revisit-after" content="30 days">
+<meta name="document-date" content="06 Nov 2004 14:49:37 GMT">
+<meta name="robots" content="all"><meta name="language" content="English">
+<base target="_top"><meta name="document-date" content="30 Apr 2004 13:47:00 13AprBST-8"></head>
+<body background="../bg.jpg"><a name="top"><table width="100%"><tr><td><small><small><b><a href="../../../../index.html">Rik's Treehouse</a> &gt; <a href="../../../../compute.html">Babbling in Binary</a> &gt; <a href="../../../../software/index.html">My Software</a> &gt; <a href="../../../../software/orphan.html">Orphanware</a> &gt; <a href="../../../../software/r2dtoo/index.html">R2DToo</a> &gt; <a href="../../../../software/r2dtoo/help/index.html">R2DToo Help</a> &gt; <a href="../../../../software/r2dtoo/help/auto/index.html">Automation</a> &gt; SetState</b></small></small></td></tr></table><img src="../../../../images/top-blank.gif" align="right" width="11" height="10"  alt=""><hr><center><h1>SetState</h1></center>
+<table width="100%" cellspacing="2" cellpadding="8"><tr><td valign="top" bgcolor="#ddddff"><small><small><a href="#Declaration">Declaration</a><br></small></small><small><small><a href="#Parameters">Parameters</a><br></small></small><small><small><a href="#Return&nbsp;Value">Return&nbsp;Value</a><br></small></small><small><small><a href="#Remarks">Remarks</a><br></small></small><small><small><a href="#Example">Example</a><br></small></small><small><small><a href="#See&nbsp;Also">See&nbsp;Also</a><br></small></small></td><td width="*" valign="top"><a name="Declaration"><h2>Declaration</h2><pre>
+object.SetState(x,y,name,value)
+</pre><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Parameters"><h2>Parameters</h2><dl>
+<dt><tt>object
+</tt><dd>Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+<dt><tt>x,y
+</tt><dd>Required.  Coordinates of agent.  The top-left corner is (0,0).
+<dt><tt>name
+</tt><dd>Required.  The name of an agent state variable (case insensitive).
+<dt><tt>value
+</tt><dd>Required.  The value to set the parameter to.
+</dl><a name="ReturnValue"><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Return&nbsp;Value"><h2>Return&nbsp;Value</h2></a>
+Returns 1 on success, 0 on fail.
+<a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Remarks"><h2>Remarks</h2>
+Attempts to set state variable <tt>name</tt>=<tt>value</tt> for agent at (<tt>x</tt>,<tt>y</tt>).  If the state is not found or <tt>x</tt> or <tt>y</tt> are out of range then fails.  Performs no bounds or error checking on <tt>value</tt> except to ensure it is a number.  To refresh the display call <a href="Refresh.html"><tt>Refresh</tt></a> after <a href="SetState.html"><tt>SetState</tt></a>.
+<a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Example"><h2>Example</h2><listing>
+' [VBScript]
+
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject("R2DToo.FrontEnd")
+
+' demonstrate method
+If R2DToo.SetState(5,12,"alive",1) Then
+	R2DToo.Refresh
+    WScript.Echo "Success!"
+Else
+	WScript.Echo "Failed!"
+End If
+
+' unload
+Set R2DToo = nothing
+</listing><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="See&nbsp;Also"><h2>See&nbsp;Also</h2>
+<a href="GetState.html"><tt>GetState</tt></a>, <a href="Refresh.html"><tt>Refresh</tt></a>.
+</td></tr></table><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="90%" align="center"><table width="100%"><tr valign="top"><td align="left">
+<small><small><a name="bottom"><a href="../../../../office.html">[Rik's Office Hours]</a> <a href="../../../../contact.html">[Contact Rik]</a><br>Last updated: Fri Apr 30 2004, 1:47pm</small></small></td><td align="right">
+<FORM align="right" method=GET action="http://www.google.com/search"><table align="right"><tr><td>
+<INPUT TYPE=text name=q size=25 maxlength=255 value="">
+<input type=hidden name=sitesearch value="http://www.zoology.ubc.ca"><input type=hidden name="hq" value="inurl:rikblok"><INPUT type=hidden name=filter value="0"><INPUT type=submit name=btnG VALUE="Search">
+</td></tr></TABLE></FORM>
+</td></tr></table>
+
+
+</body></html>

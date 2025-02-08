@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<title>nbrhdFractal</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="revisit-after" content="30 days">
+<meta name="document-date" content="06 Nov 2004 14:49:37 GMT">
+<meta name="robots" content="all"><meta name="language" content="English">
+<base target="_top"><meta name="document-date" content="30 Apr 2004 13:41:00 13AprBST-8"></head>
+<body background="../bg.jpg"><a name="top"><table width="100%"><tr><td><small><small><b><a href="../../../../index.html">Rik's Treehouse</a> &gt; <a href="../../../../compute.html">Babbling in Binary</a> &gt; <a href="../../../../software/index.html">My Software</a> &gt; <a href="../../../../software/orphan.html">Orphanware</a> &gt; <a href="../../../../software/r2dtoo/index.html">R2DToo</a> &gt; <a href="../../../../software/r2dtoo/help/index.html">R2DToo Help</a> &gt; <a href="../../../../software/r2dtoo/help/api/index.html">For the Programmer</a> &gt; nbrhdFractal</b></small></small></td></tr></table><img src="../../../../images/top-blank.gif" align="right" width="11" height="10"  alt=""><hr><center><h1>nbrhdFractal</h1></center>
+<table width="100%" cellspacing="2" cellpadding="8"><tr><td valign="top" bgcolor="#ddddff"><small><small><a href="#Declaration">Declaration</a><br></small></small><small><small><a href="#Parameters">Parameters</a><br></small></small><small><small><a href="#Remarks">Remarks</a><br></small></small><small><small><a href="#Example">Example</a><br></small></small><small><small><a href="#See&nbsp;Also">See&nbsp;Also</a><br></small></small></td><td width="*" valign="top"><a name="Declaration"><h2>Declaration</h2><pre>
+void __stdcall nbrhdFractal(
+	int xRange,   // horizontal range
+	int yRange,   // vertical range
+	bool uplink,  // are my ancestors my neighbours?
+	bool downlink // are my descendents my neighbours?
+);
+</pre><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Parameters"><h2>Parameters</h2><dl>
+<dt><tt>xRange, yRange
+</tt><dd>Range of neighbourhood in horizontal and vertical directions, respectively.
+<dt><tt>uplink, downlink
+</tt><dd>Determines whether links are propagated <i>up</i> the fractal structure to the <i>root</i> or <i>down</i> to the <i>leaves</i>, or both.  <small>(Why computer scientists don't make good gardeners: they plant all their trees upside down!)</small>
+</dl><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Remarks"><h2>Remarks</h2>
+This function is available through the API.  It can be called within the model-supplied routine <a href="onSimCreate.html"><tt>onSimCreate</tt></a> to generate a deterministic, scale-free network.  The grid is divided into blocks of <tt>xRange</tt>&#215;<tt>yRange</tt> sites linked to their &quot;parents&quot; (the top left site in each block).  This pattern is repeated with blocks of <tt>xRange</tt><sup>2</sup><times><tt>yRange</tt><sup>2</sup> and so on, up to the system size, when the uppermost left site is linked to all other sites of the lattice.  By definition this creates a scale-free (power law) distribution of links.  
+
+<p align="center"><img src="nbrhdFractal.gif"><br>
+Sample neighbourhood structure for <tt>xRange</tt>=<tt>yRange</tt>=2.</p>
+<a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Example"><h2>Example</h2><listing>
+void __stdcall setNbrhd(double *param)
+{
+    // clustered, scale-free network
+    nbrhdBlocks(2,3);            // clustered
+    nbrhdFractal(2,3,true,true); // scale-free
+}
+</listing><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="See&nbsp;Also"><h2>See&nbsp;Also</h2><a href="onSimCreate.html"><tt>onSimCreate</tt></a>, <a href="nbrhd1D.html"><tt>nbrhd1D</tt></a>, <a href="nbrhdBlocks.html"><tt>nbrhdBlocks</tt></a>, <a href="nbrhdCCDM.html"><tt>nbrhdCCDM</tt></a>, <a href="nbrhdMoore.html"><tt>nbrhdMoore</tt></a>, <a href="nbrhdRandom.html"><tt>nbrhdRandom</tt></a>, <a href="nbrhdRandomER.html"><tt>nbrhdRandomER</tt></a>, <a href="nbrhdVonNeumann.html"><tt>nbrhdVonNeumann</tt></a>.</td></tr></table><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="90%" align="center"><table width="100%"><tr valign="top"><td align="left">
+<small><small><a name="bottom"><a href="../../../../office.html">[Rik's Office Hours]</a> <a href="../../../../contact.html">[Contact Rik]</a><br>Last updated: Fri Apr 30 2004, 1:41pm</small></small></td><td align="right">
+<FORM align="right" method=GET action="http://www.google.com/search"><table align="right"><tr><td>
+<INPUT TYPE=text name=q size=25 maxlength=255 value="">
+<input type=hidden name=sitesearch value="http://www.zoology.ubc.ca"><input type=hidden name="hq" value="inurl:rikblok"><INPUT type=hidden name=filter value="0"><INPUT type=submit name=btnG VALUE="Search">
+</td></tr></TABLE></FORM>
+</td></tr></table>
+
+
+</body></html>
+

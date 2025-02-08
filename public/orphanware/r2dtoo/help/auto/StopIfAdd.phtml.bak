@@ -1,0 +1,50 @@
+<?
+include 'function-pre.php';
+
+$name="StopIfAdd">
+
+$declaration="
+object.StopIfAdd(condition)
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+" . pt() . "condition
+" . pd() . "Character string with the following format: <tt>&quot;parameter relation value&quot;</tt><br>
+where
+<table border=0>
+	<tr valign="top"><td><tt>parameter</tt> </td><td> is the name (excluding trailing <tt>[...]</tt> properties) of a model parameter, or <tt>&quot;Tick&quot;</tt> for simulation time.  (Case sensitive.)</td></tr>
+	<tr valign="top"><td><tt>relation</tt> </td><td> is one of <tt>&gt;=</tt>, <tt>=</tt>, or <tt>&lt;=</tt>.</td></tr>
+	<tr valign="top"><td><tt>value</tt> </td><td> is a number.</td></tr>
+</table>
+";
+
+$returnValue="
+Returns 1 on success, 0 on fail (eg. if <tt>parameter</tt> or <tt>relation</tt> not recognized, or if <tt>value</tt> is not a number).
+";
+
+$remarks="
+Sets a conditional stop for the simulation.  When <i>condition</i> is met, the simulation will automatically pause.  Intended to be used with " . ref("SimRunWait">.
+";
+
+$example="
+' [VBScript]
+
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+
+' set stop condition
+R2DToo.StopIfAdd(\"Tick &gt;= 1000\")
+' run and wait...
+R2DToo.SimRunWait()
+WScript.Echo "Simulation paused!"
+
+' unload
+Set R2DToo = nothing
+";
+
+$seeAlso="
+" . ref("SimRunWait") . ", " . ref("StopIfRemoveAll">.
+";

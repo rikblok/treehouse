@@ -1,0 +1,36 @@
+<?
+include 'function-pre.php';
+
+$name="nbrhdRandom";
+
+$declaration="
+void __stdcall nbrhdRandom(
+	int range,    	// number of neighbours
+	bool symmetric	// whether links are symmetric or not
+);
+";
+
+$parameters="
+" . pt() . "range
+" . pd() . "Number of links each site has.
+" . pt() . "symmetric
+" . pd() . "<tt>true</tt> if links are symmetric (reciprocal), otherwise <tt>false</tt>.
+";
+
+$remarks="
+This function is available through the API.  It can be called within the model-supplied routine " . ref("setNbrhd") . " to set the neighbourhood to a random network in which each agent is connected to <tt>range</tt> other agents (never itself) selected from anywhere on the lattice (non-local).
+
+<p>If <tt>symmetric=true</tt> then all links are reciprocal: <var>a</var> is a neighbour of <var>b</var> if and only if <var>b</var> is a neighbour of <var>a</var>.
+";
+
+$example="
+void __stdcall setNbrhd(double *param)
+{
+    nbrhdRandom(4,true);
+}
+";
+
+$seeAlso=nbrhdSeeAlso();
+
+include 'function-post.php';
+?>

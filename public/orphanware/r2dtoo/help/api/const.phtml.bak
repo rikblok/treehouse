@@ -1,0 +1,44 @@
+<?
+include 'function-pre.php';
+
+$name="Constants";
+
+$declaration="</pre>
+
+<table width=\"100%\"><tr><td>Constant</td><td>Value</td><td>Meaning</td></tr>
+<tr><td><tt>amName</tt></td><td>0</td><td>Indicates model name.</td></tr>
+<tr><td><tt>amVersion</tt></td><td>1</td><td>Indicates model version.</td></tr>
+<tr><td><tt>amCopyright</tt></td><td>2</td><td>Indicates model copyright or author information.</td></tr>
+<tr><td><tt>amComments</tt></td><td>3</td><td>Indicates extra comments about model.</td></tr>
+<tr><td><tt>amUrl</tt></td><td>4</td><td>Indicates model's web page.</td></tr>
+<tr><td>Used by: " . ref("getModelAbout") . ".</td></tr>
+</table>
+
+// defines used by forEachAgent() and forEachAgentVar()
+#define feaBegin	1
+#define feaContinue	0
+#define feaEnd		-1
+
+// defines used by nbrhd*()
+#define btPeriodic	0
+#define btEmpty		1
+
+// shift-state defines used by onMouse*() event handlers
+#define ssKbdShift	1
+#define ssKbdAlt 	2
+#define ssKbdCtrl	4
+#define ssBtnLeft	8
+#define ssBtnRight	16
+<pre>";
+
+$remarks="
+These constants are defined in <tt>api2model.h</tt>.
+";
+
+$revisions="
+API v1.6<ul><li>added <tt>ssKbd*</tt> and <tt>ssBtn*</tt> constants.
+	</ul>
+";
+
+include 'function-post.php';
+?>

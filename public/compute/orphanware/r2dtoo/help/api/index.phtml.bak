@@ -1,0 +1,133 @@
+<?
+$title="For the Programmer";
+$parent="../index";
+$background="../bg.jpg";
+include 'head.php';
+include 'download.php';
+include 'url.php';
+include 'toc.php';
+
+tochead(array('name'=>"Introduction"));
+?>
+
+R2DToo consists of three separate layers: the user interface, the programming interface (API) and the model.  The user interface is a compiled executable while the other two layers are dynamic link libraries which are retrieved and used by the executable when it is run.  
+
+<p>The advantage of this separation is that each layer can be modified and replaced without breaking the program.  For the end user this means the ability to write one's own models and run them within R2DToo.  To do this you write code that interacts with the API through function calls.
+
+<?	tochead(array('name'=>"The Programming Interface (API)")); ?>
+
+The API provides functions that the model designer can use.  In return, the model is expected to provide certain functions to the API.  This section lists both sets of functions as well as some data types defined by the API.  
+
+<?	tochead(array('name'=>"Custom data types", 'level'=>'3'>3)); ?>
+
+<ul><li><a href="tParam.html">tParam</a>
+	<li><a href="pParam.html">pParam</a>
+	<li><a href="tState.html">tState</a>
+	<li><a href="pState.html">pState</a>
+</ul>
+
+<?	tochead(array('name'=>"Functions provided by the API", 'level'=>'3')); ?>
+
+<a name="api2model-params"><h4>For handling parameters</h4>
+
+<ul><li><a href="assignParam.html">assignParam</a>
+	<li><a href="getParamRef.html">getParamRef</a>
+	<li><a href="getParamVal.html">getParamVal</a>
+	<li><a href="setParamCount.html">setParamCount</a>
+</ul>
+
+<a name="api2model-nbr"><h4>Neighbourhoods</h4>
+
+<ul><li><a href="forEachNbr.html">forEachNbr</a>
+	<li><a href="forEachNbrVar.html">forEachNbrVar</a>
+	<li><a href="getNbrX.html">getNbrX</a>
+	<li><a href="getNbrY.html">getNbrY</a>
+	<li><a href="nbrhd1D.html">nbrhd1D</a>
+	<li><a href="nbrhdBlocks.html">nbrhdBlocks</a>
+	<li><a href="nbrhdCCDM.html">nbrhdCCDM</a>
+	<li><a href="nbrhdFractal.html">nbrhdFractal</a>
+	<li><a href="nbrhdMoore.html">nbrhdMoore</a>
+	<li><a href="nbrhdRandom.html">nbrhdRandom</a>
+	<li><a href="nbrhdRandomER.html">nbrhdRandomER</a>
+	<li><a href="nbrhdVonNeumann.html">nbrhdVonNeumann</a>
+</ul>
+
+<a name="api2model-misc"><h4>Miscellaneous</h4>
+
+<ul><li><a href="anyAgent.html">anyAgent</a>
+	<li><a href="assignState.html">assignState</a>
+	<li><a href="doSimPause.html">doSimPause</a>
+	<li><a href="dprintf.html">dprintf</a>
+	<li><a href="forEachAgent.html">forEachAgent</a>
+	<li><a href="forEachAgentVar.html">forEachAgentVar</a>
+	<li><a href="getTickRef.html">getTickRef</a>
+	<li><a href="getTickVal.html">getTickVal</a>
+	<li><a href="setStateCount.html">setStateCount</a>
+	<li><a href="shuffleAgents.html">shuffleAgents</a>
+	<li><a href="xyAgent.html">xyAgent</a>
+</ul>
+
+<?	tochead(array('name'=>"Functions provided by the model", 'level'=>'3')); ?>
+
+<a name="model2api-required"><h4>Required</h4>
+
+<ul><li><a href="getApiVersion.html">getApiVersion</a>
+	<li><a href="getSimHeight.html">getSimHeight</a>
+	<li><a href="getSimWidth.html">getSimWidth</a>
+	<li><a href="onAgentCreate.html">onAgentCreate</a>
+	<li><a href="onAgentDraw.html">onAgentDraw</a>
+	<li><a href="onTick.html">onTick</a>
+</ul>
+
+<a name="model2api-optional"><h4>Optional</h4>
+
+<ul><li><a href="getAgentAbout.html">getAgentAbout</a>
+	<li><a href="getAgentHint.html">getAgentHint</a>
+	<li><a href="onAgentDestroy.html">onAgentDestroy</a>
+	<li><a href="getModelAbout.html">getModelAbout</a>
+	<li><a href="getParamAbout.html">getParamAbout</a>
+	<li><a href="onModelLoad.html">onModelLoad</a>
+	<li><a href="onModelUnload.html">onModelUnload</a>
+	<li><a href="onMouseUp.html">onMouseUp</a>
+	<li><a href="onSimCreate.html">onSimCreate</a>
+	<li><a href="onSimReady.html">onSimReady</a>
+	<li><a href="onSimDestroy.html">onSimDestroy</a>
+</ul>
+
+<?	tochead(array('name'=>"Sequence of model function calls", 'level'=>'3')); ?>
+
+The following represents the typical order of calls to model functions, from the loading of a model until it is unloaded or R2DToo is exited.  (Bold functions are required.)
+<ol><li><b><tt>getApiVersion</tt></b> - to check if model is valid
+	<li><tt>onModelLoad</tt> - once model has been loaded
+	<li><b><tt>getSimHeight/getSimWidth</tt></b> - to set-up a new simulation
+	<li><tt>onSimCreate</tt> - once the simulation space has been allocated
+	<li><b><tt>onAgentCreate</tt></b> - called once for each agent in space, after each agent has been created
+	<li><b><tt>onAgentDraw</tt></b> - once for each agent
+	<li><tt>onSimReady</tt> - once the simulation is ready to run
+	<li><b><tt>onTick</tt></b> - repeated calls to <tt>onTick</tt> and <tt>onAgentDraw</tt> while simulation running/stepping
+	<li><tt>onAgentDestroy</tt> - once for each agent, just before agent is deleted
+	<li><tt>onSimDestroy</tt> - just before the simulation space is deleted
+	<li><tt>onModelUnload</tt> - just before the model is unloaded
+</ol>
+
+<?	tochead(array('name'=>"Compilers")); ?>
+
+Although these functions are listed in the programming language C, the model may be written in any programming environment that can create a standard DLL (this excludes newer versions of MS Visual Basic which can apparently only create ActiveX DLLs).  
+
+<p>If you don't have access to a compiler Borland has released a free version of its command-line compiler.  The download link is:
+<ul><li><url name="http://www.borland.com/bcppbuilder/freecompiler/cppc55steps.html">.  
+</ul>
+For convenience, it is also available as a direct download:
+<?
+download(array(
+	'file'=>"freecommandLinetools.exe",
+	'icon'=>"bccicon.gif",
+	'dir'=>"${basedir}download/",
+	'location'=>"${baseurl}download/",
+	'title'=>"Borland C++ Compiler",
+	'version'=>"5.5",
+	'license'=>"f"
+));	
+
+include 'foot.php';	
+?>

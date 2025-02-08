@@ -1,0 +1,45 @@
+<?
+$title=$name;
+$parent="index";
+$background="../bg.jpg";
+include "head.php";
+include "toc.php";
+
+if (isset($declaration)) {
+	tochead(array('name'=>'Declaration'));
+	echo "<pre>$declaration</pre>";
+}
+
+if (isset($parameters)) {
+	tochead(array('name'=>'Parameters'));
+	echo "<dl>$parameters</dl>";
+}
+
+if (isset($returnValue)) {
+	echo "<a name=\"ReturnValue\">";
+	tochead(array('name'=>'Return Value'));
+	echo "</a>$returnValue";
+}
+
+if (isset($remarks)) {
+	tochead(array('name'=>'Remarks'));
+	echo $remarks;
+}
+
+if (isset($revisions)) {
+	tochead(array('name'=>'Revisions'));
+	echo $revisions;
+}
+
+if (isset($example)) {
+	tochead(array('name'=>'Example'));
+	echo "<listing>$example</listing>";
+}
+
+if (isset($seeAlso)) {
+	tochead(array('name'=>'See Also'));
+	echo $seeAlso;
+}
+
+include "foot.php";
+?>

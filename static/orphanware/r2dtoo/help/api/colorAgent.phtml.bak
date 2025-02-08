@@ -1,0 +1,11 @@
+<?
+
+$name="colorAgent">
+
+$remarks="
+This function is obsolete.  Use " . ref("onAgentDraw"> instead.
+";
+
+$seeAlso="
+" . ref("onAgentDraw">.
+";

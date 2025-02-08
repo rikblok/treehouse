@@ -1,0 +1,44 @@
+<?
+include 'function-pre.php';
+
+$name="UiMinimal";
+
+$declaration="
+object.UiMinimal()
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+";
+
+$returnValue="
+None.
+";
+
+$remarks="
+Sets all user-interface options such that the simulation can run as fast as possible, with the least overhead.  This includes hiding the <a href=\"../timeseries.html\">Time Series</a> and <a href=\"../inspect.html\">Inspect Sites</a> forms and the <a href=\"../main.html#Portal\">view portal</a>, and setting the <a href=\"../main.html#Menubar\">framerate</a> to slow.
+";
+
+$example="
+' [VBScript]
+
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+
+' set to run as fast as possible
+R2DToo.UiMinimal()
+' run...
+R2DToo.SimRun()
+' ...wait for 60 seconds...
+WScript.Sleep(60000)
+' ...stop
+R2DToo.SimPause()
+
+' unload
+Set R2DToo = nothing
+";
+
+include 'function-post.php';
+?>

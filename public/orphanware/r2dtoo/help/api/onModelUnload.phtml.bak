@@ -1,0 +1,42 @@
+<?
+
+$name="onModelUnload">
+
+$declaration="
+void __stdcall onModelUnload(void);
+";
+
+$remarks="
+This optional function may be provided by the model.  It is called just before the model is unloaded.  (Since this function is only called once it is a good place to release temporary workspace, if required.)
+";
+
+$revisions="
+API v1.5<ul><li>new!
+	</ul>
+";
+
+$example="
+float *workspace = NULL;
+
+void __stdcall onModelLoad(void)
+{
+    setParamCount(4);
+    //      index  name [constraints]             default value
+    assignParam(0, "World Width [int,&gt;0]",        30);
+    assignParam(1, "World Height [int,&gt;0]",       30);
+    assignParam(2, "Initial Density [&gt;0,&lt;1]",  0.5);
+    assignParam(3, "Fade Rate [int, &gt;0,&lt;=255]",255);
+
+    workspace = new float[100];
+    randomize();
+}
+
+void __stdcall onModelUnload(void)
+{
+    delete [] workspace;
+}
+";
+
+$seeAlso="
+" . ref("onModelLoad">.
+";

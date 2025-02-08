@@ -1,0 +1,11 @@
+<?
+
+$name="initAgent">
+
+$remarks="
+This function is obsolete.  Use " . ref("onAgentCreate"> instead.
+";
+
+$seeAlso="
+" . ref("onAgentCreate">.
+";

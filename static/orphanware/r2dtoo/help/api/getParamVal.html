@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<title>getParamVal</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="revisit-after" content="30 days">
+<meta name="document-date" content="06 Nov 2004 14:49:37 GMT">
+<meta name="robots" content="all"><meta name="language" content="English">
+<base target="_top"><meta name="document-date" content="30 Apr 2004 13:39:00 13AprBST-8"></head>
+<body background="../bg.jpg"><a name="top"><table width="100%"><tr><td><small><small><b><a href="../../../../index.html">Rik's Treehouse</a> &gt; <a href="../../../../compute.html">Babbling in Binary</a> &gt; <a href="../../../../software/index.html">My Software</a> &gt; <a href="../../../../software/orphan.html">Orphanware</a> &gt; <a href="../../../../software/r2dtoo/index.html">R2DToo</a> &gt; <a href="../../../../software/r2dtoo/help/index.html">R2DToo Help</a> &gt; <a href="../../../../software/r2dtoo/help/api/index.html">For the Programmer</a> &gt; getParamVal</b></small></small></td></tr></table><img src="../../../../images/top-blank.gif" align="right" width="11" height="10"  alt=""><hr><center><h1>getParamVal</h1></center>
+<table width="100%" cellspacing="2" cellpadding="8"><tr><td valign="top" bgcolor="#ddddff"><small><small><a href="#Declaration">Declaration</a><br></small></small><small><small><a href="#Parameters">Parameters</a><br></small></small><small><small><a href="#Return&nbsp;Value">Return&nbsp;Value</a><br></small></small><small><small><a href="#Remarks">Remarks</a><br></small></small><small><small><a href="#Revisions">Revisions</a><br></small></small><small><small><a href="#Example">Example</a><br></small></small><small><small><a href="#See&nbsp;Also">See&nbsp;Also</a><br></small></small></td><td width="*" valign="top"><a name="Declaration"><h2>Declaration</h2><pre>
+tParam __stdcall getParamVal(
+    char* name    // parameter name
+);
+</pre><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Parameters"><h2>Parameters</h2><dl>
+<dt><tt>name
+</tt><dd>Name of a valid parameter.
+</dl><a name="ReturnValue"><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Return&nbsp;Value"><h2>Return&nbsp;Value</h2></a>
+The current value of the parameter <tt>name</tt> or <tt>0</tt> if not found.
+<a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Remarks"><h2>Remarks</h2>
+This function is available through the API.  Use it to retrieve the current value of a parameter. <tt>getParamVal</tt> is slower than <a href="getParamRef.html"><tt>getParamRef</tt></a> so it should not be used in frequently called functions like <a href="onTick.html"><tt>onTick</tt></a>.  However, there is one function where it must be used in place of <a href="getParamRef.html"><tt>getParamRef</tt></a>: in the user-supplied <a href="getParamAbout.html"><tt>getParamAbout</tt></a>.  See that function for more information.
+
+<p>If a parameter named <tt>name</tt> can't be found, the function returns <tt>0</tt> and reports the failure in R2DToo's Debug window.</p>
+<a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Revisions"><h2>Revisions</h2>
+API v1.5<ul><li>new!
+	</ul>
+<a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Example"><h2>Example</h2><listing>
+#include &lt;string.h&gt;    // for strcmp(a,b) which returns 0 if a==b
+//---------------------------------------------------------------------------
+char* __stdcall <a href="getParamAbout.html"><tt>getParamAbout</tt></a>(char* name)
+{
+    if (!strcmp(name,"Neighbourhood Type")) {
+        switch(int(<a href="getParamVal.html"><tt>getParamVal</tt></a>(name))) {
+            case 0: return  "Non-spatial, all agents can interact.";
+            case 1: return  "1 dimension (horizontal).  Periodic boundaries. "
+                            "Each row is separate.";
+            case 2: return  "2 dimensions, Moore neighbourhood. 4 nearest and "
+                            "4 diagonal neighbours. Periodic boundaries.";
+            case 3: return  "Symmetric Erdos-Renyi random graph.  Links are "
+                            "reciprocal.";
+            case 4: return  "Deterministic scale-free network with clustering.";
+        }
+    }
+    return "Unknown.";
+}
+//---------------------------------------------------------------------------
+</listing><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="See&nbsp;Also"><h2>See&nbsp;Also</h2>
+<a href="getParamAbout.html"><tt>getParamAbout</tt></a>, <a href="getParamRef.html"><tt>getParamRef</tt></a>.
+</td></tr></table><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="90%" align="center"><table width="100%"><tr valign="top"><td align="left">
+<small><small><a name="bottom"><a href="../../../../office.html">[Rik's Office Hours]</a> <a href="../../../../contact.html">[Contact Rik]</a><br>Last updated: Fri Apr 30 2004, 1:39pm</small></small></td><td align="right">
+<FORM align="right" method=GET action="http://www.google.com/search"><table align="right"><tr><td>
+<INPUT TYPE=text name=q size=25 maxlength=255 value="">
+<input type=hidden name=sitesearch value="http://www.zoology.ubc.ca"><input type=hidden name="hq" value="inurl:rikblok"><INPUT type=hidden name=filter value="0"><INPUT type=submit name=btnG VALUE="Search">
+</td></tr></TABLE></FORM>
+</td></tr></table>
+
+
+</body></html>

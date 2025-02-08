@@ -1,0 +1,27 @@
+<?
+
+$name="getApiVersion">
+
+$declaration="
+float __stdcall getApiVersion(void);
+";
+
+$returnValue="
+A number indicating the lowest API version the model is compatible with.
+";
+
+$remarks="
+This function is required by the API.  It is called before the model is loaded in order to ensure that it is compatible with current API.
+";
+
+$revisions="
+API v1.5<ul><li>new!  Replaces <tt>requiresAPI</tt>.
+	</ul>
+";
+
+$example="
+float __stdcall getApiVersion(void)
+{
+    return 1.5;
+}
+";

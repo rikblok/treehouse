@@ -1,0 +1,39 @@
+<?
+include 'function-pre.php';
+
+$name="SimStep">
+
+$declaration="
+object.SimStep()
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+";
+
+$returnValue="
+None.
+";
+
+$remarks="
+Steps a paused simulation by one tick.  Returns on completion.
+";
+
+$example="
+' [VBScript]
+
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+
+' demonstrate method
+R2DToo.SimStep()
+
+' unload
+Set R2DToo = nothing
+";
+
+$seeAlso="
+" . ref("SimPause") . ", " . ref("SimRun") . ", " . ref("SimRunWait">.
+";

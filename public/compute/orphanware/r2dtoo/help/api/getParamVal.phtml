@@ -1,0 +1,59 @@
+<?
+include 'function-pre.php';
+
+$name="getParamVal";
+
+$declaration="
+tParam __stdcall getParamVal(
+    char* name    // parameter name
+);
+";
+
+$parameters="
+" . pt() . "name
+" . pd() . "Name of a valid parameter.
+";
+
+$returnValue="
+The current value of the parameter <tt>name</tt> or <tt>0</tt> if not found.
+";
+
+$remarks="
+This function is available through the API.  Use it to retrieve the current value of a parameter. <tt>getParamVal</tt> is slower than " . ref("getParamRef") . " so it should not be used in frequently called functions like " . ref("onTick") . ".  However, there is one function where it must be used in place of " . ref("getParamRef") . ": in the user-supplied " . ref("getParamAbout") . ".  See that function for more information.
+
+<p>If a parameter named <tt>name</tt> can't be found, the function returns <tt>0</tt> and reports the failure in R2DToo's Debug window.</p>
+";
+
+$revisions="
+API v1.5<ul><li>new!
+	</ul>
+";
+
+$example="
+#include &lt;string.h&gt;    // for strcmp(a,b) which returns 0 if a==b
+//---------------------------------------------------------------------------
+char* __stdcall " . ref("getParamAbout") . "(char* name)
+{
+    if (!strcmp(name,\"Neighbourhood Type\")) {
+        switch(int(" . ref("getParamVal") . "(name))) {
+            case 0: return  \"Non-spatial, all agents can interact.\";
+            case 1: return  \"1 dimension (horizontal).  Periodic boundaries. \"
+                            \"Each row is separate.\";
+            case 2: return  \"2 dimensions, Moore neighbourhood. 4 nearest and \"
+                            \"4 diagonal neighbours. Periodic boundaries.\";
+            case 3: return  \"Symmetric Erdos-Renyi random graph.  Links are \"
+                            \"reciprocal.\";
+            case 4: return  \"Deterministic scale-free network with clustering.\";
+        }
+    }
+    return \"Unknown.\";
+}
+//---------------------------------------------------------------------------
+";
+
+$seeAlso="
+" . ref("getParamAbout") . ", " . ref("getParamRef") . ".
+";
+
+include 'function-post.php';
+?>

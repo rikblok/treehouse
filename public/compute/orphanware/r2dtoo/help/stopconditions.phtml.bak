@@ -1,0 +1,51 @@
+<?
+$title="Stop Conditions Form";
+$parent="interface";
+$background="bg.jpg";
+include 'head.php';
+include 'cite.php';
+include 'toc.php';
+?>
+
+The <i>Stop Conditions</i> form allows the user to specify conditions under which the simulation will automatically pause while running.  Interaction with the Main form is still possible while the Stop Conditions form is visible.  
+
+<p><center>
+<a href="stopconditions.html#Enabled&nbsp;Checkbox"><img src="stop_enabled.gif" border=0></a><br>
+<a href="stopconditions.html#Conditions&nbsp;Listbox"><img src="stop_conditions.gif" border=0></a><a href="stopconditions.html#Buttons"><img src="stop_buttons.gif" border=0></a><a href="stopconditions.html#Add&nbsp;new&nbsp;condition&nbsp;Controls"><img src="stop_addnew.gif" border=0></a><br>
+</center>
+
+<?	tochead(array('name'=>"Enabled&nbsp;Checkbox")); ?>
+
+The stop conditions are only active if this box is checked.  It must also be checked in order to add/remove stop conditions.
+
+<?	tochead(array('name'=>"Conditions&nbsp;Listbox")); ?>
+
+This box lists all conditions that are currently active.  Use the <a href="#Buttons">buttons</a> to add/remove conditions.  Note that stop conditions are checked <i>after</i> each tick (timestep) so, for example, pressing the <a href="main.html#Toolbar">Run</a> button when a condition is true is equivalent to pressing the <a href="main.html#Toolbar">Step</a> button, the simulation will tick once and then pause.
+
+<?	tochead(array('name'=>"Buttons")); ?>
+
+<dl><dt><img src="stop_bAdd.gif"> Add Button
+	<dd>Adds the new stop condition specified by the <a href="#AddNew">&quot;Add new condition&quot; controls</a>.
+	<dt><img src="stop_bRemove.gif"> Remove Button
+	<dd>Removes the currently hilighted condition in the <a href="#Conditions">Conditions listbox</a> from the list.
+	<dt><img src="stop_bRemoveAll.gif"> Remove All Button
+	<dd>Removes all stop conditions.
+</dl>
+
+<?	tochead(array('name'=>"Add new condition Controls")); ?>
+
+These controls allow you to specify a new stop condition which you can add by pressing the <a href="#Buttons">Add</a> button.  A condition consists of three elements: a parameter, a relation, and a value.  Use these controls to set the elements:
+
+<a name="Parameter"><h3>Parameter Combobox</h3></a>
+
+Choose which model parameter to watch with this combobox.  The topmost parameter <tt>Tick</tt> indicates the simulation &quot;tick&quot; time.
+
+<a name="Relation"><h3>Relation Radiobuttons</h3></a>
+
+Three relations between the parameter and value are supported: greater than or equal to (<tt>&gt;=</tt>), exactly equal (<tt>=</tt>), or less than or equal to (<tt>&lt;=</tt>).  Choose one of the radiobuttons to specify the relation.
+
+<a name="Value"><h3>Value Editbox</h3></a>
+
+Each parameter is compared to a constant value and if the relation holds the simulation is paused.  This box specifies the constant value.
+
+<?	include 'foot.php';	?>

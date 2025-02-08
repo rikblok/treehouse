@@ -1,0 +1,13 @@
+REGEDIT4
+
+; merge with Registry to add action "Edit with Notepad" to right-click
+; in Explorer and make it the default action for unassociated files.
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\Shell]
+@="Edit &with Notepad"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\Shell\Edit_with_Notepad]
+@="Edit &with Notepad"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\Shell\Edit_with_Notepad\command]
+@="notepad.exe \"%1\""

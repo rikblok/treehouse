@@ -1,0 +1,39 @@
+<?
+include 'function-pre.php';
+
+$name="getWorldWidth";
+
+$declaration="
+int __stdcall getWorldWidth();
+";
+
+$returnValue="
+Returns the width (horizontal length) of the simulation world.
+";
+
+$remarks="
+This function is available through the API.  It can be used, with " . ref("getWorldHeight") . ", to get the dimensions of the simulation <i>world</i>.
+";
+
+$revisions="
+v1.5<ul><li>new
+	</ul>
+";
+
+$example="
+void __stdcall initAgent(int x, int y, pParam param)
+{
+	pState a = setStateCount(x,y, 1);
+	assignState(x, y, 0,\"Alive\", 0);
+	// special handling for center cell
+	if (x==getWorldWidth()/2 && y==getWorldHeight()/2)
+		a[0] = 1;
+}
+";
+
+$seeAlso="
+" . ref("getWorldHeight") . "
+";
+
+include 'function-post.php';
+?>

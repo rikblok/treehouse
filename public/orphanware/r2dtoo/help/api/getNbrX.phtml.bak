@@ -1,0 +1,54 @@
+<?
+
+$name="getNbrX">
+
+$declaration="
+int __stdcall getNbrX(
+	int x,      	// x-coordinate of agent
+	int y,      	// y-coordinate of agent
+	int nbrIndex  	// index of neighbour to get coordinates of
+);
+";
+
+$parameters="
+" . pt() . "x
+" . pd() . "X-coordinate of an agent.
+" . pt() . "y
+" . pd() . "Y-coordinate of an agent.
+" . pt() . "nbrIndex
+" . pd() . "Neighbour index of agent at (<tt>x</tt>,<tt>y</tt>) to return coordinates for.
+";
+
+$returnValue="
+Returns the x-coordinate of the specified neighbour of the agent at (<tt>x</tt>,<tt>y</tt>).  On error returns -1.
+";
+
+$remarks="
+This function is available through the API.  It can be used, with " . ref("getNbrY">, to get the coordinates of a neighbour to a specific site.
+";
+
+$revisions="
+v1.1<ul><li>new
+	</ul>
+";
+
+$example="
+void __stdcall onTick(double &time)
+{
+	int ax,ay;
+	int **nbr, nbrCount;
+	int *a = anyAgent(NULL,ax,ay,nbr,nbrCount);
+	// pick a neighbour
+	int nbrIndex = random(aNbrCount);	// 0..aNbrCount-1
+	// get second neighbour
+	int bx = getNbrX(ax,ay,nbrIndex);
+	int by = getNbrY(ax,ay,nbrIndex);
+	int *b = xyAgent(bx,by,nbr,nbrCount);
+	// now nbr[0..nbrCount-1] are second neighbours of a.
+	// process second neighbours...
+}
+";
+
+$seeAlso="
+" . ref("getNbrY">, " . ref("anyAgent">," . ref("xyAgent">, " . ref("onTick">
+";

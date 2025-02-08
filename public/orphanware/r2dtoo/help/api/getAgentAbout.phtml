@@ -1,0 +1,58 @@
+<?
+include 'function-pre.php';
+
+$name="getAgentAbout";
+
+$declaration="
+char* __stdcall getAgentAbout(
+    int x,        // x-coordinate of agent
+    int y,        // y-coordinate of agent
+    pState state, // array of agent state variables
+    int index     // return information on state[index]
+);
+";
+
+$parameters="
+" . pt() . "x,y
+" . pd() . "Coordinates of agent.
+" . pt() . "state
+" . pd() . "Array of agent state variables.
+" . pt() . "index
+" . pd() . "Index of state variable about which to return information.
+";
+
+$returnValue="
+A character string returning information on state variable <tt>state[index]</tt>.
+";
+
+$remarks="
+This optional function may be provided by the model.  For each possible value of <tt>index</tt> the function should return a character string with background information on the agent state variable <tt>state[index]</tt> which is the state of the agent at coordinates (<tt>x</tt>,<tt>y</tt>).  The information is displayed in R2DToo's &quot;Inspect Sites&quot; dialog box to help the user.  
+";
+
+$revisions="
+API v1.5<ul><li>new!  Replaces <tt>aboutState</tt>.
+	</ul>
+";
+
+$example="
+char* __stdcall getAgentAbout(int x, int y, " . ref("pState") . " state, int index)
+{
+    switch (index) {
+        case 0:
+            switch(int(state[0])) {
+                case 0: return \"Rock.\";
+                case 1: return \"Paper.\";
+                case 2: return \"Scissors.\";
+                default:return \"Unknown.\";
+            }
+        default:return \"Unknown.\";
+    }
+}
+";
+
+$seeAlso="
+" . ref("getAgentHint") . ".
+";
+
+include 'function-post.php';
+?>

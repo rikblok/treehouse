@@ -1,0 +1,11 @@
+<?
+
+$name="simBegin">
+
+$remarks="
+This function is obsolete.  Use " . ref("onSimCreate"> instead.
+";
+
+$seeAlso="
+" . ref("onSimCreate">.
+";

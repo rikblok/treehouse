@@ -1,0 +1,58 @@
+<?
+
+$name="xyAgent">
+
+$declaration="
+pState __stdcall xyAgent(
+	int x,      	// x-coordinate of desired agent
+	int y,      	// y-coordinate of desired agent
+	pState* &nbr,  	// neighbours of returned agent
+	int &nbrCount	// number of neighbours
+);
+";
+
+$parameters="
+" . pt() . "x
+" . pd() . "X-coordinate of desired agent.
+" . pt() . "y
+" . pd() . "Y-coordinate of desired agent.
+" . pt() . "nbr
+" . pd() . "On exit <tt>nbr[0..nbrCount-1]</tt> are the neighbours of returned agent.  Passed by reference.
+" . pt() . "nbrCount
+" . pd() . "On exit holds the number of agents of returned agent.  Passed by reference.
+";
+
+$returnValue="
+Returns agent at coordinates (<tt>x</tt>,<tt>y</tt>).  If <tt>x</tt> or <tt>y</tt> out of bounds returns <tt>NULL</tt>.
+";
+
+$remarks="
+This function is available through the API.  It can be used in the model-supplied routine " . ref("onTick"> to pick an agent at specific coordinates.
+";
+
+$revisions="
+v1.1<ul><li>new
+	</ul>
+";
+
+$example="
+void __stdcall onTick(double &time)
+{
+	int ax,ay;
+	int nbrCount;
+	" . ref("pState"> *nbr;
+	" . ref("pState"> a = anyAgent(NULL,ax,ay,nbr,nbrCount);
+	// pick a neighbour
+	int nbrIndex = random(aNbrCount);	// 0..aNbrCount-1
+	// get second neighbour
+	int bx = getNbrX(ax,ay,nbrIndex);
+	int by = getNbrY(ax,ay,nbrIndex);
+	" . ref("pState"> b = xyAgent(bx,by,nbr,nbrCount);
+	// now nbr[0..nbrCount-1] are second neighbours of a.
+	// process second neighbours...
+}
+";
+
+$seeAlso="
+" . ref("anyAgent">, " . ref("onTick">, " . ref("getNbrX">, " . ref("getNbrY">
+";

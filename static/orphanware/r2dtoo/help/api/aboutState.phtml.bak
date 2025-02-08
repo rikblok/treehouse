@@ -1,0 +1,11 @@
+<?
+
+$name="aboutState">
+
+$remarks="
+This function is obsolete.  Use " . ref("onAgentAbout"> instead.
+";
+
+$seeAlso="
+" . ref("onAgentAbout">.
+";

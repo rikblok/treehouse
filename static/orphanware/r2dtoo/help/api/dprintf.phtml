@@ -1,0 +1,44 @@
+<?
+include 'function-pre.php';
+
+$name="dprintf";
+
+$declaration="
+int __stdcall dprintf(
+	const char *format,	// format specifier
+	...	               	// argument
+);
+";
+
+$parameters="
+" . pt() . "format
+" . pd() . "Format string like the standard C printf() function.
+" . pt() . "...
+" . pd() . "Arguments to the format string.
+";
+
+$returnValue="
+Returns the number of bytes written (neglecting the trailing newline character).
+";
+
+$remarks="
+This function is available through the API.  It provides the model programmer with some primitive debugging functionality by displaying the argument of the function in a debug window and dumping the same to a debug file (always <tt>OutDbg1.txt</tt> in the current folder).  The programmer can use this to display state variables and parameters as the simulation is being executed.  The format of the parameters is identical to the standard C function <tt>printf()</tt>.  See the documentation on <tt>printf()</tt> for more information.  <tt>dprintf()</tt> differs in that it always appends a trailing newline character (<tt>\n</tt>) to every call to <tt>dprintf()</tt> to enhance readability of the debug window.
+";
+
+$revisions="
+v1.2<ul><li>new!
+	</ul>
+";
+
+$example="
+void __stdcall " . ref("onTick") . "(" . ref("pParam") . " param, double &time)
+{
+    // print 10 parameters to debug window and OutDbg1.txt
+    for (int i=0; i&lt;10; i++) {
+        dprintf(\"Parameter[%i] = %g\",i,(float)param[i]);
+    }
+}
+";
+
+include 'function-post.php';
+?>

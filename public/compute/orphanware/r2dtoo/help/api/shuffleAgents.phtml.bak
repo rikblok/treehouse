@@ -1,0 +1,40 @@
+<?
+include 'function-pre.php';
+
+$name="shuffleAgents";
+
+$declaration="
+void __stdcall shuffleAgents(void);
+";
+
+$remarks="
+This function is available through the API.  It is meant to be called from within " . ref("onTick"> to shuffle the order agents are processed with " . ref("forEachAgent") . " and " . ref("forEachAgentVar") . ".
+";
+
+$example="
+bool update(" . ref("pState") . " state, " . ref("pState") . " *nbr, int nbrCount, int feaMode)
+// Called by timestep.
+{
+    if (feaMode!=feaContinue)	return true;
+    int aliveNbrs = 0;
+    for (int i=0; i&lt;nbrCount; i++)	alibveNbrs += nbr[i][0];
+    // Conway's game of Life rule
+    if (aliveNbrs == 3)      state[0] = 1;
+    else if (aliveNbrs != 2) state[0] = 0;
+    // else no change (count==2)
+    return true;
+}
+void __stdcall onTick(double &time)
+{
+    // random sequential updating
+    shuffleAgents();
+    forEachAgent(update);
+}
+";
+
+$seeAlso="
+" . ref("onTick") . ", " . ref("forEachAgent") . ", " . ref("forEachAgentVar") . ".
+";
+
+include 'function-template.php';
+?>

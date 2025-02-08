@@ -1,0 +1,22 @@
+<?
+include "function-pre.php";
+$name="tState";
+
+$declaration="
+typedef float tState;
+";
+
+$remarks="
+tState is the type for agent state variables.  Defined in <tt>api2model.h</tt>.
+";
+
+$revisions="
+API v1.1<ul><li>changed from int to single-precision floating point.  
+<p><small>The decision to change this data type in API version 1.1 was not made lightly.  Do not expect it to change again.  I decided to do it early in the development of R2DToo before many models had been developed.  The reason the change occured was because I found I needed the advantages of floating point numbers more frequently in my models than integers (the main advantage of which was bitwise manipulation).  The speed penalty is estimated at 5% and was deemed worthwhile for the added convenience of rational numbers.</small>
+	</ul>
+";
+
+$seeAlso=ref("pState");
+
+include "function-post.php";
+?>

@@ -1,0 +1,33 @@
+<?
+$title="New Simulation Dialog";
+$parent="interface";
+$background="bg.jpg";
+include 'head.php';
+include 'toc.php';
+?>
+
+The New Simulation dialog presents the user with a table of model parameters which may be modified to begin a new simulation.
+
+<p><center>
+<img src="new_titlebar.gif"><br>
+<a href="new.html#Parameters&nbsp;Table"><img src="new_grid.gif" alt="Parameters Table" border=0></a><br>
+<a href="new.html#Buttons"><img src="new_buttons.gif" alt="Buttons" border=0></a><br>
+</center>
+
+<?	tochead(array('name'=>"Parameters&nbsp;Table")); ?>
+
+The Parameters table allows the user to modify the model parameters as described in the model's documentation.
+
+<p>To edit a parameter value click on the <tt>Value</tt> column beside the name of the desired parameter and enter a new value.  Each parameter must be a real number--further constraints are indicated by square brackets <tt>[...]</tt> in the parameter <tt>Name</tt> column.  See the model documentation for the meaning of the constraints.  If an entered value is invalid a warning will sound and the entry will return to its prior value.
+
+<?	tochead(array('name'=>"Buttons")); ?>
+
+<dl><dt><img src="new_bOk.gif"> OK Button
+	<dd>Initializes a new simulation using the specified parameter values.
+	<dt><img src="new_bCancel.gif"> Cancel Button
+	<dd>Closes the dialog without modifying the current simulation.
+	<dt><img src="new_bHelp.gif"> Help Button
+	<dd>Attempts to display this help file.
+</dl>
+
+<?	include 'foot.php';	?>

@@ -1,0 +1,41 @@
+<?
+include 'function-pre.php';
+
+$name="Refresh";
+
+$declaration="
+object.Refresh()
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+";
+
+$remarks="
+Refreshes the view portal.  Intended to be called after " . ref("SetState") . " to reflect changes made.
+";
+
+$revisions="
+v1.9<ul><li>new!
+	</ul>
+";
+
+$example="
+// [JScript]
+
+// load
+var R2DToo = WScript.CreateObject(\"R2DToo.FrontEnd\");
+
+// demonstrate method
+if (R2DToo.SetState(5,12,\"alive\",1)) {
+    R2DToo.Refresh();
+    WScript.Echo(\"Success!\");
+} else {
+    WScript.Echo(\"Failed!\");
+}
+";
+
+$seeAlso="
+" . ref("SetState") . ".
+";

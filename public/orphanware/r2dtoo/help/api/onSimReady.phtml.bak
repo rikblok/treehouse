@@ -1,0 +1,29 @@
+<?
+
+$name="onSimReady">
+
+$declaration="
+void __stdcall onSimReady(void);
+";
+
+$remarks="
+This optional function may be provided by the model.  It is called after a new simulation has been created and after the agents have been created.  You can use this function to do processing when the simulation is ready to start running.
+";
+
+$revisions="
+API v1.6<ul><li>new!
+	</ul>
+";
+
+$example="
+//---------------------------------------------------------------------------
+void __stdcall onSimReady(void)
+{
+    doSimRun();	// start running immediately (don't wait for user to press Run button)
+}
+//---------------------------------------------------------------------------
+";
+
+$seeAlso="
+" . ref("doSimRun">, " . ref("onSimCreate">, " . ref("onSimDestroy">.
+";

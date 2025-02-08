@@ -1,0 +1,76 @@
+<?
+
+$name="assignParam">
+
+$declaration="
+pParam __stdcall assignParam(
+	int index,  	// parameter index
+	char *name, 	// parameter name
+	tParam deflt	// default value
+);
+";
+
+$parameters="
+" . pt() . "index
+" . pd() . "Base zero index of parameter.
+" . pt() . "name
+" . pd() . "Name of parameter to show the user.  Include parameter properties in trailing brackets [...].
+" . pt() . "deflt
+" . pd() . "Default value of parameter to begin the simulation.
+";
+
+$returnValue="
+A pointer to the newly created parameter value (" . ref("pParam">).
+";
+
+$remarks="
+This function is available through the API.  It is meant to be used from within the model-provided function " . ref("onModelLoad"> and should be called once for each parameter <b>after</b> calling " . ref("setParamCount">.
+
+<h3>Properties</h3>
+
+<p>Properties of a parameter may be specified in brackets [...] after the parameter's name.  The user will only be allowed to enter values which satisfy the properties. Properties are comma-separated assignments of the form 
+
+<blockquote><tt>property=value,...</tt>.</blockquote>
+
+Valid properties in the current version of the API (to be expanded in future versions) are
+<dl><dt><tt>enabled=false</tt>
+	<dd>The user is not allowed to modify this parameter.
+	<dt><tt>type=bool</tt>
+	<dd>Parameter can only take on the values 0 or 1.
+	<dt><tt>type=int</tt>
+	<dd>Parameter must be an integer.
+	<dt><tt>min=<i>number</i></tt>
+	<dd>Minimum allowed value of the parameter.
+	<dt><tt>max=<i>number</i></tt>
+	<dd>Maximum allowed value of the parameter.
+</dl>
+
+<p>In the absence of any properties, a parameter is assumed to be an unbounded real number.  ";
+
+$revisions="
+API v1.5<ul><li>returns pointer to parameter
+	</ul>
+API v1.4<ul><li>introduced parameter &quot;properties&quot; to replace constraints
+	</ul>
+";
+
+$example="
+" . ref("pParam"> density = NULL;
+//---------------------------------------------------------------------------
+void __stdcall " . ref("onModelLoad">(void)
+{
+    " . ref("setParamCount">(5);
+    //      index  name [properties]                 default value
+    assignParam(0, "World Width [type=int,min=1]",        30);  // integer, >=1
+    assignParam(1, "World Height [type=int,min=1]",       30);  // integer, >=1
+    density = 
+    assignParam(2, "Initial Density [min=0,max=1]",      0.5);  // real, in range [0,1]
+    assignParam(3, "Density [enabled=false,min=0,max=1]",0.5);  // real, in range [0,1], not modifiable by user
+    assignParam(4, "Pretty Graphics [type=bool]",          0);  // boolean (0 or 1)
+}
+//---------------------------------------------------------------------------
+";
+
+$seeAlso="
+" . ref("onModelLoad">, " . ref("setParamCount">, " . ref("pParam">.
+";

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<title>nbrhdCCDM</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="revisit-after" content="30 days">
+<meta name="document-date" content="06 Nov 2004 14:49:37 GMT">
+<meta name="robots" content="all"><meta name="language" content="English">
+<base target="_top"><meta name="document-date" content="30 Apr 2004 13:41:00 13AprBST-8"></head>
+<body background="../bg.jpg"><a name="top"><table width="100%"><tr><td><small><small><b><a href="../../../../index.html">Rik's Treehouse</a> &gt; <a href="../../../../compute.html">Babbling in Binary</a> &gt; <a href="../../../../software/index.html">My Software</a> &gt; <a href="../../../../software/orphan.html">Orphanware</a> &gt; <a href="../../../../software/r2dtoo/index.html">R2DToo</a> &gt; <a href="../../../../software/r2dtoo/help/index.html">R2DToo Help</a> &gt; <a href="../../../../software/r2dtoo/help/api/index.html">For the Programmer</a> &gt; nbrhdCCDM</b></small></small></td></tr></table><img src="../../../../images/top-blank.gif" align="right" width="11" height="10"  alt=""><hr><center><h1>nbrhdCCDM</h1></center>
+<table width="100%" cellspacing="2" cellpadding="8"><tr><td valign="top" bgcolor="#ddddff"><small><small><a href="#Declaration">Declaration</a><br></small></small><small><small><a href="#Parameters">Parameters</a><br></small></small><small><small><a href="#Remarks">Remarks</a><br></small></small><small><small><a href="#Example">Example</a><br></small></small><small><small><a href="#See&nbsp;Also">See&nbsp;Also</a><br></small></small></td><td width="*" valign="top"><a name="Declaration"><h2>Declaration</h2><pre>
+void __stdcall nbrhdCCDM(
+	void (*fitness)(float *, int),	// fitness function
+	bool symmetric,               	// symmetric links?
+	float (*probLink)(float,float)	// link probability function
+);
+</pre><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Parameters"><h2>Parameters</h2><dl>
+<dt><tt>fitness
+</tt><dd>The name of a function to set the fitness of all agents.  (See <a href="#Remarks">Remarks</a>.)  
+<dt><tt>symmetric
+</tt><dd>Indicates whether links in the network are reciprocal.
+<dt><tt>probLink
+</tt><dd>The name of a function to set the fitness of all agents.  (See <a href="#Remarks">Remarks</a>.)
+</dl><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Remarks"><h2>Remarks</h2>
+This function is available through the API.  It can be called within the model-supplied routine <a href="onSimCreate.html"><tt>onSimCreate</tt></a> to generate an arbitrary network, as described by [<a href="../../../../lib/refs.html#caldarelli02">caldarelli02</a>].  Although designed with scale-free networks in mind, it is able to generate many random networks.  Along with the parameter <tt>symmetric</tt> the function <tt>nbrhdCCDM</tt> takes two functions as parameters:
+
+<blockquote>
+<h3>fitness</h3>
+<tt>fitness</tt> is the name of a function with the following declaration:
+<pre>
+void fitness(
+	float *fit,   	// pointer to array fit[0..agentCount-1] of type float
+	int agentCount	// number of agents in simulation
+);
+</pre>
+
+The <tt>fitness</tt> function takes in an array <tt>fit[0..agentCount-1]</tt> of floats and fills it with fitnesses sampled from a random distribution.  On completion the elements of <tt>fit[]</tt> are randomly assigned to agents, in order to construct the network as described in [<a href="../../../../lib/refs.html#caldarelli02">caldarelli02</a>].
+</blockquote>
+
+<blockquote>
+<h3>probLink</h3>
+<tt>probLink</tt> is the name of an optional function with the following declaration:
+<pre>
+float probLink(
+	float f1,	// fitness of first agent
+	float f2	// fitness of second agent
+);
+</pre>
+
+The <tt>probLink</tt> function calculates the probability that the second agent is a neighbour of the first if they have fitnesses <tt>f1</tt> and <tt>f2</tt>, respectively.  If <tt>symmetric=true</tt> then it is assumed that <tt>probLink(f1,f2)=probLink(f2,f1)</tt>.  The <tt>probLink</tt> parameter is optional in <tt>nbrhdCCDM</tt>, if not supplied <tt>probLink(f1,f2)=f1*f2</tt> is assumed.
+</blockquote>
+<a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Example"><h2>Example</h2><listing>
+tParam beta;
+
+void powerlawFitness(float *fit, int agentCount)
+// fill fit[0..agentCount-1] with deviates sampled from p(fit) = (beta-1) * fit^(-beta)
+{
+    float fitMax = 1;
+    // sample deviates from power-law distribution, uses beta=param[2] set in setNbrhd()
+    for (int i=0; i&lt;agentCount; i++) {
+        fit[i] = pow(rand(), 1.0/(1.0-beta));
+        if (fit[i] &gt; fitMax) fitMax = fit[i];
+    }
+    // normalize (so that can use default probLink() )
+    for (int i=0; i&lt;agentCount; i++) fit[i] /= fitMax;
+}
+
+void __stdcall setNbrhd(double *param)
+{
+    // set exponent beta&gt;1 for powerlawFitness()
+    beta = param[2];
+    // symmetric, scale-free network with link distribution exponent = beta
+    nbrhdCCDM(powerlawFitness, true);   // use default probLink(f1,f2)=f1*f2
+}
+</listing><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="See&nbsp;Also"><h2>See&nbsp;Also</h2><a href="onSimCreate.html"><tt>onSimCreate</tt></a>, <a href="nbrhd1D.html"><tt>nbrhd1D</tt></a>, <a href="nbrhdBlocks.html"><tt>nbrhdBlocks</tt></a>, <a href="nbrhdFractal.html"><tt>nbrhdFractal</tt></a>, <a href="nbrhdMoore.html"><tt>nbrhdMoore</tt></a>, <a href="nbrhdRandom.html"><tt>nbrhdRandom</tt></a>, <a href="nbrhdRandomER.html"><tt>nbrhdRandomER</tt></a>, <a href="nbrhdVonNeumann.html"><tt>nbrhdVonNeumann</tt></a>.</td></tr></table><a href="#top"><img src="../../../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="90%" align="center"><table width="100%"><tr valign="top"><td align="left">
+<small><small><a name="bottom"><a href="../../../../office.html">[Rik's Office Hours]</a> <a href="../../../../contact.html">[Contact Rik]</a><br>Last updated: Fri Apr 30 2004, 1:41pm</small></small></td><td align="right">
+<FORM align="right" method=GET action="http://www.google.com/search"><table align="right"><tr><td>
+<INPUT TYPE=text name=q size=25 maxlength=255 value="">
+<input type=hidden name=sitesearch value="http://www.zoology.ubc.ca"><input type=hidden name="hq" value="inurl:rikblok"><INPUT type=hidden name=filter value="0"><INPUT type=submit name=btnG VALUE="Search">
+</td></tr></TABLE></FORM>
+</td></tr></table>
+
+
+</body></html>
+

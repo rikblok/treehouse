@@ -1,0 +1,55 @@
+<?
+include 'function-pre.php';
+
+$name="onAgentCreate";
+
+$declaration="
+void __stdcall onAgentCreate(
+	int x,       	// x-coordinate of agent
+	int y       	// y-coordinate of agent
+);
+";
+
+$parameters="
+" . pt() . "x
+" . pd() . "X-coordinate of agent (zero based).
+" . pt() . "y
+" . pd() . "Y-coordinate of agent (zero based).
+";
+
+$remarks="
+This function must be provided by the model.  It is called by the simulation at the start of a new simulation to set the number of state variables for each agent, along with their names and default values.  Make calls to " . ref("setStateCount") . " and " . ref("assignState") . " from within this function.
+";
+
+$revisions="
+API v1.5<ul><li>new!  Replaces <tt>initAgent</tt>.
+	</ul>
+";
+
+$example="
+double *extraData[256][256];
+//---------------------------------------------------------------------------
+void __stdcall " . ref("onAgentCreate") . "(int x, int y)
+{
+    setStateCount(x,y, 2);
+    //          pos index  name          initial value
+    assignState(x,y,  0,   \"alive\",      flip(*" . ref("getParamRef") . "(\"Initial Population\"));
+    assignState(x,y,  1,   \"alive nbrs\", 0);
+    
+    // allocate some extra storage for agent (x,y)
+    extraData[x][y] = new double[10];
+}
+//---------------------------------------------------------------------------
+void __stdcall " . ref("onAgentDestroy") . "(int x, int y)
+{
+    delete [] extraData[x][y];
+}
+//---------------------------------------------------------------------------
+";
+
+$seeAlso="
+" . ref("setStateCount") . ", " . ref("assignState") . ", " . ref("onAgentDestroy") . ".
+";
+
+include 'function-post.php';
+?>

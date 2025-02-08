@@ -1,0 +1,42 @@
+<?
+include 'function-pre.php';
+
+$name="nbrhd1D";
+
+$declaration="
+void __stdcall nbrhd1D(
+	int range,      	// number of neighbours to either side
+	int boundaryType	// type of boundary on world
+);
+";
+
+$parameters="
+" . pt() . "range
+" . pd() . "Range of neighbourhood.  Neighbourhood consists of <tt>range</tt> nearest neighbours to either side of an agent.
+" . pt() . "boundaryType
+" . pd() . "Type of boundary to impose on world.  See Remarks.
+";
+
+$remarks="
+This function is available through the API.  It can be called within the model-supplied routine " . ref("onSimCreate") . " to set the neighbourhood of each agent to a one-dimensional (horizontal) strip of the <tt>range</tt> nearest neighbours to either side.  Effectively, this allows the two-dimensional simulation to mimic a series of one-dimensional simulations running in parallel.
+
+<p>The neighbours are indexed from left to right.  For example, if <tt>range=2</tt> the neighbour indices of agent <var>a</var> are
+
+<p><table align=\"center\" border=\"1\">
+<tr><td>0</td><td>1</td><td><var>a</var></td><td>2</td><td>3</td></tr>
+</table>
+
+" . boundaryType();
+
+$example="
+void __stdcall setNbrhd(double *param)
+{
+    nbrhd1D(2,btPeriodic);
+}
+";
+
+$seeAlso=nbrhdSeeAlso();
+
+include 'function-post.php';
+?>
+

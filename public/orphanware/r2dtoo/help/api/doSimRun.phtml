@@ -1,0 +1,33 @@
+<?
+include 'function-pre.php';
+
+$name="doSimRun";
+
+$declaration="
+void __stdcall doSimPause(void);
+";
+
+$remarks="
+This function is available through the API.  It lets the model programmatically start the simulation, as if the user pressed the Run button.
+";
+
+$revisions="
+API v1.6<ul><li>new!
+	</ul>
+";
+
+$example="
+//---------------------------------------------------------------------------
+void __stdcall onSimReady(void)
+{
+    doSimRun();	// start running immediately (don't wait for user to press Run button)
+}
+//---------------------------------------------------------------------------
+";
+
+$seeAlso="
+" . ref("doSimPause") . ", " . ref("onSimReady") . ".
+";
+
+include 'function-post.php';
+?>

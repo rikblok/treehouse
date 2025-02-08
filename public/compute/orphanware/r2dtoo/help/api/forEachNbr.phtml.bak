@@ -1,0 +1,45 @@
+<?
+
+$name="forEachNbr">
+
+$declaration="
+void __stdcall forEachNbr(
+	int x,                               // x-coordinate of agent
+	int y,                               // y-coordinate of agent
+	bool (*func)(pState,int,int,         // name of function
+	             pState*,int,int)
+);
+";
+
+$parameters="
+" . pt() . "x
+" . pd() . "X-coordinate of agent whose neighbours are to be processed (zero based).
+" . pt() . "y
+" . pd() . "Y-coordinate of agent whose neighbours are to be processed (zero based).
+" . pt() . "func
+" . pd() . "The name of a function to apply to each neighbour in turn.  (See <a href="#Remarks">Remarks</a>.)  
+";
+
+$remarks="
+This function is available through the API.  It provides an efficient way to process every neighbour to the agent at (<var>x,y</var>) in turn.  The details of this function are the same as that for " . ref("forEachAgent"> except that the iteration is only over the neighbours of a single agent.
+";
+
+$example="
+void __stdcall onTick(double &time)
+{
+	int x,y;
+	int nbrCount;
+	pState *nbr;
+	pState state = anyAgent(NULL,x,y,nbr,nbrCount);
+	forEachNbr(x,y,someOperation);
+}
+";
+
+$revisions="
+API v1.5<ul><li>no longer passes <tt>param</tt> to <tt>func</tt>
+	</ul>
+";
+
+$seeAlso="
+" . ref("forEachAgent">, " . ref("forEachNbrVar">.
+";

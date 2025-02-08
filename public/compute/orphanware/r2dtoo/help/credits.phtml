@@ -1,0 +1,30 @@
+<?
+$title="Credits";
+$parent="index";
+$background="bg.jpg";
+include 'head.php';
+include 'url.php';
+?>
+
+I would like to thank a number of people for their contributions to R2DToo.  Thanks to:
+<ul>
+	<li><a href="http://www.hellix.com">Alan Garny</a> for his <a href="http://www.hellix.com/Products/TThreadedTimer.asp">TThreadedTimer</a> high-resolution timer component which provides the timing for simulation timesteps and frame refreshes.
+	<li><?=mailto(array('link'=>'grahame@kestral.com.au','name'=>'Grahame Grieve'));?> for his <a href="http://www.kestral.com.au/devtools/xygraph/">TxyGraph</a> scientific graphing component which is used to plot the timeseries.  (I find this component so useful I have foregone upgrading to newer versions of Borland C++Builder because of compatibility issues.)
+	<li><a href="http://gfody.com/">Gordy Cowie</a> for his TFastIMG bitmap image component (part of the <a href="http://gfody.com/fastlib.html">FastLIB</a> library) which is used for the view portal.
+	<li><a href="http://www.tmssoftware.com">TMS Software</a> for their <a href="http://www.tmssoftware.com/aspgrid.htm">TAdvSpreadGrid</a> spreadsheet grid component which is used in the New dialog.
+	<li><a href="http://www.delphifreestuff.com/">Brad Stowers</a> for his <a href="http://www.delphifreestuff.com/cgi-bin/dfs_components2.cgi?versinfo">TdfsVersionInfoResource</a> file version information component which is used to retrieve the API version and display it in the program About box.
+	<li><a href="http://www.fet.uni-hannover.de/~od/rxlib/fkozh.htm">Fedor Koshevnikov</a>, <a href="http://www.fet.uni-hannover.de/~od/rxlib/pavluk.htm">Igor Pavluk</a>, and <a href="http://rx.demo.ru/~korolev/index.html">Serge Korolev</a>, the authors of the <a href="http://www.fet.uni-hannover.de/~od/rxlib/index.html">RX Component Library</a>, for a number of RX components used within the program.
+	<li><a href="http://home8.inet.tele.dk/tserikse/engelsk.htm">Troels Skovmand Eriksen</a> for his <a href="http://home8.inet.tele.dk/tserikse/delphi/engelsk.htm">TProject</a> versioning component which maintains a revision history for R2DToo.
+	<li><a href="http://math.nist.gov/pozo">Roldan Pozo</a> for his stopwatch class (part of the <a href="http://math.nist.gov/tnt">Template Numerical Toolkit (TNT)</a> library) which is used to control the relative processor time devoted to the simulation versus the display.
+	<li><a href="http://www.mirkes.de/eng/">Markus Stephany</a> for his <a href="http://www.mirkes.de/eng/delphi.html#delvcl">TFloatEdit</a> numerical edit box which is used in the Stop Conditions form.
+	<li><a href="http://members.nbci.com/demjen/">Tam&aacute;s Demj&eacute;n</a> for his <a href="http://members.nbci.com/demjen/builder/dtlabel.html">TdtLabel</a> hyperlinked label component which is used in the About boxes.
+	<li><a href="http://www.chez.com/jmbo/us/index.htm">Jean-Michel Boucton</a> for his <a href="http://www.chez.com/jmbo/us/freeware.htm#checkgroup">TCheckGroupBox</a> component which is in the Stop Conditions form.
+	<li><a href="http://www.borland.com">Borland</a> for their free command-line <a href="http://www.borland.com/bcppbuilder/freecompiler/cppc55steps.html">C++ compiler</a> which allows programmers to write their own models for R2DToo.
+	<li><a href="http://www.topica.com">Topica</a> for providing the <a href="http://www.topica.com/lists/r2dtoo/read">R2DToo Support</a> mailing list.
+</ul>
+
+<p>R2DToo was financially supported by the <a href="http://www.nserc.ca">National Science and Engineering Research Council of Canada</a> (NSERC), 2000-2002.
+
+<p><i>Rik Blok</i>
+
+<?	include 'foot.php';	?>

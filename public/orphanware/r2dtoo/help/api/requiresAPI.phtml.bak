@@ -1,0 +1,11 @@
+<?
+
+$name="requiresAPI">
+
+$remarks="
+This function is obsolete.  Use " . ref("getApiVersion"> instead.
+";
+
+$seeAlso="
+" . ref("getApiVersion">.
+";

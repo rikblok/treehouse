@@ -1,0 +1,48 @@
+<?
+include 'function-pre.php';
+
+$name="assignState";
+
+$declaration="
+void __stdcall assignState(
+	int x,      	// x-coordinate of agent
+	int y,      	// y-coordinate of agent
+	int index,      // state variable index
+	char *name, 	// state variable name
+	tState deflt	// default value
+);
+";
+
+$parameters="
+" . pt() . "x
+" . pd() . "X-coordinate of agent. Zero-based.
+" . pt() . "y
+" . pd() . "Y-coordinate of agent. Zero-based.
+" . pt() . "index
+" . pd() . "Base zero index of agent's state array.
+" . pt() . "name
+" . pd() . "Name of agent state variable.  Used for recording data (eg. time series).
+" . pt() . "deflt
+" . pd() . "Initial value to assign to state on start of a new simulation.
+";
+
+$remarks="
+This function is available through the API.  It is meant to be used from within the model-provided function " . ref("initAgent") . " and should be called once for each parameter <b>after</b> calling " . ref("setStateCount") . ".  Note that this function is called for each agent before the neighbours have been defined so no reference to neighbours should be made herein.
+";
+
+$example="
+void __stdcall initAgent(int x, int y, " . ref("pParam") . " param)
+{
+	setStateCount(x,y, 2);	// 
+	//          pos index  name          initial value
+	assignState(x,y,  0,   \"alive\",      flip(param[2]));
+	assignState(x,y,  1,   \"alive nbrs\", 0);
+}
+";
+
+$seeAlso="
+" . ref("initAgent") . ", " . ref("setStateCount") . ", " . ref("tState") . ".
+";
+
+include 'function-post.php';
+?>

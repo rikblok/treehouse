@@ -1,0 +1,15 @@
+<?
+
+$name="pState">
+
+$declaration="
+typedef float* pState;
+";
+
+$remarks="
+pState is a pointer to an agent state variable.  Defined in <tt>api2model.h</tt>.
+";
+
+$seeAlso="
+" . ref("tState">
+";

@@ -1,0 +1,44 @@
+<?
+include 'function-pre.php';
+
+$name="StopIfRemoveAll";
+
+$declaration="
+object.StopIfRemoveAll()
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+";
+
+$returnValue="
+None.
+";
+
+$remarks="
+Removes all conditional stops set by the user or added with " . ref("StopIfAdd") . ".
+";
+
+$example="
+' [VBScript]
+
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+
+' set stop condition
+R2DToo.StopIfAdd(\"Tick &gt;= 1000\")
+' remove all stop conditions
+R2DToo.StopIfRemoveAll()
+
+' unload
+Set R2DToo = nothing
+";
+
+$seeAlso="
+" . ref("StopIfAdd") . ".
+";
+
+include 'function-post.php';
+?>

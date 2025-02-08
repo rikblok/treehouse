@@ -1,0 +1,55 @@
+<?
+include 'function-pre.php';
+
+$name="LoadModel">
+
+$declaration="
+object.LoadModel(model)
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required. Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+" . pt() . "model
+" . pd() . "Required. The location of a <tt>model.dll</tt> file.
+";
+
+$returnValue="
+Returns 1 if the model was successfully loaded, else 0.
+";
+
+$remarks="
+Use this function to load a specific model into R2DToo.  The string <tt>model</tt> may contain a relative or absolute path or none at all.
+
+<p>When R2DToo starts it automatically tries to load the file <tt>model.dll</tt> in the current directory.  Unfortunately, when automated under MS-Windows 2000 (and XP?) the call <tt>Wscript.CreateObject(&quot;R2DToo.FrontEnd&quot;)</tt> sets the current directory to <tt>C:\WINNT\system32</tt> (or something similar) for the newly created object, leading to unpredictable results.  To ensure the correct model is loaded, you should always manually call " . ref("LoadModel"> with the full path to the desired model.</p>
+";
+
+$revisions="
+v1.8<ul><li>new!
+	</ul>
+";
+
+$example="
+' [VBScript]
+
+Dim R2DToo
+Dim WshShell
+Set WshShell = WScript.CreateObject("WScript.Shell")
+
+WScript.Echo "Loading R2DToo..."
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+WScript.Echo "Loading model Conway's Life..."
+If R2DToo." . ref("LoadModel">(WshShell.CurrentDirectory & "\..\Models\ConwaysLife\model.dll") Then
+	WScript.Echo "R2DToo loaded with model: " & R2DToo." . ref("AboutModel">("Name") & " " & R2DToo." . ref("AboutModel">("Version")
+Else
+	Wscript.Echo R2DToo." . ref("GetLoadModelErr">()
+	Set R2DToo = nothing
+	Wscript.Quit(1)
+End If
+
+...
+";
+
+$seeAlso="
+" . ref("GetLoadModelErr">.
+";

@@ -1,0 +1,46 @@
+<?
+include 'function-pre.php';
+
+$name="SimRun";
+
+$declaration="
+object.SimRun()
+";
+
+$parameters="
+" . pt() . "object
+" . pd() . "Required.  Always the name of a <tt>R2DToo.FrontEnd</tt> object.
+";
+
+$returnValue="
+None.
+";
+
+$remarks="
+Runs a paused simulation.  Returns immediately.
+";
+
+$example="
+' [VBScript]
+
+' load
+Dim R2DToo
+Set R2DToo = Wscript.CreateObject(\"R2DToo.FrontEnd\")
+
+' first press run...
+R2DToo.SimRun()
+' ...wait 5 seconds...
+WScript.Sleep(5000)
+' ...then pause
+R2DToo.SimPause()
+
+' unload
+Set R2DToo = nothing
+";
+
+$seeAlso="
+" . ref("SimPause") . ", " . ref("SimRunWait") . ", " . ref("SimWait") . ".
+";
+
+include 'function-post.php';
+?>

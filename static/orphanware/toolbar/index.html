@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<title>Toolbar</title><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="revisit-after" content="30 days">
+<meta name="document-date" content="06 Nov 2004 14:49:37 GMT">
+<meta name="robots" content="all"><meta name="language" content="English">
+<base target="_top"><meta name="document-date" content="13 Nov 2009 22:58:20 22NovPacific Standard Time-8"><link rel="stylesheet" media="print" href="../../print.css" type="text/css" /></head>
+<body background="../../images/bg.jpg"><a name="top"><img src="icon.gif" align="right" width="32" height="32" ><table id="header" width="100%"><tr><td><small><small><b><a href="../../index.html">Rik's Treehouse</a> &gt; <a href="../../compute.html">Babbling in Binary</a> &gt; <a href="../../software/index.html">My Software</a> &gt; <a href="../../software/orphan.html">Orphanware</a> &gt; Toolbar</b></small></small></td></tr></table><img class="noprint" src="../../images/top-blank.gif" align="right" width="11" height="10"  alt=""><hr id="header"><center><h1>Toolbar</h1></center><center><h1>1999-2003</h1></center><table width="100%" cellspacing="2" cellpadding="8"><tr><td valign="top" bgcolor="#ddddff" class="noprint"><small><small><a href="#Orphanware">Orphanware</a><br></small></small><small><small><a href="#Description">Description</a><br></small></small><small><small><a href="#Release&nbsp;Notes">Release&nbsp;Notes</a><br></small></small><small><small><a href="#Download">Download</a><br></small></small><small><small><a href="#Screenshots">Screenshots</a><br></small></small><small><small><a href="#Links">Links</a><br></small></small></td><td width="*" valign="top"><a name="Orphanware"><h2>Orphanware</h2><em>This software is no longer being developed or maintained. <p>Sorry, I'm not maintaining Toolbar anymore.  I highly recommend <a href="http://www.autohotkey.com/">AutoHotkey</a>&mdash;it's much more powerful and configurable than Toolbar ever was!</p> If you would like to take over project development, please <a href="mailto:&#114;&#105;&#107;&#046;&#098;&#108;&#111;&#107;&#064;&#117;&#098;&#099;&#046;&#099;&#097;">&#108;&#101;&#116;&#032;&#109;&#101;&#032;&#107;&#110;&#111;&#119;</a>.</em><a class="noprint" href="#top"><img src="../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Description"><h2>Description</h2>
+<i>Toolbar</i> (alias <i>Rik's Toolbar</i>) provides a way to add a customized floating toolbar to any application.  When a button is pressed a pre-defined sequence of keystrokes is sent to the desired window.  All options for the buttons and what they do may be altered within the configuration file.  See the <a href="#links">links</a> for useful configurations submitted by users.
+<a class="noprint" href="#top"><img src="../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Release&nbsp;Notes"><h2>Release&nbsp;Notes</h2>
+v1.4c  September 29, 2003<br>
+<ul><li>fixed: broken installer
+</ul>
+
+v1.4b  November 16, 2002<br>
+<ul><li>fixed: broken <tt>RUN</tt> command
+</ul>
+
+v1.4  September 30, 2002<br>
+<ul><li>switched implementations of PushKeys to Alan Warriner's TPushKeys
+	<li>now supports Right-Alt key (use the &quot;!&quot; modifier) for international keyboards (equivalent to Ctrl+Alt)
+	<li>new installer with uninstall support
+</ul>
+
+v1.3  July 17, 2002<br>
+<ul><li>added popup menu (right-click)
+	<li>added menu item &quot;Create Desktop Shortcut&quot; to create a shortcut on the desktop for this particular toolbar configuration
+	<li>added menu item &quot;Minimize to Tray&quot; to hide toolbar temporarily in the tray. Left-click on the icon to restore it.
+	<li>added menu item &quot;About Toolbar&quot; to provide program information
+	<li>support for command-line options <tt>-s[=desktop]</tt> or <tt>-s=startmenu[:folder]</tt> to create shortcuts automatically.  If folder specified with <tt>-s=startmenu</tt> option then icon put in <tt>Start Menu &gt; Programs &gt; folder</tt>.
+</ul>
+
+v1.2c November 25, 2000<br>
+<ul><li>now rescales window to keep it on screen.  Should prevent some exceptions (error messages).
+	<li>fixed: crashes when closing and scrollbars visible.  Was caused by deallocating buttons before form closed.
+</ul>
+v1.2b August 29, 2000
+<ul><li>added <tt>Sleep</tt> integer option to ini file to slow down typing rate
+</ul>
+v1.2  August 27, 2000
+<ul><li>supports separate destination windows for each button
+	<li><tt>{RUN ...}</tt> command to execute other programs
+	<li>no longer uses <tt>ButtonCount=</tt> item
+</ul>
+v1.1  February 16, 2000
+<ul><li>recompiled with German keyboard support (ToolbarG.exe)
+</ul>
+v1.0c February 24, 1999
+<ul><li>added <tt>StayOnTop</tt> and <tt>TaskbarButton</tt> boolean options to ini file
+</ul>
+v1.0b February 13, 1999
+<ul><li>added Pushkeys.hlp to root folder for help with keystrokes
+</ul>
+v1.0  January 4, 1999
+<ul><li>first release
+</ul>
+<a class="noprint" href="#top"><img src="../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Download"><h2>Download</h2><p><a name="Toolbar">&nbsp;<table width="100%" border="1"><tr valign="middle"><td width="20%" align="center" rowspan="5"><table border=0><tr><td align="center"><a style="text-decoration:none" href= "../../download/tlbar14c.exe"><small><small><img src="icon.gif" border=0 alt="tlbar14c.exe" hspace=2 vspace=2><br><b>tlbar14c.exe</b><br>499 KB<br>Oct 18, 2007</small></small></a></td></tr></table></td><td align="center" bgcolor="e6e6ff">Toolbar version 1.4c for Windows 9x/ME/NT/2000/XP</td></tr><tr><td bgcolor="e6ffe6" align="center">Freeware (with source code)</td></tr></table></p><a class="noprint" href="#top"><img src="../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Screenshots"><h2>Screenshots</h2>
+<p align="center"><img src="latexGreek.gif"><br>
+Toolbar running with the configuration file <tt>samples\LaTeX\greek.ini</tt>.</p>
+
+<p align="center"><img src="htmlFormat.gif"><br>
+...the configuration file <tt>samples\HTML\format.ini</tt>.</p>
+
+<p align="center"><img src="netscape.gif"><br>
+...the configuration file <tt>samples\netscape.ini</tt>.</p>
+<a class="noprint" href="#top"><img src="../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="50%"><a name="Links"><h2>Links</h2>
+<ul><li><a href="user/index.html">User-supplied Configurations</a>
+</ul>
+</td></tr></table><a class="noprint" href="#top"><img src="../../images/top.gif" align="right" width="11" height="10" alt="Top of page" border="0"></a><hr width="90%" align="center">		<table id="footer" width="100%"><tr valign="top"><td align="left">
+<small><small><a name="bottom"><a href="../../office.html">[Rik's Office Hours]</a> <a href="../../contact.html">[Contact Rik]</a><br>Last updated: Fri Nov 13 2009, 10:58pm</small></small>		</td><td align="right">
+				<FORM align="right" method=GET action="http://www.google.com/search"><table align="right"><tr><td>
+		<INPUT TYPE=text name=q size=25 maxlength=255 value="">
+		<input type=hidden name=sitesearch value="http://www.zoology.ubc.ca">		<input type=hidden name="hq" value="inurl:rikblok">		<INPUT type=hidden name=filter value="0">		<INPUT type=submit name=btnG VALUE="Search">
+		</td></tr></TABLE></FORM>
+				</td></tr></table>
+
+
+</body></html>

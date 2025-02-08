@@ -1,0 +1,38 @@
+<?
+$parent="../index";
+include_once "head.php";
+include_once "toc.php";
+include_once 'download.php';
+
+if (isset($features)) {
+	tochead(array('name'=>"Features"));
+	echo $features;
+}
+
+if (isset($desc)) {
+	tochead(array('name'=>"Description"));
+	echo $desc;
+}
+
+if (isset($new)) {
+	tochead(array('name'=>"Release Notes"));
+	echo $new;
+}
+
+if (isset($dl)) {
+	tochead(array('name'=>"Download"));
+	if ($dl=='')	echo download(array('noecho'=>true));
+	else			echo $dl;
+
+if (isset($screen)) {
+	tochead(array('name'=>"Screenshots"));
+	echo $screen;
+}
+
+if (isset($links)) {
+	tochead(array('name'=>"Links"));
+	echo $links;
+}
+
+include "foot.php";
+?>

@@ -1,0 +1,81 @@
+<?
+<file include="math.hti">
+<file include="cite.hti">
+
+$name="nbrhdCCDM">
+
+$declaration="
+void __stdcall nbrhdCCDM(
+	void (*fitness)(float *, int),	// fitness function
+	bool symmetric,               	// symmetric links?
+	float (*probLink)(float,float)	// link probability function
+);
+";
+
+$parameters="
+" . pt() . "fitness
+" . pd() . "The name of a function to set the fitness of all agents.  (See <a href="#Remarks">Remarks</a>.)  
+" . pt() . "symmetric
+" . pd() . "Indicates whether links in the network are reciprocal.
+" . pt() . "probLink
+" . pd() . "The name of a function to set the fitness of all agents.  (See <a href="#Remarks">Remarks</a>.)
+";
+
+$remarks="
+This function is available through the API.  It can be called within the model-supplied routine " . ref("onSimCreate") . " to generate an arbitrary network, as described by <cite tag="caldarelli02">.  Although designed with scale-free networks in mind, it is able to generate many random networks.  Along with the parameter <tt>symmetric</tt> the function <tt>nbrhdCCDM</tt> takes two functions as parameters:
+
+<blockquote>
+<h3>fitness</h3>
+<tt>fitness</tt> is the name of a function with the following declaration:
+<pre>
+void fitness(
+	float *fit,   	// pointer to array fit[0..agentCount-1] of type float
+	int agentCount	// number of agents in simulation
+);
+</pre>
+
+The <tt>fitness</tt> function takes in an array <tt>fit[0..agentCount-1]</tt> of floats and fills it with fitnesses sampled from a random distribution.  On completion the elements of <tt>fit[]</tt> are randomly assigned to agents, in order to construct the network as described in <cite tag="caldarelli02">.
+</blockquote>
+
+<blockquote>
+<h3>probLink</h3>
+<tt>probLink</tt> is the name of an optional function with the following declaration:
+<pre>
+float probLink(
+	float f1,	// fitness of first agent
+	float f2	// fitness of second agent
+);
+</pre>
+
+The <tt>probLink</tt> function calculates the probability that the second agent is a neighbour of the first if they have fitnesses <tt>f1</tt> and <tt>f2</tt>, respectively.  If <tt>symmetric=true</tt> then it is assumed that <tt>probLink(f1,f2)=probLink(f2,f1)</tt>.  The <tt>probLink</tt> parameter is optional in <tt>nbrhdCCDM</tt>, if not supplied <tt>probLink(f1,f2)=f1*f2</tt> is assumed.
+</blockquote>
+";
+
+$example="
+tParam beta;
+
+void powerlawFitness(float *fit, int agentCount)
+// fill fit[0..agentCount-1] with deviates sampled from p(fit) = (beta-1) * fit^(-beta)
+{
+    float fitMax = 1;
+    // sample deviates from power-law distribution, uses beta=param[2] set in setNbrhd()
+    for (int i=0; i&lt;agentCount; i++) {
+        fit[i] = pow(rand(), 1.0/(1.0-beta));
+        if (fit[i] &gt; fitMax) fitMax = fit[i];
+    }
+    // normalize (so that can use default probLink() )
+    for (int i=0; i&lt;agentCount; i++) fit[i] /= fitMax;
+}
+
+void __stdcall setNbrhd(double *param)
+{
+    // set exponent beta&gt;1 for powerlawFitness()
+    beta = param[2];
+    // symmetric, scale-free network with link distribution exponent = beta
+    nbrhdCCDM(powerlawFitness, true);   // use default probLink(f1,f2)=f1*f2
+}
+";
+
+$seeAlso="
+<file include="nbrhdSeeAlso.hti">
+";
