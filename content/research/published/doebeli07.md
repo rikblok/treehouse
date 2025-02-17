@@ -1,8 +1,8 @@
 +++
 date = '2025-01-02T14:57:36-08:00'
 draft = false
-title = 'Doebeli, Blok, Leimar & Dieckmann (2007)'
-summary = 'Multimodal pattern formation in phenotype distributions of sexual populations'
+title = 'Multimodal pattern formation in phenotype distributions of sexual populations (2007)'
+summary = 'During bouts of evolutionary diversification the emerging species cluster around different locations in phenotype space. How such multimodal patterns in phenotype space can emerge from a single ancestral species is a fundamental question in biology. Here, we demonstrate that phenotype distributions can split into multiple modes under the force of frequency-dependent competition...'
 weight = -20070200
 bibFile = "bib-zotero-better-cson.json"
 +++

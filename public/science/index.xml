@@ -8,7 +8,35 @@
     <language>en-us</language>
     <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
     <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
-    <lastBuildDate></lastBuildDate>
+    <lastBuildDate>Tue, 27 Dec 2022 16:34:42 -0800</lastBuildDate>
     <atom:link href="https://www.cs.ubc.ca/~rikblok/science/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Models</title>
+      <link>https://www.cs.ubc.ca/~rikblok/science/models/index.html</link>
+      <pubDate>Mon, 28 Nov 2016 16:34:42 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/science/models/index.html</guid>
+      <description>I’m interested in the patterns that can emerge when many (often simple) elements interact.  It is often required to build models of these kinds of systems to study their behaviour.</description>
+    </item>
+    <item>
+      <title>Since I was born (2022)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/science/since_i_was_born/index.html</link>
+      <pubDate>Tue, 27 Dec 2022 16:34:42 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/science/since_i_was_born/index.html</guid>
+      <description>The world’s spinning fast.  Sometimes I forget about how much science and technology have progressed in my lifetime.  Here are some advances to help remind me.</description>
+    </item>
+    <item>
+      <title>The curious skeptic (2008)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/science/curious_skeptic/index.html</link>
+      <pubDate>Sat, 27 Dec 2008 16:34:42 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/science/curious_skeptic/index.html</guid>
+      <description>Here’s what drives me as a teacher.</description>
+    </item>
+    <item>
+      <title>The onion of Science (2002)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/science/onion_of_science/index.html</link>
+      <pubDate>Fri, 27 Dec 2002 16:34:42 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/science/onion_of_science/index.html</guid>
+      <description>I often have people ask me what I do for a living. Because my research projects are so varied I like to give a different answer each time. Nevertheless, the question has forced me to evaluate my role as a scientist. This page is an attempt to explain what I believe science is all about and where my work fits in…</description>
+    </item>
   </channel>
 </rss>

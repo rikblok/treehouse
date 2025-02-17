@@ -5,31 +5,31 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.139.0">
     <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
-    <meta name="description" content="Deriving the replicator equation from birth-death processes">
+    <meta name="description" content="Here I explore several possible systems of reactions that yield evolutionary dynamics consistent with the replicator equation.  They are also useful for studying finite, structured populations.">
     <meta name="author" content="Rik Blok">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Blok (2013) Replicator Kinetics :: Rik&#39;s Treehouse">
-    <meta name="twitter:description" content="Deriving the replicator equation from birth-death processes">
+    <meta name="twitter:title" content="Replicator Kinetics (2013) :: Rik&#39;s Treehouse">
+    <meta name="twitter:description" content="Here I explore several possible systems of reactions that yield evolutionary dynamics consistent with the replicator equation.  They are also useful for studying finite, structured populations.">
     <meta property="og:url" content="https://www.cs.ubc.ca/~rikblok/research/notes/replicator_kinetics/index.html">
     <meta property="og:site_name" content="Rik&#39;s Treehouse">
-    <meta property="og:title" content="Blok (2013) Replicator Kinetics :: Rik&#39;s Treehouse">
-    <meta property="og:description" content="Deriving the replicator equation from birth-death processes">
+    <meta property="og:title" content="Replicator Kinetics (2013) :: Rik&#39;s Treehouse">
+    <meta property="og:description" content="Here I explore several possible systems of reactions that yield evolutionary dynamics consistent with the replicator equation.  They are also useful for studying finite, structured populations.">
     <meta property="og:locale" content="en_us">
     <meta property="og:type" content="article">
     <meta property="article:section" content="Research ramblings">
     <meta property="article:published_time" content="2025-02-04T11:30:01-08:00">
     <meta property="article:modified_time" content="2025-02-04T11:30:01-08:00">
-    <meta itemprop="name" content="Blok (2013) Replicator Kinetics :: Rik&#39;s Treehouse">
-    <meta itemprop="description" content="Deriving the replicator equation from birth-death processes">
+    <meta itemprop="name" content="Replicator Kinetics (2013) :: Rik&#39;s Treehouse">
+    <meta itemprop="description" content="Here I explore several possible systems of reactions that yield evolutionary dynamics consistent with the replicator equation.  They are also useful for studying finite, structured populations.">
     <meta itemprop="datePublished" content="2025-02-04T11:30:01-08:00">
     <meta itemprop="dateModified" content="2025-02-04T11:30:01-08:00">
     <meta itemprop="wordCount" content="2168">
-    <title>Blok (2013) Replicator Kinetics :: Rik&#39;s Treehouse</title>
-    <link href="/~rikblok/css/fontawesome-all.min.css?1739044384" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1739044384" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/auto-complete.css?1739044384" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1739044384" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/perfect-scrollbar.min.css?1739044384" rel="stylesheet">
-    <link href="/~rikblok/css/theme.min.css?1739044384" rel="stylesheet">
-    <link href="/~rikblok/css/format-html.min.css?1739044384" rel="stylesheet" id="R-format-style">
+    <title>Replicator Kinetics (2013) :: Rik&#39;s Treehouse</title>
+    <link href="/~rikblok/css/fontawesome-all.min.css?1739776536" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1739776536" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/auto-complete.css?1739776536" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1739776536" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar.min.css?1739776536" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1739776536" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1739776536" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..\/..';
@@ -125,12 +125,12 @@
           <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
             itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/research/index.html"><span itemprop="name">Research ramblings</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
             itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/research/notes/index.html"><span itemprop="name">Unpublished notes</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Blok (2013) Replicator Kinetics</span><meta itemprop="position" content="3"></li>
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Replicator Kinetics (2013)</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/research/notes/index.html" title="Unpublished notes (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/research/notes/parallel_poisson/index.html" title="Blok (2004) Parallel Poisson (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/research/notes/parallel_poisson/index.html" title="Parallel Poisson (2004) (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
@@ -150,7 +150,7 @@
   <header class="headline">
   </header>
 
-<h1 id="blok-2013-replicator-kinetics">Blok (2013) Replicator Kinetics</h1>
+<h1 id="replicator-kinetics-2013">Replicator Kinetics (2013)</h1>
 
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 <h2 id="deriving-the-replicator-equation-from-birth-death-processes">Deriving the replicator equation from birth-death processes</h2>
@@ -634,7 +634,7 @@ Rik&#39;s Treehouse
           </a>
         </div>
         <script>
-          window.index_js_url="/~rikblok/searchindex.en.js?1739044384";
+          window.index_js_url="/~rikblok/searchindex.en.js?1739776536";
         </script>
         <search><form action="/~rikblok/search/index.html" method="get">
           <div class="searchbox default-animation">
@@ -647,12 +647,12 @@ Rik&#39;s Treehouse
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="/~rikblok/js/auto-complete.js?1739044384" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.min.js?1739044384" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1739044384" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1739044384" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.en.min.js?1739044384" defer></script>
-        <script src="/~rikblok/js/search.js?1739044384" defer></script>
+        <script src="/~rikblok/js/auto-complete.js?1739776536" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.min.js?1739776536" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1739776536" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1739776536" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.en.min.js?1739776536" defer></script>
+        <script src="/~rikblok/js/search.js?1739776536" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -670,10 +670,10 @@ Rik&#39;s Treehouse
             <li class="alwaysopen " data-nav-id="/~rikblok/research/published/index.html"><a class="padding" href="/~rikblok/research/published/index.html">Published</a><ul id="R-subsections-fd150925b32c297bd80b32c85dbf53c7" class="collapsible-menu"></ul></li>
             <li class="alwaysopen " data-nav-id="/~rikblok/research/presented/index.html"><a class="padding" href="/~rikblok/research/presented/index.html">Presented</a><ul id="R-subsections-0a29c1db3dbf4a3f6a288fc3847b4ef0" class="collapsible-menu"></ul></li>
             <li class="parent alwaysopen " data-nav-id="/~rikblok/research/notes/index.html"><a class="padding" href="/~rikblok/research/notes/index.html">Unpublished notes</a><ul id="R-subsections-950ca40a4602333597e39987a4c77254" class="collapsible-menu">
-            <li class="active " data-nav-id="/~rikblok/research/notes/replicator_kinetics/index.html"><a class="padding" href="/~rikblok/research/notes/replicator_kinetics/index.html">Blok (2013) Replicator Kinetics</a></li>
-            <li class="" data-nav-id="/~rikblok/research/notes/parallel_poisson/index.html"><a class="padding" href="/~rikblok/research/notes/parallel_poisson/index.html">Blok (2004) Parallel Poisson</a></li>
-            <li class="" data-nav-id="/~rikblok/research/notes/discounted_least_squares/index.html"><a class="padding" href="/~rikblok/research/notes/discounted_least_squares/index.html">Blok (1997) Discounted Least Squares</a></li></ul></li></ul></li>
-            <li class="" data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a></li>
+            <li class="active " data-nav-id="/~rikblok/research/notes/replicator_kinetics/index.html"><a class="padding" href="/~rikblok/research/notes/replicator_kinetics/index.html">Replicator Kinetics (2013)</a></li>
+            <li class="" data-nav-id="/~rikblok/research/notes/parallel_poisson/index.html"><a class="padding" href="/~rikblok/research/notes/parallel_poisson/index.html">Parallel Poisson (2004)</a></li>
+            <li class="" data-nav-id="/~rikblok/research/notes/discounted_least_squares/index.html"><a class="padding" href="/~rikblok/research/notes/discounted_least_squares/index.html">Discounted Least Squares (1997)</a></li></ul></li></ul></li>
+            <li class="" data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu"></ul></li>
           </ul>
         </div>
     
@@ -727,8 +727,8 @@ Rik&#39;s Treehouse
         </div>
       </div>
     </aside>
-    <script src="/~rikblok/js/clipboard.min.js?1739044384" defer></script>
-    <script src="/~rikblok/js/perfect-scrollbar.min.js?1739044384" defer></script>
+    <script src="/~rikblok/js/clipboard.min.js?1739776536" defer></script>
+    <script src="/~rikblok/js/perfect-scrollbar.min.js?1739776536" defer></script>
     <script>
       function useMathJax( config ){
         window.MathJax = Object.assign( window.MathJax || {}, {
@@ -743,7 +743,7 @@ Rik&#39;s Treehouse
       }
       useMathJax( JSON.parse("{}") );
     </script>
-    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1739044384"></script>
-    <script src="/~rikblok/js/theme.js?1739044384" defer></script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1739776536"></script>
+    <script src="/~rikblok/js/theme.js?1739776536" defer></script>
   </body>
 </html>

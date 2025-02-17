@@ -1,14 +1,16 @@
 +++
 date = '2025-01-02T10:56:32-08:00'
 draft = false
-title = 'Blok (2000)'
-summary = 'On the nature of the stock market: Simulations and experiments'
+title = 'On the nature of the stock market: Simulations and experiments (2000)'
+summary = '''PhD Thesis, UBC
+
+In this dissertation, two simple models of stock exchange are developed and simulated numerically. The decentralized model captures key empirical market properties, including fat-tailed returns, short-term memory in returns, and long-range volatility correlations. Significantly, these features emerge only when parameters are tuned to span the critical point, suggesting markets may self-organize near criticality...'''
 weight = -20000900
 bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 
-## On the nature of the stock market: Simulations and experiments
+## PhD Thesis, UBC
 
 <!-- 
 {{< cite "blokNature2000b" >}}

@@ -1,0 +1,67 @@
+THIS PERL SCRIPT USES BIOPERL TO BLAST ALL THE HEMAGGLUTININ SEQUENECES IN ONE FILE AGAINST A CUSTOM DATABASE OF HEMAGGLUTININ SEQUENCES FOUND
+TO INFECT HUMANS.  IT OUTPUTS BLAST REPORTS AND A TABLE CONTAINING QUERY, SUBJECT, %IDENTITY AND EXPECT VALUE WHICH CAN BE OPENED IN EXCEL.
+
+
+#!/usr/bin/perl -w
+use Bio::Tools::Run::StandAloneBlast;
+use Bio::SearchIO;
+
+use Bio::SeqIO;
+
+use Bio::Seq;
+
+if (scalar @ARGV != 4) {
+    $usage  = "./perl/HAblast.pl INPUTFILE BLASTDB PROGRAM E-CUTOFF";
+    print "Wrong number of arguments\n";
+    die "$usage\n";
+}
+
+$input_seq = $ARGV[0]; 
+
+$db = $ARGV[1];
+
+$program = $ARGV[2];
+
+$cutoff = $ARGV[3];
+
+$in  = Bio::SeqIO->new(-file => $input_seq , '-format' => 'Fasta');
+
+open (LOGF, ">>neosporatable.txt") || die "cannot open out_file: $!";
+
+while ($seq = $in->next_seq){
+
+@params = ('program' => $program, 'database' => $db, 
+	   'outfile' => $seq->id . "report.txt", 'e' => $cutoff);
+
+$blast = Bio::Tools::Run::StandAloneBlast->new(@params);
+
+$blast_report = $blast->blastall($seq);
+
+my $result = $blast_report->next_result;
+
+$name = $seq->id;
+
+open (OUTF, ">$name.out") || die "cannot open out_file: $!";
+
+print LOGF $seq->id . "\n";
+
+print OUTF $seq->id . "\n";
+
+while( my $hit = $result->next_hit) 
+      {
+    while (my $hsp = $hit->next_hsp) {
+	if ($hsp->length >= 0){
+	    if ($hsp->percent_identity >= 0) 
+	    { print OUTF ($seq->id . "\t" . $hit->name . "\t" . $hsp->percent_identity . "\t" . $hsp->evalue . "\n" ); }
+	    
+	    /*
+	    {
+	print OUTF ($seq->id . "\t" . $hit->name . "\t" . $hit->description . "\t" . $hsp->num_identical . "\t" . $hsp->length . "\t" . $hsp->percent_identity . "\t" . $hsp->evalue . "\t" . $hsp->start('hit') . ":" . $hsp->end('hit') . "\t" . $hsp->start('query') . $hsp->homology_string . $hsp->end('query') . "\n"  . $seq->id . "\t" . $hit->name . "\t" . $hit->description . "\t" . $hsp->num_identical . "\t" . $hsp->length . "\t" . $hsp->percent_identity . "\t" . $hsp->evalue . "\t" . $hsp->start('hit') . ":" . $hsp->end('hit') . "\t" . $hsp->start('query') . $hsp->query_string . $hsp->end('query')  . "\n" . $seq->id . "\t" . $hit->name . "\t" . $hit->description . "\t" . $hsp->num_identical . "\t" . $hsp->length . "\t" . $hsp->percent_identity . "\t" . $hsp->evalue . "\t" . $hsp->start('hit') . ":" . $hsp->end('hit') . "\t" . $hsp->start('query') . $hsp->hit_string . "\n");
+	    }*/
+      }
+   }
+ } 
+}
+close (OUTF);
+close (LOGF);
+print "Done.\n";

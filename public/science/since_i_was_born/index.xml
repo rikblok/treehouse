@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Since I was born (2022) :: Rik&#39;s Treehouse</title>
+    <link>https://www.cs.ubc.ca/~rikblok/science/since_i_was_born/index.html</link>
+    <description>The world’s spinning fast.  Sometimes I forget about how much science and technology have progressed in my lifetime.  Here are some advances to help remind me.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
+    <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://www.cs.ubc.ca/~rikblok/science/since_i_was_born/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

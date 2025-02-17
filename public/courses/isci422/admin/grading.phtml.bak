@@ -1,0 +1,33 @@
+<?
+$title="Grading";
+$parent="../index";
+$icon="${basedir}images/ubc.gif";
+$basetarget="admin";
+include 'head.php';
+include "../menu.php";
+include 'table.php';
+include '../breakdown.php';
+
+$expectedhours = 120;	// expected for 3-credit course
+$classweeks = 13;
+$classhoursperweek = 4;
+$hoursinclass = $classweeks * $classhoursperweek;
+
+$markedhours = 0;
+$hourshomework = 0;
+foreach ($hours as $task => $taskhours) {
+	$markedhours += $taskhours[0] + $taskhours[1];
+	$hourshomework += $taskhours[1];
+//	print "$task $hoursmarkedinclass $hoursmarkedhomework<br>";
+}
+
+$totalhours = $hoursinclass + $hourshomework;
+print $totalhours-$expectedhours;
+
+?>
+
+
+
+<?
+include 'foot.php';	
+?>

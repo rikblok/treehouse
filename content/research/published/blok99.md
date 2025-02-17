@@ -1,8 +1,8 @@
 +++
 date = '2025-01-02T18:38:08-08:00'
 draft = false
-title = 'Blok & Bergersen (1999)'
-summary = 'Synchronous versus asynchronous updating in the "game of Life"'
+title = 'Synchronous versus asynchronous updating in the "game of Life" (1999)'
+summary = 'The rules for the “game of Life” are modified to allow for only a random fraction of sites to be updated in each time step. Under variation of this fraction from the parallel updating limit down to the Poisson limit, a critical phase transition is observed that explains why the game of Life appears to obey self-organized criticality...'
 weight = -19990401
 bibFile = "bib-zotero-better-cson.json"
 +++

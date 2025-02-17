@@ -5,31 +5,31 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.139.0">
     <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
-    <meta name="description" content="Updating in simulations of parallel Poisson processes">
+    <meta name="description" content="I explore how to efficiently implement Poisson processes in event-driven, multi-agent simulations.">
     <meta name="author" content="Rik Blok">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Blok (2004) Parallel Poisson :: Rik&#39;s Treehouse">
-    <meta name="twitter:description" content="Updating in simulations of parallel Poisson processes">
+    <meta name="twitter:title" content="Parallel Poisson (2004) :: Rik&#39;s Treehouse">
+    <meta name="twitter:description" content="I explore how to efficiently implement Poisson processes in event-driven, multi-agent simulations.">
     <meta property="og:url" content="https://www.cs.ubc.ca/~rikblok/research/notes/parallel_poisson/index.html">
     <meta property="og:site_name" content="Rik&#39;s Treehouse">
-    <meta property="og:title" content="Blok (2004) Parallel Poisson :: Rik&#39;s Treehouse">
-    <meta property="og:description" content="Updating in simulations of parallel Poisson processes">
+    <meta property="og:title" content="Parallel Poisson (2004) :: Rik&#39;s Treehouse">
+    <meta property="og:description" content="I explore how to efficiently implement Poisson processes in event-driven, multi-agent simulations.">
     <meta property="og:locale" content="en_us">
     <meta property="og:type" content="article">
     <meta property="article:section" content="Research ramblings">
     <meta property="article:published_time" content="2025-01-18T22:46:12-08:00">
     <meta property="article:modified_time" content="2025-01-18T22:46:12-08:00">
-    <meta itemprop="name" content="Blok (2004) Parallel Poisson :: Rik&#39;s Treehouse">
-    <meta itemprop="description" content="Updating in simulations of parallel Poisson processes">
+    <meta itemprop="name" content="Parallel Poisson (2004) :: Rik&#39;s Treehouse">
+    <meta itemprop="description" content="I explore how to efficiently implement Poisson processes in event-driven, multi-agent simulations.">
     <meta itemprop="datePublished" content="2025-01-18T22:46:12-08:00">
     <meta itemprop="dateModified" content="2025-01-18T22:46:12-08:00">
     <meta itemprop="wordCount" content="3773">
-    <title>Blok (2004) Parallel Poisson :: Rik&#39;s Treehouse</title>
-    <link href="/~rikblok/css/fontawesome-all.min.css?1739044384" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1739044384" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/auto-complete.css?1739044384" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1739044384" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/perfect-scrollbar.min.css?1739044384" rel="stylesheet">
-    <link href="/~rikblok/css/theme.min.css?1739044384" rel="stylesheet">
-    <link href="/~rikblok/css/format-html.min.css?1739044384" rel="stylesheet" id="R-format-style">
+    <title>Parallel Poisson (2004) :: Rik&#39;s Treehouse</title>
+    <link href="/~rikblok/css/fontawesome-all.min.css?1739776536" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1739776536" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/auto-complete.css?1739776536" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1739776536" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar.min.css?1739776536" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1739776536" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1739776536" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..\/..';
@@ -122,12 +122,12 @@
           <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
             itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/research/index.html"><span itemprop="name">Research ramblings</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
             itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/research/notes/index.html"><span itemprop="name">Unpublished notes</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Blok (2004) Parallel Poisson</span><meta itemprop="position" content="3"></li>
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Parallel Poisson (2004)</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/research/notes/replicator_kinetics/index.html" title="Blok (2013) Replicator Kinetics (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/research/notes/replicator_kinetics/index.html" title="Replicator Kinetics (2013) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/research/notes/discounted_least_squares/index.html" title="Blok (1997) Discounted Least Squares (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/research/notes/discounted_least_squares/index.html" title="Discounted Least Squares (1997) (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
@@ -147,7 +147,7 @@
   <header class="headline">
   </header>
 
-<h1 id="blok-2004-parallel-poisson">Blok (2004) Parallel Poisson</h1>
+<h1 id="parallel-poisson-2004">Parallel Poisson (2004)</h1>
 
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 <h2 id="updating-in-simulations-of-parallel-poisson-processes">Updating in simulations of parallel Poisson processes</h2>
@@ -272,13 +272,13 @@
 \[
   \Pr(i\text{ first}) = \frac{r_i}{\sum_j r_j}.
 \]<div id="fig-1">
-<div class="tab-panel" data-tab-group="ed08ce4f46b5cfa3b74d5431d1056ac7">
+<div class="tab-panel" data-tab-group="f88a91bbd26aad98d29e03e0915eb5d2">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
       data-tab-item="figure-1"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('ed08ce4f46b5cfa3b74d5431d1056ac7','figure-1')"
+      onclick="switchTab('f88a91bbd26aad98d29e03e0915eb5d2','figure-1')"
     >
       <span class="tab-nav-text">Figure 1</span>
     </button>
@@ -288,8 +288,8 @@
       data-tab-item="figure-1"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-f1b8c0e1e3706cf1f5ec34edf13203d1" class="lightbox-link"><img alt="Figure 1" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure1.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-f1b8c0e1e3706cf1f5ec34edf13203d1"><img alt="Figure 1" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure1.png"></a></p>
+<p><a href="#R-image-d7a6ede74b2d8281c2c6809a8c7bda3b" class="lightbox-link"><img alt="Figure 1" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure1.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-d7a6ede74b2d8281c2c6809a8c7bda3b"><img alt="Figure 1" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure1.png"></a></p>
 <p>Figure 1: To select an event via the Roulette Wheel algorithm pick a random
 number \(u\) between \(0\) and \(\sum_j r_j\). Then it will land within the area delimited by \(r_i\) with probability \(r_i/\sum_j r_j\).</p>
       </div>
@@ -345,13 +345,13 @@ the Poisson probability:</p>
 \]<p>for some constant \(\hat{r}\).</p>
 <h4 id="31-efficient-computation">3.1. Efficient computation</h4>
 <div id="fig-2">
-<div class="tab-panel" data-tab-group="a792d2c010fc776c2ad796dccfbbf5a2">
+<div class="tab-panel" data-tab-group="2309e0597d5601535ed59dd7a8a530db">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
       data-tab-item="figure-2"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('a792d2c010fc776c2ad796dccfbbf5a2','figure-2')"
+      onclick="switchTab('2309e0597d5601535ed59dd7a8a530db','figure-2')"
     >
       <span class="tab-nav-text">Figure 2</span>
     </button>
@@ -361,8 +361,8 @@ the Poisson probability:</p>
       data-tab-item="figure-2"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-bc0580cd9b1c18fb824edb194bb4053f" class="lightbox-link"><img alt="Figure 2" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure2.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-bc0580cd9b1c18fb824edb194bb4053f"><img alt="Figure 2" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure2.png"></a></p>
+<p><a href="#R-image-d1a295a6f67394a31a343f979eb98974" class="lightbox-link"><img alt="Figure 2" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure2.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-d1a295a6f67394a31a343f979eb98974"><img alt="Figure 2" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure2.png"></a></p>
 <p>Figure 2: To select an event via the rejection method pick a random event \(i\)
 and a random deviate \(0 < u < \hat{r}\). Accept if \(u < r_i\) otherwise repeat.</p>
       </div>
@@ -468,13 +468,13 @@ variant of the rejection method where the trial probability of event \(i\) depen
 <h4 id="51-implementation-and-test">5.1. Implementation and test</h4>
 <p>A sample implementation of adaptive correction is shown in <a href="/~rikblok/research/notes/parallel_poisson/index.html#list-1">Listing 1</a>.  A simulation based on this code was compiled and run with a range of processes from \(N=1\) to \(N=10^7\).  The process rates were initially sampled (and resampled after each event) from a log-normal distribution with some spread \(\sigma\) (the standard deviation of the normal distribution).  For small \(\sigma\) the rates tend to be narrowly distributed, as \(\sigma\) grows the highest rates can grow to be many orders of magnitude faster than the slowest.  The results are shown in <a href="/~rikblok/research/notes/parallel_poisson/index.html#fig-3">Figure 3</a>.  Note that for small and moderate spreads (\(\leq 2\) orders of magnitude) the simulation speed is \(O(1)\), constant independent of the number of parallel processes, \(N\).</p>
 <div id="list-1">
-<div class="tab-panel" data-tab-group="dca66438441cdd210ad21b47421f2cf2">
+<div class="tab-panel" data-tab-group="4e8d0efa297faca2a7bac359ca47974b">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
       data-tab-item="listing-1"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('dca66438441cdd210ad21b47421f2cf2','listing-1')"
+      onclick="switchTab('4e8d0efa297faca2a7bac359ca47974b','listing-1')"
     >
       <span class="tab-nav-text">Listing 1</span>
     </button>
@@ -570,13 +570,13 @@ variant of the rejection method where the trial probability of event \(i\) depen
 </div>
 </div>
 <div id="fig-3">
-<div class="tab-panel" data-tab-group="351b2a8a54b9c831691ebd278fffd4d7">
+<div class="tab-panel" data-tab-group="a1ef49e0dfaa4e78b488fc1e063b8489">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
       data-tab-item="figure-3"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('351b2a8a54b9c831691ebd278fffd4d7','figure-3')"
+      onclick="switchTab('a1ef49e0dfaa4e78b488fc1e063b8489','figure-3')"
     >
       <span class="tab-nav-text">Figure 3</span>
     </button>
@@ -586,8 +586,8 @@ variant of the rejection method where the trial probability of event \(i\) depen
       data-tab-item="figure-3"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-8eaae7d14d7de63ee20e10404b215ba7" class="lightbox-link"><img alt="Figure 3" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure3.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-8eaae7d14d7de63ee20e10404b215ba7"><img alt="Figure 3" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure3.png"></a></p>
+<p><a href="#R-image-754a4bae65b44a68e42aa450f5fecf5f" class="lightbox-link"><img alt="Figure 3" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure3.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-754a4bae65b44a68e42aa450f5fecf5f"><img alt="Figure 3" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure3.png"></a></p>
 <p>Figure 3: Performance of adaptive correction rejection method as a function of the number of parallel processes, \(N\).  For low to moderate \(N\) and spreads the running time is roughly constant.  Rates are sampled from log-normal distribution [exponential of normally-distributed deviates with mean zero and variance \(\sigma^2\)].  The spread is estimated to be the ratio of the 95th upper- versus lower-percentiles of the normal distributions, \(e^{+2\sigma}/e^{-2\sigma}=e^{+4\sigma}\).  \(10^6\) events were simulated and on each event the associated rate was resampled.</p>
       </div>
     </div>
@@ -600,13 +600,13 @@ variant of the rejection method where the trial probability of event \(i\) depen
 <p>I&rsquo;ve thought of a faster way to implement the roulette wheel method.  It relies on storing partial sums on a balanced binary tree structure and should run in \(O(\log_2 N)\) time, independent of the distribution of rates.  Unlike the adaptive correction rejection method the rates are now explicitly stored and manipulated as part of the data structure and each process must be labelled by an index \(i=1,\ldots, N\) in order to access its corresponding rate.</p>
 <p>The tree, shown in <a href="/~rikblok/research/notes/parallel_poisson/index.html#fig-4">Figure 4</a>, is important because it is guaranteed to be as well balanced as possible for any number of processes, \(N\).  Further, it is easy to add or remove processes as necessary.  (Removing is done by setting the appropriate rate to zero but leaving it in the tree.) Locating a node is also efficient, requiring \(O(\log_2 N)\) operations.</p>
 <div id="fig-4">
-<div class="tab-panel" data-tab-group="801472ca469bfc21ef8881b586602a5d">
+<div class="tab-panel" data-tab-group="d133da55b2bd1df9c401d155566da212">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
       data-tab-item="figure-4"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('801472ca469bfc21ef8881b586602a5d','figure-4')"
+      onclick="switchTab('d133da55b2bd1df9c401d155566da212','figure-4')"
     >
       <span class="tab-nav-text">Figure 4</span>
     </button>
@@ -616,8 +616,8 @@ variant of the rejection method where the trial probability of event \(i\) depen
       data-tab-item="figure-4"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-c0d10252f62466bf30448a0f99af18f3" class="lightbox-link"><img alt="Figure 4" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure4.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-c0d10252f62466bf30448a0f99af18f3"><img alt="Figure 4" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure4.png"></a></p>
+<p><a href="#R-image-2e19d9c96eefae930e1afa9d3339a8e0" class="lightbox-link"><img alt="Figure 4" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure4.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-2e19d9c96eefae930e1afa9d3339a8e0"><img alt="Figure 4" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure4.png"></a></p>
 <p>Figure 4: A binary tree with a one-to-one mapping onto positive integers.  Each node has two children indicated by the branches 0 and 1.  To locate the node representing an index we represent the index in binary.  Starting at the root (which is always index 1) we follow the branches by reading the binary representation from right to left until we reach the final 1.  For instance, the highlighted path to \(i=14\) (1110 in binary) is \(0\rightarrow 1 \rightarrow 1\).</p>
       </div>
     </div>
@@ -625,13 +625,13 @@ variant of the rejection method where the trial probability of event \(i\) depen
 </div>
 </div>
 <div id="fig-5">
-<div class="tab-panel" data-tab-group="a308faaa753039505da5cc4e20b32f5f">
+<div class="tab-panel" data-tab-group="3fba45d4e8e987f06be8e9e0686f0c2f">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
       data-tab-item="figure-5"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('a308faaa753039505da5cc4e20b32f5f','figure-5')"
+      onclick="switchTab('3fba45d4e8e987f06be8e9e0686f0c2f','figure-5')"
     >
       <span class="tab-nav-text">Figure 5</span>
     </button>
@@ -641,8 +641,8 @@ variant of the rejection method where the trial probability of event \(i\) depen
       data-tab-item="figure-5"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-edb214d382e9c07b1d07eb84ab1c7fc7" class="lightbox-link"><img alt="Figure 5" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure5.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-edb214d382e9c07b1d07eb84ab1c7fc7"><img alt="Figure 5" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure5.png"></a></p>
+<p><a href="#R-image-679271d30f6bf01e0a0f6c195bf91811" class="lightbox-link"><img alt="Figure 5" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure5.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-679271d30f6bf01e0a0f6c195bf91811"><img alt="Figure 5" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure5.png"></a></p>
 <p>Figure 5: A single node in the binary tree used to optimize the roulette wheel algorithm.  Each node \(A\) contains a rate \(r_A\), sum of rates \(\Sigma_A\), and links to its parent \(P\) and children \(C_0\) and \(C_1\).  \(\Sigma_A\) is the sum of all the rates down the branch of \(A\), including \(r_A\) itself, \(\Sigma_A = r_A + \Sigma_{C_0} + \Sigma_{C_1}\).  Any non-existant nodes are assumed to have \(r=\Sigma=0\).</p>
       </div>
     </div>
@@ -660,13 +660,13 @@ variant of the rejection method where the trial probability of event \(i\) depen
 </ol>
 <p>The full code is given in <a href="/~rikblok/research/notes/parallel_poisson/index.html#list-2">Listing 2</a>.</p>
 <div id="fig-6">
-<div class="tab-panel" data-tab-group="3b867e295ed9534466736267cc139254">
+<div class="tab-panel" data-tab-group="02ebb5844ee7d0a2767c40d18217cd25">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
       data-tab-item="figure-6"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('3b867e295ed9534466736267cc139254','figure-6')"
+      onclick="switchTab('02ebb5844ee7d0a2767c40d18217cd25','figure-6')"
     >
       <span class="tab-nav-text">Figure 6</span>
     </button>
@@ -676,8 +676,8 @@ variant of the rejection method where the trial probability of event \(i\) depen
       data-tab-item="figure-6"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-7e239ec4b4d3497c5162bbb8afd88088" class="lightbox-link"><img alt="Figure 6" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure6.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-7e239ec4b4d3497c5162bbb8afd88088"><img alt="Figure 6" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure6.png"></a></p>
+<p><a href="#R-image-dd8c8a9971d9f9b278822d359b27bb1d" class="lightbox-link"><img alt="Figure 6" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure6.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-dd8c8a9971d9f9b278822d359b27bb1d"><img alt="Figure 6" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure6.png"></a></p>
 <p>Figure 6: To select an event via the binary tree Roulette Wheel algorithm pick a random number \(u\) between 0 and \(\Sigma_A = r_A + \Sigma_{C_0} + \Sigma_{C_1}\).  The area it lands in indicates the course of action (choose \(A\) or branches \(C_0\) or \(C_1\), respectively).</p>
       </div>
     </div>
@@ -685,13 +685,13 @@ variant of the rejection method where the trial probability of event \(i\) depen
 </div>
 </div>
 <div id="list-2">
-<div class="tab-panel" data-tab-group="f0c78fe121b6d8d5631dcf655fa39c32">
+<div class="tab-panel" data-tab-group="d8ac9490beab9e6393b9430bad4d4bb8">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
       data-tab-item="listing-2-parallelpoissonh"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('f0c78fe121b6d8d5631dcf655fa39c32','listing-2-parallelpoissonh')"
+      onclick="switchTab('d8ac9490beab9e6393b9430bad4d4bb8','listing-2-parallelpoissonh')"
     >
       <span class="tab-nav-text">Listing 2: parallelpoisson.h</span>
     </button>
@@ -909,7 +909,7 @@ Rik&#39;s Treehouse
           </a>
         </div>
         <script>
-          window.index_js_url="/~rikblok/searchindex.en.js?1739044384";
+          window.index_js_url="/~rikblok/searchindex.en.js?1739776536";
         </script>
         <search><form action="/~rikblok/search/index.html" method="get">
           <div class="searchbox default-animation">
@@ -922,12 +922,12 @@ Rik&#39;s Treehouse
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="/~rikblok/js/auto-complete.js?1739044384" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.min.js?1739044384" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1739044384" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1739044384" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.en.min.js?1739044384" defer></script>
-        <script src="/~rikblok/js/search.js?1739044384" defer></script>
+        <script src="/~rikblok/js/auto-complete.js?1739776536" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.min.js?1739776536" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1739776536" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1739776536" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.en.min.js?1739776536" defer></script>
+        <script src="/~rikblok/js/search.js?1739776536" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -945,10 +945,10 @@ Rik&#39;s Treehouse
             <li class="alwaysopen " data-nav-id="/~rikblok/research/published/index.html"><a class="padding" href="/~rikblok/research/published/index.html">Published</a><ul id="R-subsections-fd150925b32c297bd80b32c85dbf53c7" class="collapsible-menu"></ul></li>
             <li class="alwaysopen " data-nav-id="/~rikblok/research/presented/index.html"><a class="padding" href="/~rikblok/research/presented/index.html">Presented</a><ul id="R-subsections-0a29c1db3dbf4a3f6a288fc3847b4ef0" class="collapsible-menu"></ul></li>
             <li class="parent alwaysopen " data-nav-id="/~rikblok/research/notes/index.html"><a class="padding" href="/~rikblok/research/notes/index.html">Unpublished notes</a><ul id="R-subsections-950ca40a4602333597e39987a4c77254" class="collapsible-menu">
-            <li class="" data-nav-id="/~rikblok/research/notes/replicator_kinetics/index.html"><a class="padding" href="/~rikblok/research/notes/replicator_kinetics/index.html">Blok (2013) Replicator Kinetics</a></li>
-            <li class="active " data-nav-id="/~rikblok/research/notes/parallel_poisson/index.html"><a class="padding" href="/~rikblok/research/notes/parallel_poisson/index.html">Blok (2004) Parallel Poisson</a></li>
-            <li class="" data-nav-id="/~rikblok/research/notes/discounted_least_squares/index.html"><a class="padding" href="/~rikblok/research/notes/discounted_least_squares/index.html">Blok (1997) Discounted Least Squares</a></li></ul></li></ul></li>
-            <li class="" data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a></li>
+            <li class="" data-nav-id="/~rikblok/research/notes/replicator_kinetics/index.html"><a class="padding" href="/~rikblok/research/notes/replicator_kinetics/index.html">Replicator Kinetics (2013)</a></li>
+            <li class="active " data-nav-id="/~rikblok/research/notes/parallel_poisson/index.html"><a class="padding" href="/~rikblok/research/notes/parallel_poisson/index.html">Parallel Poisson (2004)</a></li>
+            <li class="" data-nav-id="/~rikblok/research/notes/discounted_least_squares/index.html"><a class="padding" href="/~rikblok/research/notes/discounted_least_squares/index.html">Discounted Least Squares (1997)</a></li></ul></li></ul></li>
+            <li class="" data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu"></ul></li>
           </ul>
         </div>
     
@@ -1002,8 +1002,8 @@ Rik&#39;s Treehouse
         </div>
       </div>
     </aside>
-    <script src="/~rikblok/js/clipboard.min.js?1739044384" defer></script>
-    <script src="/~rikblok/js/perfect-scrollbar.min.js?1739044384" defer></script>
+    <script src="/~rikblok/js/clipboard.min.js?1739776536" defer></script>
+    <script src="/~rikblok/js/perfect-scrollbar.min.js?1739776536" defer></script>
     <script>
       function useMathJax( config ){
         window.MathJax = Object.assign( window.MathJax || {}, {
@@ -1018,7 +1018,7 @@ Rik&#39;s Treehouse
       }
       useMathJax( JSON.parse("{}") );
     </script>
-    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1739044384"></script>
-    <script src="/~rikblok/js/theme.js?1739044384" defer></script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1739776536"></script>
+    <script src="/~rikblok/js/theme.js?1739776536" defer></script>
   </body>
 </html>

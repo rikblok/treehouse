@@ -1,14 +1,14 @@
 +++
 date = '2025-01-02T20:08:08-08:00'
 draft = false
-title = 'Blok (2002) Rock, paper and scissors in space'
-summary = 'SOWD (Schluter, Otto, Whitton, Whitlock, Doebeli)) Lab Meeting'
+title = 'Rock, paper and scissors in space (2002)'
+summary = 'SOWD (Schluter, Otto, Whitton, Whitlock, Doebeli)) Lab Meeting, UBC'
 weight = -20021202 
 bibFile = "bib-zotero-better-cson.json"
 +++
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 
-## SOWD (Schluter, Otto, Whitton, Whitlock, Doebeli)) Lab Meeting
+## SOWD (Schluter, Otto, Whitton, Whitlock, Doebeli)) Lab Meeting, UBC
 
 <!-- 
 {{< cite "blokRock2002" >}}

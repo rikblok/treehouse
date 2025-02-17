@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The onion of Science (2002) :: Rik&#39;s Treehouse</title>
+    <link>https://www.cs.ubc.ca/~rikblok/science/onion_of_science/index.html</link>
+    <description>I often have people ask me what I do for a living. Because my research projects are so varied I like to give a different answer each time. Nevertheless, the question has forced me to evaluate my role as a scientist. This page is an attempt to explain what I believe science is all about and where my work fits in…</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
+    <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://www.cs.ubc.ca/~rikblok/science/onion_of_science/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

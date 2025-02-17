@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The curious skeptic (2008) :: Rik&#39;s Treehouse</title>
+    <link>https://www.cs.ubc.ca/~rikblok/science/curious_skeptic/index.html</link>
+    <description>Here’s what drives me as a teacher.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
+    <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://www.cs.ubc.ca/~rikblok/science/curious_skeptic/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

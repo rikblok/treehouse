@@ -1,7 +1,7 @@
 +++
 date = '2025-01-02T20:07:24-08:00'
 draft = false
-title = "Blok (1998) Extra! Extra! Critical update on 'Life'"
+title = "Extra! Extra! Critical update on 'Life' (1998)"
 summary = "Presentation for Peter Wall Inst. Adv. Science, Crisis Points Group, UBC"
 weight = -19980318 
 bibFile = "bib-zotero-better-cson.json"

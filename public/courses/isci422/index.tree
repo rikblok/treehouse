@@ -1,0 +1,2 @@
+<?include "${basedir}courses/index.tree";echo "<a href=\"${base}isci422/index.html\">UBC ISCI 422: Models in Science</a> &gt; ";
+?>

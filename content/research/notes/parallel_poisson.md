@@ -1,8 +1,8 @@
 +++
 date = '2025-01-18T22:46:12-08:00'
 draft = false
-title = 'Blok (2004) Parallel Poisson'
-summary = 'Updating in simulations of parallel Poisson processes'
+title = 'Parallel Poisson (2004)'
+summary = 'I explore how to efficiently implement Poisson processes in event-driven, multi-agent simulations.'
 weight = -20041015
 bibFile = "bib-zotero-better-cson.json"
 +++

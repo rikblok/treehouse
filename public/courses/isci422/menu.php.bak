@@ -1,0 +1,47 @@
+<?
+$menuhomedir="isci422/";
+$subdir=pathfromto($menuhomedir,$pathfrombase);
+//echo "path from ($menuhomedir) to ($pathfrombase) = ".$subdir;
+//if (!isset($subdir))	$subdir='';
+$page="${basedir}$menuhomedir$subdir$scriptroot.html";
+function menuhead($href,$name) {
+	global $scriptroot, $page, $title;
+	$name = str_replace(' ', '&nbsp;', $name);
+	$color = '#3333ff';
+//	if (strstr($href,$pw))	$color = '#ff3333';
+	if ($name==$title || $href==$page) {
+		echo "<b><font color=\"$color\">$name</font></b><br>";
+		if (file_exists($scriptroot.'.toc'))	{	
+			echo "<table cellspacing=\"0\" cellpadding=\"0\"><tr><td>&nbsp;&nbsp;</td><td bgcolor=\"${color}\"><small><small>&nbsp;</small></small></td><td><small><small>&nbsp;&nbsp;</small></small></td><td>";
+			echo "<small><small>";
+			include $scriptroot.'.toc';
+			echo "</small></small>";
+			echo '</td></tr></table>';
+		}
+	} else {
+		if (substr($href, 0, 7)=="http://" || file_exists($href))	echo "<a href=\"$href\">$name</a><br>";
+		else												echo "<font color=\"gray\">$name</font><br>";
+	}
+}
+echo "<table width=\"100%\" cellspacing=\"2\" cellpadding=\"8\"><tr><td width=\"10%\" valign=\"top\" bgcolor=\"$tocbgcolor\"><small>";
+menuhead("${base}${menuhomedir}index.html","Home");
+menuhead("${base}${menuhomedir}project1/index.html", "Project 1: Definition");
+menuhead("${base}${menuhomedir}project2/index.html", "Project 2: Deconstruction");
+menuhead("${base}${menuhomedir}project3/index.html", "Project 3: Construction");
+menuhead("${base}${menuhomedir}templates/", "Project Templates");
+menuhead("${base}${menuhomedir}past/index.html", "Past Projects");
+menuhead("${base}${menuhomedir}software/index.html", "Software");
+menuhead("${base}${menuhomedir}grades/i422grades-public.xls", "Grades (XLS)");
+menuhead("http://www.zohosheet.com/view.do?url=${baseurl}${menuhomedir}grades/i422grades-public.xls","Grades (web)");
+menuhead("${base}${menuhomedir}admin/index.html", "Administration");
+if (strstr($subdir,'admin/')) {
+	menuhead("${base}${menuhomedir}admin/files", "Files");
+}
+
+echo '<h5>Related Links</h5>';
+menuhead("http://www.science.ubc.ca/~isp/","Integrated Sciences");
+echo '</small></td><td>';
+$tocquiet=true;
+include 'toc.php';
+// table closed in foot.php
+?>

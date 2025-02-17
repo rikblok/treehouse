@@ -11,46 +11,46 @@
     <lastBuildDate>Thu, 02 Jan 2025 18:43:24 -0800</lastBuildDate>
     <atom:link href="https://www.cs.ubc.ca/~rikblok/research/published/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Doebeli, Blok, Leimar &amp; Dieckmann (2007)</title>
+      <title>Multimodal pattern formation in phenotype distributions of sexual populations (2007)</title>
       <link>https://www.cs.ubc.ca/~rikblok/research/published/doebeli07/index.html</link>
       <pubDate>Thu, 02 Jan 2025 14:57:36 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
       <guid>https://www.cs.ubc.ca/~rikblok/research/published/doebeli07/index.html</guid>
-      <description>Multimodal pattern formation in phenotype distributions of sexual populations</description>
+      <description>During bouts of evolutionary diversification the emerging species cluster around different locations in phenotype space. How such multimodal patterns in phenotype space can emerge from a single ancestral species is a fundamental question in biology. Here, we demonstrate that phenotype distributions can split into multiple modes under the force of frequency-dependent competition…</description>
     </item>
     <item>
-      <title>Pineda-Krch, Blok, Dieckmann &amp; Doebeli (2007)</title>
+      <title>A tale of two cycles - distinguishing quasi-cycles and limit cycles in finite predator-prey populations (2007)</title>
       <link>https://www.cs.ubc.ca/~rikblok/research/published/pinedakrch07/index.html</link>
       <pubDate>Thu, 02 Jan 2025 18:19:13 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
       <guid>https://www.cs.ubc.ca/~rikblok/research/published/pinedakrch07/index.html</guid>
-      <description>A tale of two cycles - distinguishing quasi-cycles and limit cycles in finite predator-prey populations</description>
+      <description>Periodic predator-prey dynamics in constant environments are usually taken as indicative of deterministic limit cycles. It is known, however, that demographic stochasticity in finite populations can also give rise to regular population cycles. Here we show how to distinguish between quasi-cycles and noisy limit cycles based on observing changing population sizes in predator-prey populations. We demonstrate that by using our methods even short and imperfect time series allow quasi-cycles and limit cycles to be distinguished reliably…</description>
     </item>
     <item>
-      <title>Killingback, Blok &amp; Doebeli (2006)</title>
+      <title>Scale-free extinction dynamics in spatially structured host–parasitoid systems (2006)</title>
       <link>https://www.cs.ubc.ca/~rikblok/research/published/killingback06/index.html</link>
       <pubDate>Thu, 02 Jan 2025 18:31:44 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
       <guid>https://www.cs.ubc.ca/~rikblok/research/published/killingback06/index.html</guid>
-      <description>Scale-free extinction dynamics in spatially structured host–parasitoid systems</description>
+      <description>Much of the work on extinction events has focused on external perturbations of ecosystems, such as climatic change, or anthropogenic factors. Extinction, however, can also be driven by endogenous factors, such as the ecological interactions between species in an ecosystem. Here we show that endogenously driven extinction events can have a scale-free distribution in simple spatially structured host-parasitoid systems. Based on these results, we conjecture that scale-free extinction processes and critical phase transitions of the type we have found may be a characteristic feature of many spatially structured, multi-species ecosystems in nature…</description>
     </item>
     <item>
-      <title>Blok (2000)</title>
+      <title>On the nature of the stock market: Simulations and experiments (2000)</title>
       <link>https://www.cs.ubc.ca/~rikblok/research/published/blok00b/index.html</link>
       <pubDate>Thu, 02 Jan 2025 10:56:32 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
       <guid>https://www.cs.ubc.ca/~rikblok/research/published/blok00b/index.html</guid>
-      <description>On the nature of the stock market: Simulations and experiments</description>
+      <description>PhD Thesis, UBC&#xA;In this dissertation, two simple models of stock exchange are developed and simulated numerically. The decentralized model captures key empirical market properties, including fat-tailed returns, short-term memory in returns, and long-range volatility correlations. Significantly, these features emerge only when parameters are tuned to span the critical point, suggesting markets may self-organize near criticality…</description>
     </item>
     <item>
-      <title>Blok &amp; Bergersen (1999)</title>
+      <title>Synchronous versus asynchronous updating in the &#34;game of Life&#34; (1999)</title>
       <link>https://www.cs.ubc.ca/~rikblok/research/published/blok99/index.html</link>
       <pubDate>Thu, 02 Jan 2025 18:38:08 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
       <guid>https://www.cs.ubc.ca/~rikblok/research/published/blok99/index.html</guid>
-      <description>Synchronous versus asynchronous updating in the “game of Life”</description>
+      <description>The rules for the “game of Life” are modified to allow for only a random fraction of sites to be updated in each time step. Under variation of this fraction from the parallel updating limit down to the Poisson limit, a critical phase transition is observed that explains why the game of Life appears to obey self-organized criticality…</description>
     </item>
     <item>
-      <title>Blok &amp; Bergersen (1997)</title>
+      <title>Effect of boundary conditions on scaling in the &#34;game of Life&#34; (1997)</title>
       <link>https://www.cs.ubc.ca/~rikblok/research/published/blok97/index.html</link>
       <pubDate>Thu, 02 Jan 2025 18:43:24 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
       <guid>https://www.cs.ubc.ca/~rikblok/research/published/blok97/index.html</guid>
-      <description>Effect of boundary conditions on scaling in the “game of Life”</description>
+      <description>The debate as to whether the “game of Life” is self-organized critical remains unresolved. We present evidence that boundary conditions play an important role in the scaling behaviour, resulting in apparently contradictory results…</description>
     </item>
   </channel>
 </rss>

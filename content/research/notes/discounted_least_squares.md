@@ -1,8 +1,8 @@
 +++
 date = '2025-01-02T22:07:32-08:00'
 draft = false
-title = 'Blok (1997) Discounted Least Squares'
-summary = 'Discounted Least Squares Curve Fitting'
+title = 'Discounted Least Squares (1997)'
+summary = 'I recently wrote some code to make simple forecasts in a time series.  I began to wonder if there was a way of steadily *discounting* the relevance of past data in a smoother and more natural way...'
 weight = -19970720
 bibFile = "bib-zotero-better-cson.json"
 +++

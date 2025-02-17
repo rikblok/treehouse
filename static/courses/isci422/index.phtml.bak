@@ -1,0 +1,117 @@
+<?
+$title="UBC ISCI 422: Models in Science";
+$subtitle='2006W';
+$parent="../courses/index";
+$icon="${basedir}images/ubc.gif";
+include 'head.php';
+include 'math.php';
+include 'menu.php';
+include "table.php";
+include 'footnote.php';
+include 'admin/breakdown.php';
+?>
+
+<?	// tochead(array('name'=>"News")); ?>
+
+<?	// tochead(array('name'=>"Mar 14",'level'=>3)); ?>
+
+<?	// tochead(array('name'=>"Mon Mar 20 lecture in LSK 310: ",'level'=>4, 'notoc'=>'true')); ?>
+
+<!--
+<blockquote>
+</blockquote>
+-->
+
+<? tochead(array('name'=>"People")); ?>
+
+<table cellspacing="0" cellpadding="4" align="center" border="1">
+	<?=trh(array()); ?><th>Name</th>	<th>Position</th><th>Office</th><th>E-mail</th></tr>
+	<?=trbgalt(array('align'=>'center')); ?><td>Rik Blok</td>	<td>Instructor, ISP<br>Research Associate, Zoology</td>	<td><?=ubcBuilding("LSK");?> 303B<br><small>(By <a href="../office.html">appointment</a> only.)</small></td>	
+	<? echo "<td bgcolor=$trbgcolor[2] rowspan='2'>" . mailto(array('name'=>"isci-422@interchange.ubc.ca", 'style'=>"color:black")); ?></td>
+</tr>
+	<?=trbgalt(array('align'=>'center')); ?><td>Jeff Fletcher</td>	<td>Instructor, ISP<br>Post-doc, Zoology</td>	<td><?=ubcBuilding("BIOL");?> 3340<br><small>(By appointment only.)</small></td>
+</tr>
+</tr></table>
+
+<?	tochead(array('name'=>"Course Description")); ?>
+
+<p>Study of meaning, nature, use, strengths and limitations of models as investigatory tools in all scientific disciplines.  Students will select models from any area of science. Examples include models of ocean circulation, nucleic acid transcription, and infection mechanisms.</p>
+
+<p><u>Credits</u>: 3 upper level science.  (This course will count towards the <a href="http://www.science.ubc.ca/~isp/application/requirements.php#r2">ISCI requirement</a> for students in the Integrated Science Program.)</p>
+
+<p><u>Pre-reqs</u>: 3rd year standing in the Faculty of Science. (4th year standing recommended.)</p>
+
+<p><u>Co-reqs</u>: None.</p>
+
+<p><u>Web page</u>: <b><?=url(array('name'=>"http://www.zoology.ubc.ca/~rikblok/isci422/")); ?></b></p>
+
+<p><u>Textbook</u>: None.</p>
+
+<?	tochead(array('name'=>'Objectives'));	?>
+
+<p>The course is built around two <i>meta-goals</i>.  Years from now every student should still...
+<ol type="A"><li>Explore new ideas with curiosity and skepticism.
+	<li>Understand the role of science, particularly its advantages and limitations.
+</ol>
+
+<p>To achieve these meta-goals the course is constructed with four concrete goals.  On completion of the course each student should be able to...
+<ol><li>Define <i>science</i> and explain.
+	<li>Define <i>scientific model</i> and explain.
+	<li>Deconstruct a scientific model.
+	<li>Construct a scientific model.
+</ol>
+
+<? tochead(array('name'=>"Schedule")); ?>
+
+<p>To achieve our goals the semester will be split into three sections covering the following topics:</p>
+
+<table cellspacing="0" cellpadding="4" align="center" border="1">
+	<?=trh(array()); ?>	<th>Section</th>	<th>Week</th>	<th>Lecture</th>	<th>Seminar</th>	</tr>
+<?
+
+	for ($i=0; $i<14; $i++) {
+		if (!array_key_exists($i, $week))	continue;
+		trbgalt(array('align'=>"center"));
+		$newsection = sectitle($i);
+		if ($newsection != '') echo "<td rowspan=" . numweeksinsection($i) . " bgcolor=$trbgcolor[2]>$newsection</td>";
+		echo '<td>' . prettydatetime(weekdates($i)) . '</td>';
+		echo '<td>' . lectitle($i) . '</td>';
+		echo '<td>' . semtitle($i) . '</td></tr>';
+	}
+?>
+</table>
+
+<?	tochead(array('name'=>"Mark Distribution")); ?>
+
+<p>Grades will be based on solo (S) or group (G) work.  The mark distribution is:</p>
+
+<table cellspacing="0" cellpadding="4" align="center" border="1">
+	<?=trbgalt(array()); ?><td>Assignments (S & G)</td>	<td align="right"><?=prettyweight('Assignment')?></td></tr>
+	<?=trbgalt(array()); ?><td>Project 1: Definition (G)</td>	<td align="right"><?=prettyweight('Project 1')?></td></tr>
+	<?=trbgalt(array()); ?><td>Project 2: Comparison (G)</td>	<td align="right"><?=prettyweight('Project 2')?></td></tr>
+	<?=trbgalt(array()); ?><td>Project 3: Construction (S)</td>	<td align="right"><?=prettyweight('Project 3')?></td></tr>
+	<?=trbgalt(array()); ?><td>Best Project<?=footref("1");?></td>	<td align="right"><?=prettyweight('Best Project')?></td></tr>
+	<?=trbgalt(array()); ?><td>Final Exam (S)</td>	<td align="right"><?=prettyweight('Final Exam')?></td></tr>
+	<?=trh(array()); ?><th align="left">Total</th>	<th align="right"><?=prettyweight('') ?></th></tr>
+</tr></table>                                       
+
+<?=footnote("1");?> We appreciate that every student's skills differ and that groups may work better or worse together so we will add an extra <?=prettyweight('Best Project')?> points to the weight of whichever project you did best at.  
+
+<?	tochead(array('name'=>"Late Penalties")); ?>
+
+<p>Many assignments will be due at the end of the class before you leave.  They can not be made up.  If you miss an assignment come talk to us.  Late submission of homework assignments and projects is possible, but only upon written application (<i>in advance of the deadline</i>) with supporting arguments.  The standard penalty of 10% per day may be reduced for convincing arguments.</p>
+
+<? tochead(array('name'=>"Sections")); ?>
+
+<p>Classes run <?=prettydatetime('first-class') ?> to <?=prettydatetime('last-class') ?> with a final exam to follow.  You must register for the lecture and one of the seminar sections.</p>
+
+<table cellspacing="0" cellpadding="4" align="center" border="1">
+	<?=trh(array()); ?><th>Section</th>	<th>Activity</th>	<th>Day</th>	<th>Time</th>	<th>Location</th>	</tr>
+	<?=trbgalt(array('align'=>"center")); ?><td>422-201</td>	<td>Lecture</td>	<td><?=$dayofweek['lec']?></td>	<td><?=prettydatetime('lec-start') ?> - <?=prettydatetime('lec-end') ?></td>	<td><?=$room['lec']?></td></tr>
+	<?=trbgalt(array('align'=>"center")); ?><td>422-2T1</td>	<td>Seminar</td>	<td><?=$dayofweek['sema']?></td>	<td><?=prettydatetime('sema-start') ?> - <?=prettydatetime('sema-end') ?></td>	<td><?=$room['sema']?><?=footref("2");?></td></tr>
+	<?=trbgalt(array('align'=>"center")); ?><td>422-2T2</td>	<td>Seminar</td>	<td><?=$dayofweek['semb']?></td>	<td><?=prettydatetime('semb-start') ?> - <?=prettydatetime('semb-end') ?></td>	<td><?=$room['semb']?><?=footref("2");?></td></tr>
+</table>
+
+<?=footnote("2");?> Some seminars (announced in advance) will be held in the ISP computer lab at <?=ubcBuilding("LSK");?> 303E.
+
+<?	include 'foot.php';	?>

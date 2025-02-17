@@ -1,8 +1,8 @@
 +++
 date = '2025-02-04T11:30:01-08:00'
 draft = false
-title = 'Blok (2013) Replicator Kinetics'
-summary = 'Deriving the replicator equation from birth-death processes'
+title = 'Replicator Kinetics (2013)'
+summary = 'Here I explore several possible systems of reactions that yield evolutionary dynamics consistent with the replicator equation.  They are also useful for studying finite, structured populations.'
 weight = -20130712
 bibFile = "bib-zotero-better-cson.json"
 +++

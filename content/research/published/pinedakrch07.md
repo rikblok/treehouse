@@ -1,8 +1,8 @@
 +++
 date = '2025-01-02T18:19:13-08:00'
 draft = false
-title = 'Pineda-Krch, Blok, Dieckmann & Doebeli (2007)'
-summary = 'A tale of two cycles - distinguishing quasi-cycles and limit cycles in finite predator-prey populations'
+title = 'A tale of two cycles - distinguishing quasi-cycles and limit cycles in finite predator-prey populations (2007)'
+summary = 'Periodic predator-prey dynamics in constant environments are usually taken as indicative of deterministic limit cycles. It is known, however, that demographic stochasticity in finite populations can also give rise to regular population cycles. Here we show how to distinguish between quasi-cycles and noisy limit cycles based on observing changing population sizes in predator-prey populations. We demonstrate that by using our methods even short and imperfect time series allow quasi-cycles and limit cycles to be distinguished reliably...'
 weight = -20070100
 bibFile = "bib-zotero-better-cson.json"
 +++
