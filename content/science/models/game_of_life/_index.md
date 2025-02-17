@@ -12,7 +12,7 @@ A [NetLogo] {{< cite "wilenskyNetLogo1999" >}} model by Rik Blok.
 This [NetLogo] model implements [Conway's Game of Life](http://en.wikipedia.org/wiki/Conway%27s%20Game%20of%20Life), a [cellular automaton](http://en.wikipedia.org/wiki/cellular%20automata) [John Horton Conway](http://en.wikipedia.org/wiki/John%20Horton%20Conway) designed to be difficult to anticipate the dynamics of starting patterns.  This implementation incorporates some ideas I focused on in my research: finite-size effects {{< cite "blokEffect1997" >}} and asynchronous updating {{< cite "blokSynchronous1999" >}}.
 
 
-<p align="center"><iframe title="" src="http://netlogoweb.org/web?https://raw.githubusercontent.com/rikblok/NetLogo-models/master/life-web.nlogo" style="width:769px; height:990px"></iframe></p>
+<p align="center"><iframe title="" src="https://netlogoweb.org/web?https://raw.githubusercontent.com/rikblok/NetLogo-models/master/life-web.nlogo" style="width:769px; height:990px"></iframe></p>
 
 
 ## How it works
