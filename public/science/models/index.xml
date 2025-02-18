@@ -17,5 +17,12 @@
       <guid>https://www.cs.ubc.ca/~rikblok/science/models/game_of_life/index.html</guid>
       <description>This NetLogo model implements Conway’s Game of Life, a cellular automaton John Horton Conway designed to be difficult to anticipate the dynamics of starting patterns.  This implementation incorporates some ideas I focused on in my research: finite-size effects and asynchronous updating.</description>
     </item>
+    <item>
+      <title>A Trojan horse approach to medical intervention strategies (2017)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/science/models/brown2009/index.html</link>
+      <pubDate>Fri, 06 Oct 2017 16:34:42 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/science/models/brown2009/index.html</guid>
+      <description>I recently read an interesting review paper that explores the possibility of fighting a bacterial infection with Darwinian medicine through the introduction of a “cheater” strain of bacteria into a wild population.  I extended the analytic model in the paper to an agent-based model with explicit spatial structure.</description>
+    </item>
   </channel>
 </rss>

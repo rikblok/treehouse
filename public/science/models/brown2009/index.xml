@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>A Trojan horse approach to medical intervention strategies (2017) :: Rik&#39;s Treehouse</title>
+    <link>https://www.cs.ubc.ca/~rikblok/science/models/brown2009/index.html</link>
+    <description>I recently read an interesting review paper that explores the possibility of fighting a bacterial infection with Darwinian medicine through the introduction of a “cheater” strain of bacteria into a wild population.  I extended the analytic model in the paper to an agent-based model with explicit spatial structure.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
+    <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://www.cs.ubc.ca/~rikblok/science/models/brown2009/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

@@ -33,6 +33,7 @@ Since I was born...
   * 1987 - The world population reached [5 billion people](https://en.wikipedia.org/wiki/World_population#Milestones_by_the_billions).
   * 1988 - The first confirmed [exoplanet](https://en.wikipedia.org/wiki/exoplanet) (extrasolar planet) was discovered.
   * 1988 - I sent and received my first [email](https://en.wikipedia.org/wiki/Email).
+  * 1989 - The [Berlin Wall](https://en.wikipedia.org/wiki/Berlin_Wall) came down.
   * ~1990 - I saw a [cell phone](https://en.wikipedia.org/wiki/Mobile_phone) in person.
   * 1992 - The Atlantic northwest cod fishery [collapsed](https://en.wikipedia.org/wiki/Collapse%20of%20the%20Atlantic%20northwest%20cod%20fishery).
   * 1993 - I browsed the [world wide web](https://en.wikipedia.org/wiki/World%20Wide%20Web) for the first time.
@@ -60,10 +61,11 @@ Since I was born...
   * 2012 - I [digitized](https://en.wikipedia.org/wiki/Digitization#Analog_texts_to_digital) my entire research library (about 30,000 pages of books and papers) -- strictly electronic from then on.  Also switched pleasure-reading from paper to e-books.  (By 2012 we had accumulated about 100 linear feet of paper books.) 
   * 2013 - I switched from [incandescent](https://en.wikipedia.org/wiki/Incandescent_light_bulb) to [LED](https://en.wikipedia.org/wiki/LED_lamp) light bulbs at home.
   * 2015 - I first heard about [CRISPR](https://en.wikipedia.org/wiki/CRISPR_gene_editing), the most powerful gene editing tool to-date.
-  * 2015 - An [Ebola virus epidemic in West Africa](https://en.wikipedia.org/wiki/Ebola%20virus%20epidemic%20in%20West%20Africa) killed over 11,000 people -- more than all previous ebola outbreaks combined.  Also, the first [vaccine for ebola](https://en.wikipedia.org/wiki/Ebola_vaccine) was developed.
+  * 2015 - An [Ebola virus epidemic in West Africa](https://en.wikipedia.org/wiki/Ebola%20virus%20epidemic%20in%20West%20Africa) killed over 11,000 people -- more than all previous Ebola outbreaks combined.  Also, the first [vaccine for Ebola](https://en.wikipedia.org/wiki/Ebola_vaccine) was developed.
   * 2015 - The first time somebody close to me bought an [electric car](https://en.wikipedia.org/wiki/Nissan_Leaf).
   * 2016 - Global average temperature reached [1.00°C above](https://www.climate.gov/graph-dashboard-global-average-surface-temperature) the 20<sup>th</sup> century average.  
   * 2020 - The [COVID-19 pandemic](https://en.wikipedia.org/wiki/COVID-19_pandemic) killed an estimated 7 million people worldwide and led to lockdowns, work-from-home, and face masking.
+  * 2020 - I started [video calling](https://en.wikipedia.org/wiki/Videotelephony) regularly with family and friends.
   * 2022 - I first started having useful chats with an [artificial intelligence](https://en.wikipedia.org/wiki/Large_language_model).  At the time it had [175 billion parameters](https://en.wikipedia.org/wiki/GPT-3), about 0.1% of the [synapses](https://en.wikipedia.org/wiki/Chemical_synapse) in the human brain.
   * 2022 - The world population reached [8 billion people](https://en.wikipedia.org/wiki/World_population#Milestones_by_the_billions) (more than doubled since I was born).
   

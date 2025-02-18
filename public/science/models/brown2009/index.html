@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.139.0">
+    <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
+    <meta name="description" content="I recently read an interesting review paper that explores the possibility of fighting a bacterial infection with Darwinian medicine through the introduction of a “cheater” strain of bacteria into a wild population.  I extended the analytic model in the paper to an agent-based model with explicit spatial structure.">
+    <meta name="author" content="Rik Blok">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="A Trojan horse approach to medical intervention strategies (2017) :: Rik&#39;s Treehouse">
+    <meta name="twitter:description" content="I recently read an interesting review paper that explores the possibility of fighting a bacterial infection with Darwinian medicine through the introduction of a “cheater” strain of bacteria into a wild population.  I extended the analytic model in the paper to an agent-based model with explicit spatial structure.">
+    <meta property="og:url" content="https://www.cs.ubc.ca/~rikblok/science/models/brown2009/index.html">
+    <meta property="og:site_name" content="Rik&#39;s Treehouse">
+    <meta property="og:title" content="A Trojan horse approach to medical intervention strategies (2017) :: Rik&#39;s Treehouse">
+    <meta property="og:description" content="I recently read an interesting review paper that explores the possibility of fighting a bacterial infection with Darwinian medicine through the introduction of a “cheater” strain of bacteria into a wild population.  I extended the analytic model in the paper to an agent-based model with explicit spatial structure.">
+    <meta property="og:locale" content="en_us">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="A Trojan horse approach to medical intervention strategies (2017) :: Rik&#39;s Treehouse">
+    <meta itemprop="description" content="I recently read an interesting review paper that explores the possibility of fighting a bacterial infection with Darwinian medicine through the introduction of a “cheater” strain of bacteria into a wild population.  I extended the analytic model in the paper to an agent-based model with explicit spatial structure.">
+    <meta itemprop="datePublished" content="2017-10-06T16:34:42-08:00">
+    <meta itemprop="dateModified" content="2017-10-06T16:34:42-08:00">
+    <meta itemprop="wordCount" content="2084">
+    <title>A Trojan horse approach to medical intervention strategies (2017) :: Rik&#39;s Treehouse</title>
+    <link href="/~rikblok/science/models/brown2009/index.xml" rel="alternate" type="application/rss+xml" title="A Trojan horse approach to medical intervention strategies (2017) :: Rik&#39;s Treehouse">
+    <link href="/~rikblok/css/fontawesome-all.min.css?1739860743" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1739860743" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/auto-complete.css?1739860743" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1739860743" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar.min.css?1739860743" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1739860743" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1739860743" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/www.cs.ubc.ca\/~rikblok';
+      window.relearn.min = `.min`;
+      window.relearn.disableAnchorCopy=false;
+      window.relearn.disableAnchorScrolling=false;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        var select = document.querySelector("#R-select-variant");
+        if (select) {
+          select.value = variant;
+        }
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( variant == window.relearn.customvariantname ){
+        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script><link rel="stylesheet" type="text/css" href="/~rikblok/hugo-cite.css" />
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/~rikblok/css/custom.css" />
+
+
+
+  </head>
+  <body class="mobile-support html" data-url="/~rikblok/science/models/brown2009/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#1-how-it-works">1 How it works</a></li>
+    <li><a href="#2-theory">2 Theory</a></li>
+    <li><a href="#3-numeric-model">3 Numeric model</a></li>
+    <li><a href="#4-agent-based-model">4 Agent-based model</a></li>
+    <li><a href="#5-quasi-steady-state-approximation">5 Quasi-steady-state approximation</a></li>
+    <li><a href="#6-spatial-structure">6 Spatial structure</a></li>
+    <li><a href="#7-references">7 References</a></li>
+    <li><a href="#8-footnotes">8 Footnotes</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/science/index.html"><span itemprop="name">Scientific scribblings</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/science/models/index.html"><span itemprop="name">Models</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">A Trojan horse approach to medical intervention strategies (2017)</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/science/models/game_of_life/index.html" title="Conway&#39;s Game of Life (2020) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/science/since_i_was_born/index.html" title="Since I was born (2022) (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable section" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="a-trojan-horse-approach-to-medical-intervention-strategies-2017">A Trojan horse approach to medical intervention strategies (2017)</h1>
+
+<p>A <a href="http://ccl.northwestern.edu/netlogo/" rel="external" target="_blank">NetLogo</a> 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#wilenskynetlogo1999"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Uri"><span itemprop="familyName">Wilensky</span></span>,&#32;<span itemprop="datePublished">1999</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/WebPage"
+      data-type="webpage"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Wilensky</span>,&#32;
+    <meta itemprop="givenName" content="Uri" />
+    U.</span>(<span itemprop="datePublished">1999</span>).&#32;Retrieved from&#32;
+  <a href="http://ccl.northwestern.edu/netlogo/"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://ccl.northwestern.edu/netlogo/</a></span>
+
+
+
+
+</span></span>)</span>
+ model by Rik Blok.</p>
+<p>I recently read an interesting review paper 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#brownsocial2009"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Sam P."><span itemprop="familyName">Brown</span></span>,&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Stuart A."><span itemprop="familyName">West</span></span>
+                  <em>&amp; al.</em>,&#32;<span itemprop="datePublished">2009</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/Article"
+      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Brown</span>,&#32;
+    <meta itemprop="givenName" content="Sam P." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">West</span>,&#32;
+    <meta itemprop="givenName" content="Stuart A." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Diggle</span>,&#32;
+    <meta itemprop="givenName" content="Stephen P." />
+    S.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Griffin</span>,&#32;
+    <meta itemprop="givenName" content="Ashleigh S." />
+    A.</span>
+  &#32;
+    (<span itemprop="datePublished">2009</span>).
+  &#32;<span itemprop="name">Social evolution in micro-organisms and a Trojan horse approach to medical intervention strategies</span>.<i>
+    <span itemprop="about">Philosophical Transactions of the Royal Society B: Biological Sciences</span>,&#32;364(1533)</i>.&#32;<span itemprop="pagination">3157–3168</span>.
+  <a href="https://doi.org/10.1098/rstb.2009.0055"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://doi.org/10.1098/rstb.2009.0055</a></span>
+
+
+
+
+</span></span>)</span>
+ that explores the possibility of fighting a bacterial infection with <a href="https://en.wikipedia.org/wiki/Evolutionary%20medicine" rel="external" target="_blank">Darwinian medicine</a> through the introduction of a &ldquo;cheater&rdquo; strain of bacteria into a wild population.  I extended the analytic model in the paper to an agent-based model with explicit spatial structure.</p>
+<p align="center"><iframe title="" src="https://netlogoweb.org/web?https://raw.githubusercontent.com/rikblok/NetLogo-models/master/brown2009-web.nlogo" style="width:769px; height:990px"></iframe></p>
+<p>This agent-based model represents a bacterial infection as described in 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#brownsocial2009"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Sam P."><span itemprop="familyName">Brown</span></span>,&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Stuart A."><span itemprop="familyName">West</span></span>
+                  <em>&amp; al.</em>,&#32;<span itemprop="datePublished">2009</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/Article"
+      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Brown</span>,&#32;
+    <meta itemprop="givenName" content="Sam P." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">West</span>,&#32;
+    <meta itemprop="givenName" content="Stuart A." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Diggle</span>,&#32;
+    <meta itemprop="givenName" content="Stephen P." />
+    S.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Griffin</span>,&#32;
+    <meta itemprop="givenName" content="Ashleigh S." />
+    A.</span>
+  &#32;
+    (<span itemprop="datePublished">2009</span>).
+  &#32;<span itemprop="name">Social evolution in micro-organisms and a Trojan horse approach to medical intervention strategies</span>.<i>
+    <span itemprop="about">Philosophical Transactions of the Royal Society B: Biological Sciences</span>,&#32;364(1533)</i>.&#32;<span itemprop="pagination">3157–3168</span>.
+  <a href="https://doi.org/10.1098/rstb.2009.0055"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://doi.org/10.1098/rstb.2009.0055</a></span>
+
+
+
+
+</span></span>)</span>
+.  It is assumed the wild type ($W$) produces a public good ($F$) which benefits all.  To combat the infection the population is innoculated with a &ldquo;cheater&rdquo; strain ($C$).  The cheater strain has one or more of the following traits:</p>
+<ul>
+<li>It consumes but does not produce the public good ($F$),</li>
+<li>It produces a toxin ($T$) that harms all,</li>
+<li>It produces a bacteriocinogen ($B$) it is immune to but harms the wild type.</li>
+</ul>
+<h2 id="1-how-it-works">1 How it works</h2>
+<p>The simulation approximates a Poisson process for each of the above events.  The best known technique would be the Gillespie algorithm 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#gibsonefficient2000"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Michael A."><span itemprop="familyName">Gibson</span></span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Jehoshua"><span itemprop="familyName">Bruck</span></span>,&#32;<span itemprop="datePublished">2000</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/Article"
+      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Gibson</span>,&#32;
+    <meta itemprop="givenName" content="Michael A." />
+    M.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Bruck</span>,&#32;
+    <meta itemprop="givenName" content="Jehoshua" />
+    J.</span>
+  &#32;
+    (<span itemprop="datePublished">2000</span>).
+  &#32;<span itemprop="name">Efficient Exact Stochastic Simulation of Chemical Systems with Many Species and Many Channels</span>.<i>
+    <span itemprop="about">J. Phys. Chem. A</span>,&#32;104(9)</i>.&#32;<span itemprop="pagination">1876–1889</span>.
+  <a href="https://doi.org/10.1021/jp993732q"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://doi.org/10.1021/jp993732q</a></span>
+
+
+
+
+</span></span>)</span>
+ but it isn&rsquo;t well suited to NetLogo&rsquo;s strengths.  Instead, time proceeds in steps with multiple events occurring in each timestep.</p>
+<p>The step size is adaptive, chosen to achieve a desired error tolerance, compared with the Gillespie algorithm.  When the error tolerance is near zero the likelihood of each event is small and we may expect just a few events to occur per timestep.  Then we&rsquo;re accurately &ndash; but inefficiently &ndash; mimicking the Gillespie algorithm.  As the tolerance increases we have more simultaneous events, lowering accuracy but increasing performance.</p>
+
+<details open class=" box cstyle notices tip">
+  <summary class="box-label">
+    <i class="fa-fw fas fa-lightbulb"></i> 
+    Tip
+  </summary>
+  <div class="box-content">
+<p><ul>
+<li>For a long run you may want to increase the speed slider (reduces frame rate) <a href="#R-image-5cf093785f066e3ec973db9e2c0d44b2" class="lightbox-link"><img alt="faster.gif" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="faster.gif" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-5cf093785f066e3ec973db9e2c0d44b2"><img alt="faster.gif" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="faster.gif"></a> and/or increase <strong>err-tolerance</strong> (reduces <strong>accuracy</strong>).</li>
+<li>The default parameters often give interesting cyclical patterns<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.  <a href="/~rikblok/science/models/brown2009/index.html#table-1">Table 1</a> has parameter values that can be used to compare against 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#brownsocial2009"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Sam P."><span itemprop="familyName">Brown</span></span>,&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Stuart A."><span itemprop="familyName">West</span></span>
+                  <em>&amp; al.</em>,&#32;<span itemprop="datePublished">2009</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/Article"
+      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Brown</span>,&#32;
+    <meta itemprop="givenName" content="Sam P." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">West</span>,&#32;
+    <meta itemprop="givenName" content="Stuart A." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Diggle</span>,&#32;
+    <meta itemprop="givenName" content="Stephen P." />
+    S.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Griffin</span>,&#32;
+    <meta itemprop="givenName" content="Ashleigh S." />
+    A.</span>
+  &#32;
+    (<span itemprop="datePublished">2009</span>).
+  &#32;<span itemprop="name">Social evolution in micro-organisms and a Trojan horse approach to medical intervention strategies</span>.<i>
+    <span itemprop="about">Philosophical Transactions of the Royal Society B: Biological Sciences</span>,&#32;364(1533)</i>.&#32;<span itemprop="pagination">3157–3168</span>.
+  <a href="https://doi.org/10.1098/rstb.2009.0055"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://doi.org/10.1098/rstb.2009.0055</a></span>
+
+
+
+
+</span></span>)</span>
+.</li>
+</ul>
+  </div>
+</details>
+<h2 id="2-theory">2 Theory</h2>
+<p>This simulation incorporates three ideas from Section 2 of 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#brownsocial2009"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Sam P."><span itemprop="familyName">Brown</span></span>,&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Stuart A."><span itemprop="familyName">West</span></span>
+                  <em>&amp; al.</em>,&#32;<span itemprop="datePublished">2009</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/Article"
+      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Brown</span>,&#32;
+    <meta itemprop="givenName" content="Sam P." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">West</span>,&#32;
+    <meta itemprop="givenName" content="Stuart A." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Diggle</span>,&#32;
+    <meta itemprop="givenName" content="Stephen P." />
+    S.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Griffin</span>,&#32;
+    <meta itemprop="givenName" content="Ashleigh S." />
+    A.</span>
+  &#32;
+    (<span itemprop="datePublished">2009</span>).
+  &#32;<span itemprop="name">Social evolution in micro-organisms and a Trojan horse approach to medical intervention strategies</span>.<i>
+    <span itemprop="about">Philosophical Transactions of the Royal Society B: Biological Sciences</span>,&#32;364(1533)</i>.&#32;<span itemprop="pagination">3157–3168</span>.
+  <a href="https://doi.org/10.1098/rstb.2009.0055"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://doi.org/10.1098/rstb.2009.0055</a></span>
+
+
+
+
+</span></span>)</span>
+:</p>
+<ul>
+<li>(a) A cheat that does not produce exoproducts (public goods),</li>
+<li>(b) Trojan horse cheats, and</li>
+<li>(d) Bacteriocinogen cheat invasion.</li>
+</ul>
+<p>Instead of approximating spatial structure with the relatedness factor $r$ in 2(c) &ldquo;Trojan horse cheat in a spatially structured host&rdquo; I just explicitly put the bacteria in space &ndash; they diffuse in a two-dimensional continuum with periodic boundaries.</p>
+<h2 id="3-numeric-model">3 Numeric model</h2>
+<p>Combining (a), (b), and (d) gives the following dynamical equations for the rate of change of the wild ($W$) and cheat ($C$) strain densities:</p>
+
+<table id="eq-1" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">
+\begin{equation}
+\begin{array}{rcrccccl}
+  \frac{dW}{dt} 
+  & = & W ( & \overbrace{1}^{\text{growth}} & \overbrace{- N}^{\text{competition}} & \overbrace{- x}^{\text{costs}} & \overbrace{+ b W / N}^{\text{public good}} & \overbrace{- a C / N}^{\text{toxication}} & \overbrace{- e C / N}^{\text{bacteriocide}} ) \cr
+  \frac{dC}{dt} 
+  & = & C ( & 1 & - N & - q & + b W / N & - a C / N )
+\end{array}
+\end{equation}
+</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(1)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>where</p>
+<ul>
+<li>$N = W + C$ is the total bacterial density,</li>
+<li>$x$ is the cost of producing the public good,</li>
+<li>$q$ is the direct growth cost of the cheat (if any),</li>
+<li>$b$ is the benefit of the public good,</li>
+<li>$a$ is the strength of the antibacterial toxin, and</li>
+<li>$e$ is the efficacy of the bacteriocinogen.</li>
+</ul>
+<p>These two equations combine Eqs. (2.1)-(2.5) from 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#brownsocial2009"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Sam P."><span itemprop="familyName">Brown</span></span>,&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Stuart A."><span itemprop="familyName">West</span></span>
+                  <em>&amp; al.</em>,&#32;<span itemprop="datePublished">2009</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/Article"
+      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Brown</span>,&#32;
+    <meta itemprop="givenName" content="Sam P." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">West</span>,&#32;
+    <meta itemprop="givenName" content="Stuart A." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Diggle</span>,&#32;
+    <meta itemprop="givenName" content="Stephen P." />
+    S.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Griffin</span>,&#32;
+    <meta itemprop="givenName" content="Ashleigh S." />
+    A.</span>
+  &#32;
+    (<span itemprop="datePublished">2009</span>).
+  &#32;<span itemprop="name">Social evolution in micro-organisms and a Trojan horse approach to medical intervention strategies</span>.<i>
+    <span itemprop="about">Philosophical Transactions of the Royal Society B: Biological Sciences</span>,&#32;364(1533)</i>.&#32;<span itemprop="pagination">3157–3168</span>.
+  <a href="https://doi.org/10.1098/rstb.2009.0055"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://doi.org/10.1098/rstb.2009.0055</a></span>
+
+
+
+
+</span></span>)</span>
+ &ndash; the effects can be explored separately in the simulation by moving sliders of other parameters to zero.  The numeric dynamics are displayed as faint curves in the &ldquo;dynamics&rdquo; and &ldquo;phase&rdquo; graphs.  They are included to validate and compare with the agent-based model.</p>
+<div id="table-1">
+<div class="tab-panel" data-tab-group="42127b095a4a8569dcdf70785a03393d">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="table-1"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('42127b095a4a8569dcdf70785a03393d','table-1')"
+    >
+      <span class="tab-nav-text">Table 1</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="table-1"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">Figure</th>
+          <th style="text-align: center">$W(0)$,<br /> initial-W-density</th>
+          <th style="text-align: center">$C(0)$,<br /> initial-C-density</th>
+          <th style="text-align: center">$x$,<br /> x-wild-cost</th>
+          <th style="text-align: center">$q$,<br />q-cheater-cost</th>
+          <th style="text-align: center">$b$,<br />b-shared-benefit</th>
+          <th style="text-align: center">$a$,<br />a-toxin-production</th>
+          <th style="text-align: center">$e$,<br />e-bacteriocinogen</th>
+          <th style="text-align: center">well-mixed,<br />$r=0$</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">4(a)</td>
+          <td style="text-align: center">1.1</td>
+          <td style="text-align: center">0.001</td>
+          <td style="text-align: center">0.1</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0.2</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">Yes</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4(b)</td>
+          <td style="text-align: center">1.1</td>
+          <td style="text-align: center">0.001</td>
+          <td style="text-align: center">0.1</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0.2</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">No</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4(c)</td>
+          <td style="text-align: center">1.1</td>
+          <td style="text-align: center">0.001</td>
+          <td style="text-align: center">0.1</td>
+          <td style="text-align: center">0.01</td>
+          <td style="text-align: center">0.2</td>
+          <td style="text-align: center">0.5</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">Yes</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4(d)</td>
+          <td style="text-align: center">1.1</td>
+          <td style="text-align: center">0.001</td>
+          <td style="text-align: center">0.1</td>
+          <td style="text-align: center">0.01</td>
+          <td style="text-align: center">0.2</td>
+          <td style="text-align: center">0.5</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">No</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4(e)</td>
+          <td style="text-align: center">1.1</td>
+          <td style="text-align: center">0.001</td>
+          <td style="text-align: center">0.1</td>
+          <td style="text-align: center">0.01</td>
+          <td style="text-align: center">0.2</td>
+          <td style="text-align: center">-0.3</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">Yes</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4(f)</td>
+          <td style="text-align: center">1.1</td>
+          <td style="text-align: center">0.001</td>
+          <td style="text-align: center">0.1</td>
+          <td style="text-align: center">0.01</td>
+          <td style="text-align: center">0.2</td>
+          <td style="text-align: center">-0.3</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">No</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5(a)</td>
+          <td style="text-align: center">1.1</td>
+          <td style="text-align: center">0.001</td>
+          <td style="text-align: center">0.1</td>
+          <td style="text-align: center">0.15</td>
+          <td style="text-align: center">0.2</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0.5</td>
+          <td style="text-align: center">Yes</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5(b)</td>
+          <td style="text-align: center">1.1</td>
+          <td style="text-align: center">0.13</td>
+          <td style="text-align: center">0.1</td>
+          <td style="text-align: center">0.15</td>
+          <td style="text-align: center">0.2</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0.5</td>
+          <td style="text-align: center">Yes</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5(c)</td>
+          <td style="text-align: center">1.1</td>
+          <td style="text-align: center">0.001</td>
+          <td style="text-align: center">0.1</td>
+          <td style="text-align: center">0.05</td>
+          <td style="text-align: center">0.2</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0.5</td>
+          <td style="text-align: center">Yes</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5(d)</td>
+          <td style="text-align: center">1.1</td>
+          <td style="text-align: center">0.13</td>
+          <td style="text-align: center">0.1</td>
+          <td style="text-align: center">0.05</td>
+          <td style="text-align: center">0.2</td>
+          <td style="text-align: center">0</td>
+          <td style="text-align: center">0.5</td>
+          <td style="text-align: center">Yes</td>
+      </tr>
+  </tbody>
+</table>
+<p>Table 1: Parameter values used in the figures of Brown, West, et al. (2009), for comparison.  The well-mixed cases usually agree with my model dynamics, except for stochastic noise due to demographics (eg. extinction of one type).</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<h2 id="4-agent-based-model">4 Agent-based model</h2>
+<p>The numeric model can be derived as a non-spatial limiting case of an agent-based model.  In this model we explicitly represent each individual &ldquo;agent&rdquo; in the system instead of treating them as identical and just tracking aggregate population densities.  A convenient approach is to borrow <a href="https://en.wikipedia.org/wiki/Chemical_kinetics" rel="external" target="_blank">reaction kinetics</a> from physical chemistry to describe allowed interactions in our model.</p>
+<p>To capture the numeric model we require five types/species<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>:</p>
+<ul>
+<li>$W$ is a wild-type bacterium,</li>
+<li>$C$ is a cheat bacterium,</li>
+<li>$F$ is a parcel of food,</li>
+<li>$T$ is a parcel of toxin, and</li>
+<li>$B$ is a parcel of bacteriocinogen.</li>
+</ul>
+<p>We simply allow these agents to interact stochastically at given rates according to the following reactions:</p>
+
+<table id="eq-2" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">
+\begin{equation}
+\begin{array}{rclrcll}
+  N & \xrightarrow{1} & 2 N & & & & \text{(growth)} \cr
+  W + N & \xrightarrow{1} & N, & C + N & \xrightarrow{1} & N & \text{(competition)} \cr
+  W & \xrightarrow{x} & \emptyset, & C & \xrightarrow{q} & \emptyset & \text{(costs)} \cr
+  W & \xrightarrow{b} & W + F, & N + F & \xrightarrow{\beta} & 2 N & \text{(public good)} \cr
+  C & \xrightarrow{a} & C + T, & N + T & \xrightarrow{\delta} & \emptyset & \text{(toxication)} \cr
+  C & \xrightarrow{e} & C + B, & C + B & \xrightarrow{\gamma} & C & \text{(bacteriocide)} \cr
+    & & & W + B & \xrightarrow{\gamma} & \emptyset
+\end{array}
+\end{equation}
+</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(2)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<p>where $\emptyset$ indicates an absence of products and $N$ is shorthand for either $W$ or $C$.</p>
+<p>A moment&rsquo;s review should satisfy the reader that these reactions are reasonable prescriptions.  For example, $W \xrightarrow{b} W + F$ indicates that each wild-type bacterium produces a food parcel at an average rate of $b$ per unit time.  A bacterium that encounters a food parcel consumes it at rate $\beta$ and benefits by reproducing, $N + F \xrightarrow{\beta} 2 N$.</p>
+<p>In the agent-based approach we model these processes explicitly and track all of the agents as they are produced, changed, or removed from the system.  To connect with the numeric model we apply the <a href="https://en.wikipedia.org/wiki/Law_of_mass_action" rel="external" target="_blank">law of mass action</a> to compute the dynamics of a large, well-mixed population following the above reactions:</p>
+
+<table id="eq-3" class="equation-wrapper">
+  <tbody style="display: block; width: 100%">
+	<tr style="display: flex; width: 100%; align-items: center;">
+		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">
+\begin{equation}
+\begin{array}{rcrccccl}
+  \frac{dW}{dt} 
+  & = & W ( & \overbrace{1}^{\text{growth}} & \overbrace{- N}^{\text{competition}} & \overbrace{- x}^{\text{costs}} & \overbrace{+ \beta F}^{\text{public good}} & \overbrace{- \delta T}^{\text{toxication}} & \overbrace{- \gamma B}^{\text{bacteriocide}} ) \cr
+  \frac{dC}{dt} & = & C ( & 1 & - N & - q & + \beta F & - \delta T ) \cr
+  \frac{dF}{dt} & = &     &   &     &     & b W - \beta F N \cr
+  \frac{dT}{dt} & = &     &   &     &     &           & a C - \delta T N \cr
+  \frac{dB}{dt} & = &     &   &     &     &           &              & e C - \gamma B N.
+\end{array}
+\end{equation}
+</td>
+		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
+			(3)
+		</td>
+	</tr>
+  </tbody>
+</table>
+ 
+<h2 id="5-quasi-steady-state-approximation">5 Quasi-steady-state approximation</h2>
+<p>Eq. (<a href="/~rikblok/science/models/brown2009/index.html#eq-3">3</a>) looks much more complicated than Eq. (<a href="/~rikblok/science/models/brown2009/index.html#eq-1">1</a>) we&rsquo;re trying to relate it to.  But we can reduce the system if we assume that the densities $F$, $T$, and $B$ are //fast// variables &ndash; that they respond quickly to perturbations and quickly converge to equilibrium.  If we assume that they converge so quickly that the slow variables ($W$ and $C$) don&rsquo;t change appreciably while the fast ones equilibrate then we can approximate the fast variables as always being in equilibrium &ndash; the [[wp&gt;Michaelis%E2%80%93Menten_kinetics#Quasi-steady-state_approximation | quasi-steady-state approximation]] (QSSA):</p>
+\[
+\begin{array}{rcl}
+  F & = & b W / \beta N \cr
+  C & = & a C / \delta N \cr
+  B & = & e C / \gamma N.
+\end{array}
+\]<p>Then Eq. (<a href="/~rikblok/science/models/brown2009/index.html#eq-3">3</a>) reduces to exactly Eq. (<a href="/~rikblok/science/models/brown2009/index.html#eq-1">1</a>) and the agent-based model in Eq. (<a href="/~rikblok/science/models/brown2009/index.html#eq-2">2</a>) is an extension of 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#brownsocial2009"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Sam P."><span itemprop="familyName">Brown</span></span>,&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Stuart A."><span itemprop="familyName">West</span></span>
+                  <em>&amp; al.</em>,&#32;<span itemprop="datePublished">2009</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/Article"
+      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Brown</span>,&#32;
+    <meta itemprop="givenName" content="Sam P." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">West</span>,&#32;
+    <meta itemprop="givenName" content="Stuart A." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Diggle</span>,&#32;
+    <meta itemprop="givenName" content="Stephen P." />
+    S.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Griffin</span>,&#32;
+    <meta itemprop="givenName" content="Ashleigh S." />
+    A.</span>
+  &#32;
+    (<span itemprop="datePublished">2009</span>).
+  &#32;<span itemprop="name">Social evolution in micro-organisms and a Trojan horse approach to medical intervention strategies</span>.<i>
+    <span itemprop="about">Philosophical Transactions of the Royal Society B: Biological Sciences</span>,&#32;364(1533)</i>.&#32;<span itemprop="pagination">3157–3168</span>.
+  <a href="https://doi.org/10.1098/rstb.2009.0055"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://doi.org/10.1098/rstb.2009.0055</a></span>
+
+
+
+
+</span></span>)</span>
+ to finite populations.  Unfortunately, finding the conditions to satisfy QSSA is not trivial 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#segelquasisteadystate1989"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Lee A."><span itemprop="familyName">Segel</span></span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Marshall"><span itemprop="familyName">Slemrod</span></span>,&#32;<span itemprop="datePublished">1989</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/Article"
+      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Segel</span>,&#32;
+    <meta itemprop="givenName" content="Lee A." />
+    L.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Slemrod</span>,&#32;
+    <meta itemprop="givenName" content="Marshall" />
+    M.</span>
+  &#32;
+    (<span itemprop="datePublished">1989</span>).
+  &#32;<span itemprop="name">The Quasi-Steady-State Assumption: A Case Study in Perturbation</span>.<i>
+    <span itemprop="about">SIAM Review</span>,&#32;31(3)</i>.&#32;<span itemprop="pagination">446</span>.
+  <a href="https://doi.org/10.1137/1031091"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://doi.org/10.1137/1031091</a></span>
+
+
+
+
+</span></span>)</span>
+.  Nevertheless, it should be satisfied if all of the rate constants $\beta$, $\delta$, and $\gamma$ are large.  In the simulation I set them all to the same large constant so we may expect differences between the agent-based and numeric models result from other causes, such as spatial structure.</p>
+<h2 id="6-spatial-structure">6 Spatial structure</h2>
+<p>Brown et al. 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#brownsocial2009"><span class="visually-hidden">Citation: </span><span itemprop="datePublished">2009</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/Article"
+      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Brown</span>,&#32;
+    <meta itemprop="givenName" content="Sam P." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">West</span>,&#32;
+    <meta itemprop="givenName" content="Stuart A." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Diggle</span>,&#32;
+    <meta itemprop="givenName" content="Stephen P." />
+    S.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Griffin</span>,&#32;
+    <meta itemprop="givenName" content="Ashleigh S." />
+    A.</span>
+  &#32;
+    (<span itemprop="datePublished">2009</span>).
+  &#32;<span itemprop="name">Social evolution in micro-organisms and a Trojan horse approach to medical intervention strategies</span>.<i>
+    <span itemprop="about">Philosophical Transactions of the Royal Society B: Biological Sciences</span>,&#32;364(1533)</i>.&#32;<span itemprop="pagination">3157–3168</span>.
+  <a href="https://doi.org/10.1098/rstb.2009.0055"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://doi.org/10.1098/rstb.2009.0055</a></span>
+
+
+
+
+</span></span>)</span>
+ create a structured population in Section 2(c) through preferential interactions of the bacteria with kin, mimicking spatial segregation.  Implementing it as an agent-based model  in <a href="http://ccl.northwestern.edu/netlogo/" rel="external" target="_blank">NetLogo</a> allows me to explicitly include space: agents move continuously in a two-dimensional plane with periodic boundary conditions.  Reactions are localized to patches on a square grid.  In the limit of large population size and infinitesimal patch size mass action swamps stochastic effects and the model should become equivalent to a <a href="https://en.wikipedia.org/wiki/Reaction%E2%80%93diffusion_system" rel="external" target="_blank">reaction-diffusion system</a>.</p>
+<p>I arbitrarily chose to allow only the bacteria (wild and cheater types) to move.  Byproducts (food, toxin, &amp; bacteriocinogen) are stationary after being created.  Some other options would be to allow the byproducts to move (for example, as if they were diffusing via <a href="https://en.wikipedia.org/wiki/Brownian_motion" rel="external" target="_blank">Brownian motion</a>) or for both bacteria and byproducts to move (possibly at different rates).</p>
+<p>Unlike other events, which are treated as probabilistic <a href="https://en.wikipedia.org/wiki/Stochastic_process" rel="external" target="_blank">stochastic processes</a>, every moving agent moves in every time increment according to a <a href="https://en.wikipedia.org/wiki/Random_walk" rel="external" target="_blank">random walk</a>, with a jump size is governed by the diffusion constant.  The effects of spatial structure can be minimized by mixing((Enable the <strong>well-mixed</strong> switch to rapidly stir the system.)).  Only bacteria move so there may still be some spatial effects from the stationary byproducts but the dynamics should be more similar to the numeric (<a href="https://en.wikipedia.org/wiki/Mean-field_theory" rel="external" target="_blank">mean field</a>) approximation.</p>
+<h2 id="7-references">7 References</h2>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+<section class="hugo-cite-bibliography">
+  <dl>
+    
+
+      <div id="brownsocial2009">
+        <dt>
+          Brown,&#32;
+          West,&#32;
+          Diggle&#32;&amp;&#32;Griffin
+
+          
+          (2009)</dt>
+
+        <dd>
+          
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/Article"
+      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Brown</span>,&#32;
+    <meta itemprop="givenName" content="Sam P." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">West</span>,&#32;
+    <meta itemprop="givenName" content="Stuart A." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Diggle</span>,&#32;
+    <meta itemprop="givenName" content="Stephen P." />
+    S.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Griffin</span>,&#32;
+    <meta itemprop="givenName" content="Ashleigh S." />
+    A.</span>
+  &#32;
+    (<span itemprop="datePublished">2009</span>).
+  &#32;<span itemprop="name">Social evolution in micro-organisms and a Trojan horse approach to medical intervention strategies</span>.<i>
+    <span itemprop="about">Philosophical Transactions of the Royal Society B: Biological Sciences</span>,&#32;364(1533)</i>.&#32;<span itemprop="pagination">3157–3168</span>.
+  <a href="https://doi.org/10.1098/rstb.2009.0055"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://doi.org/10.1098/rstb.2009.0055</a></span>
+
+
+
+
+</dd>
+
+      </div>
+
+      <div id="gibsonefficient2000">
+        <dt>
+          Gibson&#32;&amp;&#32;Bruck
+
+          
+          (2000)</dt>
+
+        <dd>
+          
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/Article"
+      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Gibson</span>,&#32;
+    <meta itemprop="givenName" content="Michael A." />
+    M.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Bruck</span>,&#32;
+    <meta itemprop="givenName" content="Jehoshua" />
+    J.</span>
+  &#32;
+    (<span itemprop="datePublished">2000</span>).
+  &#32;<span itemprop="name">Efficient Exact Stochastic Simulation of Chemical Systems with Many Species and Many Channels</span>.<i>
+    <span itemprop="about">J. Phys. Chem. A</span>,&#32;104(9)</i>.&#32;<span itemprop="pagination">1876–1889</span>.
+  <a href="https://doi.org/10.1021/jp993732q"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://doi.org/10.1021/jp993732q</a></span>
+
+
+
+
+</dd>
+
+      </div>
+
+      <div id="segelquasisteadystate1989">
+        <dt>
+          Segel&#32;&amp;&#32;Slemrod
+
+          
+          (1989)</dt>
+
+        <dd>
+          
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/Article"
+      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Segel</span>,&#32;
+    <meta itemprop="givenName" content="Lee A." />
+    L.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Slemrod</span>,&#32;
+    <meta itemprop="givenName" content="Marshall" />
+    M.</span>
+  &#32;
+    (<span itemprop="datePublished">1989</span>).
+  &#32;<span itemprop="name">The Quasi-Steady-State Assumption: A Case Study in Perturbation</span>.<i>
+    <span itemprop="about">SIAM Review</span>,&#32;31(3)</i>.&#32;<span itemprop="pagination">446</span>.
+  <a href="https://doi.org/10.1137/1031091"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://doi.org/10.1137/1031091</a></span>
+
+
+
+
+</dd>
+
+      </div>
+
+      <div id="wilenskynetlogo1999">
+        <dt>
+          Wilensky
+
+          
+          (1999)</dt>
+
+        <dd>
+          
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/WebPage"
+      data-type="webpage"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Wilensky</span>,&#32;
+    <meta itemprop="givenName" content="Uri" />
+    U.</span>(<span itemprop="datePublished">1999</span>).&#32;Retrieved from&#32;
+  <a href="http://ccl.northwestern.edu/netlogo/"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://ccl.northwestern.edu/netlogo/</a></span>
+
+
+
+
+</dd>
+
+      </div>
+  </dl>
+</section>
+
+
+
+<h2 id="8-footnotes">8 Footnotes</h2>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>The simulation&rsquo;s default parameters violate the <a href="/~rikblok/science/models/brown2009/index.html#quasi-steady-state-approximation">Quasi-steady-state approximation</a> so the equations in 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#brownsocial2009"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Sam P."><span itemprop="familyName">Brown</span></span>,&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Stuart A."><span itemprop="familyName">West</span></span>
+                  <em>&amp; al.</em>,&#32;<span itemprop="datePublished">2009</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/Article"
+      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Brown</span>,&#32;
+    <meta itemprop="givenName" content="Sam P." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">West</span>,&#32;
+    <meta itemprop="givenName" content="Stuart A." />
+    S.</span>,&#32;
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Diggle</span>,&#32;
+    <meta itemprop="givenName" content="Stephen P." />
+    S.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Griffin</span>,&#32;
+    <meta itemprop="givenName" content="Ashleigh S." />
+    A.</span>
+  &#32;
+    (<span itemprop="datePublished">2009</span>).
+  &#32;<span itemprop="name">Social evolution in micro-organisms and a Trojan horse approach to medical intervention strategies</span>.<i>
+    <span itemprop="about">Philosophical Transactions of the Royal Society B: Biological Sciences</span>,&#32;364(1533)</i>.&#32;<span itemprop="pagination">3157–3168</span>.
+  <a href="https://doi.org/10.1098/rstb.2009.0055"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">https://doi.org/10.1098/rstb.2009.0055</a></span>
+
+
+
+
+</span></span>)</span>
+ are not applicable.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Note the overlapping notation: the symbols for individual agents are re-used to represent the densities of said types.  Hopefully, the context (eg. density in a rate equation) is sufficient to prevent confusion.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+          <a id="R-logo" class="R-default" href="/~rikblok/index.html">
+Rik&#39;s Treehouse
+          </a>
+        </div>
+        <script>
+          window.index_js_url="/~rikblok/searchindex.en.js?1739860743";
+        </script>
+        <search><form action="/~rikblok/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+        <script>
+          var contentLangs=['en'];
+        </script>
+        <script src="/~rikblok/js/auto-complete.js?1739860743" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.min.js?1739860743" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1739860743" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1739860743" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.en.min.js?1739860743" defer></script>
+        <script src="/~rikblok/js/search.js?1739860743" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <ul>
+          <li><a class="padding" href="/~rikblok/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+        </ul>
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/compute/index.html"><a class="padding" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/research/index.html"><a class="padding" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu">
+            <li class="parent alwaysopen " data-nav-id="/~rikblok/science/models/index.html"><a class="padding" href="/~rikblok/science/models/index.html">Models</a><ul id="R-subsections-c61e93325435f6b5622b2acdf7d55a4f" class="collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/science/models/game_of_life/index.html"><a class="padding" href="/~rikblok/science/models/game_of_life/index.html">Conway&#39;s Game of Life (2020)</a></li>
+            <li class="active " data-nav-id="/~rikblok/science/models/brown2009/index.html"><a class="padding" href="/~rikblok/science/models/brown2009/index.html">A Trojan horse approach to medical intervention strategies (2017)</a></li></ul></li>
+            <li class="" data-nav-id="/~rikblok/science/since_i_was_born/index.html"><a class="padding" href="/~rikblok/science/since_i_was_born/index.html">Since I was born (2022)</a></li>
+            <li class="" data-nav-id="/~rikblok/science/curious_skeptic/index.html"><a class="padding" href="/~rikblok/science/curious_skeptic/index.html">The curious skeptic (2008)</a></li>
+            <li class="" data-nav-id="/~rikblok/science/onion_of_science/index.html"><a class="padding" href="/~rikblok/science/onion_of_science/index.html">The onion of Science (2002)</a></li></ul></li>
+          </ul>
+        </div>
+    
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/science/models/brown2009/index.html" lang="en-us" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
+                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.relearn.markVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter">
+        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="/~rikblok/js/clipboard.min.js?1739860743" defer></script>
+    <script src="/~rikblok/js/perfect-scrollbar.min.js?1739860743" defer></script>
+    <script>
+      function useMathJax( config ){
+        window.MathJax = Object.assign( window.MathJax || {}, {
+          tex: {
+            inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
+            displayMath: [['\\[', '\\]'], ['$$', '$$']], 
+          },
+          options: {
+            enableMenu: false 
+          }
+        }, config );
+      }
+      useMathJax( JSON.parse("{}") );
+    </script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1739860743"></script>
+    <script src="/~rikblok/js/theme.js?1739860743" defer></script>
+  </body>
+</html>
