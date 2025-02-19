@@ -5,26 +5,24 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.139.0">
     <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
-    <meta http-equiv="refresh" content="0; url=/~rikblok/orphanware/exportchart/">
-    <meta name="description" content="ExportChart Excel Add-In. Save your Excel charts to Gif files for use in web pages or graphic programs. Requires Microsoft Excel 97 or 2000.">
+    <meta name="description" content="Explore the Mandelbrot set and some related fractals.">
     <meta name="author" content="Rik Blok">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="ExportChart (1999 - 2001) :: Rik&#39;s Treehouse">
-    <meta name="twitter:description" content="ExportChart Excel Add-In. Save your Excel charts to Gif files for use in web pages or graphic programs. Requires Microsoft Excel 97 or 2000.">
-    <meta property="og:url" content="https://www.cs.ubc.ca/~rikblok/compute/orphanware/exportchart/index.html">
+    <meta name="twitter:title" content="Mandelbrot Set (2017) :: Rik&#39;s Treehouse">
+    <meta name="twitter:description" content="Explore the Mandelbrot set and some related fractals.">
+    <meta property="og:url" content="https://www.cs.ubc.ca/~rikblok/science/models/mandelbrot_set/index.html">
     <meta property="og:site_name" content="Rik&#39;s Treehouse">
-    <meta property="og:title" content="ExportChart (1999 - 2001) :: Rik&#39;s Treehouse">
-    <meta property="og:description" content="ExportChart Excel Add-In. Save your Excel charts to Gif files for use in web pages or graphic programs. Requires Microsoft Excel 97 or 2000.">
+    <meta property="og:title" content="Mandelbrot Set (2017) :: Rik&#39;s Treehouse">
+    <meta property="og:description" content="Explore the Mandelbrot set and some related fractals.">
     <meta property="og:locale" content="en_us">
-    <meta property="og:type" content="article">
-    <meta property="article:section" content="Computational capers">
-    <meta property="article:published_time" content="2001-02-09T00:01:54-08:00">
-    <meta property="article:modified_time" content="2001-02-09T00:01:54-08:00">
-    <meta itemprop="name" content="ExportChart (1999 - 2001) :: Rik&#39;s Treehouse">
-    <meta itemprop="description" content="ExportChart Excel Add-In. Save your Excel charts to Gif files for use in web pages or graphic programs. Requires Microsoft Excel 97 or 2000.">
-    <meta itemprop="datePublished" content="2001-02-09T00:01:54-08:00">
-    <meta itemprop="dateModified" content="2001-02-09T00:01:54-08:00">
-    <title>ExportChart (1999 - 2001) :: Rik&#39;s Treehouse</title>
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Mandelbrot Set (2017) :: Rik&#39;s Treehouse">
+    <meta itemprop="description" content="Explore the Mandelbrot set and some related fractals.">
+    <meta itemprop="datePublished" content="2017-10-06T16:34:42-08:00">
+    <meta itemprop="dateModified" content="2017-10-06T16:34:42-08:00">
+    <meta itemprop="wordCount" content="269">
+    <title>Mandelbrot Set (2017) :: Rik&#39;s Treehouse</title>
+    <link href="/~rikblok/science/models/mandelbrot_set/index.xml" rel="alternate" type="application/rss+xml" title="Mandelbrot Set (2017) :: Rik&#39;s Treehouse">
     <link href="/~rikblok/css/fontawesome-all.min.css?1740007169" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1740007169" rel="stylesheet"></noscript>
     <link href="/~rikblok/css/auto-complete.css?1740007169" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1740007169" rel="stylesheet"></noscript>
     <link href="/~rikblok/css/perfect-scrollbar.min.css?1740007169" rel="stylesheet">
@@ -87,7 +85,7 @@
 
 
   </head>
-  <body class="mobile-support html" data-url="/~rikblok/compute/orphanware/exportchart/index.html">
+  <body class="mobile-support html" data-url="/~rikblok/science/models/mandelbrot_set/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -98,20 +96,28 @@
             </div>
             <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
               <div class="topbar-content">
-                <div class="topbar-content-wrapper"> 
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#1-demonstration">1 Demonstration</a></li>
+    <li><a href="#2-mappings">2 Mappings</a></li>
+    <li><a href="#3-other-implementations-and-examples">3 Other implementations and examples</a></li>
+    <li><a href="#4-references">4 References</a></li>
+  </ul>
+</nav>
                 </div>
               </div>
             </div>
           </div>
           <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/compute/index.html"><span itemprop="name">Computational capers</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/compute/orphanware/index.html"><span itemprop="name">Orphanware</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">ExportChart (1999 - 2001)</span><meta itemprop="position" content="3"></li>
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/science/index.html"><span itemprop="name">Scientific scribblings</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/science/models/index.html"><span itemprop="name">Models</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Mandelbrot Set (2017)</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/compute/orphanware/index.html" title="Orphanware (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/science/models/brown2009/index.html" title="A Trojan horse approach to medical intervention strategies (2017) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/math/index.html" title="Mathematical musings (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/science/since_i_was_born/index.html" title="Since I was born (2022) (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
@@ -125,13 +131,132 @@
         </div>
       </nav>
       <div id="R-main-overlay"></div>
-      <main id="R-body-inner" class="highlightable compute" tabindex="-1">
+      <main id="R-body-inner" class="highlightable section" tabindex="-1">
         <div class="flex-block-wrapper">
 <article class="default">
   <header class="headline">
   </header>
 
-<h1 id="exportchart-1999---2001">ExportChart (1999 - 2001)</h1>
+<h1 id="mandelbrot-set-2017">Mandelbrot Set (2017)</h1>
+
+<p>A <a href="http://ccl.northwestern.edu/netlogo/" rel="external" target="_blank">NetLogo</a> 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#wilenskynetlogo1999"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Uri"><span itemprop="familyName">Wilensky</span></span>,&#32;<span itemprop="datePublished">1999</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/WebPage"
+      data-type="webpage"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Wilensky</span>,&#32;
+    <meta itemprop="givenName" content="Uri" />
+    U.</span>(<span itemprop="datePublished">1999</span>).&#32;Retrieved from&#32;
+  <a href="http://ccl.northwestern.edu/netlogo/"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://ccl.northwestern.edu/netlogo/</a></span>
+
+
+
+
+</span></span>)</span>
+ model by Rik Blok.</p>
+<p>Explore the <a href="https://en.wikipedia.org/wiki/Mandelbrot_set" rel="external" target="_blank">Mandelbrot Set</a> and these related fractals:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Multibrot_set" rel="external" target="_blank">Multibrot set</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Tricorn_%28mathematics%29" rel="external" target="_blank">Mandelbar set</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Burning_Ship_fractal" rel="external" target="_blank">Burning ship</a></li>
+</ul>
+<p align="center"><iframe title="" src="https://netlogoweb.org/web?https://raw.githubusercontent.com/rikblok/NetLogo-models/master/mandelbrotset-web.nlogo" style="width:702px; height:706px"></iframe></p>
+<h2 id="1-demonstration">1 Demonstration</h2>
+<iframe title="" src="https://www.youtube.com/embed/kgoaqCKEzNk" style="width:640px; height:480px"></iframe>
+<p>This movie was made by turning on the <strong>record-png</strong> switch and the <strong>zoom-every</strong> button, and setting the <strong>jump-size</strong> to 1%.  The sequence of <a href="https://en.wikipedia.org/wiki/Portable_Network_Graphics" rel="external" target="_blank">PNG images</a> were stitched together and set to <a href="https://en.wikipedia.org/wiki/William_Tell_Overture" rel="external" target="_blank">Rossini&rsquo;s William Tell Overture Finale</a> with Windows Live Movie Maker.</p>
+<h2 id="2-mappings">2 Mappings</h2>
+<p>Each fractal is defined by a <a href="https://en.wikipedia.org/wiki/Function_%28mathematics%29" rel="external" target="_blank">function</a> in the <a href="https://en.wikipedia.org/wiki/Complex_plane" rel="external" target="_blank">complex plane</a>.  Starting with an initial value z=0, each point c in the plane is repeatedly iterated through the map, z → f(z,c).  The mapping function is characterized by an exponent, d (<strong>d-multibrot-exp</strong> slider in the simulation), as follows:</p>
+<ul>
+<li>Mandelbrot: f(z,c) = z<sup>2</sup> + c (same as Multibrot with d=2)</li>
+<li>Multibrot: f(z,c) = z<sup>d</sup> + c</li>
+<li>Mandelbar: f(z,c) = <a href="https://en.wikipedia.org/wiki/Complex_conjugate" rel="external" target="_blank">Conj</a>(z)<sup>d</sup> + c</li>
+<li>Burning ship: f(z,c) = (|<a href="https://en.wikipedia.org/wiki/Real_part" rel="external" target="_blank">Re</a>(z)| + <a href="https://en.wikipedia.org/wiki/Imaginary_unit" rel="external" target="_blank">i</a> |<a href="https://en.wikipedia.org/wiki/Imaginary_part" rel="external" target="_blank">Im</a>(z)|)<sup>d</sup> + c</li>
+</ul>
+<p>A point c is excluded from the set if the value z diverges after repeated iteration.  In the simulation, excluded points are painted a color indicating how many iterations were required to decide they have diverged.  Black points indicate undecided candidates that may belong to the set.</p>
+<h2 id="3-other-implementations-and-examples">3 Other implementations and examples</h2>
+<p>This implementation of the Mandelbrot set is neither fast nor beautiful &ndash; it&rsquo;s just a proof of concept and a demonstration of how to code in <a href="http://ccl.northwestern.edu/netlogo/" rel="external" target="_blank">NetLogo</a>.  If you&rsquo;re interested in the Mandelbrot set or similar fractals, check out these excellent pages:</p>
+<ul>
+<li><a href="http://juliamap.googlelabs.com" rel="external" target="_blank">Google&rsquo;s Julia Map</a></li>
+<li><a href="http://vimeo.com/12185093" rel="external" target="_blank">Last Lights On</a> - video of Mandelbrot zoom to 10<sup>228</sup></li>
+</ul>
+<h2 id="4-references">4 References</h2>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+<section class="hugo-cite-bibliography">
+  <dl>
+    
+
+      <div id="wilenskynetlogo1999">
+        <dt>
+          Wilensky
+
+          
+          (1999)</dt>
+
+        <dd>
+          
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/WebPage"
+      data-type="webpage"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Wilensky</span>,&#32;
+    <meta itemprop="givenName" content="Uri" />
+    U.</span>(<span itemprop="datePublished">1999</span>).&#32;Retrieved from&#32;
+  <a href="http://ccl.northwestern.edu/netlogo/"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://ccl.northwestern.edu/netlogo/</a></span>
+
+
+
+
+</dd>
+
+      </div>
+  </dl>
+</section>
+
+
 
 
   <footer class="footline">
@@ -179,17 +304,17 @@ Rik&#39;s Treehouse
         <div id="R-shortcutmenu-home" class="R-sidebarmenu">
           <ul class="enlarge morespace collapsible-menu">
             <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
-            <li class="parent " data-nav-id="/~rikblok/compute/index.html"><a class="padding" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu">
-            <li class="" data-nav-id="/~rikblok/compute/trends/index.html"><a class="padding" href="/~rikblok/compute/trends/index.html">Trends in Computing (2011)</a></li>
-            <li class="parent alwaysopen " data-nav-id="/~rikblok/compute/orphanware/index.html"><a class="padding" href="/~rikblok/compute/orphanware/index.html">Orphanware</a><ul id="R-subsections-fce2e90aa26b68a25b1fe569731ceecc" class="collapsible-menu">
-            <li class="crosslink " data-nav-id="/~rikblok/orphanware/toolbar/"><a class="padding" href="/~rikblok/orphanware/toolbar/">Toolbar (1999 - 2003)</a></li>
-            <li class="crosslink " data-nav-id="/~rikblok/orphanware/r2dtoo/"><a class="padding" href="/~rikblok/orphanware/r2dtoo/">R2DToo (2001 - 2003)</a></li>
-            <li class="crosslink " data-nav-id="/~rikblok/orphanware/runieas/"><a class="padding" href="/~rikblok/orphanware/runieas/">RunIEAs (2001 - 2002)</a></li>
-            <li class="active crosslink " data-nav-id="/~rikblok/orphanware/exportchart/"><a class="padding" href="/~rikblok/orphanware/exportchart/">ExportChart (1999 - 2001)</a></li>
-            <li class="crosslink " data-nav-id="/~rikblok/orphanware/eqnpreview/"><a class="padding" href="/~rikblok/orphanware/eqnpreview/">TeX Equation Previewer (1999 - 2000)</a></li></ul></li></ul></li>
+            <li class="" data-nav-id="/~rikblok/compute/index.html"><a class="padding" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu"></ul></li>
             <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
             <li class="" data-nav-id="/~rikblok/research/index.html"><a class="padding" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu">
+            <li class="parent alwaysopen " data-nav-id="/~rikblok/science/models/index.html"><a class="padding" href="/~rikblok/science/models/index.html">Models</a><ul id="R-subsections-c61e93325435f6b5622b2acdf7d55a4f" class="collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/science/models/game_of_life/index.html"><a class="padding" href="/~rikblok/science/models/game_of_life/index.html">Conway&#39;s Game of Life (2020)</a></li>
+            <li class="" data-nav-id="/~rikblok/science/models/brown2009/index.html"><a class="padding" href="/~rikblok/science/models/brown2009/index.html">A Trojan horse approach to medical intervention strategies (2017)</a></li>
+            <li class="active " data-nav-id="/~rikblok/science/models/mandelbrot_set/index.html"><a class="padding" href="/~rikblok/science/models/mandelbrot_set/index.html">Mandelbrot Set (2017)</a></li></ul></li>
+            <li class="" data-nav-id="/~rikblok/science/since_i_was_born/index.html"><a class="padding" href="/~rikblok/science/since_i_was_born/index.html">Since I was born (2022)</a></li>
+            <li class="" data-nav-id="/~rikblok/science/curious_skeptic/index.html"><a class="padding" href="/~rikblok/science/curious_skeptic/index.html">The curious skeptic (2008)</a></li>
+            <li class="" data-nav-id="/~rikblok/science/onion_of_science/index.html"><a class="padding" href="/~rikblok/science/onion_of_science/index.html">The onion of Science (2002)</a></li></ul></li>
           </ul>
         </div>
     
@@ -205,7 +330,7 @@ Rik&#39;s Treehouse
                   <div class="control-style">
                     <label class="a11y-only" for="R-select-language">Language</label>
                     <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/compute/orphanware/exportchart/index.html" lang="en-us" selected></option>
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/science/models/mandelbrot_set/index.html" lang="en-us" selected></option>
                     </select>
                   </div>
                   <div class="clear"></div>

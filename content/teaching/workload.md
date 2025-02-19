@@ -14,7 +14,7 @@ You reached out to me and now you're wondering, "That a{{% icon icon="skull-cros
 <!-- for embed code: Google Drive on web > double-click image > Open in new window > Embed item... [Rik, 2024-12-23] -->
 
 {{% tab title="1 week" %}}
-<iframe src="https://drive.google.com/file/d/10OjnUTLgN2oJVSwtxKNhNCpumJW4P038/preview" width="720" height="405" allow="autoplay"></iframe>
+<iframe src="https://drive.google.com/file/d/1sPvKAUnCLD1wI1kiatAx3Tc4a-awK3-H/preview" width="720" height="405" allow="autoplay"></iframe>
 
 Chart shows daily maximum workload. 
 {{% /tab %}}
