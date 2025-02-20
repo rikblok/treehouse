@@ -12,7 +12,7 @@ A [NetLogo] {{< cite "wilenskyNetLogo1999" >}} model by Rik Blok.
 In the early 1980s [Robert Axelrod](https://en.wikipedia.org/wiki/Robert%20Axelrod) invited colleagues to submit strategies to a series of round-robin tournaments {{< cite "axelrodEvolution1981" >}} to see which strategies would do well playing an [iterated Prisoner's Dilemma](https://en.wikipedia.org/wiki/Prisoner%2527s_dilemma#The_iterated_prisoner.27s_dilemma).  This [NetLogo] model allows you to try [Axelrod's tournaments](https://en.wikipedia.org/wiki/The_Evolution_of_Cooperation#Axelrod.27s_tournaments) yourself by creating some strategies and testing them in an iterated Prisoner's Dilemma.
 
 
-<p align="center"><iframe title="" src="http://netlogoweb.org/web?https://raw.githubusercontent.com/rikblok/NetLogo-models/master/axelrod-tournament.nlogo" style="width:762px; height:804px"></iframe></p>
+<p align="center"><iframe title="" src="https://netlogoweb.org/web?https://raw.githubusercontent.com/rikblok/NetLogo-models/master/axelrod-tournament.nlogo" style="width:762px; height:804px"></iframe></p>
 
 
 How can cooperation arise and persist when there is a temptation to "defect" from cooperation for personal gain? [Cooperation](https://en.wikipedia.org/wiki/Cooperation) is a well-studied problem in economics, social sciences, and evolution.
