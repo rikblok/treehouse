@@ -5,24 +5,24 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.139.0">
     <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
-    <meta name="description" content="Science is both my work and my play. That doesn’t mean I’m particularly bright or hard-working, just that I’m curious. Because that’s the main ingredient for doing good science. (A healthy dose of skepticism helps, too.)">
+    <meta name="description" content="I got thinking about how fires work today. Why do flames curl into whorls and some tongues lick up so high? I built this model to see how hard it was to reproduce the phenomenon. This is the result. I don’t think it captures much of the underlying mechanism but it looks pretty hot 🙂">
     <meta name="author" content="Rik Blok">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Scientific scribblings :: Rik&#39;s Treehouse">
-    <meta name="twitter:description" content="Science is both my work and my play. That doesn’t mean I’m particularly bright or hard-working, just that I’m curious. Because that’s the main ingredient for doing good science. (A healthy dose of skepticism helps, too.)">
-    <meta property="og:url" content="https://www.cs.ubc.ca/~rikblok/science/index.html">
+    <meta name="twitter:title" content="Flame (2017) :: Rik&#39;s Treehouse">
+    <meta name="twitter:description" content="I got thinking about how fires work today. Why do flames curl into whorls and some tongues lick up so high? I built this model to see how hard it was to reproduce the phenomenon. This is the result. I don’t think it captures much of the underlying mechanism but it looks pretty hot 🙂">
+    <meta property="og:url" content="https://www.cs.ubc.ca/~rikblok/science/models/flame/index.html">
     <meta property="og:site_name" content="Rik&#39;s Treehouse">
-    <meta property="og:title" content="Scientific scribblings :: Rik&#39;s Treehouse">
-    <meta property="og:description" content="Science is both my work and my play. That doesn’t mean I’m particularly bright or hard-working, just that I’m curious. Because that’s the main ingredient for doing good science. (A healthy dose of skepticism helps, too.)">
+    <meta property="og:title" content="Flame (2017) :: Rik&#39;s Treehouse">
+    <meta property="og:description" content="I got thinking about how fires work today. Why do flames curl into whorls and some tongues lick up so high? I built this model to see how hard it was to reproduce the phenomenon. This is the result. I don’t think it captures much of the underlying mechanism but it looks pretty hot 🙂">
     <meta property="og:locale" content="en_us">
     <meta property="og:type" content="website">
-    <meta itemprop="name" content="Scientific scribblings :: Rik&#39;s Treehouse">
-    <meta itemprop="description" content="Science is both my work and my play. That doesn’t mean I’m particularly bright or hard-working, just that I’m curious. Because that’s the main ingredient for doing good science. (A healthy dose of skepticism helps, too.)">
-    <meta itemprop="datePublished" content="2024-12-28T17:38:10-08:00">
-    <meta itemprop="dateModified" content="2024-12-28T17:38:10-08:00">
-    <meta itemprop="wordCount" content="391">
-    <title>Scientific scribblings :: Rik&#39;s Treehouse</title>
-    <link href="/~rikblok/science/index.xml" rel="alternate" type="application/rss+xml" title="Scientific scribblings :: Rik&#39;s Treehouse">
+    <meta itemprop="name" content="Flame (2017) :: Rik&#39;s Treehouse">
+    <meta itemprop="description" content="I got thinking about how fires work today. Why do flames curl into whorls and some tongues lick up so high? I built this model to see how hard it was to reproduce the phenomenon. This is the result. I don’t think it captures much of the underlying mechanism but it looks pretty hot 🙂">
+    <meta itemprop="datePublished" content="2017-10-06T16:34:42-08:00">
+    <meta itemprop="dateModified" content="2017-10-06T16:34:42-08:00">
+    <meta itemprop="wordCount" content="115">
+    <title>Flame (2017) :: Rik&#39;s Treehouse</title>
+    <link href="/~rikblok/science/models/flame/index.xml" rel="alternate" type="application/rss+xml" title="Flame (2017) :: Rik&#39;s Treehouse">
     <link href="/~rikblok/css/fontawesome-all.min.css?1740033550" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1740033550" rel="stylesheet"></noscript>
     <link href="/~rikblok/css/auto-complete.css?1740033550" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1740033550" rel="stylesheet"></noscript>
     <link href="/~rikblok/css/perfect-scrollbar.min.css?1740033550" rel="stylesheet">
@@ -30,8 +30,8 @@
     <link href="/~rikblok/css/format-html.min.css?1740033550" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.relBasePath='..';
-      window.relearn.relBaseUri='..\/..';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..';
       window.relearn.absBaseUri='https:\/\/www.cs.ubc.ca\/~rikblok';
       window.relearn.min = `.min`;
       window.relearn.disableAnchorCopy=false;
@@ -85,7 +85,7 @@
 
 
   </head>
-  <body class="mobile-support html" data-url="/~rikblok/science/index.html">
+  <body class="mobile-support html" data-url="/~rikblok/science/models/flame/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -96,18 +96,25 @@
             </div>
             <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
               <div class="topbar-content">
-                <div class="topbar-content-wrapper"> 
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
                 </div>
               </div>
             </div>
           </div>
           <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Scientific scribblings</span><meta itemprop="position" content="1"></li>
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/science/index.html"><span itemprop="name">Scientific scribblings</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/science/models/index.html"><span itemprop="name">Models</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Flame (2017)</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/research/notes/discounted_least_squares/index.html" title="Discounted Least Squares (1997) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/science/models/brown2009/index.html" title="A Trojan horse approach to medical intervention strategies (2017) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/science/models/index.html" title="Models (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/science/models/mandelbrot_set/index.html" title="Mandelbrot Set (2017) (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
@@ -127,20 +134,105 @@
   <header class="headline">
   </header>
 
-<h1 id="scientific-scribblings">Scientific scribblings</h1>
+<h1 id="flame-2017">Flame (2017)</h1>
 
-<p>Science is both my work and my play. That doesn&rsquo;t mean I&rsquo;m particularly bright or hard-working, just that I&rsquo;m curious. Because that&rsquo;s the main ingredient for doing good science. (A healthy dose of skepticism helps, too.)</p>
-<ul class="children children-li children-sort-">
-  <li><a href="/~rikblok/science/models/index.html">Models</a><p>I&rsquo;m interested in the patterns that can emerge when many (often simple) elements interact.  It is often required to build models of these kinds of systems to study their behaviour.</p><ul>
-  <li><a href="/~rikblok/science/models/game_of_life/index.html">Conway&#39;s Game of Life (2020)</a><p>This NetLogo model implements Conway&rsquo;s Game of Life, a cellular automaton John Horton Conway designed to be difficult to anticipate the dynamics of starting patterns.  This implementation incorporates some ideas I focused on in my research: finite-size effects and asynchronous updating.</p></li>
-  <li><a href="/~rikblok/science/models/axelrods_tournament/index.html">Axelrod&#39;s tournament (2018)</a><p>In the early 1980s Robert Axelrod invited colleagues to submit strategies to a series of round-robin tournaments to see which strategies would do well playing an iterated Prisoner&rsquo;s Dilemma.  This NetLogo model allows you to try Axelrod&rsquo;s tournaments yourself by creating some strategies and testing them in an iterated Prisoner&rsquo;s Dilemma.</p></li>
-  <li><a href="/~rikblok/science/models/brown2009/index.html">A Trojan horse approach to medical intervention strategies (2017)</a><p>I recently read an interesting review paper that explores the possibility of fighting a bacterial infection with Darwinian medicine through the introduction of a &ldquo;cheater&rdquo; strain of bacteria into a wild population.  I extended the analytic model in the paper to an agent-based model with explicit spatial structure.</p></li>
-  <li><a href="/~rikblok/science/models/flame/index.html">Flame (2017)</a><p>I got thinking about how fires work today. Why do flames curl into whorls and some tongues lick up so high? I built this model to see how hard it was to reproduce the phenomenon. This is the result. I don&rsquo;t think it captures much of the underlying mechanism but it looks pretty hot 🙂</p></li>
-  <li><a href="/~rikblok/science/models/mandelbrot_set/index.html">Mandelbrot Set (2017)</a><p>Explore the Mandelbrot set and some related fractals.</p></li></ul></li>
-  <li><a href="/~rikblok/science/since_i_was_born/index.html">Since I was born (2022)</a><p>The world&rsquo;s spinning fast.  Sometimes I forget about how much science and technology have progressed in my lifetime.  Here are some advances to help remind me.</p><ul></ul></li>
-  <li><a href="/~rikblok/science/curious_skeptic/index.html">The curious skeptic (2008)</a><p>Here&rsquo;s what drives me as a teacher.</p><ul></ul></li>
-  <li><a href="/~rikblok/science/onion_of_science/index.html">The onion of Science (2002)</a><p>I often have people ask me what I do for a living. Because my research projects are so varied I like to give a different answer each time. Nevertheless, the question has forced me to evaluate my role as a scientist. This page is an attempt to explain what I believe science is all about and where my work fits in&hellip;</p><ul></ul></li>
-</ul>
+<p>A <a href="http://ccl.northwestern.edu/netlogo/" rel="external" target="_blank">NetLogo</a> 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#wilenskynetlogo1999"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Uri"><span itemprop="familyName">Wilensky</span></span>,&#32;<span itemprop="datePublished">1999</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/WebPage"
+      data-type="webpage"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Wilensky</span>,&#32;
+    <meta itemprop="givenName" content="Uri" />
+    U.</span>(<span itemprop="datePublished">1999</span>).&#32;Retrieved from&#32;
+  <a href="http://ccl.northwestern.edu/netlogo/"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://ccl.northwestern.edu/netlogo/</a></span>
+
+
+
+
+</span></span>)</span>
+ model by Rik Blok.</p>
+<p>I got thinking about how fires work today. Why do flames curl into whorls and some tongues lick up so high? I built this model to see how hard it was to reproduce the phenomenon. This is the result. I don&rsquo;t think it captures much of the underlying mechanism but it looks pretty hot 🙂</p>
+<p align="center"><iframe title="" src="http://netlogoweb.org/web?https://raw.githubusercontent.com/rikblok/NetLogo-models/master/flame.nlogo" style="width:699px; height:587px"></iframe></p>
+<p>This is a simple particle-based simulation of flames.  Individual &ldquo;particles&rdquo; of flame are produced at the bottom of the world and burn as they float up.  It&rsquo;s not meant to capture real fire dynamics but just simulate the look.</p>
+<h2 id="references">References</h2>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+<section class="hugo-cite-bibliography">
+  <dl>
+    
+
+      <div id="wilenskynetlogo1999">
+        <dt>
+          Wilensky
+
+          
+          (1999)</dt>
+
+        <dd>
+          
+
+
+
+
+
+
+
+
+
+
+<span itemscope
+      itemtype="https://schema.org/WebPage"
+      data-type="webpage"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Wilensky</span>,&#32;
+    <meta itemprop="givenName" content="Uri" />
+    U.</span>(<span itemprop="datePublished">1999</span>).&#32;Retrieved from&#32;
+  <a href="http://ccl.northwestern.edu/netlogo/"
+     itemprop="identifier"
+     itemtype="https://schema.org/URL">http://ccl.northwestern.edu/netlogo/</a></span>
+
+
+
+
+</dd>
+
+      </div>
+  </dl>
+</section>
+
+
+
 
   <footer class="footline">
   </footer>
@@ -190,8 +282,13 @@ Rik&#39;s Treehouse
             <li class="" data-nav-id="/~rikblok/compute/index.html"><a class="padding" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu"></ul></li>
             <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
             <li class="" data-nav-id="/~rikblok/research/index.html"><a class="padding" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu"></ul></li>
-            <li class="active parent " data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu">
-            <li class="alwaysopen " data-nav-id="/~rikblok/science/models/index.html"><a class="padding" href="/~rikblok/science/models/index.html">Models</a><ul id="R-subsections-c61e93325435f6b5622b2acdf7d55a4f" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu">
+            <li class="parent alwaysopen " data-nav-id="/~rikblok/science/models/index.html"><a class="padding" href="/~rikblok/science/models/index.html">Models</a><ul id="R-subsections-c61e93325435f6b5622b2acdf7d55a4f" class="collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/science/models/game_of_life/index.html"><a class="padding" href="/~rikblok/science/models/game_of_life/index.html">Conway&#39;s Game of Life (2020)</a></li>
+            <li class="" data-nav-id="/~rikblok/science/models/axelrods_tournament/index.html"><a class="padding" href="/~rikblok/science/models/axelrods_tournament/index.html">Axelrod&#39;s tournament (2018)</a></li>
+            <li class="" data-nav-id="/~rikblok/science/models/brown2009/index.html"><a class="padding" href="/~rikblok/science/models/brown2009/index.html">A Trojan horse approach to medical intervention strategies (2017)</a></li>
+            <li class="active " data-nav-id="/~rikblok/science/models/flame/index.html"><a class="padding" href="/~rikblok/science/models/flame/index.html">Flame (2017)</a></li>
+            <li class="" data-nav-id="/~rikblok/science/models/mandelbrot_set/index.html"><a class="padding" href="/~rikblok/science/models/mandelbrot_set/index.html">Mandelbrot Set (2017)</a></li></ul></li>
             <li class="" data-nav-id="/~rikblok/science/since_i_was_born/index.html"><a class="padding" href="/~rikblok/science/since_i_was_born/index.html">Since I was born (2022)</a></li>
             <li class="" data-nav-id="/~rikblok/science/curious_skeptic/index.html"><a class="padding" href="/~rikblok/science/curious_skeptic/index.html">The curious skeptic (2008)</a></li>
             <li class="" data-nav-id="/~rikblok/science/onion_of_science/index.html"><a class="padding" href="/~rikblok/science/onion_of_science/index.html">The onion of Science (2002)</a></li></ul></li>
@@ -210,7 +307,7 @@ Rik&#39;s Treehouse
                   <div class="control-style">
                     <label class="a11y-only" for="R-select-language">Language</label>
                     <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/science/index.html" lang="en-us" selected></option>
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/science/models/flame/index.html" lang="en-us" selected></option>
                     </select>
                   </div>
                   <div class="clear"></div>
