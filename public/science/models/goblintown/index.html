@@ -20,14 +20,14 @@
     <meta itemprop="description" content="This simulation is inspired by the Goblin-town chase scene in the film The Hobbit: An Unexpected Journey (2012).">
     <meta itemprop="datePublished" content="2025-02-22T16:34:42-08:00">
     <meta itemprop="dateModified" content="2025-02-22T16:34:42-08:00">
-    <meta itemprop="wordCount" content="369">
+    <meta itemprop="wordCount" content="521">
     <title>Escape from Goblin-town! (2025) :: Rik&#39;s Treehouse</title>
     <link href="/~rikblok/science/models/goblintown/index.xml" rel="alternate" type="application/rss+xml" title="Escape from Goblin-town! (2025) :: Rik&#39;s Treehouse">
-    <link href="/~rikblok/css/fontawesome-all.min.css?1740295307" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1740295307" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/auto-complete.css?1740295307" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1740295307" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/perfect-scrollbar.min.css?1740295307" rel="stylesheet">
-    <link href="/~rikblok/css/theme.min.css?1740295307" rel="stylesheet">
-    <link href="/~rikblok/css/format-html.min.css?1740295307" rel="stylesheet" id="R-format-style">
+    <link href="/~rikblok/css/fontawesome-all.min.css?1740340445" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1740340445" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/auto-complete.css?1740340445" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1740340445" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar.min.css?1740340445" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1740340445" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1740340445" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..\/..';
@@ -99,6 +99,7 @@
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
+    <li><a href="#examples">Examples</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav>
@@ -199,18 +200,6 @@ Still goblins go faster than dwarves, and these goblins knew the way better (the
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nv">end</span></span></span></code></pre></div>
 <!--
-EXAMPLE for tabs
-;---------------------------------------------------------
-
-to turn-dwarf
-  ;;;;;; YOUR CODE GOES HERE!
-  wiggle 30
-
-  ; TODO: delete this
-  face-towards-escape
-  face-away-from-goblin-sounds
-end
-
 ;---------------------------------------------------------
 
 to turn-goblin
@@ -225,7 +214,64 @@ end
 ;---------------------------------------------------------
 
 -->
-<p>The command <code>wiggle</code> is a <a href="https://ccl.northwestern.edu/netlogo/docs/tutorial3.html" rel="external" target="_blank">procedure</a> I wrote. But it&rsquo;s not very useful &ndash; it just makes the individual randomly turn left or right a bit. Have a look at the <code>face-…</code> procedures in the <strong>NetLogo Code</strong> above. Maybe one of those would be better? Go ahead and replace the command <code>wiggle</code> in the <code>turn-dwarf</code> or <code>turn-goblin</code> procedure, then click <strong>Recompile Code</strong> to try it out. Did your changes work the way you expected? (If not, see if you can figure out why not and try again 🙂)</p>
+<p>The command <code>wiggle</code> is a <a href="https://ccl.northwestern.edu/netlogo/docs/tutorial3.html" rel="external" target="_blank">procedure</a> I wrote. But it&rsquo;s not very useful &ndash; it just makes the individual randomly turn left or right a bit. Have a look at the <code>face-…</code> procedures in the <strong>NetLogo Code</strong> above. Maybe some of those would be better? Go ahead and replace the command <code>wiggle</code> in the <code>turn-dwarf</code> or <code>turn-goblin</code> procedure, then click <strong>Recompile Code</strong> to try it out. Did your changes work the way you expected? (If not, see if you can figure out why not and try again 🙂)</p>
+<h2 id="examples">Examples</h2>
+<p><a href="/~rikblok/science/models/goblintown/index.html#list-1">Listing 1</a> shows some example <code>turn-dwarf</code> and <code>turn-goblin</code> procedures.  Notice that some <code>face-...</code> procedures only turn the individual if they&rsquo;re close enough to &ldquo;hear&rdquo; the target.  So these procedures can be called after other procedures to &ldquo;override&rdquo; the individual&rsquo;s behaviour.  For example, <a href="/~rikblok/science/models/goblintown/index.html#list-1">Listing 1</a> shows that dwarves will try to move towards the exit <strong>except</strong> if they hear goblins nearby; then they will try to avoid the goblins.</p>
+<div id="list-1">
+<div class="tab-panel" data-tab-group="15504c4ac172d855e9eeba36533e14f5">
+  <div class="tab-nav">
+    <div class="tab-nav-title">&#8203;</div>
+    <button
+      data-tab-item="turn-dwarf"
+      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
+      onclick="switchTab('15504c4ac172d855e9eeba36533e14f5','turn-dwarf')"
+    >
+      <span class="tab-nav-text">turn-dwarf</span>
+    </button>
+    <button
+      data-tab-item="turn-goblin"
+      class="tab-nav-button tab-panel-style cstyle initial"
+      onclick="switchTab('15504c4ac172d855e9eeba36533e14f5','turn-goblin')"
+    >
+      <span class="tab-nav-text">turn-goblin</span>
+    </button>
+  </div>
+  <div class="tab-content-container">
+    <div
+      data-tab-item="turn-dwarf"
+      class="tab-content tab-panel-style cstyle initial active">
+      <div class="tab-content-text">
+<div class="highlight wrap-code"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="c1">;---------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">to</span> <span class="nv">turn-dwarf</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">;;;;;; YOUR CODE GOES HERE!</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">face-towards-escape</span>          <span class="c1">; first face exit</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">face-away-from-goblin-sounds</span> <span class="c1">; but if hear goblins, turn away</span>
+</span></span><span class="line"><span class="cl"><span class="nv">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">;---------------------------------------------------------</span></span></span></code></pre></div>
+<p>Listing 1: Example <code>turn-dwarf</code> and <code>turn-goblin</code> procedures demonstrating how to use the <code>face-...</code> procedures.</p>
+      </div>
+    </div>
+    <div
+      data-tab-item="turn-goblin"
+      class="tab-content tab-panel-style cstyle initial">
+      <div class="tab-content-text">
+<div class="highlight wrap-code"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="c1">;---------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">to</span> <span class="nv">turn-goblin</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">;;;;;; YOUR CODE GOES HERE!</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">wiggle</span> <span class="mi">90</span>                 <span class="c1">; first turn up to 90 degrees left/right randomly</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">face-towards-dwarf-sounds</span> <span class="c1">; but if hear dwarves, turn towards</span>
+</span></span><span class="line"><span class="cl"><span class="nv">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">;---------------------------------------------------------</span></span></span></code></pre></div>
+<p>Listing 1: Example <code>turn-dwarf</code> and <code>turn-goblin</code> procedures demonstrating how to use the <code>face-...</code> procedures.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 <h2 id="references">References</h2>
 
   
@@ -299,7 +345,7 @@ Rik&#39;s Treehouse
           </a>
         </div>
         <script>
-          window.index_js_url="/~rikblok/searchindex.en.js?1740295307";
+          window.index_js_url="/~rikblok/searchindex.en.js?1740340445";
         </script>
         <search><form action="/~rikblok/search/index.html" method="get">
           <div class="searchbox default-animation">
@@ -312,12 +358,12 @@ Rik&#39;s Treehouse
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="/~rikblok/js/auto-complete.js?1740295307" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.min.js?1740295307" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1740295307" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1740295307" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.en.min.js?1740295307" defer></script>
-        <script src="/~rikblok/js/search.js?1740295307" defer></script>
+        <script src="/~rikblok/js/auto-complete.js?1740340445" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.min.js?1740340445" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1740340445" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1740340445" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.en.min.js?1740340445" defer></script>
+        <script src="/~rikblok/js/search.js?1740340445" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -396,8 +442,8 @@ Rik&#39;s Treehouse
         </div>
       </div>
     </aside>
-    <script src="/~rikblok/js/clipboard.min.js?1740295307" defer></script>
-    <script src="/~rikblok/js/perfect-scrollbar.min.js?1740295307" defer></script>
+    <script src="/~rikblok/js/clipboard.min.js?1740340445" defer></script>
+    <script src="/~rikblok/js/perfect-scrollbar.min.js?1740340445" defer></script>
     <script>
       function useMathJax( config ){
         window.MathJax = Object.assign( window.MathJax || {}, {
@@ -412,7 +458,7 @@ Rik&#39;s Treehouse
       }
       useMathJax( JSON.parse("{}") );
     </script>
-    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1740295307"></script>
-    <script src="/~rikblok/js/theme.js?1740295307" defer></script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1740340445"></script>
+    <script src="/~rikblok/js/theme.js?1740340445" defer></script>
   </body>
 </html>

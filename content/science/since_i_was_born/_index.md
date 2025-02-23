@@ -58,7 +58,7 @@ Since I was born...
   * 2011 - The world population reached [7 billion people](https://en.wikipedia.org/wiki/World_population#Milestones_by_the_billions).
   * 2012 - The existence of the [Higgs boson](https://en.wikipedia.org/wiki/Higgs%20boson) was confirmed.
   * 2012 - A [man-made object](https://en.wikipedia.org/wiki/Voyager%201) reached [interstellar space](https://en.wikipedia.org/wiki/Outer_space#Interstellar_space). 
-  * 2012 - I [digitized](https://en.wikipedia.org/wiki/Digitization#Analog_texts_to_digital) my entire research library (about 30,000 pages of books and papers) -- strictly electronic from then on.  Also switched pleasure-reading from paper to e-books.  (By 2012 we had accumulated about 100 linear feet of paper books.) 
+  * 2012 - I [digitized](https://en.wikipedia.org/wiki/Digitization#Analog_texts_to_digital) my entire research library (about 30,000 pages of books and papers) -- strictly electronic from then on.  Also switched pleasure-reading from paper to e-books.  (By 2012 we had accumulated about 1,000 paper books.) 
   * 2013 - I switched from [incandescent](https://en.wikipedia.org/wiki/Incandescent_light_bulb) to [LED](https://en.wikipedia.org/wiki/LED_lamp) light bulbs at home.
   * 2015 - I first heard about [CRISPR](https://en.wikipedia.org/wiki/CRISPR_gene_editing), the most powerful gene editing tool to-date.
   * 2015 - An [Ebola virus epidemic in West Africa](https://en.wikipedia.org/wiki/Ebola%20virus%20epidemic%20in%20West%20Africa) killed over 11,000 people -- more than all previous Ebola outbreaks combined.  Also, the first [vaccine for Ebola](https://en.wikipedia.org/wiki/Ebola_vaccine) was developed.

@@ -48,18 +48,6 @@ end
 ```
 
 <!--
-EXAMPLE for tabs
-;---------------------------------------------------------
-
-to turn-dwarf
-  ;;;;;; YOUR CODE GOES HERE!
-  wiggle 30
-
-  ; TODO: delete this
-  face-towards-escape
-  face-away-from-goblin-sounds
-end
-
 ;---------------------------------------------------------
 
 to turn-goblin
@@ -75,7 +63,45 @@ end
 
 -->
 
-The command `wiggle` is a [procedure](https://ccl.northwestern.edu/netlogo/docs/tutorial3.html) I wrote. But it's not very useful -- it just makes the individual randomly turn left or right a bit. Have a look at the `face-…` procedures in the **NetLogo Code** above. Maybe one of those would be better? Go ahead and replace the command `wiggle` in the `turn-dwarf` or `turn-goblin` procedure, then click **Recompile Code** to try it out. Did your changes work the way you expected? (If not, see if you can figure out why not and try again 🙂) 
+The command `wiggle` is a [procedure](https://ccl.northwestern.edu/netlogo/docs/tutorial3.html) I wrote. But it's not very useful -- it just makes the individual randomly turn left or right a bit. Have a look at the `face-…` procedures in the **NetLogo Code** above. Maybe some of those would be better? Go ahead and replace the command `wiggle` in the `turn-dwarf` or `turn-goblin` procedure, then click **Recompile Code** to try it out. Did your changes work the way you expected? (If not, see if you can figure out why not and try again 🙂) 
+
+## Examples
+
+[Listing 1](#list-1) shows some example `turn-dwarf` and `turn-goblin` procedures.  Notice that some `face-...` procedures only turn the individual if they're close enough to "hear" the target.  So these procedures can be called after other procedures to "override" the individual's behaviour.  For example, [Listing 1](#list-1) shows that dwarves will try to move towards the exit **except** if they hear goblins nearby; then they will try to avoid the goblins.
+
+<div id="list-1">
+{{< tabs >}}
+{{% tab title="turn-dwarf" %}}
+```lisp
+;---------------------------------------------------------
+
+to turn-dwarf
+  ;;;;;; YOUR CODE GOES HERE!
+  face-towards-escape          ; first face exit
+  face-away-from-goblin-sounds ; but if hear goblins, turn away
+end
+
+;---------------------------------------------------------
+```
+Listing 1: Example `turn-dwarf` and `turn-goblin` procedures demonstrating how to use the `face-...` procedures.
+{{% /tab %}}
+
+{{% tab title="turn-goblin" %}}
+```lisp
+;---------------------------------------------------------
+
+to turn-goblin
+  ;;;;;; YOUR CODE GOES HERE!
+  wiggle 90                 ; first turn up to 90 degrees left/right randomly
+  face-towards-dwarf-sounds ; but if hear dwarves, turn towards
+end
+
+;---------------------------------------------------------
+```
+Listing 1: Example `turn-dwarf` and `turn-goblin` procedures demonstrating how to use the `face-...` procedures.
+{{% /tab %}}
+{{< /tabs >}}
+</div>
 
 ## References
 
