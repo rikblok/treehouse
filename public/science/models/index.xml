@@ -8,8 +8,15 @@
     <language>en-us</language>
     <managingEditor>rik.blok@ubc.ca (Rik Blok)</managingEditor>
     <webMaster>rik.blok@ubc.ca (Rik Blok)</webMaster>
-    <lastBuildDate>Sat, 29 Feb 2020 16:34:42 -0800</lastBuildDate>
+    <lastBuildDate>Sat, 22 Feb 2025 16:34:42 -0800</lastBuildDate>
     <atom:link href="https://www.cs.ubc.ca/~rikblok/science/models/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Escape from Goblin-town! (2025)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/science/models/goblintown/index.html</link>
+      <pubDate>Sat, 22 Feb 2025 16:34:42 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/science/models/goblintown/index.html</guid>
+      <description>This simulation is inspired by the Goblin-town chase scene in the film The Hobbit: An Unexpected Journey (2012).</description>
+    </item>
     <item>
       <title>Conway&#39;s Game of Life (2020)</title>
       <link>https://www.cs.ubc.ca/~rikblok/science/models/game_of_life/index.html</link>
