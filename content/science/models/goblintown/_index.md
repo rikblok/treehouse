@@ -47,22 +47,6 @@ to turn-goblin
 end
 ```
 
-<!--
-;---------------------------------------------------------
-
-to turn-goblin
-  ;;;;;; YOUR CODE GOES HERE!
-  ;face-random-direction
-  wiggle 90
-
-  ; TODO: delete this
-  face-towards-dwarf-sounds
-end
-
-;---------------------------------------------------------
-
--->
-
 The command `wiggle` is a [procedure](https://ccl.northwestern.edu/netlogo/docs/tutorial3.html) I wrote. But it's not very useful -- it just makes the individual randomly turn left or right a bit. Have a look at the `face-…` procedures in the **NetLogo Code** above. Maybe some of those would be better? Go ahead and replace the command `wiggle` in the `turn-dwarf` or `turn-goblin` procedure, then click **Recompile Code** to try it out. Did your changes work the way you expected? (If not, see if you can figure out why not and try again 🙂) 
 
 ## Examples

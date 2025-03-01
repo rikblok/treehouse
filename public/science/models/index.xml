@@ -32,6 +32,13 @@
       <description>In the early 1980s Robert Axelrod invited colleagues to submit strategies to a series of round-robin tournaments to see which strategies would do well playing an iterated Prisoner’s Dilemma.  This NetLogo model allows you to try Axelrod’s tournaments yourself by creating some strategies and testing them in an iterated Prisoner’s Dilemma.</description>
     </item>
     <item>
+      <title>Aquaworld Radiation Balance (2018)</title>
+      <link>https://www.cs.ubc.ca/~rikblok/science/models/aquaworld/index.html</link>
+      <pubDate>Sat, 06 Jan 2018 16:34:42 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
+      <guid>https://www.cs.ubc.ca/~rikblok/science/models/aquaworld/index.html</guid>
+      <description>This simple radiation balance model shows the greenhouse effect that an atmosphere can have in warming a planet.  By trapping some of the radiation emitted by the planet the atmosphere can cause the surface to become warmer than it otherwise would be.</description>
+    </item>
+    <item>
       <title>A Trojan horse approach to medical intervention strategies (2017)</title>
       <link>https://www.cs.ubc.ca/~rikblok/science/models/brown2009/index.html</link>
       <pubDate>Fri, 06 Oct 2017 16:34:42 -0800</pubDate><author>rik.blok@ubc.ca (Rik Blok)</author>
