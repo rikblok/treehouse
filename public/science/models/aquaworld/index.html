@@ -20,14 +20,14 @@
     <meta itemprop="description" content="This simple radiation balance model shows the greenhouse effect that an atmosphere can have in warming a planet.  By trapping some of the radiation emitted by the planet the atmosphere can cause the surface to become warmer than it otherwise would be.">
     <meta itemprop="datePublished" content="2018-01-06T16:34:42-08:00">
     <meta itemprop="dateModified" content="2018-01-06T16:34:42-08:00">
-    <meta itemprop="wordCount" content="49">
+    <meta itemprop="wordCount" content="1123">
     <title>Aquaworld Radiation Balance (2018) :: Rik&#39;s Treehouse</title>
     <link href="/~rikblok/science/models/aquaworld/index.xml" rel="alternate" type="application/rss+xml" title="Aquaworld Radiation Balance (2018) :: Rik&#39;s Treehouse">
-    <link href="/~rikblok/css/fontawesome-all.min.css?1740817897" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1740817897" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/auto-complete.css?1740817897" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1740817897" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/perfect-scrollbar.min.css?1740817897" rel="stylesheet">
-    <link href="/~rikblok/css/theme.min.css?1740817897" rel="stylesheet">
-    <link href="/~rikblok/css/format-html.min.css?1740817897" rel="stylesheet" id="R-format-style">
+    <link href="/~rikblok/css/fontawesome-all.min.css?1748634669" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1748634669" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/auto-complete.css?1748634669" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1748634669" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar.min.css?1748634669" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1748634669" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1748634669" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..\/..';
@@ -96,7 +96,23 @@
             </div>
             <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
               <div class="topbar-content">
-                <div class="topbar-content-wrapper"> 
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#1-how-it-works">1 How it works</a>
+      <ul>
+        <li><a href="#11-parameters">1.1 Parameters</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-theory">2 Theory</a>
+      <ul>
+        <li><a href="#21-assumptions">2.1 Assumptions</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-references">3 References</a></li>
+    <li><a href="#4-footnotes">4 Footnotes</a></li>
+  </ul>
+</nav>
                 </div>
               </div>
             </div>
@@ -134,59 +150,37 @@
 <p>An <a href="https://insightmaker.com/" rel="external" target="_blank">Insight Maker</a> model by Rik Blok.</p>
 <p>This simple radiation balance model shows the greenhouse effect that an atmosphere can have in warming a planet.  By trapping some of the radiation emitted by the planet the atmosphere can cause the surface to become warmer than it otherwise would be.</p>
 <p align="center"><iframe title="" src="https://insightmaker.com/insight/3HqOIKV2uqUXE20h9hisdP/embed?topBar=0&sideBar=0&zoom=1" style="width:800px; height:600px"></iframe></p>
-<!--
-## 1 How it works
-
-The simulation approximates a Poisson process for each of the above events.  The best known technique would be the Gillespie algorithm 
-
-
-
-
-
-
-
-  
-<span class="hugo-cite-intext"
-        itemprop="citation">(<span class="hugo-cite-group">
-
-          <a href="#gibsonefficient2000"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Michael A."><span itemprop="familyName">Gibson</span></span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Jehoshua"><span itemprop="familyName">Bruck</span></span>,&#32;<span itemprop="datePublished">2000</span></a><span class="hugo-cite-citation"> 
-
-
-
-
-
-
-
-
-
-
-<span itemscope
-      itemtype="https://schema.org/Article"
-      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Gibson</span>,&#32;
-    <meta itemprop="givenName" content="Michael A." />
-    M.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Bruck</span>,&#32;
-    <meta itemprop="givenName" content="Jehoshua" />
-    J.</span>
-  &#32;
-    (<span itemprop="datePublished">2000</span>).
-  &#32;<span itemprop="name">Efficient Exact Stochastic Simulation of Chemical Systems with Many Species and Many Channels</span>.<i>
-    <span itemprop="about">J. Phys. Chem. A</span>,&#32;104(9)</i>.&#32;<span itemprop="pagination">1876–1889</span>.
-  <a href="https://doi.org/10.1021/jp993732q"
-     itemprop="identifier"
-     itemtype="https://schema.org/URL">https://doi.org/10.1021/jp993732q</a></span>
-
-
-
-
-</span></span>)</span>
- but it isn't well suited to NetLogo's strengths.  Instead, time proceeds in steps with multiple events occurring in each timestep.
-
-The step size is adaptive, chosen to achieve a desired error tolerance, compared with the Gillespie algorithm.  When the error tolerance is near zero the likelihood of each event is small and we may expect just a few events to occur per timestep.  Then we're accurately -- but inefficiently -- mimicking the Gillespie algorithm.  As the tolerance increases we have more simultaneous events, lowering accuracy but increasing performance.
-
-
-## 2 Theory
-
-This simulation incorporates three ideas from Section 2 of 
+<h2 id="1-how-it-works">1 How it works</h2>
+<p>Welcome to the Aquaworld radiation balance model.  I want to show some of the factors that determine the temperature of a planet, including incoming/emitted radiation and the greenhouse effect.  Let&rsquo;s say the planet is like earth except it&rsquo;s completely covered in water.  (Earth&rsquo;s surface is about 2/3rds water so it&rsquo;s not a terrible assumption.)</p>
+<p>Incoming solar radiation reaches the planet.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>  Most of the incoming radiation energy is absorbed by the planet&rsquo;s surface but some is reflected back out into space.  Let&rsquo;s take the Surface Albedo (&ldquo;reflectivity&rdquo;) to be 0.3, the same as Earth.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>  The retained solar energy causes the surface to warm.  In this case, we just consider the top 100 meters of our aquaworld.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<p>Notice the surface temperature (shown in degrees Celsius) quickly climbs from its starting value (of absolute zero, which isn&rsquo;t very realistic anyway).  If the surface continued to absorb incoming solar radiation and nothing else happened the planet&rsquo;s temperature would keep increasing without bound.</p>
+<p>But as the planet warms it starts to emit its own (infrared) radiation that slows the rate of warming.</p>
+<p>If we wait longer we see that the planet reaches a steady-state temperature where the incoming and emitted radiation are balanced.</p>
+<!-- Hover your mouse over the curve to see the steady-state surface temperature.  It's pretty cold, about -20C!  (For comparison, Earth's average global temperature is about +14C.) -->
+<p>What effect does the atmosphere have?  The atmosphere is mostly transparent to solar radiation, since it is mostly in the visible wavelengths.  But it absorbs some infrared radiation, such as the radiation from the surface.  I call the fraction absorbed the &ldquo;Greenhouse Effect&rdquo;.</p>
+<p>As we saw for the surface, as the atmosphere absorbs energy it warms up.  The warming atmosphere emits its own radiation, like a black body.  This time, the radiation is emitted both upwards &ndash; escaping out into space &ndash; and back down to the surface, warming it further.  The greenhouse effect makes the atmosphere acts like a blanket, trapping some of the heat emitted by the surface and heating it up.</p>
+<!-- Let's consider the limit where the atmosphere absorbs all of the emitted surface radiation.  As you can see, this causes the surface to warm to +30C, warmer than Earth (+14C)! -->
+<p>Notice also that the atmosphere, like your blanket in a cold room, is colder than what&rsquo;s underneath.</p>
+<p>Now it&rsquo;s your turn.  Can you adjust the strength of the greenhouse effect (the slider on the right) to make the surface temperature match Earth&rsquo;s (+14C)?</p>
+<p>If so, what is the resultant atmosphere temperature predicted by the model?  How well does it compare with actual observations of temperatures near the top of the atmosphere?</p>
+<p>Other things to try: Change the model parameters (in Settings).  Can you represent Mars, Venus, or other planets in the solar system?  How?  Or why not?</p>
+<h3 id="11-parameters">1.1 Parameters</h3>
+<p>This model is deliberately simple, with just a couple parameters that are designed to be varied:</p>
+<ul>
+<li>
+<p><strong>Greenhouse Effect</strong><br />The fraction of surface radiation absorbed by the atmosphere​.  The absorbed radiation heats up the atmosphere causing it to radiate out (back down to the planet and out into space).  Surface radiation that isn&rsquo;t absorbed continues out to space.</p>
+</li>
+<li>
+<p><strong>Surface Albedo</strong><br />The fraction of incoming solar radiation that is reflected back out to space.  Radiation that isn&rsquo;t reflected is absorbed by the surface.<br />&ldquo;The average albedo of <a href="https://en.wikipedia.org/wiki/Earth" rel="external" target="_blank">Earth</a> is about 0.3.&rdquo; &ndash; from <a href="https://en.wikipedia.org/wiki/Albedo#Terrestrial_albedo" rel="external" target="_blank">Wikipedia</a></p>
+</li>
+</ul>
+<p>Besides those variables, there are a few other constants to be found in the &ldquo;Settings&rdquo;, chosen to make <em>Aquaworld</em> similar to Earth:</p>
+<ul>
+<li>
+<p><strong>Distance from sun</strong>, $d$<br />&ldquo;The average distance between the Earth and the Sun is 149.60 million kilometers&rdquo; &ndash; <a href="https://en.wikipedia.org/wiki/Earth%27s_orbit" rel="external" target="_blank">Wikipedia</a></p>
+</li>
+<li>
+<p><strong>Mixing Height</strong><br />&ldquo;The primary heat source for the ocean is solar radiation entering through the top surface.  Almost all of the solar energy flux into the ocean is absorbed in the top 100 m.&rdquo; &ndash; 
 
 
 
@@ -198,8 +192,7 @@ This simulation incorporates three ideas from Section 2 of
 <span class="hugo-cite-intext"
         itemprop="citation">(<span class="hugo-cite-group">
 
-          <a href="#brownsocial2009"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Sam P."><span itemprop="familyName">Brown</span></span>,&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Stuart A."><span itemprop="familyName">West</span></span>
-                  <em>&amp; al.</em>,&#32;<span itemprop="datePublished">2009</span></a><span class="hugo-cite-citation"> 
+          <a href="#hartmannglobal1994"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Dennis L."><span itemprop="familyName">Hartmann</span></span>,&#32;<span itemprop="datePublished">1994</span></a><span class="hugo-cite-citation"> 
 
 
 
@@ -210,408 +203,51 @@ This simulation incorporates three ideas from Section 2 of
 
 
 
-<span itemscope
-      itemtype="https://schema.org/Article"
-      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Brown</span>,&#32;
-    <meta itemprop="givenName" content="Sam P." />
-    S.</span>,&#32;
-  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">West</span>,&#32;
-    <meta itemprop="givenName" content="Stuart A." />
-    S.</span>,&#32;
-  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Diggle</span>,&#32;
-    <meta itemprop="givenName" content="Stephen P." />
-    S.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Griffin</span>,&#32;
-    <meta itemprop="givenName" content="Ashleigh S." />
-    A.</span>
+<span itemscope 
+      itemtype="https://schema.org/Book"
+      data-type="book"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Hartmann</span>,&#32;
+    <meta itemprop="givenName" content="Dennis L." />
+    D.</span>&#32;
+    (<span itemprop="datePublished">1994</span>).
+  &#32;<span itemprop="name">
+    <i>Global Physical Climatology</i></span>.
   &#32;
-    (<span itemprop="datePublished">2009</span>).
-  &#32;<span itemprop="name">Social evolution in micro-organisms and a Trojan horse approach to medical intervention strategies</span>.<i>
-    <span itemprop="about">Philosophical Transactions of the Royal Society B: Biological Sciences</span>,&#32;364(1533)</i>.&#32;<span itemprop="pagination">3157–3168</span>.
-  <a href="https://doi.org/10.1098/rstb.2009.0055"
-     itemprop="identifier"
-     itemtype="https://schema.org/URL">https://doi.org/10.1098/rstb.2009.0055</a></span>
+  <span itemprop="publisher"
+             itemtype="http://schema.org/Organization"
+             itemscope="">
+    <span itemprop="name">Academic Press</span></span>.</span>
 
 
 
 
 </span></span>)</span>
-:
-  * (a) A cheat that does not produce exoproducts (public goods),
-  * (b) Trojan horse cheats, and 
-  * (d) Bacteriocinogen cheat invasion.
-
-Instead of approximating spatial structure with the relatedness factor $r$ in 2(c) "Trojan horse cheat in a spatially structured host" I just explicitly put the bacteria in space -- they diffuse in a two-dimensional continuum with periodic boundaries.
-
-## 3 Numeric model 
-
-Combining (a), (b), and (d) gives the following dynamical equations for the rate of change of the wild ($W$) and cheat ($C$) strain densities:
-
-
-<table id="eq-1" class="equation-wrapper">
-  <tbody style="display: block; width: 100%">
-	<tr style="display: flex; width: 100%; align-items: center;">
-		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">
-\begin{equation}
-\begin{array}{rcrccccl}
-  \frac{dW}{dt} 
-  & = & W ( & \overbrace{1}^{\text{growth}} & \overbrace{- N}^{\text{competition}} & \overbrace{- x}^{\text{costs}} & \overbrace{+ b W / N}^{\text{public good}} & \overbrace{- a C / N}^{\text{toxication}} & \overbrace{- e C / N}^{\text{bacteriocide}} ) \cr
-  \frac{dC}{dt} 
-  & = & C ( & 1 & - N & - q & + b W / N & - a C / N )
-\end{array}
-\end{equation}
-</td>
-		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
-			(1)
-		</td>
-	</tr>
-  </tbody>
-</table>
- 
-
-where
-  * $N = W + C$ is the total bacterial density,
-  * $x$ is the cost of producing the public good,
-  * $q$ is the direct growth cost of the cheat (if any),
-  * $b$ is the benefit of the public good,
-  * $a$ is the strength of the antibacterial toxin, and
-  * $e$ is the efficacy of the bacteriocinogen.
-
-These two equations combine Eqs. (2.1)-(2.5) from 
-
-
-
-
-
-
-
-  
-<span class="hugo-cite-intext"
-        itemprop="citation">(<span class="hugo-cite-group">
-
-          <a href="#brownsocial2009"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Sam P."><span itemprop="familyName">Brown</span></span>,&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Stuart A."><span itemprop="familyName">West</span></span>
-                  <em>&amp; al.</em>,&#32;<span itemprop="datePublished">2009</span></a><span class="hugo-cite-citation"> 
-
-
-
-
-
-
-
-
-
-
-<span itemscope
-      itemtype="https://schema.org/Article"
-      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Brown</span>,&#32;
-    <meta itemprop="givenName" content="Sam P." />
-    S.</span>,&#32;
-  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">West</span>,&#32;
-    <meta itemprop="givenName" content="Stuart A." />
-    S.</span>,&#32;
-  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Diggle</span>,&#32;
-    <meta itemprop="givenName" content="Stephen P." />
-    S.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Griffin</span>,&#32;
-    <meta itemprop="givenName" content="Ashleigh S." />
-    A.</span>
-  &#32;
-    (<span itemprop="datePublished">2009</span>).
-  &#32;<span itemprop="name">Social evolution in micro-organisms and a Trojan horse approach to medical intervention strategies</span>.<i>
-    <span itemprop="about">Philosophical Transactions of the Royal Society B: Biological Sciences</span>,&#32;364(1533)</i>.&#32;<span itemprop="pagination">3157–3168</span>.
-  <a href="https://doi.org/10.1098/rstb.2009.0055"
-     itemprop="identifier"
-     itemtype="https://schema.org/URL">https://doi.org/10.1098/rstb.2009.0055</a></span>
-
-
-
-
-</span></span>)</span>
- -- the effects can be explored separately in the simulation by moving sliders of other parameters to zero.  The numeric dynamics are displayed as faint curves in the "dynamics" and "phase" graphs.  They are included to validate and compare with the agent-based model.
-
-<div id="table-1">
-<div class="tab-panel" data-tab-group="f4221d7c5bdf81d562bbac45e9cfa5f5">
-  <div class="tab-nav">
-    <div class="tab-nav-title">&#8203;</div>
-    <button
-      data-tab-item="table-1"
-      class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('f4221d7c5bdf81d562bbac45e9cfa5f5','table-1')"
-    >
-      <span class="tab-nav-text">Table 1</span>
-    </button>
-  </div>
-  <div class="tab-content-container">
-    <div
-      data-tab-item="table-1"
-      class="tab-content tab-panel-style cstyle initial active">
-      <div class="tab-content-text">
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: center">Figure</th>
-          <th style="text-align: center">$W(0)$,<br /> initial-W-density</th>
-          <th style="text-align: center">$C(0)$,<br /> initial-C-density</th>
-          <th style="text-align: center">$x$,<br /> x-wild-cost</th>
-          <th style="text-align: center">$q$,<br />q-cheater-cost</th>
-          <th style="text-align: center">$b$,<br />b-shared-benefit</th>
-          <th style="text-align: center">$a$,<br />a-toxin-production</th>
-          <th style="text-align: center">$e$,<br />e-bacteriocinogen</th>
-          <th style="text-align: center">well-mixed,<br />$r=0$</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center">4(a)</td>
-          <td style="text-align: center">1.1</td>
-          <td style="text-align: center">0.001</td>
-          <td style="text-align: center">0.1</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">0.2</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">Yes</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">4(b)</td>
-          <td style="text-align: center">1.1</td>
-          <td style="text-align: center">0.001</td>
-          <td style="text-align: center">0.1</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">0.2</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">No</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">4(c)</td>
-          <td style="text-align: center">1.1</td>
-          <td style="text-align: center">0.001</td>
-          <td style="text-align: center">0.1</td>
-          <td style="text-align: center">0.01</td>
-          <td style="text-align: center">0.2</td>
-          <td style="text-align: center">0.5</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">Yes</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">4(d)</td>
-          <td style="text-align: center">1.1</td>
-          <td style="text-align: center">0.001</td>
-          <td style="text-align: center">0.1</td>
-          <td style="text-align: center">0.01</td>
-          <td style="text-align: center">0.2</td>
-          <td style="text-align: center">0.5</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">No</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">4(e)</td>
-          <td style="text-align: center">1.1</td>
-          <td style="text-align: center">0.001</td>
-          <td style="text-align: center">0.1</td>
-          <td style="text-align: center">0.01</td>
-          <td style="text-align: center">0.2</td>
-          <td style="text-align: center">-0.3</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">Yes</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">4(f)</td>
-          <td style="text-align: center">1.1</td>
-          <td style="text-align: center">0.001</td>
-          <td style="text-align: center">0.1</td>
-          <td style="text-align: center">0.01</td>
-          <td style="text-align: center">0.2</td>
-          <td style="text-align: center">-0.3</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">No</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">5(a)</td>
-          <td style="text-align: center">1.1</td>
-          <td style="text-align: center">0.001</td>
-          <td style="text-align: center">0.1</td>
-          <td style="text-align: center">0.15</td>
-          <td style="text-align: center">0.2</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">0.5</td>
-          <td style="text-align: center">Yes</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">5(b)</td>
-          <td style="text-align: center">1.1</td>
-          <td style="text-align: center">0.13</td>
-          <td style="text-align: center">0.1</td>
-          <td style="text-align: center">0.15</td>
-          <td style="text-align: center">0.2</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">0.5</td>
-          <td style="text-align: center">Yes</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">5(c)</td>
-          <td style="text-align: center">1.1</td>
-          <td style="text-align: center">0.001</td>
-          <td style="text-align: center">0.1</td>
-          <td style="text-align: center">0.05</td>
-          <td style="text-align: center">0.2</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">0.5</td>
-          <td style="text-align: center">Yes</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">5(d)</td>
-          <td style="text-align: center">1.1</td>
-          <td style="text-align: center">0.13</td>
-          <td style="text-align: center">0.1</td>
-          <td style="text-align: center">0.05</td>
-          <td style="text-align: center">0.2</td>
-          <td style="text-align: center">0</td>
-          <td style="text-align: center">0.5</td>
-          <td style="text-align: center">Yes</td>
-      </tr>
-  </tbody>
-</table>
-<p>Table 1: Parameter values used in the figures of Brown, West, et al. (2009), for comparison.  The well-mixed cases usually agree with my model dynamics, except for stochastic noise due to demographics (eg. extinction of one type).</p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-
-## 4 Agent-based model 
-
-The numeric model can be derived as a non-spatial limiting case of an agent-based model.  In this model we explicitly represent each individual "agent" in the system instead of treating them as identical and just tracking aggregate population densities.  A convenient approach is to borrow [reaction kinetics](https://en.wikipedia.org/wiki/Chemical_kinetics) from physical chemistry to describe allowed interactions in our model.  
-
-To capture the numeric model we require five types/species[^2]:
-  * $W$ is a wild-type bacterium,
-  * $C$ is a cheat bacterium,
-  * $F$ is a parcel of food,
-  * $T$ is a parcel of toxin, and
-  * $B$ is a parcel of bacteriocinogen.
-
-[^2]: Note the overlapping notation: the symbols for individual agents are re-used to represent the densities of said types.  Hopefully, the context (eg. density in a rate equation) is sufficient to prevent confusion.
-
-We simply allow these agents to interact stochastically at given rates according to the following reactions:
-
-
-<table id="eq-2" class="equation-wrapper">
-  <tbody style="display: block; width: 100%">
-	<tr style="display: flex; width: 100%; align-items: center;">
-		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">
-\begin{equation}
-\begin{array}{rclrcll}
-  N & \xrightarrow{1} & 2 N & & & & \text{(growth)} \cr
-  W + N & \xrightarrow{1} & N, & C + N & \xrightarrow{1} & N & \text{(competition)} \cr
-  W & \xrightarrow{x} & \emptyset, & C & \xrightarrow{q} & \emptyset & \text{(costs)} \cr
-  W & \xrightarrow{b} & W + F, & N + F & \xrightarrow{\beta} & 2 N & \text{(public good)} \cr
-  C & \xrightarrow{a} & C + T, & N + T & \xrightarrow{\delta} & \emptyset & \text{(toxication)} \cr
-  C & \xrightarrow{e} & C + B, & C + B & \xrightarrow{\gamma} & C & \text{(bacteriocide)} \cr
-    & & & W + B & \xrightarrow{\gamma} & \emptyset
-\end{array}
-\end{equation}
-</td>
-		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
-			(2)
-		</td>
-	</tr>
-  </tbody>
-</table>
- 
-
-where $\emptyset$ indicates an absence of products and $N$ is shorthand for either $W$ or $C$.
-
-A moment's review should satisfy the reader that these reactions are reasonable prescriptions.  For example, $W \xrightarrow{b} W + F$ indicates that each wild-type bacterium produces a food parcel at an average rate of $b$ per unit time.  A bacterium that encounters a food parcel consumes it at rate $\beta$ and benefits by reproducing, $N + F \xrightarrow{\beta} 2 N$.
-
-In the agent-based approach we model these processes explicitly and track all of the agents as they are produced, changed, or removed from the system.  To connect with the numeric model we apply the [law of mass action](https://en.wikipedia.org/wiki/Law_of_mass_action) to compute the dynamics of a large, well-mixed population following the above reactions:
-
-
-<table id="eq-3" class="equation-wrapper">
-  <tbody style="display: block; width: 100%">
-	<tr style="display: flex; width: 100%; align-items: center;">
-		<td style="flex-grow: 1; text-align: center; padding-right: 1em; border: none;">
-\begin{equation}
-\begin{array}{rcrccccl}
-  \frac{dW}{dt} 
-  & = & W ( & \overbrace{1}^{\text{growth}} & \overbrace{- N}^{\text{competition}} & \overbrace{- x}^{\text{costs}} & \overbrace{+ \beta F}^{\text{public good}} & \overbrace{- \delta T}^{\text{toxication}} & \overbrace{- \gamma B}^{\text{bacteriocide}} ) \cr
-  \frac{dC}{dt} & = & C ( & 1 & - N & - q & + \beta F & - \delta T ) \cr
-  \frac{dF}{dt} & = &     &   &     &     & b W - \beta F N \cr
-  \frac{dT}{dt} & = &     &   &     &     &           & a C - \delta T N \cr
-  \frac{dB}{dt} & = &     &   &     &     &           &              & e C - \gamma B N.
-\end{array}
-\end{equation}
-</td>
-		<td class="equation-number" style="flex-shrink: 0; text-align: right; white-space: nowrap; border: none;">
-			(3)
-		</td>
-	</tr>
-  </tbody>
-</table>
- 
-
-
-## 5 Quasi-steady-state approximation 
-
-Eq. ([3](#eq-3)) looks much more complicated than Eq. ([1](#eq-1)) we're trying to relate it to.  But we can reduce the system if we assume that the densities $F$, $T$, and $B$ are //fast// variables -- that they respond quickly to perturbations and quickly converge to equilibrium.  If we assume that they converge so quickly that the slow variables ($W$ and $C$) don't change appreciably while the fast ones equilibrate then we can approximate the fast variables as always being in equilibrium -- the [[wp>Michaelis%E2%80%93Menten_kinetics#Quasi-steady-state_approximation | quasi-steady-state approximation]] (QSSA):
-
+.</p>
+</li>
+<li>
+<p><strong>Radius of planet</strong>, $r$<br />&ldquo;A globally-average value [of Earth&rsquo;s radius] is usually considered to be 6,371 kilometres&rdquo;. &ndash; from <a href="https://en.wikipedia.org/wiki/Earth_radius" rel="external" target="_blank">Wikipedia</a></p>
+</li>
+<li>
+<p><strong>Mass of atmosphere</strong><br />&quot;[Earth&rsquo;s] atmosphere has a mass of about 5.15×10<sup>18</sup> kg,&quot; &ndash; from <a href="https://en.wikipedia.org/wiki/Atmosphere_of_Earth" rel="external" target="_blank">Wikipedia</a></p>
+</li>
+</ul>
+<p>You can change these parameters to, for example, compare Aquaworld to other planets.</p>
+<h2 id="2-theory">2 Theory</h2>
+<p>The <a href="https://en.wikipedia.org/wiki/Solar_constant#The_Sun.27s_total_radiation" rel="external" target="_blank">sun&rsquo;s total radiation</a> output is $I_0 = 3.86×10^{26}$ Watts.  That radiation spreads out radially so the density falls off with distance from the sun as the <a href="https://en.wikipedia.org/wiki/Sphere#Surface_area" rel="external" target="_blank">surface area of a sphere</a>.  A planet at a distance $d$ from the sun will receive $I_0 / (4 \pi d^2)$ radiation per unit area with the sun directly overhead.</p>
+<p>Only the sunny side of the planet receives the insolation.  We&rsquo;ll assume our planet is roughly spherical but it turns out not to matter for determining the amount of energy it receives – the important factor is the size of the planet&rsquo;s &ldquo;shadow&rdquo; or cross section.  If the planet has radius $r$ (so, cross-sectional &ldquo;shadow&rdquo; area $\pi r^2$) then the total incoming solar radiation is</p>
 \[
-\begin{array}{rcl}
-  F & = & b W / \beta N \cr
-  C & = & a C / \delta N \cr
-  B & = & e C / \gamma N.
-\end{array}
-\]
-
-Then Eq. ([3](#eq-3)) reduces to exactly Eq. ([1](#eq-1)) and the agent-based model in Eq. ([2](#eq-2)) is an extension of 
-
-
-
-
-
-
-
-  
-<span class="hugo-cite-intext"
-        itemprop="citation">(<span class="hugo-cite-group">
-
-          <a href="#brownsocial2009"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Sam P."><span itemprop="familyName">Brown</span></span>,&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Stuart A."><span itemprop="familyName">West</span></span>
-                  <em>&amp; al.</em>,&#32;<span itemprop="datePublished">2009</span></a><span class="hugo-cite-citation"> 
-
-
-
-
-
-
-
-
-
-
-<span itemscope
-      itemtype="https://schema.org/Article"
-      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Brown</span>,&#32;
-    <meta itemprop="givenName" content="Sam P." />
-    S.</span>,&#32;
-  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">West</span>,&#32;
-    <meta itemprop="givenName" content="Stuart A." />
-    S.</span>,&#32;
-  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Diggle</span>,&#32;
-    <meta itemprop="givenName" content="Stephen P." />
-    S.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Griffin</span>,&#32;
-    <meta itemprop="givenName" content="Ashleigh S." />
-    A.</span>
-  &#32;
-    (<span itemprop="datePublished">2009</span>).
-  &#32;<span itemprop="name">Social evolution in micro-organisms and a Trojan horse approach to medical intervention strategies</span>.<i>
-    <span itemprop="about">Philosophical Transactions of the Royal Society B: Biological Sciences</span>,&#32;364(1533)</i>.&#32;<span itemprop="pagination">3157–3168</span>.
-  <a href="https://doi.org/10.1098/rstb.2009.0055"
-     itemprop="identifier"
-     itemtype="https://schema.org/URL">https://doi.org/10.1098/rstb.2009.0055</a></span>
-
-
-
-
-</span></span>)</span>
- to finite populations.  Unfortunately, finding the conditions to satisfy QSSA is not trivial 
+I(d,r) = I_0 \frac{\pi r^2}{4 \pi d^2} = I_0 \frac{r^2}{4 d^2}.
+\]<p>For example, Earth receives incoming solar radiation</p>
+\[
+I_{\text{Earth}} = I(149.60×10^6 \text{ km}, 6371 \text{ km}) = (3.86×10^{26} \text{ W}) \frac{(6371 \text{ km})^2}{4 (149.60×10^6 \text{ km})^2} = 1.75×10^{17} \text{ W}.
+\]<hr>
+<p>This <a href="https://en.wikipedia.org/wiki/System_dynamics" rel="external" target="_blank">system dynamics</a> model tracks energy stored in various <a href="https://en.wikipedia.org/wiki/Stock_and_flow" rel="external" target="_blank">stocks, and flows</a> between them.</p>
+<p>For most settings, the surface energy (a stock) equilibrates at some level, regardless of starting energy.  To demonstrate that, we start with 0 Joules stored and see how radiation flow balances out after some time.</p>
+<!-- mostly based on HartmannGlobal1994 Fig. 2.3. -->
+<h3 id="21-assumptions">2.1 Assumptions</h3>
+<p>This model makes several important assumptions:</p>
+<ul>
+<li>
+<p>Energy generated in Aquaworld&rsquo;s interior has a negligible influence on its energy budget.  In Section 2.1, Hartmann 
 
 
 
@@ -623,7 +259,7 @@ Then Eq. ([3](#eq-3)) reduces to exactly Eq. ([1](#eq-1)) and the agent-based mo
 <span class="hugo-cite-intext"
         itemprop="citation">(<span class="hugo-cite-group">
 
-          <a href="#segelquasisteadystate1989"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Lee A."><span itemprop="familyName">Segel</span></span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Marshall"><span itemprop="familyName">Slemrod</span></span>,&#32;<span itemprop="datePublished">1989</span></a><span class="hugo-cite-citation"> 
+          <a href="#hartmannglobal1994"><span class="visually-hidden">Citation: </span><span itemprop="datePublished">1994</span></a><span class="hugo-cite-citation"> 
 
 
 
@@ -634,87 +270,34 @@ Then Eq. ([3](#eq-3)) reduces to exactly Eq. ([1](#eq-1)) and the agent-based mo
 
 
 
-<span itemscope
-      itemtype="https://schema.org/Article"
-      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Segel</span>,&#32;
-    <meta itemprop="givenName" content="Lee A." />
-    L.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Slemrod</span>,&#32;
-    <meta itemprop="givenName" content="Marshall" />
-    M.</span>
+<span itemscope 
+      itemtype="https://schema.org/Book"
+      data-type="book"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Hartmann</span>,&#32;
+    <meta itemprop="givenName" content="Dennis L." />
+    D.</span>&#32;
+    (<span itemprop="datePublished">1994</span>).
+  &#32;<span itemprop="name">
+    <i>Global Physical Climatology</i></span>.
   &#32;
-    (<span itemprop="datePublished">1989</span>).
-  &#32;<span itemprop="name">The Quasi-Steady-State Assumption: A Case Study in Perturbation</span>.<i>
-    <span itemprop="about">SIAM Review</span>,&#32;31(3)</i>.&#32;<span itemprop="pagination">446</span>.
-  <a href="https://doi.org/10.1137/1031091"
-     itemprop="identifier"
-     itemtype="https://schema.org/URL">https://doi.org/10.1137/1031091</a></span>
+  <span itemprop="publisher"
+             itemtype="http://schema.org/Organization"
+             itemscope="">
+    <span itemprop="name">Academic Press</span></span>.</span>
 
 
 
 
 </span></span>)</span>
-.  Nevertheless, it should be satisfied if all of the rate constants $\beta$, $\delta$, and $\gamma$ are large.  In the simulation I set them all to the same large constant so we may expect differences between the agent-based and numeric models result from other causes, such as spatial structure.
-
-
-## 6 Spatial structure 
-
-Brown et al. 
-
-
-
-
-
-
-
-  
-<span class="hugo-cite-intext"
-        itemprop="citation">(<span class="hugo-cite-group">
-
-          <a href="#brownsocial2009"><span class="visually-hidden">Citation: </span><span itemprop="datePublished">2009</span></a><span class="hugo-cite-citation"> 
-
-
-
-
-
-
-
-
-
-
-<span itemscope
-      itemtype="https://schema.org/Article"
-      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Brown</span>,&#32;
-    <meta itemprop="givenName" content="Sam P." />
-    S.</span>,&#32;
-  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">West</span>,&#32;
-    <meta itemprop="givenName" content="Stuart A." />
-    S.</span>,&#32;
-  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Diggle</span>,&#32;
-    <meta itemprop="givenName" content="Stephen P." />
-    S.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Griffin</span>,&#32;
-    <meta itemprop="givenName" content="Ashleigh S." />
-    A.</span>
-  &#32;
-    (<span itemprop="datePublished">2009</span>).
-  &#32;<span itemprop="name">Social evolution in micro-organisms and a Trojan horse approach to medical intervention strategies</span>.<i>
-    <span itemprop="about">Philosophical Transactions of the Royal Society B: Biological Sciences</span>,&#32;364(1533)</i>.&#32;<span itemprop="pagination">3157–3168</span>.
-  <a href="https://doi.org/10.1098/rstb.2009.0055"
-     itemprop="identifier"
-     itemtype="https://schema.org/URL">https://doi.org/10.1098/rstb.2009.0055</a></span>
-
-
-
-
-</span></span>)</span>
- create a structured population in Section 2(c) through preferential interactions of the bacteria with kin, mimicking spatial segregation.  Implementing it as an agent-based model  in [NetLogo] allows me to explicitly include space: agents move continuously in a two-dimensional plane with periodic boundary conditions.  Reactions are localized to patches on a square grid.  In the limit of large population size and infinitesimal patch size mass action swamps stochastic effects and the model should become equivalent to a [reaction-diffusion system](https://en.wikipedia.org/wiki/Reaction%E2%80%93diffusion_system).
-
-I arbitrarily chose to allow only the bacteria (wild and cheater types) to move.  Byproducts (food, toxin, & bacteriocinogen) are stationary after being created.  Some other options would be to allow the byproducts to move (for example, as if they were diffusing via [Brownian motion](https://en.wikipedia.org/wiki/Brownian_motion)) or for both bacteria and byproducts to move (possibly at different rates).
-
-Unlike other events, which are treated as probabilistic [stochastic processes](https://en.wikipedia.org/wiki/Stochastic_process), every moving agent moves in every time increment according to a [random walk](https://en.wikipedia.org/wiki/Random_walk), with a jump size is governed by the diffusion constant.  The effects of spatial structure can be minimized by mixing((Enable the __well-mixed__ switch to rapidly stir the system.)).  Only bacteria move so there may still be some spatial effects from the stationary byproducts but the dynamics should be more similar to the numeric ([mean field](https://en.wikipedia.org/wiki/Mean-field_theory)) approximation.
-
-
-## 7 References
-
+ states this is a valid assumption for Earth.</p>
+</li>
+<li>
+<p>The atmosphere is treated as a single, well-mixed layer.  More detailed models split the atmosphere into two or more layers.  Here is an <a href="https://biocycle.atmos.colostate.edu/shiny/2layer/" rel="external" target="_blank">example</a> with a 2-layer atmosphere.</p>
+</li>
+<li>
+<p>Convective heat transfer is ignored.  Here is an <a href="https://biocycle.atmos.colostate.edu/shiny/2layer/" rel="external" target="_blank">example</a> that incorporates convection of heat from the surface to the atmosphere.</p>
+</li>
+</ul>
+<h2 id="3-references">3 References</h2>
 
   
   
@@ -732,14 +315,12 @@ Unlike other events, which are treated as probabilistic [stochastic processes](h
   <dl>
     
 
-      <div id="brownsocial2009">
+      <div id="hartmannglobal1994">
         <dt>
-          Brown,&#32;
-          West,&#32;
-          Diggle&#32;&amp;&#32;Griffin
+          Hartmann
 
           
-          (2009)</dt>
+          (1994)</dt>
 
         <dd>
           
@@ -753,108 +334,19 @@ Unlike other events, which are treated as probabilistic [stochastic processes](h
 
 
 
-<span itemscope
-      itemtype="https://schema.org/Article"
-      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Brown</span>,&#32;
-    <meta itemprop="givenName" content="Sam P." />
-    S.</span>,&#32;
-  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">West</span>,&#32;
-    <meta itemprop="givenName" content="Stuart A." />
-    S.</span>,&#32;
-  <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Diggle</span>,&#32;
-    <meta itemprop="givenName" content="Stephen P." />
-    S.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Griffin</span>,&#32;
-    <meta itemprop="givenName" content="Ashleigh S." />
-    A.</span>
+<span itemscope 
+      itemtype="https://schema.org/Book"
+      data-type="book"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Hartmann</span>,&#32;
+    <meta itemprop="givenName" content="Dennis L." />
+    D.</span>&#32;
+    (<span itemprop="datePublished">1994</span>).
+  &#32;<span itemprop="name">
+    <i>Global Physical Climatology</i></span>.
   &#32;
-    (<span itemprop="datePublished">2009</span>).
-  &#32;<span itemprop="name">Social evolution in micro-organisms and a Trojan horse approach to medical intervention strategies</span>.<i>
-    <span itemprop="about">Philosophical Transactions of the Royal Society B: Biological Sciences</span>,&#32;364(1533)</i>.&#32;<span itemprop="pagination">3157–3168</span>.
-  <a href="https://doi.org/10.1098/rstb.2009.0055"
-     itemprop="identifier"
-     itemtype="https://schema.org/URL">https://doi.org/10.1098/rstb.2009.0055</a></span>
-
-
-
-
-</dd>
-
-      </div>
-
-      <div id="gibsonefficient2000">
-        <dt>
-          Gibson&#32;&amp;&#32;Bruck
-
-          
-          (2000)</dt>
-
-        <dd>
-          
-
-
-
-
-
-
-
-
-
-
-<span itemscope
-      itemtype="https://schema.org/Article"
-      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Gibson</span>,&#32;
-    <meta itemprop="givenName" content="Michael A." />
-    M.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Bruck</span>,&#32;
-    <meta itemprop="givenName" content="Jehoshua" />
-    J.</span>
-  &#32;
-    (<span itemprop="datePublished">2000</span>).
-  &#32;<span itemprop="name">Efficient Exact Stochastic Simulation of Chemical Systems with Many Species and Many Channels</span>.<i>
-    <span itemprop="about">J. Phys. Chem. A</span>,&#32;104(9)</i>.&#32;<span itemprop="pagination">1876–1889</span>.
-  <a href="https://doi.org/10.1021/jp993732q"
-     itemprop="identifier"
-     itemtype="https://schema.org/URL">https://doi.org/10.1021/jp993732q</a></span>
-
-
-
-
-</dd>
-
-      </div>
-
-      <div id="segelquasisteadystate1989">
-        <dt>
-          Segel&#32;&amp;&#32;Slemrod
-
-          
-          (1989)</dt>
-
-        <dd>
-          
-
-
-
-
-
-
-
-
-
-
-<span itemscope
-      itemtype="https://schema.org/Article"
-      data-type="article"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Segel</span>,&#32;
-    <meta itemprop="givenName" content="Lee A." />
-    L.</span>&#32;&amp;&#32;<span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Slemrod</span>,&#32;
-    <meta itemprop="givenName" content="Marshall" />
-    M.</span>
-  &#32;
-    (<span itemprop="datePublished">1989</span>).
-  &#32;<span itemprop="name">The Quasi-Steady-State Assumption: A Case Study in Perturbation</span>.<i>
-    <span itemprop="about">SIAM Review</span>,&#32;31(3)</i>.&#32;<span itemprop="pagination">446</span>.
-  <a href="https://doi.org/10.1137/1031091"
-     itemprop="identifier"
-     itemtype="https://schema.org/URL">https://doi.org/10.1137/1031091</a></span>
+  <span itemprop="publisher"
+             itemtype="http://schema.org/Organization"
+             itemscope="">
+    <span itemprop="name">Academic Press</span></span>.</span>
 
 
 
@@ -867,12 +359,103 @@ Unlike other events, which are treated as probabilistic [stochastic processes](h
 
 
 
+<h2 id="4-footnotes">4 Footnotes</h2>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>At the mean distance of Earth from the sun the intensity is 1367 Watts per square meter 
 
 
 
-## 8 Footnotes
 
--->
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#hartmannglobal1994"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Dennis L."><span itemprop="familyName">Hartmann</span></span>,&#32;<span itemprop="datePublished">1994</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope 
+      itemtype="https://schema.org/Book"
+      data-type="book"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Hartmann</span>,&#32;
+    <meta itemprop="givenName" content="Dennis L." />
+    D.</span>&#32;
+    (<span itemprop="datePublished">1994</span>).
+  &#32;<span itemprop="name">
+    <i>Global Physical Climatology</i></span>.
+  &#32;
+  <span itemprop="publisher"
+             itemtype="http://schema.org/Organization"
+             itemscope="">
+    <span itemprop="name">Academic Press</span></span>.</span>
+
+
+
+
+</span></span>)</span>
+.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>The Surface Albedo is a parameter in this model.  You might explore the effect of changing its value.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>It is known that on Earth the top 100 meters of the oceans mix much quicker than the layers below 
+
+
+
+
+
+
+
+  
+<span class="hugo-cite-intext"
+        itemprop="citation">(<span class="hugo-cite-group">
+
+          <a href="#hartmannglobal1994"><span class="visually-hidden">Citation: </span><span itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="givenName" content="Dennis L."><span itemprop="familyName">Hartmann</span></span>,&#32;<span itemprop="datePublished">1994</span></a><span class="hugo-cite-citation"> 
+
+
+
+
+
+
+
+
+
+
+<span itemscope 
+      itemtype="https://schema.org/Book"
+      data-type="book"><span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="familyName">Hartmann</span>,&#32;
+    <meta itemprop="givenName" content="Dennis L." />
+    D.</span>&#32;
+    (<span itemprop="datePublished">1994</span>).
+  &#32;<span itemprop="name">
+    <i>Global Physical Climatology</i></span>.
+  &#32;
+  <span itemprop="publisher"
+             itemtype="http://schema.org/Organization"
+             itemscope="">
+    <span itemprop="name">Academic Press</span></span>.</span>
+
+
+
+
+</span></span>)</span>
+.  This Mixing Height is another parameter in this model.  You can find it in the Settings.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 
   <footer class="footline">
   </footer>
@@ -889,7 +472,7 @@ Rik&#39;s Treehouse
           </a>
         </div>
         <script>
-          window.index_js_url="/~rikblok/searchindex.en.js?1740817897";
+          window.index_js_url="/~rikblok/searchindex.en.js?1748634669";
         </script>
         <search><form action="/~rikblok/search/index.html" method="get">
           <div class="searchbox default-animation">
@@ -902,12 +485,12 @@ Rik&#39;s Treehouse
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="/~rikblok/js/auto-complete.js?1740817897" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.min.js?1740817897" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1740817897" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1740817897" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.en.min.js?1740817897" defer></script>
-        <script src="/~rikblok/js/search.js?1740817897" defer></script>
+        <script src="/~rikblok/js/auto-complete.js?1748634669" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.min.js?1748634669" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1748634669" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1748634669" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.en.min.js?1748634669" defer></script>
+        <script src="/~rikblok/js/search.js?1748634669" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -987,8 +570,8 @@ Rik&#39;s Treehouse
         </div>
       </div>
     </aside>
-    <script src="/~rikblok/js/clipboard.min.js?1740817897" defer></script>
-    <script src="/~rikblok/js/perfect-scrollbar.min.js?1740817897" defer></script>
+    <script src="/~rikblok/js/clipboard.min.js?1748634669" defer></script>
+    <script src="/~rikblok/js/perfect-scrollbar.min.js?1748634669" defer></script>
     <script>
       function useMathJax( config ){
         window.MathJax = Object.assign( window.MathJax || {}, {
@@ -1003,7 +586,7 @@ Rik&#39;s Treehouse
       }
       useMathJax( JSON.parse("{}") );
     </script>
-    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1740817897"></script>
-    <script src="/~rikblok/js/theme.js?1740817897" defer></script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1748634669"></script>
+    <script src="/~rikblok/js/theme.js?1748634669" defer></script>
   </body>
 </html>

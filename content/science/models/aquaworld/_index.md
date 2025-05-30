@@ -13,151 +13,103 @@ This simple radiation balance model shows the greenhouse effect that an atmosphe
 
 <p align="center"><iframe title="" src="https://insightmaker.com/insight/3HqOIKV2uqUXE20h9hisdP/embed?topBar=0&sideBar=0&zoom=1" style="width:800px; height:600px"></iframe></p>
 
-<!--
 ## 1 How it works
 
-The simulation approximates a Poisson process for each of the above events.  The best known technique would be the Gillespie algorithm {{< cite "gibsonEfficient2000" >}} but it isn't well suited to NetLogo's strengths.  Instead, time proceeds in steps with multiple events occurring in each timestep.
+Welcome to the Aquaworld radiation balance model.  I want to show some of the factors that determine the temperature of a planet, including incoming/emitted radiation and the greenhouse effect.  Let's say the planet is like earth except it's completely covered in water.  (Earth's surface is about 2/3rds water so it's not a terrible assumption.)
 
-The step size is adaptive, chosen to achieve a desired error tolerance, compared with the Gillespie algorithm.  When the error tolerance is near zero the likelihood of each event is small and we may expect just a few events to occur per timestep.  Then we're accurately -- but inefficiently -- mimicking the Gillespie algorithm.  As the tolerance increases we have more simultaneous events, lowering accuracy but increasing performance.
+Incoming solar radiation reaches the planet.[^1]  Most of the incoming radiation energy is absorbed by the planet's surface but some is reflected back out into space.  Let's take the Surface Albedo ("reflectivity") to be 0.3, the same as Earth.[^2]  The retained solar energy causes the surface to warm.  In this case, we just consider the top 100 meters of our aquaworld.[^3]
+
+[^1]: At the mean distance of Earth from the sun the intensity is 1367 Watts per square meter {{< cite "hartmannGlobal1994" >}}.  
+
+[^2]: The Surface Albedo is a parameter in this model.  You might explore the effect of changing its value.
+
+[^3]: It is known that on Earth the top 100 meters of the oceans mix much quicker than the layers below {{< cite "hartmannGlobal1994" >}}.  This Mixing Height is another parameter in this model.  You can find it in the Settings.
+
+Notice the surface temperature (shown in degrees Celsius) quickly climbs from its starting value (of absolute zero, which isn't very realistic anyway).  If the surface continued to absorb incoming solar radiation and nothing else happened the planet's temperature would keep increasing without bound.
+
+But as the planet warms it starts to emit its own (infrared) radiation that slows the rate of warming.
+
+If we wait longer we see that the planet reaches a steady-state temperature where the incoming and emitted radiation are balanced.
+
+<!-- Hover your mouse over the curve to see the steady-state surface temperature.  It's pretty cold, about -20C!  (For comparison, Earth's average global temperature is about +14C.) -->
+
+What effect does the atmosphere have?  The atmosphere is mostly transparent to solar radiation, since it is mostly in the visible wavelengths.  But it absorbs some infrared radiation, such as the radiation from the surface.  I call the fraction absorbed the "Greenhouse Effect".
+
+As we saw for the surface, as the atmosphere absorbs energy it warms up.  The warming atmosphere emits its own radiation, like a black body.  This time, the radiation is emitted both upwards -- escaping out into space -- and back down to the surface, warming it further.  The greenhouse effect makes the atmosphere acts like a blanket, trapping some of the heat emitted by the surface and heating it up.
+
+<!-- Let's consider the limit where the atmosphere absorbs all of the emitted surface radiation.  As you can see, this causes the surface to warm to +30C, warmer than Earth (+14C)! -->
+
+Notice also that the atmosphere, like your blanket in a cold room, is colder than what's underneath.
+
+Now it's your turn.  Can you adjust the strength of the greenhouse effect (the slider on the right) to make the surface temperature match Earth's (+14C)?  
+
+If so, what is the resultant atmosphere temperature predicted by the model?  How well does it compare with actual observations of temperatures near the top of the atmosphere?
+
+Other things to try: Change the model parameters (in Settings).  Can you represent Mars, Venus, or other planets in the solar system?  How?  Or why not?
+
+
+### 1.1 Parameters
+
+This model is deliberately simple, with just a couple parameters that are designed to be varied:
+
+* **Greenhouse Effect**<br />The fraction of surface radiation absorbed by the atmosphere​.  The absorbed radiation heats up the atmosphere causing it to radiate out (back down to the planet and out into space).  Surface radiation that isn't absorbed continues out to space.
+
+* **Surface Albedo**<br />The fraction of incoming solar radiation that is reflected back out to space.  Radiation that isn't reflected is absorbed by the surface.<br />"The average albedo of [Earth](https://en.wikipedia.org/wiki/Earth) is about 0.3." -- from [Wikipedia](https://en.wikipedia.org/wiki/Albedo#Terrestrial_albedo)
+
+Besides those variables, there are a few other constants to be found in the "Settings", chosen to make *Aquaworld* similar to Earth:
+
+* **Distance from sun**, $d$<br />"The average distance between the Earth and the Sun is 149.60 million kilometers" -- [Wikipedia](https://en.wikipedia.org/wiki/Earth%27s_orbit)
+
+* **Mixing Height**<br />"The primary heat source for the ocean is solar radiation entering through the top surface.  Almost all of the solar energy flux into the ocean is absorbed in the top 100 m." -- {{< cite "hartmannGlobal1994" >}}.
+
+* **Radius of planet**, $r$<br />"A globally-average value [of Earth's radius] is usually considered to be 6,371 kilometres". -- from [Wikipedia](https://en.wikipedia.org/wiki/Earth_radius)
+
+* **Mass of atmosphere**<br />"[Earth's] atmosphere has a mass of about 5.15×10<sup>18</sup> kg," -- from [Wikipedia](https://en.wikipedia.org/wiki/Atmosphere_of_Earth)
+
+You can change these parameters to, for example, compare Aquaworld to other planets.
 
 
 ## 2 Theory
 
-This simulation incorporates three ideas from Section 2 of {{< cite "brownSocial2009" >}}:
-  * (a) A cheat that does not produce exoproducts (public goods),
-  * (b) Trojan horse cheats, and 
-  * (d) Bacteriocinogen cheat invasion.
+The [sun's total radiation](https://en.wikipedia.org/wiki/Solar_constant#The_Sun.27s_total_radiation) output is $I_0 = 3.86×10^{26}$ Watts.  That radiation spreads out radially so the density falls off with distance from the sun as the [surface area of a sphere](https://en.wikipedia.org/wiki/Sphere#Surface_area).  A planet at a distance $d$ from the sun will receive $I_0 / (4 \pi d^2)$ radiation per unit area with the sun directly overhead.
 
-Instead of approximating spatial structure with the relatedness factor $r$ in 2(c) "Trojan horse cheat in a spatially structured host" I just explicitly put the bacteria in space -- they diffuse in a two-dimensional continuum with periodic boundaries.
-
-## 3 Numeric model 
-
-Combining (a), (b), and (d) gives the following dynamical equations for the rate of change of the wild ($W$) and cheat ($C$) strain densities:
-
-{{< equation number="1" >}}
-\begin{equation}
-\begin{array}{rcrccccl}
-  \frac{dW}{dt} 
-  & = & W ( & \overbrace{1}^{\text{growth}} & \overbrace{- N}^{\text{competition}} & \overbrace{- x}^{\text{costs}} & \overbrace{+ b W / N}^{\text{public good}} & \overbrace{- a C / N}^{\text{toxication}} & \overbrace{- e C / N}^{\text{bacteriocide}} ) \cr
-  \frac{dC}{dt} 
-  & = & C ( & 1 & - N & - q & + b W / N & - a C / N )
-\end{array}
-\end{equation}
-{{< /equation >}}
-
-where
-  * $N = W + C$ is the total bacterial density,
-  * $x$ is the cost of producing the public good,
-  * $q$ is the direct growth cost of the cheat (if any),
-  * $b$ is the benefit of the public good,
-  * $a$ is the strength of the antibacterial toxin, and
-  * $e$ is the efficacy of the bacteriocinogen.
-
-These two equations combine Eqs. (2.1)-(2.5) from {{< cite "brownSocial2009" >}} -- the effects can be explored separately in the simulation by moving sliders of other parameters to zero.  The numeric dynamics are displayed as faint curves in the "dynamics" and "phase" graphs.  They are included to validate and compare with the agent-based model.
-
-<div id="table-1">
-{{% tab title="Table 1" %}}
-
-|  Figure  |  $W(0)$,<br /> initial-W-density  |  $C(0)$,<br /> initial-C-density  |  $x$,<br /> x-wild-cost  |  $q$,<br />q-cheater-cost  |  $b$,<br />b-shared-benefit  |  $a$,<br />a-toxin-production  |  $e$,<br />e-bacteriocinogen  |  well-mixed,<br />$r=0$  |
-|:------:|:----:|:------:|:----:|:-----:|:----:|:-----:|:----:|:-----:|
-|  4(a)  | 1.1  | 0.001  | 0.1  | 0     | 0.2  | 0     | 0    |  Yes  |
-|  4(b)  | 1.1  | 0.001  | 0.1  | 0     | 0.2  | 0     | 0    |  No   |
-|  4(c)  | 1.1  | 0.001  | 0.1  | 0.01  | 0.2  | 0.5   | 0    |  Yes  |
-|  4(d)  | 1.1  | 0.001  | 0.1  | 0.01  | 0.2  | 0.5   | 0    |  No   |
-|  4(e)  | 1.1  | 0.001  | 0.1  | 0.01  | 0.2  | -0.3  | 0    |  Yes  |
-|  4(f)  | 1.1  | 0.001  | 0.1  | 0.01  | 0.2  | -0.3  | 0    |  No   |
-|  5(a)  | 1.1  | 0.001  | 0.1  | 0.15  | 0.2  | 0     | 0.5  |  Yes  |
-|  5(b)  | 1.1  | 0.13   | 0.1  | 0.15  | 0.2  | 0     | 0.5  |  Yes  |
-|  5(c)  | 1.1  | 0.001  | 0.1  | 0.05  | 0.2  | 0     | 0.5  |  Yes  |
-|  5(d)  | 1.1  | 0.13   | 0.1  | 0.05  | 0.2  | 0     | 0.5  |  Yes  |
-
-Table 1: Parameter values used in the figures of Brown, West, et al. (2009), for comparison.  The well-mixed cases usually agree with my model dynamics, except for stochastic noise due to demographics (eg. extinction of one type).
-
-{{% /tab %}}
-</div>
-
-
-## 4 Agent-based model 
-
-The numeric model can be derived as a non-spatial limiting case of an agent-based model.  In this model we explicitly represent each individual "agent" in the system instead of treating them as identical and just tracking aggregate population densities.  A convenient approach is to borrow [reaction kinetics](https://en.wikipedia.org/wiki/Chemical_kinetics) from physical chemistry to describe allowed interactions in our model.  
-
-To capture the numeric model we require five types/species[^2]:
-  * $W$ is a wild-type bacterium,
-  * $C$ is a cheat bacterium,
-  * $F$ is a parcel of food,
-  * $T$ is a parcel of toxin, and
-  * $B$ is a parcel of bacteriocinogen.
-
-[^2]: Note the overlapping notation: the symbols for individual agents are re-used to represent the densities of said types.  Hopefully, the context (eg. density in a rate equation) is sufficient to prevent confusion.
-
-We simply allow these agents to interact stochastically at given rates according to the following reactions:
-
-{{< equation number="2" >}}
-\begin{equation}
-\begin{array}{rclrcll}
-  N & \xrightarrow{1} & 2 N & & & & \text{(growth)} \cr
-  W + N & \xrightarrow{1} & N, & C + N & \xrightarrow{1} & N & \text{(competition)} \cr
-  W & \xrightarrow{x} & \emptyset, & C & \xrightarrow{q} & \emptyset & \text{(costs)} \cr
-  W & \xrightarrow{b} & W + F, & N + F & \xrightarrow{\beta} & 2 N & \text{(public good)} \cr
-  C & \xrightarrow{a} & C + T, & N + T & \xrightarrow{\delta} & \emptyset & \text{(toxication)} \cr
-  C & \xrightarrow{e} & C + B, & C + B & \xrightarrow{\gamma} & C & \text{(bacteriocide)} \cr
-    & & & W + B & \xrightarrow{\gamma} & \emptyset
-\end{array}
-\end{equation}
-{{< /equation >}}
-
-where $\emptyset$ indicates an absence of products and $N$ is shorthand for either $W$ or $C$.
-
-A moment's review should satisfy the reader that these reactions are reasonable prescriptions.  For example, $W \xrightarrow{b} W + F$ indicates that each wild-type bacterium produces a food parcel at an average rate of $b$ per unit time.  A bacterium that encounters a food parcel consumes it at rate $\beta$ and benefits by reproducing, $N + F \xrightarrow{\beta} 2 N$.
-
-In the agent-based approach we model these processes explicitly and track all of the agents as they are produced, changed, or removed from the system.  To connect with the numeric model we apply the [law of mass action](https://en.wikipedia.org/wiki/Law_of_mass_action) to compute the dynamics of a large, well-mixed population following the above reactions:
-
-{{< equation number="3" >}}
-\begin{equation}
-\begin{array}{rcrccccl}
-  \frac{dW}{dt} 
-  & = & W ( & \overbrace{1}^{\text{growth}} & \overbrace{- N}^{\text{competition}} & \overbrace{- x}^{\text{costs}} & \overbrace{+ \beta F}^{\text{public good}} & \overbrace{- \delta T}^{\text{toxication}} & \overbrace{- \gamma B}^{\text{bacteriocide}} ) \cr
-  \frac{dC}{dt} & = & C ( & 1 & - N & - q & + \beta F & - \delta T ) \cr
-  \frac{dF}{dt} & = &     &   &     &     & b W - \beta F N \cr
-  \frac{dT}{dt} & = &     &   &     &     &           & a C - \delta T N \cr
-  \frac{dB}{dt} & = &     &   &     &     &           &              & e C - \gamma B N.
-\end{array}
-\end{equation}
-{{< /equation >}}
-
-
-## 5 Quasi-steady-state approximation 
-
-Eq. ([3](#eq-3)) looks much more complicated than Eq. ([1](#eq-1)) we're trying to relate it to.  But we can reduce the system if we assume that the densities $F$, $T$, and $B$ are //fast// variables -- that they respond quickly to perturbations and quickly converge to equilibrium.  If we assume that they converge so quickly that the slow variables ($W$ and $C$) don't change appreciably while the fast ones equilibrate then we can approximate the fast variables as always being in equilibrium -- the [[wp>Michaelis%E2%80%93Menten_kinetics#Quasi-steady-state_approximation | quasi-steady-state approximation]] (QSSA):
+Only the sunny side of the planet receives the insolation.  We'll assume our planet is roughly spherical but it turns out not to matter for determining the amount of energy it receives – the important factor is the size of the planet's "shadow" or cross section.  If the planet has radius $r$ (so, cross-sectional "shadow" area $\pi r^2$) then the total incoming solar radiation is 
 
 \[
-\begin{array}{rcl}
-  F & = & b W / \beta N \cr
-  C & = & a C / \delta N \cr
-  B & = & e C / \gamma N.
-\end{array}
+I(d,r) = I_0 \frac{\pi r^2}{4 \pi d^2} = I_0 \frac{r^2}{4 d^2}.
 \]
 
-Then Eq. ([3](#eq-3)) reduces to exactly Eq. ([1](#eq-1)) and the agent-based model in Eq. ([2](#eq-2)) is an extension of {{< cite "brownSocial2009" >}} to finite populations.  Unfortunately, finding the conditions to satisfy QSSA is not trivial {{< cite "segelQuasiSteadyState1989" >}}.  Nevertheless, it should be satisfied if all of the rate constants $\beta$, $\delta$, and $\gamma$ are large.  In the simulation I set them all to the same large constant so we may expect differences between the agent-based and numeric models result from other causes, such as spatial structure.
+For example, Earth receives incoming solar radiation
+
+\[
+I_{\text{Earth}} = I(149.60×10^6 \text{ km}, 6371 \text{ km}) = (3.86×10^{26} \text{ W}) \frac{(6371 \text{ km})^2}{4 (149.60×10^6 \text{ km})^2} = 1.75×10^{17} \text{ W}.
+\]
+
+----
+
+This [system dynamics](https://en.wikipedia.org/wiki/System_dynamics) model tracks energy stored in various [stocks, and flows](https://en.wikipedia.org/wiki/Stock_and_flow) between them.  
+
+For most settings, the surface energy (a stock) equilibrates at some level, regardless of starting energy.  To demonstrate that, we start with 0 Joules stored and see how radiation flow balances out after some time.
+
+<!-- mostly based on HartmannGlobal1994 Fig. 2.3. -->
+
+### 2.1 Assumptions
+
+This model makes several important assumptions:
+
+* Energy generated in Aquaworld's interior has a negligible influence on its energy budget.  In Section 2.1, Hartmann {{< cite "-hartmannGlobal1994" >}} states this is a valid assumption for Earth.
+* The atmosphere is treated as a single, well-mixed layer.  More detailed models split the atmosphere into two or more layers.  Here is an [example](https://biocycle.atmos.colostate.edu/shiny/2layer/) with a 2-layer atmosphere.
 
 
-## 6 Spatial structure 
-
-Brown et al. {{< cite "-brownSocial2009" >}} create a structured population in Section 2(c) through preferential interactions of the bacteria with kin, mimicking spatial segregation.  Implementing it as an agent-based model  in [NetLogo] allows me to explicitly include space: agents move continuously in a two-dimensional plane with periodic boundary conditions.  Reactions are localized to patches on a square grid.  In the limit of large population size and infinitesimal patch size mass action swamps stochastic effects and the model should become equivalent to a [reaction-diffusion system](https://en.wikipedia.org/wiki/Reaction%E2%80%93diffusion_system).
-
-I arbitrarily chose to allow only the bacteria (wild and cheater types) to move.  Byproducts (food, toxin, & bacteriocinogen) are stationary after being created.  Some other options would be to allow the byproducts to move (for example, as if they were diffusing via [Brownian motion](https://en.wikipedia.org/wiki/Brownian_motion)) or for both bacteria and byproducts to move (possibly at different rates).
-
-Unlike other events, which are treated as probabilistic [stochastic processes](https://en.wikipedia.org/wiki/Stochastic_process), every moving agent moves in every time increment according to a [random walk](https://en.wikipedia.org/wiki/Random_walk), with a jump size is governed by the diffusion constant.  The effects of spatial structure can be minimized by mixing((Enable the __well-mixed__ switch to rapidly stir the system.)).  Only bacteria move so there may still be some spatial effects from the stationary byproducts but the dynamics should be more similar to the numeric ([mean field](https://en.wikipedia.org/wiki/Mean-field_theory)) approximation.
+* Convective heat transfer is ignored.  Here is an [example](https://biocycle.atmos.colostate.edu/shiny/2layer/) that incorporates convection of heat from the surface to the atmosphere.
 
 
-## 7 References
+## 3 References
 
 {{< bibliography cited >}}
 
 
 
-## 8 Footnotes
-
--->
+## 4 Footnotes
 
 [Insight Maker]: https://insightmaker.com/
