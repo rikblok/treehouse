@@ -14,19 +14,19 @@ You reached out to me and now you're wondering, "That a{{% icon icon="skull-cros
 <!-- for embed code: Google Drive on web > double-click image > Open in new window > Embed item... >  https://drive.google.com/file/d/.../preview [Rik, 2024-12-23] -->
 
 {{% tab title="2 weeks" %}}
-<iframe src="https://drive.google.com/file/d/1chMIJ2ZFPjzK6dl2iOwyL3TPVLv7fhRn/preview" width="720" height="405" allow="autoplay"></iframe>
+<iframe src="https://drive.google.com/file/d/1pbK1FHxB3K56_Py6_mDYHmGEyV_syG4I/preview" width="720" height="405" allow="autoplay"></iframe>
 
 Chart shows daily maximum workload. 
 {{% /tab %}}
 
 {{% tab title="1 month" %}}
-<iframe src="https://drive.google.com/file/d/19chq9DzKk8wfq9uOm_p4FSddsACeTsCF/preview" width="720" height="405" allow="autoplay"></iframe>
+<iframe src="https://drive.google.com/file/d/1L50bXifTVryDj1t_dS7KmmWi0Cs9PoZ6/preview" width="720" height="405" allow="autoplay"></iframe>
 
 Chart shows daily maximum workload. 
 {{% /tab %}}
 
 {{% tab title="4 months" %}}
-<iframe src="https://drive.google.com/file/d/1C-Mmmh-nN5grzap9gGe_lNJ37bKC_Jnd/preview" width="720" height="405" allow="autoplay"></iframe>
+<iframe src="https://drive.google.com/file/d/1LhyqEsc7W8128bIE-_0cFZ8ZmwaKt6mM/preview" width="720" height="405" allow="autoplay"></iframe>
 
 Chart shows daily maximum workload. 
 {{% /tab %}}
@@ -38,7 +38,7 @@ Chart shows weekly maximum workload.
 {{% /tab %}}
 
 {{% tab title="3 years" %}}
-<iframe src="https://drive.google.com/file/d/1Vl1kgTQQMh3fB--EhWMVj5RJhpguZalf/preview" width="720" height="405" allow="autoplay"></iframe>
+<iframe src="https://drive.google.com/file/d/1BXqD7MxDQKFt_IFQCjhzQUKUsB58acRt/preview" width="720" height="405" allow="autoplay"></iframe>
 
 Chart shows weekly maximum workload. 
 {{% /tab %}}
