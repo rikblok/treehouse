@@ -23,13 +23,13 @@
     <meta itemprop="description" content="View my historical workload, automatically generated from the emails waiting in my inbox.">
     <meta itemprop="datePublished" content="2024-12-22T11:54:25-08:00">
     <meta itemprop="dateModified" content="2024-12-22T11:54:25-08:00">
-    <meta itemprop="wordCount" content="136">
+    <meta itemprop="wordCount" content="138">
     <title>Workload :: Rik&#39;s Treehouse</title>
-    <link href="/~rikblok/css/fontawesome-all.min.css?1764053948" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1764053948" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/auto-complete.css?1764053948" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1764053948" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/perfect-scrollbar.min.css?1764053948" rel="stylesheet">
-    <link href="/~rikblok/css/theme.min.css?1764053948" rel="stylesheet">
-    <link href="/~rikblok/css/format-html.min.css?1764053948" rel="stylesheet" id="R-format-style">
+    <link href="/~rikblok/css/fontawesome-all.min.css?1765223007" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1765223007" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/auto-complete.css?1765223007" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1765223007" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar.min.css?1765223007" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1765223007" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1765223007" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..';
@@ -133,55 +133,55 @@
 <h1 id="workload">Workload</h1>
 
 <p>You reached out to me and now you&rsquo;re wondering, &ldquo;That a<i class="fa-fw fas fa-skull-crossbones"></i>h<i class="fa-fw fas fa-burst"></i>le! Why hasn&rsquo;t Rik got back to me?&rdquo;  If I&rsquo;m busy I just may not have had a chance yet.  So check out my current workload for yourself.  Automatically generated from the number of emails waiting in my inbox.</p>
-<div class="tab-panel" data-tab-group="b9cf7e02689c70a76ac4ad251105f1db">
+<div class="tab-panel" data-tab-group="397a32b0d0edcec281f69a3aadcc702c">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
       data-tab-item="2-weeks"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('b9cf7e02689c70a76ac4ad251105f1db','2-weeks')"
+      onclick="switchTab('397a32b0d0edcec281f69a3aadcc702c','2-weeks')"
     >
       <span class="tab-nav-text">2 weeks</span>
     </button>
     <button
       data-tab-item="1-month"
       class="tab-nav-button tab-panel-style cstyle initial"
-      onclick="switchTab('b9cf7e02689c70a76ac4ad251105f1db','1-month')"
+      onclick="switchTab('397a32b0d0edcec281f69a3aadcc702c','1-month')"
     >
       <span class="tab-nav-text">1 month</span>
     </button>
     <button
       data-tab-item="4-months"
       class="tab-nav-button tab-panel-style cstyle initial"
-      onclick="switchTab('b9cf7e02689c70a76ac4ad251105f1db','4-months')"
+      onclick="switchTab('397a32b0d0edcec281f69a3aadcc702c','4-months')"
     >
       <span class="tab-nav-text">4 months</span>
     </button>
     <button
       data-tab-item="1-year"
       class="tab-nav-button tab-panel-style cstyle initial"
-      onclick="switchTab('b9cf7e02689c70a76ac4ad251105f1db','1-year')"
+      onclick="switchTab('397a32b0d0edcec281f69a3aadcc702c','1-year')"
     >
       <span class="tab-nav-text">1 year</span>
     </button>
     <button
       data-tab-item="3-years"
       class="tab-nav-button tab-panel-style cstyle initial"
-      onclick="switchTab('b9cf7e02689c70a76ac4ad251105f1db','3-years')"
+      onclick="switchTab('397a32b0d0edcec281f69a3aadcc702c','3-years')"
     >
       <span class="tab-nav-text">3 years</span>
     </button>
     <button
       data-tab-item="10-years"
       class="tab-nav-button tab-panel-style cstyle initial"
-      onclick="switchTab('b9cf7e02689c70a76ac4ad251105f1db','10-years')"
+      onclick="switchTab('397a32b0d0edcec281f69a3aadcc702c','10-years')"
     >
       <span class="tab-nav-text">10 years</span>
     </button>
     <button
       data-tab-item="all-time"
       class="tab-nav-button tab-panel-style cstyle initial"
-      onclick="switchTab('b9cf7e02689c70a76ac4ad251105f1db','all-time')"
+      onclick="switchTab('397a32b0d0edcec281f69a3aadcc702c','all-time')"
     >
       <span class="tab-nav-text">all time</span>
     </button>
@@ -246,6 +246,85 @@
   </div>
 </div>
 <p>Under light workloads expect a response within a few days.  I should be able to get back to you within a week under moderate workloads.  But when my workload is heavy it could take a few weeks.</p>
+<p><canvas id="workloadChart" width="800" height="400"></canvas>
+<button id="resetZoomBtn">Reset Zoom</button></p>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+<script>
+async function loadWorkloadData() {
+    const url = "https://drive.google.com/file/d/1XpVHMjVhF1g5hXaAfQoSl4ptz8r5s8YY/preview";
+    const response = await fetch(url);
+    const text = await response.text();
+
+    // parse CSV or whitespace data
+    const lines = text.split("\n").filter(line => line.trim() && !line.startsWith("#"));
+
+    const labels = [];
+    const values = [];
+
+    for (const line of lines) {
+        const [dateStr, valueStr] = line.trim().split(/\s+/);
+
+        // Workload file format: "YYYY/MM/DD@HH:MM"
+        const jsDate = new Date(dateStr.replace("@", " "));
+        labels.push(jsDate);
+        values.push(parseFloat(valueStr));
+    }
+
+    return { labels, values };
+}
+
+async function drawChart() {
+    const data = await loadWorkloadData();
+
+    const ctx = document.getElementById("workloadChart").getContext("2d");
+
+    const chart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: data.labels,
+            datasets: [{
+                label: "Workload (%)",
+                data: data.values,
+                borderWidth: 2,
+                borderColor: "blue",
+                pointRadius: 0
+            }]
+        },
+        options: {
+            parsing: false,
+            scales: {
+                x: {
+                    type: "time",
+                    time: { tooltipFormat: "yyyy-MM-dd HH:mm" }
+                },
+                y: {
+                    beginAtZero: false
+                }
+            },
+            plugins: {
+                zoom: {
+                    zoom: {
+                        wheel: { enabled: true },
+                        pinch: { enabled: true },
+                        mode: "x"
+                    },
+                    pan: {
+                        enabled: true,
+                        mode: "x"
+                    }
+                }
+            }
+        }
+    });
+
+    document.getElementById("resetZoomBtn").onclick = () => {
+        chart.resetZoom();
+    };
+}
+
+drawChart();
+</script>
 
   <footer class="footline">
   </footer>
@@ -262,7 +341,7 @@ Rik&#39;s Treehouse
           </a>
         </div>
         <script>
-          window.index_js_url="/~rikblok/searchindex.en.js?1764053948";
+          window.index_js_url="/~rikblok/searchindex.en.js?1765223007";
         </script>
         <search><form action="/~rikblok/search/index.html" method="get">
           <div class="searchbox default-animation">
@@ -275,12 +354,12 @@ Rik&#39;s Treehouse
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="/~rikblok/js/auto-complete.js?1764053948" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.min.js?1764053948" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1764053948" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1764053948" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.en.min.js?1764053948" defer></script>
-        <script src="/~rikblok/js/search.js?1764053948" defer></script>
+        <script src="/~rikblok/js/auto-complete.js?1765223007" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.min.js?1765223007" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1765223007" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1765223007" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.en.min.js?1765223007" defer></script>
+        <script src="/~rikblok/js/search.js?1765223007" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -353,8 +432,8 @@ Rik&#39;s Treehouse
         </div>
       </div>
     </aside>
-    <script src="/~rikblok/js/clipboard.min.js?1764053948" defer></script>
-    <script src="/~rikblok/js/perfect-scrollbar.min.js?1764053948" defer></script>
+    <script src="/~rikblok/js/clipboard.min.js?1765223007" defer></script>
+    <script src="/~rikblok/js/perfect-scrollbar.min.js?1765223007" defer></script>
     <script>
       function useMathJax( config ){
         window.MathJax = Object.assign( window.MathJax || {}, {
@@ -369,7 +448,7 @@ Rik&#39;s Treehouse
       }
       useMathJax( JSON.parse("{}") );
     </script>
-    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1764053948"></script>
-    <script src="/~rikblok/js/theme.js?1764053948" defer></script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1765223007"></script>
+    <script src="/~rikblok/js/theme.js?1765223007" defer></script>
   </body>
 </html>
