@@ -361,7 +361,7 @@ var relearn_searchindex = [
   },
   {
     "breadcrumb": "Academic anecdotes",
-    "content": "You reached out to me and now you’re wondering, “That ahle! Why hasn’t Rik got back to me?” If I’m busy I just may not have had a chance yet. So check out my current workload for yourself. Automatically generated from the number of emails waiting in my inbox.\n​\r2 weeks\r1 month\r4 months\r1 year\r3 years\r10 years\rall time\rChart shows daily maximum workload.\nChart shows daily maximum workload.\nChart shows daily maximum workload.\nChart shows weekly maximum workload.\nChart shows weekly maximum workload.\nChart shows 3-month maximum workload.\nChart shows 3-month maximum workload.\nUnder light workloads expect a response within a few days. I should be able to get back to you within a week under moderate workloads. But when my workload is heavy it could take a few weeks.\nReset Zoom",
+    "content": "You reached out to me and now you’re wondering, “That ahle! Why hasn’t Rik got back to me?” If I’m busy I just may not have had a chance yet. So check out my current workload for yourself. Automatically generated from the amount of email waiting in my inbox.\nAll time\r10 years\r3 years\r1 year\r4 months\r1 month\rUnder light workloads expect a response within a few days. I should be able to get back to you within a week under moderate workloads. But when my workload is heavy, it could take a few weeks.",
     "description": "View my historical workload, automatically generated from the emails waiting in my inbox.",
     "tags": [],
     "title": "Workload",
