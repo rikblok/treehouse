@@ -14,3 +14,14 @@ From https://mcshelby.github.io/hugo-theme-relearn/configuration/customization/d
 <link rel="stylesheet" type="text/css" href="{{ "css/custom.css" | relURL }}" />
 <!-- nested double-quotes required [Rik, 2025-01-01] -->
 
+<!-- JS to expand all details on a page [Rik, 2026-02-07] -->
+<script>
+function expandAllDetails() {
+  const details = document.querySelectorAll('details');
+  details.forEach(d => d.open = true);
+  
+  // Optional: hide the notice after expanding
+  const notice = document.getElementById('expand-notice');
+  if (notice) notice.style.display = 'none';
+}
+</script>

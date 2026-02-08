@@ -7,6 +7,17 @@ Links:
 * https://fontawesome.com/v6/search?m=free	← find free icon for {{% icon icon="..." %}}
 
 
+2026-02-07 Details and summary accordion
+* See ~rikblok/research/notes/replicator_kinetics for an example of how to use details/summary accordion 
+* notice "[!NOTE]" at top of page.  Relevant JS in layouts/partials/custom-header.html
+* styling in static/css/custom.css
+* Q: Do within-page anchors work?  They seem unreliable in local server because the page is still loading when the anchor is focused, so it then gets moved around
+
+
+2026-02-05 CSS caching
+* if revisions to CSS aren't showing in a page when using local server, hard refresh Ctrl+F5 the browser.  Old version could be stuck in the cache.
+
+
 2025-02-08 External links in menus
 * If you want to add a menu link to an external page (e.g., "Orphanware"):
 * Create a new page, e.g.

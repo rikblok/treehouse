@@ -15,10 +15,18 @@ bibFile = "bib-zotero-better-cson.json"
  -->
 {{< bibliography cited >}}
 
+### Version history
 
-Version 1
- --- Rik Blok, 2013-07-12
- 
+**Version 2** (2026-02-07) Rik Blok with [Claude](https://claude.ai/) (Anthropic)
+  * Added section summaries
+
+**Version 1** (2013-07-12) Rik Blok  
+  * Initial release
+
+> [!NOTE]
+> Some sections below have been summarized. Click a summary to expand the full text, or 
+  <a href="#" onclick="expandAllDetails(); return false;">click here to expand all summaries</a>.
+
  
 ### Abstract
 
@@ -27,6 +35,13 @@ I've long felt that reaction kinetics, a formalism for describing agent-based mo
 
 ### 1 Introduction
 
+
+<details>
+<summary>
+Introduces the challenge: the classic "replicator equation" predicts evolution well in infinite populations, but real populations are finite. The goal is to build models using chemistry-style reactions that (1) match evolutionary predictions, (2) show realistic S-shaped population growth, and (3) use simple building blocks. Five different approaches are explored in the following sections.
+</summary>
+
+<fadein>
 Evolutionary game theory uses the [replicator equation](https://en.wikipedia.org/wiki/replicator%20equation) to formalize the dynamics of selected heritable traits in a population.  It is frequently used to predict the [evolutionarily stable state](https://en.wikipedia.org/wiki/evolutionarily%20stable%20state) of an infinite, well-mixed population.  Often it is interesting to study cases where the population is finite or not well-mixed, where the replicator equation isn't suitable.  Such a case is better suited to an [agent-based model](https://en.wikipedia.org/wiki/agent-based%20model) where each individual in a population is explicitly accounted.  
 
 There are a variety of approaches to agent-based modeling but I am keen on [reaction kinetics](https://en.wikipedia.org/wiki/reaction%20kinetics) because it is simple to understand, easy to apply, and behaves predictably in the limit of a large, well-mixed population.  Also, the underlying mechanisms have clear interpretations if the reactions are [elementary](https://en.wikipedia.org/wiki/elementary%20reaction).  
@@ -48,8 +63,17 @@ In the following sections we will explore several ways to define birth-death rea
   * [Select births into available "holes"](#6-select-births-into-available-holes)
 
 I use the term "select" to indicate processes that select for traits (differential fitness) and "ecological" to mean processes that affect all individuals equally, independent of their type.
+</fadein>
+
+</details>
 
 ### 2 Select births, ecological deaths
+
+<details>
+
+<summary>
+First approach: evolution acts on who gets to reproduce (winners have more babies), while death affects everyone equally based on crowding. The math shows this gives evolution that matches the replicator equation except the speed varies with population size. Without evolution, you get near-logistic growth with a "weak Allee effect" (small populations struggle to grow).
+</summary>
 
 Consider a population of heritable types where an individual of type \(i\), \(X_i\), acquires a *payoff* \(P_{ij}\) against \(X_j\) in pairwise interactions.  Further assume that an individual's birthrate is determined by its payoff.  Conversely, the deathrate depends only on the total population density, $n$:
 \begin{eqnarray}
@@ -126,8 +150,15 @@ It is not mathematically required that the population be bounded but it may be d
 \]
 or equivalently $\delta(n) \propto n^2$, where $X$ represents an individual of any type.
 
+</details>
 
 ### 3 Replacement
+
+<details>
+
+<summary>
+Simplest approach: winners replace losers, keeping population size constant (like musical chairs). This gives the cleanest match to the replicator equation since population size never changes. Less realistic biologically, but mathematically elegant.
+</summary>
 
 By coupling births and deaths into a replacement process we can also recover our modified replicator equation (Eq. [2.3](#eq-2-3)) from a single process:
 \[
@@ -136,7 +167,15 @@ X_i + X_j + X_k \xrightarrow{P_{ij}} 2 X_i + X_j \; \text{ (replacement)}
 
 \(X_k\) is simply a bystander who may be replaced by a child of \(X_i\), depending on its payoff against \(X_j\).  In this case the population size is fixed so we recover exactly the replicator equation, without a fluctuating rate depending on the population size as in Equation [2.3](#eq-2-3).
 
+</details>
+
 ### 4 Select deaths, ecological births
+
+<details>
+
+<summary>
+Opposite approach: everyone reproduces equally, but evolution determines who dies (losers die more often). This flips the previous model. The payoff: when you turn off evolution, you get perfect logistic growth - that classic S-shaped curve where populations level off at carrying capacity.
+</summary>
 
 We could also design a system with an ecological (non-selective) birth process and a selective death process (that depends on payoffs).  Let $\pi \geq \max_{i,j} P_{ij}$ be a constant.  Then 
 \begin{eqnarray}
@@ -155,8 +194,15 @@ Let's consider again the dynamics without selection: $P_{ij} = \text{constant} <
 \end{equation}
 If we have a constant birthrate $\beta(n)\equiv r = \text{constant}$ then we exactly recover the logistic equation.
 
+</details>
 
 ### 5 Select births with a separate game
+
+<details>
+
+<summary>
+Most sophisticated approach: separates the "game" (where individuals earn scores) from reproduction (using those scores). Individuals play in pairs to determine birth rates, then reproduce spontaneously. This achieves all three goals: replicator-like evolution, perfect logistic growth, and simple reactions. Technical details show how tracking "memory" of the last game played makes this work.
+</summary>
 
 Is it possible to formulate a system with logistic ecological behaviour but with selection acting on births instead of deaths?  It's tricky because evolutionary game theory requires pairwise interactions but the birth process must be first-order (spontaneous).  To achieve this we need to separate the "game" from the births: Let's introduce pairwise interactions that determine the birthrates of individuals as follows:
 \begin{eqnarray}
@@ -206,8 +252,20 @@ To achieve that each individual should compete with all others through a reactio
   Z_{ik} + Z_{jl} & \xrightarrow{\delta} & Z_{jl}.   & \text{(competitive death)} 
 \end{eqnarray}
 
+#### 5.1 Discussion
+
+In this section we went back to select births and ecological deaths but separated the "game" (assignment of birthrates) from the birth process.  With a slightly modified fitness function (Equation [5.1](#eq-5-1)) we were able to achieve all of our goals: (1) replicator equation-like frequency dynamics (Equation [5.2](#eq-5-2)), and (2) logistic ecological behaviour (Equation [5.3](#eq-5-3)), with (3) only elementary reactions.
+
+</details>
+
 
 ### 6 Select births into available "holes"
+
+<details>
+
+<summary>
+Alternative approach: explicitly models limited space with "holes" (empty territories). Births only happen when there's an available hole; deaths create new holes. Total population is automatically limited. Math is more complex, but evolutionary outcomes match the replicator equation. A different way to think about population limits.
+</summary>
 
 The logistic equation derives from two simple reaction kinetic approaches: $N \rightleftharpoons 2 N$ or with explicit ecological "holes", $H$: $N+H\rightarrow 2 N, N\rightarrow H$.  Here the "holes" serve to limit the population without explicit competition; a successful birth won't occur without a hole for the offspring to occupy.  Since the total population of holes and individuals is conserved, the population is controlled.  The former approach is similar to [Select births, ecological deaths](#2-select-births-ecological-deaths), suggesting that we should also consider the latter.
 
@@ -230,12 +288,16 @@ The rate equation for the frequency comes out more complicated than before but i
   \frac{dy_i}{dt} = n y_i \left(f_i - \bar{f}\right) \left(K - n \sum_l y_l\right).
 \end{equation}
 
+</details>
 
-#### 6.1 Discussion
-
-In this section we went back to select births and ecological deaths but separated the "game" (assignment of birthrates) from the birth process.  With a slightly modified fitness function (Equation [5.1](#eq-5-1)) we were able to achieve all of our goals: (1) replicator equation-like frequency dynamics (Equation [5.2](#eq-5-2)), and (2) logistic ecological behaviour (Equation [5.3](#eq-5-3)), with (3) only elementary reactions.
 
 ### 7 Summary
+
+<details>
+
+<summary>
+Compares all four main approaches in a table. Three show realistic population growth (logistic or near-logistic), all match the replicator equation's evolutionary predictions. The "separate game" approach best combines realistic evolution with realistic ecology using simple reactions. Future directions: extending to multi-player games and finding solutions for small populations.
+</summary>
 
 We have looked at four different systems of elementary reactions that produce replicator equation-like dynamics (having the same stability properties, only different in the rate of approach).  Two of theses cases also have the pleasing property that they "fall back" to logistic population dynamics in the absence of selection.  A third is logistic with a weak Allee effect.  The last, [Replacement](#3-replacement), is less realistic in that the population size is fixed.
 
@@ -255,10 +317,18 @@ Here are some ideas for future consideration:
   * Can this approach be extended to \(N\)-player games (eg. the public goods game)?
   * Is there a general "solution" for a finite population, eg. Fokker-Planck?
 
+</details>
+
 
 ### 8 Appendix
 
 #### 8.1 Derivation of rate equation for frequency of type in case of select births with a separate game
+
+<details>
+
+<summary>
+Contains the detailed mathematical derivation for the "separate game" model (<a href="#5-select-births-with-a-separate-game">Section 5</a>)), showing step-by-step how the basic reaction rules lead to the final equations.
+</summary>
 
 In terms of the frequencies $w_{ij} \equiv z_{ij}/n$ and $y_i \equiv x_i/n = \sum_j w_{ij}$
 {{< equation number="8.1">}}
@@ -284,6 +354,7 @@ From Equation [8.1](#eq-8-1)
   \frac{dy_i}{dt}    & = & \sum_j P_{ij} w_{ij} - y_i \sum_{kl} P_{kl} w_{kl}.
 \end{eqnarray}
 
+</details>
 
 ### 9 References
 

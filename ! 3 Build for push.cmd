@@ -9,11 +9,12 @@ goto end
  
 :begin
 if not "%1"=="" goto usage
-cd "%~dp0"
+pushd "%~dp0"
 hugo
 echo.
 
 :end
+popd
 echo Done.
 echo Now submit git changes and push.
 pause

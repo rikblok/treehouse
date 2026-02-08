@@ -10,9 +10,10 @@ goto end
  
 :begin
 if not "%1"=="" goto usage
-cd "%~dp0"
+pushd "%~dp0"
 start "Hugo server" hugo server
 echo Hugo server started...
 echo.
 
 :end
+popd
