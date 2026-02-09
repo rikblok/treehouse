@@ -23,9 +23,13 @@ bibFile = "bib-zotero-better-cson.json"
 **Version 1** (2013-07-12) Rik Blok  
   * Initial release
 
+<noprint>
+
 > [!NOTE]
 > Some sections below have been summarized. Click a summary to expand the full text, or 
   <a href="#" onclick="expandAllDetails(); return false;">click here to expand all summaries</a>.
+
+</noprint>
 
  
 ### Abstract
@@ -36,7 +40,7 @@ I've long felt that reaction kinetics, a formalism for describing agent-based mo
 ### 1 Introduction
 
 
-<details>
+<details class="collapsible-section">
 <summary>
 Introduces the challenge: the classic "replicator equation" predicts evolution well in infinite populations, but real populations are finite. The goal is to build models using chemistry-style reactions that (1) match evolutionary predictions, (2) show realistic S-shaped population growth, and (3) use simple building blocks. Five different approaches are explored in the following sections.
 </summary>
@@ -69,7 +73,7 @@ I use the term "select" to indicate processes that select for traits (differenti
 
 ### 2 Select births, ecological deaths
 
-<details>
+<details class="collapsible-section">
 
 <summary>
 First approach: evolution acts on who gets to reproduce (winners have more babies), while death affects everyone equally based on crowding. The math shows this gives evolution that matches the replicator equation except the speed varies with population size. Without evolution, you get near-logistic growth with a "weak Allee effect" (small populations struggle to grow).
@@ -154,7 +158,7 @@ or equivalently $\delta(n) \propto n^2$, where $X$ represents an individual of a
 
 ### 3 Replacement
 
-<details>
+<details class="collapsible-section">
 
 <summary>
 Simplest approach: winners replace losers, keeping population size constant (like musical chairs). This gives the cleanest match to the replicator equation since population size never changes. Less realistic biologically, but mathematically elegant.
@@ -171,7 +175,7 @@ X_i + X_j + X_k \xrightarrow{P_{ij}} 2 X_i + X_j \; \text{ (replacement)}
 
 ### 4 Select deaths, ecological births
 
-<details>
+<details class="collapsible-section">
 
 <summary>
 Opposite approach: everyone reproduces equally, but evolution determines who dies (losers die more often). This flips the previous model. The payoff: when you turn off evolution, you get perfect logistic growth - that classic S-shaped curve where populations level off at carrying capacity.
@@ -198,7 +202,7 @@ If we have a constant birthrate $\beta(n)\equiv r = \text{constant}$ then we exa
 
 ### 5 Select births with a separate game
 
-<details>
+<details class="collapsible-section">
 
 <summary>
 Most sophisticated approach: separates the "game" (where individuals earn scores) from reproduction (using those scores). Individuals play in pairs to determine birth rates, then reproduce spontaneously. This achieves all three goals: replicator-like evolution, perfect logistic growth, and simple reactions. Technical details show how tracking "memory" of the last game played makes this work.
@@ -261,7 +265,7 @@ In this section we went back to select births and ecological deaths but separate
 
 ### 6 Select births into available "holes"
 
-<details>
+<details class="collapsible-section">
 
 <summary>
 Alternative approach: explicitly models limited space with "holes" (empty territories). Births only happen when there's an available hole; deaths create new holes. Total population is automatically limited. Math is more complex, but evolutionary outcomes match the replicator equation. A different way to think about population limits.
@@ -293,7 +297,7 @@ The rate equation for the frequency comes out more complicated than before but i
 
 ### 7 Summary
 
-<details>
+<details class="collapsible-section">
 
 <summary>
 Compares all four main approaches in a table. Three show realistic population growth (logistic or near-logistic), all match the replicator equation's evolutionary predictions. The "separate game" approach best combines realistic evolution with realistic ecology using simple reactions. Future directions: extending to multi-player games and finding solutions for small populations.
@@ -324,7 +328,7 @@ Here are some ideas for future consideration:
 
 #### 8.1 Derivation of rate equation for frequency of type in case of select births with a separate game
 
-<details>
+<details class="collapsible-section">
 
 <summary>
 Contains the detailed mathematical derivation for the "separate game" model (<a href="#5-select-births-with-a-separate-game">Section 5</a>)), showing step-by-step how the basic reaction rules lead to the final equations.

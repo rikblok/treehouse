@@ -10,8 +10,8 @@ Links:
 2026-02-07 Details and summary accordion
 * See ~rikblok/research/notes/replicator_kinetics for an example of how to use details/summary accordion 
 * notice "[!NOTE]" at top of page.  Relevant JS in layouts/partials/custom-header.html
-* styling in static/css/custom.css
-* Q: Do within-page anchors work?  They seem unreliable in local server because the page is still loading when the anchor is focused, so it then gets moved around
+* <details class="collapsible-section"> styling in static/css/custom.css
+* Q: Do within-page anchors work?  A: They seem unreliable in local server because the page reloads, is still loading when the anchor is focused, so it then gets moved around.  But doesn't seem to be an issue on remote server because page doesn't reload to navigate to anchor.
 
 
 2026-02-05 CSS caching

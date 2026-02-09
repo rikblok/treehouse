@@ -20,41 +20,15 @@
   flex-shrink: 0; /* Prevents shrinking of the number cell */
 }
 
-/* Expandable details/summary formats - Rik, 2026-02-05 */
-details[open] summary { /* Hide summary once a section is expanded */
-  display: none;
-}
-summary {
-  cursor: pointer;
-  padding: 1em;
-  border-left: 4px solid var(--LINK-color, rgba(108, 140, 227, 1));
-  position: relative;
-}
-
-summary:hover {
-  background-color: var(--MENU-SECTIONS-BG-color, rgba(43, 43, 43, 1));
-}
-
-summary::before {
-  content: "Summary: ";
-  font-weight: bold;
-  /*color: var(--LINK-color, rgba(108, 140, 227, 1));*/
-}
-summary::after {
-  content: "  [Click to expand]";
-  font-style: italic;
-  color: var(--LINK-color, rgba(108, 140, 227, 1));
-}
-
-details[open] summary::after {
-  content: "";
-}
-details fadein {
+/* Reusable fade-in animation */
+fadein {
   opacity: 0;
 }
+
 details[open] fadein {
   animation: fadeIn .75s linear forwards;
 }
+
 @keyframes fadeIn {
  0% {
    opacity: 0;
@@ -63,19 +37,63 @@ details[open] fadein {
    opacity: 1;
  }
 }
-@media print { /* Print: expand everything and hide summaries */
-  details {
-    display: block !important;
-  }
-  
-  details summary {
-    display: none !important;
-  }
-  
-  details fadein {
+
+@media print {
+  fadein {
     opacity: 1 !important;
-    animation: none !important; /* Disable animation for print */
+    animation: none !important;
     display: block !important;
+  }
+}
+
+/* Expandable details/summary formats - Rik, 2026-02-05 */
+/* Only apply to details with the 'collapsible-section' class */
+/* Usage:
+	<details class="collapsible-section">
+	<summary>Your summary text here</summary>
+	<fadein>
+		Your content here
+	</fadein>
+	</details>
+   Example: https://www.cs.ubc.ca/~rikblok/research/notes/replicator_kinetics/index.html
+*/
+details.collapsible-section[open] summary { /* Hide summary once a section is expanded */
+  display: none;
+}
+
+details.collapsible-section summary {
+  cursor: pointer;
+  padding: 1em;
+  border-left: 4px solid var(--LINK-color, rgba(108, 140, 227, 1));
+  position: relative;
+}
+
+details.collapsible-section summary:hover {
+  background-color: var(--MENU-SECTIONS-BG-color, rgba(43, 43, 43, 1));
+}
+
+details.collapsible-section summary::before {
+  content: "Summary: ";
+  font-weight: bold;
+}
+
+details.collapsible-section summary::after {
+  content: "  [Click to expand]";
+  font-style: italic;
+  color: var(--LINK-color, rgba(108, 140, 227, 1));
+}
+
+details.collapsible-section[open] summary::after {
+  content: "";
+}
+
+@media print { /* Print: expand collapsible sections and hide summaries */
+  details.collapsible-section {
+    display: block !important;
+  }
+  
+  details.collapsible-section summary {
+    display: none !important;
   }
 }
 
@@ -99,6 +117,23 @@ details[open] fadein {
 
 @media print {
   .expand-all-notice {
+    display: none !important;
+  }
+}
+
+/* Hide elements with noprint class or tag when printing [Rik, 2026-02-08] */
+/* Usage 1:
+	<noprint>
+	<p>Don't print me...</p>
+	</noprint>
+   Usage 2:
+	<div class="noprint">
+	<p>Don't print me...</p>
+	</div>
+*/
+@media print {
+  noprint,
+  .noprint {
     display: none !important;
   }
 }

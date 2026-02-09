@@ -25,11 +25,11 @@
     <meta itemprop="dateModified" content="2025-02-04T11:30:01-08:00">
     <meta itemprop="wordCount" content="2559">
     <title>Replicator Kinetics (2013) :: Rik&#39;s Treehouse</title>
-    <link href="/~rikblok/css/fontawesome-all.min.css?1770531225" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1770531225" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/auto-complete.css?1770531225" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1770531225" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/perfect-scrollbar.min.css?1770531225" rel="stylesheet">
-    <link href="/~rikblok/css/theme.min.css?1770531225" rel="stylesheet">
-    <link href="/~rikblok/css/format-html.min.css?1770531225" rel="stylesheet" id="R-format-style">
+    <link href="/~rikblok/css/fontawesome-all.min.css?1770597923" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1770597923" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/auto-complete.css?1770597923" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1770597923" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar.min.css?1770597923" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1770597923" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1770597923" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..\/..';
@@ -269,6 +269,7 @@ function expandAllDetails() {
 <ul>
 <li>Initial release</li>
 </ul>
+<noprint>
 
 <details open class=" box cstyle notices note">
   <summary class="box-label">
@@ -280,10 +281,11 @@ function expandAllDetails() {
 <a href="#" onclick="expandAllDetails(); return false;">click here to expand all summaries</a>.</p>
   </div>
 </details>
+</noprint>
 <h3 id="abstract">Abstract</h3>
 <p>I&rsquo;ve long felt that reaction kinetics, a formalism for describing agent-based models, would fit naturally with evolutionary game theory, but I&rsquo;ve had trouble seeing the connections.  Here I explore several possible systems of reactions that yield evolutionary dynamics consistent with the replicator equation.  They are also useful for studying finite, structured populations.  Some of these approaches also exhibit plausible ecological dynamics in the absence of selection.</p>
 <h3 id="1-introduction">1 Introduction</h3>
-<details>
+<details class="collapsible-section">
 <summary>
 Introduces the challenge: the classic "replicator equation" predicts evolution well in infinite populations, but real populations are finite. The goal is to build models using chemistry-style reactions that (1) match evolutionary predictions, (2) show realistic S-shaped population growth, and (3) use simple building blocks. Five different approaches are explored in the following sections.
 </summary>
@@ -309,7 +311,7 @@ Evolutionary game theory uses the [replicator equation](https://en.wikipedia.org
 </fadein></p>
 </details>
 <h3 id="2-select-births-ecological-deaths">2 Select births, ecological deaths</h3>
-<details>
+<details class="collapsible-section">
 <summary>
 First approach: evolution acts on who gets to reproduce (winners have more babies), while death affects everyone equally based on crowding. The math shows this gives evolution that matches the replicator equation except the speed varies with population size. Without evolution, you get near-logistic growth with a "weak Allee effect" (small populations struggle to grow).
 </summary>
@@ -402,7 +404,7 @@ where $K \equiv r n^2 / \delta(n)$.  If $\delta(n) \propto n^2$ then $K$ is a co
 or equivalently $\delta(n) \propto n^2$, where $X$ represents an individual of any type.</p>
 </details>
 <h3 id="3-replacement">3 Replacement</h3>
-<details>
+<details class="collapsible-section">
 <summary>
 Simplest approach: winners replace losers, keeping population size constant (like musical chairs). This gives the cleanest match to the replicator equation since population size never changes. Less realistic biologically, but mathematically elegant.
 </summary>
@@ -411,7 +413,7 @@ X_i + X_j + X_k \xrightarrow{P_{ij}} 2 X_i + X_j \; \text{ (replacement)}
 \]<p>\(X_k\) is simply a bystander who may be replaced by a child of \(X_i\), depending on its payoff against \(X_j\).  In this case the population size is fixed so we recover exactly the replicator equation, without a fluctuating rate depending on the population size as in Equation <a href="/~rikblok/research/notes/replicator_kinetics/index.html#eq-2-3">2.3</a>.</p>
 </details>
 <h3 id="4-select-deaths-ecological-births">4 Select deaths, ecological births</h3>
-<details>
+<details class="collapsible-section">
 <summary>
 Opposite approach: everyone reproduces equally, but evolution determines who dies (losers die more often). This flips the previous model. The payoff: when you turn off evolution, you get perfect logistic growth - that classic S-shaped curve where populations level off at carrying capacity.
 </summary>
@@ -430,7 +432,7 @@ where $\beta(n)$ is a birthrate that may depend on the population density but no
 If we have a constant birthrate $\beta(n)\equiv r = \text{constant}$ then we exactly recover the logistic equation.</p>
 </details>
 <h3 id="5-select-births-with-a-separate-game">5 Select births with a separate game</h3>
-<details>
+<details class="collapsible-section">
 <summary>
 Most sophisticated approach: separates the "game" (where individuals earn scores) from reproduction (using those scores). Individuals play in pairs to determine birth rates, then reproduce spontaneously. This achieves all three goals: replicator-like evolution, perfect logistic growth, and simple reactions. Technical details show how tracking "memory" of the last game played makes this work.
 </summary>
@@ -510,7 +512,7 @@ Z_{ik} + Z_{jl} &amp; \xrightarrow{\delta} &amp; Z_{jl}.   &amp; \text{(competit
 <p>In this section we went back to select births and ecological deaths but separated the &ldquo;game&rdquo; (assignment of birthrates) from the birth process.  With a slightly modified fitness function (Equation <a href="/~rikblok/research/notes/replicator_kinetics/index.html#eq-5-1">5.1</a>) we were able to achieve all of our goals: (1) replicator equation-like frequency dynamics (Equation <a href="/~rikblok/research/notes/replicator_kinetics/index.html#eq-5-2">5.2</a>), and (2) logistic ecological behaviour (Equation <a href="/~rikblok/research/notes/replicator_kinetics/index.html#eq-5-3">5.3</a>), with (3) only elementary reactions.</p>
 </details>
 <h3 id="6-select-births-into-available-holes">6 Select births into available &ldquo;holes&rdquo;</h3>
-<details>
+<details class="collapsible-section">
 <summary>
 Alternative approach: explicitly models limited space with "holes" (empty territories). Births only happen when there's an available hole; deaths create new holes. Total population is automatically limited. Math is more complex, but evolutionary outcomes match the replicator equation. A different way to think about population limits.
 </summary>
@@ -533,7 +535,7 @@ where the total population density \(n\) follows
 \end{equation}</p>
 </details>
 <h3 id="7-summary">7 Summary</h3>
-<details>
+<details class="collapsible-section">
 <summary>
 Compares all four main approaches in a table. Three show realistic population growth (logistic or near-logistic), all match the replicator equation's evolutionary predictions. The "separate game" approach best combines realistic evolution with realistic ecology using simple reactions. Future directions: extending to multi-player games and finding solutions for small populations.
 </summary>
@@ -582,7 +584,7 @@ Compares all four main approaches in a table. Three show realistic population gr
 </details>
 <h3 id="8-appendix">8 Appendix</h3>
 <h4 id="81-derivation-of-rate-equation-for-frequency-of-type-in-case-of-select-births-with-a-separate-game">8.1 Derivation of rate equation for frequency of type in case of select births with a separate game</h4>
-<details>
+<details class="collapsible-section">
 <summary>
 Contains the detailed mathematical derivation for the "separate game" model (<a href="#5-select-births-with-a-separate-game">Section 5</a>)), showing step-by-step how the basic reaction rules lead to the final equations.
 </summary>
@@ -705,7 +707,7 @@ Rik&#39;s Treehouse
           </a>
         </div>
         <script>
-          window.index_js_url="/~rikblok/searchindex.en.js?1770531225";
+          window.index_js_url="/~rikblok/searchindex.en.js?1770597923";
         </script>
         <search><form action="/~rikblok/search/index.html" method="get">
           <div class="searchbox default-animation">
@@ -718,12 +720,12 @@ Rik&#39;s Treehouse
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="/~rikblok/js/auto-complete.js?1770531225" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.min.js?1770531225" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1770531225" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1770531225" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.en.min.js?1770531225" defer></script>
-        <script src="/~rikblok/js/search.js?1770531225" defer></script>
+        <script src="/~rikblok/js/auto-complete.js?1770597923" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.min.js?1770597923" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1770597923" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1770597923" defer></script>
+        <script src="/~rikblok/js/lunr/lunr.en.min.js?1770597923" defer></script>
+        <script src="/~rikblok/js/search.js?1770597923" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
         <ul>
@@ -798,8 +800,8 @@ Rik&#39;s Treehouse
         </div>
       </div>
     </aside>
-    <script src="/~rikblok/js/clipboard.min.js?1770531225" defer></script>
-    <script src="/~rikblok/js/perfect-scrollbar.min.js?1770531225" defer></script>
+    <script src="/~rikblok/js/clipboard.min.js?1770597923" defer></script>
+    <script src="/~rikblok/js/perfect-scrollbar.min.js?1770597923" defer></script>
     <script>
       function useMathJax( config ){
         window.MathJax = Object.assign( window.MathJax || {}, {
@@ -814,7 +816,7 @@ Rik&#39;s Treehouse
       }
       useMathJax( JSON.parse("{}") );
     </script>
-    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1770531225"></script>
-    <script src="/~rikblok/js/theme.js?1770531225" defer></script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1770597923"></script>
+    <script src="/~rikblok/js/theme.js?1770597923" defer></script>
   </body>
 </html>
