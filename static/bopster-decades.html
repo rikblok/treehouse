@@ -10,13 +10,12 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg:       #0d1117;
-    --surface:  #161b22;
-    --border:   #30363d;
-    --accent:   #23a6d5;
-    --accent2:  #1a7fa5;
-    --tab-h:    54px;
-    --header-h: 72px;
+    --bg:      #0d1117;
+    --surface: #161b22;
+    --border:  #30363d;
+    --accent:  #23a6d5;
+    --tab-h:   48px;
+    --scale:   0.75;          /* iframe zoom: 1 = full size, 0.75 = 75% */
   }
 
   html, body {
@@ -25,36 +24,6 @@
     color: #e6edf3;
     font-family: 'DM Sans', sans-serif;
     overflow: hidden;
-  }
-
-  /* ── Header ── */
-  header {
-    height: var(--header-h);
-    display: flex;
-    align-items: center;
-    padding: 0 28px;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    gap: 16px;
-  }
-  header h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px;
-    letter-spacing: 2px;
-    color: var(--accent);
-    line-height: 1;
-  }
-  header p {
-    font-size: 14px;
-    color: #8b949e;
-    font-weight: 400;
-  }
-  .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    opacity: .5;
-    flex-shrink: 0;
   }
 
   /* ── Tab bar ── */
@@ -70,18 +39,19 @@
 
   nav button {
     flex: 1;
-    min-width: 90px;
+    min-width: 70px;
     height: 100%;
     border: none;
     background: transparent;
     color: #8b949e;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
+    font-size: 20px;
     letter-spacing: 1.5px;
     cursor: pointer;
     position: relative;
     transition: color .18s, background .18s;
     border-right: 1px solid var(--border);
+    -webkit-tap-highlight-color: transparent;
   }
   nav button:last-child { border-right: none; }
 
@@ -95,34 +65,37 @@
     transition: transform .2s ease;
     border-radius: 3px 3px 0 0;
   }
+  nav button:hover  { color: #e6edf3; background: rgba(35,166,213,.06); }
+  nav button.active { color: var(--accent); background: rgba(35,166,213,.1); }
+  nav button.active::after { transform: scaleX(1); }
 
-  nav button:hover {
-    color: #e6edf3;
-    background: rgba(35, 166, 213, .06);
-  }
-  nav button.active {
-    color: var(--accent);
-    background: rgba(35, 166, 213, .1);
-  }
-  nav button.active::after {
-    transform: scaleX(1);
-  }
-
-  /* ── iframe pane ── */
-  .pane {
-    display: none;
-    width: 100%;
-    height: calc(100vh - var(--header-h) - var(--tab-h));
-    border: none;
-  }
-  .pane.active { display: block; }
-
-  /* ── Loading overlay ── */
+  /* ── Frame container ── */
   .frame-wrap {
+    display: none;
     position: relative;
     width: 100%;
-    height: calc(100vh - var(--header-h) - var(--tab-h));
+    /* visible height = full viewport minus tab bar */
+    height: calc(100vh - var(--tab-h));
+    overflow: hidden;
   }
+  .frame-wrap.active { display: block; }
+
+  /* Scale trick:
+     The iframe is rendered at (1/scale) × the visible size,
+     then shrunk back down with transform so it fits perfectly. */
+  .frame-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    border: none;
+    /* physical size before scaling */
+    width:  calc(100% / var(--scale));
+    height: calc(100% / var(--scale));
+    /* scale it down from top-left corner */
+    transform: scale(var(--scale));
+    transform-origin: top left;
+  }
+
+  /* ── Loading overlay ── */
   .loader {
     position: absolute;
     inset: 0;
@@ -136,9 +109,9 @@
     font-size: 14px;
     pointer-events: none;
     transition: opacity .3s;
-    z-index: 1;
+    z-index: 2;
   }
-  .loader.hidden { opacity: 0; }
+  .loader.hidden { opacity: 0; pointer-events: none; }
   .spinner {
     width: 36px; height: 36px;
     border: 3px solid var(--border);
@@ -151,14 +124,7 @@
 </head>
 <body>
 
-<header>
-  <h1>Bopster</h1>
-  <div class="dot"></div>
-  <p>Play by decade</p>
-</header>
-
 <nav id="tabs"></nav>
-
 <div id="frames"></div>
 
 <script>
@@ -177,7 +143,7 @@ const loaded = new Set();
 
 function activate(i) {
   document.querySelectorAll('nav button').forEach((b, j) => b.classList.toggle('active', i === j));
-  document.querySelectorAll('.frame-wrap').forEach((w, j) => w.style.display = i === j ? 'block' : 'none');
+  document.querySelectorAll('.frame-wrap').forEach((w, j) => w.classList.toggle('active', i === j));
 
   if (!loaded.has(i)) {
     loaded.add(i);
@@ -190,24 +156,19 @@ function activate(i) {
 }
 
 decades.forEach((d, i) => {
-  // Tab button
   const btn = document.createElement('button');
   btn.textContent = d.label;
   btn.addEventListener('click', () => activate(i));
   nav.appendChild(btn);
 
-  // Frame wrapper
   const wrap = document.createElement('div');
   wrap.className = 'frame-wrap';
-  wrap.style.display = 'none';
 
   const loader = document.createElement('div');
   loader.className = 'loader';
   loader.innerHTML = '<div class="spinner"></div><span>Loading ' + d.label + '…</span>';
 
   const iframe = document.createElement('iframe');
-  iframe.className = 'pane';
-  iframe.style.display = 'block';
   iframe.title = d.label;
   iframe.allow = 'autoplay; camera; microphone';
 
