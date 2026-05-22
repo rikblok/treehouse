@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bopster – Play by Decade</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --accent:   #23a6d5;
+    --accent2:  #1a7fa5;
+    --tab-h:    54px;
+    --header-h: 72px;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: #e6edf3;
+    font-family: 'DM Sans', sans-serif;
+    overflow: hidden;
+  }
+
+  /* ── Header ── */
+  header {
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
+    padding: 0 28px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+  }
+  header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  header p {
+    font-size: 14px;
+    color: #8b949e;
+    font-weight: 400;
+  }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: .5;
+    flex-shrink: 0;
+  }
+
+  /* ── Tab bar ── */
+  nav {
+    height: var(--tab-h);
+    display: flex;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+
+  nav button {
+    flex: 1;
+    min-width: 90px;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: #8b949e;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    position: relative;
+    transition: color .18s, background .18s;
+    border-right: 1px solid var(--border);
+  }
+  nav button:last-child { border-right: none; }
+
+  nav button::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform .2s ease;
+    border-radius: 3px 3px 0 0;
+  }
+
+  nav button:hover {
+    color: #e6edf3;
+    background: rgba(35, 166, 213, .06);
+  }
+  nav button.active {
+    color: var(--accent);
+    background: rgba(35, 166, 213, .1);
+  }
+  nav button.active::after {
+    transform: scaleX(1);
+  }
+
+  /* ── iframe pane ── */
+  .pane {
+    display: none;
+    width: 100%;
+    height: calc(100vh - var(--header-h) - var(--tab-h));
+    border: none;
+  }
+  .pane.active { display: block; }
+
+  /* ── Loading overlay ── */
+  .frame-wrap {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - var(--header-h) - var(--tab-h));
+  }
+  .loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: var(--bg);
+    color: #8b949e;
+    font-size: 14px;
+    pointer-events: none;
+    transition: opacity .3s;
+    z-index: 1;
+  }
+  .loader.hidden { opacity: 0; }
+  .spinner {
+    width: 36px; height: 36px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Bopster</h1>
+  <div class="dot"></div>
+  <p>Play by decade</p>
+</header>
+
+<nav id="tabs"></nav>
+
+<div id="frames"></div>
+
+<script>
+const decades = [
+  { label: '1960s', url: 'https://www.bopster.app/en/live?load_list=5087' },
+  { label: '1970s', url: 'https://www.bopster.app/en/live?load_list=5088' },
+  { label: '1980s', url: 'https://www.bopster.app/en/live?load_list=5089' },
+  { label: '1990s', url: 'https://www.bopster.app/en/live?load_list=5090' },
+  { label: '2000s', url: 'https://www.bopster.app/en/live?load_list=5091' },
+  { label: '2010s', url: 'https://www.bopster.app/en/live?load_list=5092' },
+];
+
+const nav    = document.getElementById('tabs');
+const frames = document.getElementById('frames');
+const loaded = new Set();
+
+function activate(i) {
+  document.querySelectorAll('nav button').forEach((b, j) => b.classList.toggle('active', i === j));
+  document.querySelectorAll('.frame-wrap').forEach((w, j) => w.style.display = i === j ? 'block' : 'none');
+
+  if (!loaded.has(i)) {
+    loaded.add(i);
+    const wrap   = frames.querySelectorAll('.frame-wrap')[i];
+    const loader = wrap.querySelector('.loader');
+    const iframe = wrap.querySelector('iframe');
+    iframe.src = decades[i].url;
+    iframe.onload = () => loader.classList.add('hidden');
+  }
+}
+
+decades.forEach((d, i) => {
+  // Tab button
+  const btn = document.createElement('button');
+  btn.textContent = d.label;
+  btn.addEventListener('click', () => activate(i));
+  nav.appendChild(btn);
+
+  // Frame wrapper
+  const wrap = document.createElement('div');
+  wrap.className = 'frame-wrap';
+  wrap.style.display = 'none';
+
+  const loader = document.createElement('div');
+  loader.className = 'loader';
+  loader.innerHTML = '<div class="spinner"></div><span>Loading ' + d.label + '…</span>';
+
+  const iframe = document.createElement('iframe');
+  iframe.className = 'pane';
+  iframe.style.display = 'block';
+  iframe.title = d.label;
+  iframe.allow = 'autoplay; camera; microphone';
+
+  wrap.appendChild(loader);
+  wrap.appendChild(iframe);
+  frames.appendChild(wrap);
+});
+
+activate(0);
+</script>
+</body>
+</html>

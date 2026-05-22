@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.139.0">
-    <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
+    <meta name="generator" content="Hugo 0.161.1">
+    <meta name="generator" content="Relearn 9.0.3+36307e4ed23582638ab689240ac7b427217803ee">
     <meta name="description" content="I explore how to efficiently implement Poisson processes in event-driven, multi-agent simulations.">
     <meta name="author" content="Rik Blok">
     <meta name="twitter:card" content="summary">
@@ -25,41 +25,66 @@
     <meta itemprop="dateModified" content="2025-01-18T22:46:12-08:00">
     <meta itemprop="wordCount" content="3773">
     <title>Parallel Poisson (2004) :: Rik&#39;s Treehouse</title>
-    <link href="/~rikblok/css/fontawesome-all.min.css?1770597923" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1770597923" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/auto-complete.css?1770597923" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1770597923" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/perfect-scrollbar.min.css?1770597923" rel="stylesheet">
-    <link href="/~rikblok/css/theme.min.css?1770597923" rel="stylesheet">
-    <link href="/~rikblok/css/format-html.min.css?1770597923" rel="stylesheet" id="R-format-style">
+    <link href="/~rikblok/css/auto-complete/auto-complete.min.css?1779480491" rel="stylesheet">
+    <script src="/~rikblok/js/auto-complete/auto-complete.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/search-lunr.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/search.min.js?1779480491" defer></script>
     <script>
       window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/~rikblok/searchindex.en.js?1779480491";
+    </script>
+    <script src="/~rikblok/js/lunr/lunr.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.multi.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.en.min.js?1779480491" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/~rikblok/fonts/fontawesome/css/all.min.css?1779480491" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/fonts/fontawesome/css/all.min.css?1779480491" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar/perfect-scrollbar.min.css?1779480491" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1779480491" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1779480491" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/research\/notes\/parallel_poisson\/index.html';
       window.relearn.relBasePath='..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..\/..';
       window.relearn.absBaseUri='https:\/\/www.cs.ubc.ca\/~rikblok';
-      window.relearn.min = `.min`;
-      window.relearn.disableAnchorCopy=false;
-      window.relearn.disableAnchorScrolling=false;
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
       // variant stuff
       window.relearn.themevariants = [ 'auto' ];
-      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.customvariantprefix = "my-custom-";
       window.relearn.changeVariant = function(variant) {
         var oldVariant = document.documentElement.dataset.rThemeVariant;
         window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
         document.documentElement.dataset.rThemeVariant = variant;
         if (oldVariant != variant) {
           document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
         }
       }
       window.relearn.markVariant = function() {
         var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
-        var select = document.querySelector("#R-select-variant");
-        if (select) {
-          select.value = variant;
-        }
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
       }
       window.relearn.initVariant = function() {
         var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
-        if( variant == window.relearn.customvariantname ){
-        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
           variant = window.relearn.themevariants[0];
           window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
         }
@@ -67,15 +92,6 @@
       }
       window.relearn.initVariant();
       window.relearn.markVariant();
-      // translations
-      window.T_Copy_to_clipboard = `Copy to clipboard`;
-      window.T_Copied_to_clipboard = `Copied to clipboard!`;
-      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
-      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
-      window.T_Reset_view = `Reset view`;
-      window.T_View_reset = `View reset!`;
-      window.T_No_results_found = `No results found for "{0}"`;
-      window.T_N_results_found = `{1} results found for "{0}"`;
     </script><link rel="stylesheet" type="text/css" href="/~rikblok/hugo-cite.css" />
 
 
@@ -97,16 +113,18 @@ function expandAllDetails() {
 }
 </script>
   </head>
-  <body class="mobile-support html" data-url="/~rikblok/research/notes/parallel_poisson/index.html">
+  <body class="mobile-support html" data-origin="/~rikblok/research/notes/parallel_poisson/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
-      <nav id="R-topbar">
-        <div class="topbar-wrapper">
-          <div class="topbar-sidebar-divider"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
           <div class="topbar-area topbar-area-start" data-area="start">
-            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
             </div>
-            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
               <div class="topbar-content">
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
@@ -129,17 +147,17 @@ function expandAllDetails() {
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/research/index.html"><span itemprop="name">Research ramblings</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/research/notes/index.html"><span itemprop="name">Unpublished notes</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Parallel Poisson (2004)</span><meta itemprop="position" content="3"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/~rikblok/index.html"><span itemprop="name">Rik&#39;s Treehouse</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/~rikblok/research/index.html"><span itemprop="name">Research ramblings</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/~rikblok/research/notes/index.html"><span itemprop="name">Unpublished notes</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Parallel Poisson (2004)</span><meta itemprop="position" content="4"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/research/notes/replicator_kinetics/index.html" title="Replicator Kinetics (2013) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/~rikblok/research/notes/replicator_kinetics/index.html" title="Replicator Kinetics (2013) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/research/notes/discounted_least_squares/index.html" title="Discounted Least Squares (1997) (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/~rikblok/research/notes/discounted_least_squares/index.html" title="Discounted Least Squares (1997) (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
             </div>
-            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
               <div class="topbar-content">
                 <div class="topbar-content-wrapper">
                   <div class="topbar-area topbar-area-more" data-area="more">
@@ -160,7 +178,7 @@ function expandAllDetails() {
 <h1 id="parallel-poisson-2004">Parallel Poisson (2004)</h1>
 
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
-<h2 id="updating-in-simulations-of-parallel-poisson-processes">Updating in simulations of parallel Poisson processes</h2>
+<h2 id="updating-in-simulations-of-parallel-poisson-processes">Updating in simulations of parallel Poisson processes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <!-- 
 
 
@@ -258,9 +276,9 @@ function expandAllDetails() {
 
 <p>Version 1
 &mdash; Rik Blok, 2004-10-15</p>
-<h3 id="abstract">Abstract</h3>
+<h3 id="abstract">Abstract<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>I explore how to efficiently implement Poisson processes in event-driven, multi-agent simulations. The most efficient strategy I am able to find uses a binary tree to implement the roulette wheel algorithm and results in \(O(\log_2 N)\) time to find the next event out of \(N\) total processes. These notes arose from discussions with Mario Pineda, Alistair Blachford, and Michael Doebeli. Unpublished.</p>
-<h3 id="1-definition">1. Definition</h3>
+<h3 id="1-definition">1. Definition<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>&mdash; Rik Blok, 2004-09-26</p>
 <p>A Poisson process is a sequence of random events where the probability of an event is constant per unit time. Usually it is described in terms of a sequence of multiple events but in this discussion I will focus on the occurrence of a single event in the sequence. Let \(c(t)\) be the cumulative probability that the event has occurred by time t (starting at \(t = 0\)). Then, by the definition of a Poisson process, the probability of the event occurring between \(t\) and \(t + dt\) is given by the p.d.f.</p>
 \[
@@ -276,30 +294,32 @@ function expandAllDetails() {
 \[
   p(t) = r e^{-r t}.
 \]<p>The above gives the distribution for a single event. Below, we expand this to consider a number of possible events, each given by a Poisson process with an unique rate \(r_j\) . The problem is: how do we simulate such a process efficiently?</p>
-<h3 id="2-roulette-wheel-algorithm">2. Roulette wheel algorithm</h3>
+<h3 id="2-roulette-wheel-algorithm">2. Roulette wheel algorithm<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>&mdash; Rik Blok, 2004-10-01</p>
 <p>In a discrete-event simulation it is possible to sample random deviates for all possible events and construct an event queue to determine the order or events but it is cumbersome. The roulette wheel algorithm is algorithmically simpler. Given rates \(r_j, j=1\ldots N\), the probability of event i acting first is</p>
 \[
   \Pr(i\text{ first}) = \frac{r_i}{\sum_j r_j}.
 \]<div id="fig-1">
-<div class="tab-panel" data-tab-group="d4fb4b31780778743916ce00a5993ac3">
+<div class="tab-panel" data-tab-group="R-tabs-dded39d2365b513bb127f7c6f5edd207">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="figure-1"
+      aria-controls="R-tab-id-e731c8392157e5b3f5a56c1d8a2665e1" aria-expanded="true"
+      data-tab-item="R-tab-60806a484aa67dd4b1f9835cf1de9551"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('d4fb4b31780778743916ce00a5993ac3','figure-1')"
+      onclick="switchTab('R-tabs-dded39d2365b513bb127f7c6f5edd207','R-tab-60806a484aa67dd4b1f9835cf1de9551')"
     >
       <span class="tab-nav-text">Figure 1</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="figure-1"
+      id="R-tab-id-e731c8392157e5b3f5a56c1d8a2665e1"
+      data-tab-item="R-tab-60806a484aa67dd4b1f9835cf1de9551"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-f2b5404b53ea83c417fe04a3bb26b78d" class="lightbox-link"><img alt="Figure 1" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure1.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-f2b5404b53ea83c417fe04a3bb26b78d"><img alt="Figure 1" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure1.png"></a></p>
+<p><a href="#R-image-f8164fa3a6fa6cbe6c0fd3b56aabb474" class="lightbox-link"><img alt="Figure 1" class="lazy lightbox figure-image" loading="lazy" src="figure1.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-f8164fa3a6fa6cbe6c0fd3b56aabb474"><img alt="Figure 1" class="lazy lightbox lightbox-image" loading="lazy" src="figure1.png"></a></p>
 <p>Figure 1: To select an event via the Roulette Wheel algorithm pick a random
 number \(u\) between \(0\) and \(\sum_j r_j\). Then it will land within the area delimited by \(r_i\) with probability \(r_i/\sum_j r_j\).</p>
       </div>
@@ -319,7 +339,7 @@ number \(u\) between \(0\) and \(\sum_j r_j\). Then it will land within the area
   \sum_{j\leq i} r_j \leq u.
 \]<p>This method is simple to implement but computationally expensive since it
 requires \(O(N)\) operations (due to the summation) to compute each \(i\).</p>
-<h3 id="3-rejection-method">3. Rejection method</h3>
+<h3 id="3-rejection-method">3. Rejection method<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>&mdash; Rik Blok, 2004-10-01</p>
 <p>An alternative to the roulette wheel is the rejection method. The idea is to
 pick a random event \(i\) and sample whether it passes a trial. We will begin
@@ -353,26 +373,28 @@ the Poisson probability:</p>
 \[
   f(r) = \frac{r}{\hat{r}}
 \]<p>for some constant \(\hat{r}\).</p>
-<h4 id="31-efficient-computation">3.1. Efficient computation</h4>
+<h4 id="31-efficient-computation">3.1. Efficient computation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
 <div id="fig-2">
-<div class="tab-panel" data-tab-group="adb75194effb167e517a9c49cf1f5cd3">
+<div class="tab-panel" data-tab-group="R-tabs-209b9952d0583e327d822a74379f2706">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="figure-2"
+      aria-controls="R-tab-id-23b056db0e9ecd2166f92621f33feb76" aria-expanded="true"
+      data-tab-item="R-tab-a876441e5617c00df92cac5bd24d5730"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('adb75194effb167e517a9c49cf1f5cd3','figure-2')"
+      onclick="switchTab('R-tabs-209b9952d0583e327d822a74379f2706','R-tab-a876441e5617c00df92cac5bd24d5730')"
     >
       <span class="tab-nav-text">Figure 2</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="figure-2"
+      id="R-tab-id-23b056db0e9ecd2166f92621f33feb76"
+      data-tab-item="R-tab-a876441e5617c00df92cac5bd24d5730"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-aeef012152465da03204a460b532f4cb" class="lightbox-link"><img alt="Figure 2" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure2.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-aeef012152465da03204a460b532f4cb"><img alt="Figure 2" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure2.png"></a></p>
+<p><a href="#R-image-0ccc7fbefc72c05972e7ffb97014cce7" class="lightbox-link"><img alt="Figure 2" class="lazy lightbox figure-image" loading="lazy" src="figure2.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-0ccc7fbefc72c05972e7ffb97014cce7"><img alt="Figure 2" class="lazy lightbox lightbox-image" loading="lazy" src="figure2.png"></a></p>
 <p>Figure 2: To select an event via the rejection method pick a random event \(i\)
 and a random deviate \(0 < u < \hat{r}\). Accept if \(u < r_i\) otherwise repeat.</p>
       </div>
@@ -408,7 +430,7 @@ and a random deviate \(0 < u < \hat{r}\). Accept if \(u < r_i\) otherwise repeat
 then there is an added cost of continually updating \(\hat{r}\). The worst choice would be to check all \(N\) rates and reset \(\hat{r}\) appropriately whenever any rate changed. That would increase the cost of the rejection method to \(O(N)\) operations, no better than the Roulette Wheel.</p>
 <p>An alternative would be to keep the rates sorted so that \(r_j \geq r_{j+1}\) for all \(j\). Then \(\hat{r} = r_1\), always. The cost involved would be that of adding and removing items from a sorted list. (I believe C++’s STL offers a &lsquo;&rsquo;(multi)map&rsquo;&rsquo; container which is implemented as a binary tree giving typically \(O(\log N)\) cost. Hash tables may also be suitable.)</p>
 <p>That was assuming \(\hat{r}/\bar{r}\) was independent of \(N\). More realistically, we might expect the highest rate in the set to scale as \(\hat{r} \propto \bar{r} \log N\) so the total computational expense of this approach would grow as \(O([\log N]^2)\) which is still much better than the Roulette Wheel.</p>
-<h3 id="4-faster-implementation-by-sampling-two-events">4. Faster implementation by sampling two events?</h3>
+<h3 id="4-faster-implementation-by-sampling-two-events">4. Faster implementation by sampling two events?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>&mdash; Rik Blok, 2004-10-05</p>
 <p>I wonder if it is possible to find an even less costly method by sampling multiple event processes and comparing them? To explore this we will consider a
 variant of the rejection method where the trial probability of event \(i\) depends on a second sampled event \(j \neq i, f = f(r_i, r_j)\). If \(i\) is rejected then two new events are drawn. Is there a trial function \(f\) that reproduces the Poisson process?</p>
@@ -442,7 +464,7 @@ variant of the rejection method where the trial probability of event \(i\) depen
 \[
 	\frac{r_i}{\sum_k r_k} = \frac{r_i \sum_{j\neq i} g(r_j)}{\sum_k r_k \sum_{l\neq k} g(r_l)} = \frac{r_i G_i}{\sum_k r_k G_k}.
 \]<p>Recall, we are trying to detemine the form of \(G_i\) that reproduces Poisson updating.  For arbitrary rates \(r_k\) the above equation reduces to \(\sum_k G_k = N G_i\) for all \(i\), which can only be satisfied if all \(G_i\) are equal.  In other words, \(g(r) = \text{const.}\) independent of \(r\) so the second sampling is irrelevant and we fall back to the original rejection method.  It appears there is no way to improve on the rejection method by sampling multiple events.</p>
-<h3 id="5-rejection-with-adaptive-correction">5. Rejection with adaptive correction</h3>
+<h3 id="5-rejection-with-adaptive-correction">5. Rejection with adaptive correction<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>&mdash; Rik Blok, 2004-10-12</p>
 <p>Mario came up with the idea of using the rejection method but relaxing restriction so that \(\hat{r} \geq \max(r)\) is not strictly maintained at exactly \(\max(r)\).  It is cheap to enforce [with each new rate \(r_i\) just set \(\hat{r} = \max(\hat{r},r_i)\) which is \(O(1)\)] but has a hidden cost: wasted rejection trials if \(\hat{r}\) is too large.  Mario&rsquo;s idea was to recalculate \(\hat{r}\) if the failed trials \(k\) were ever found to exceed some arbitrary threshold \(k_\max\).</p>
 <p>That&rsquo;s good but I think we can do even better.  There should be a way to choose how many //wasted// trials are acceptable.  Recall from <a href="/~rikblok/research/notes/parallel_poisson/index.html#eq-1">Eq. 1</a> that \(\langle k\rangle =\hat{r}/\bar{r}\).  Since we can keep track of \(\bar{r}\) in constant \(O(1)\) time [if a rate changes from \(r_\text{old}\) to \(r_\text{new}\) then \(\bar{r} \gets \bar{r} + (r_\text{new} - r_\text{old})/N\) (where `\(\gets\)&rsquo; represents the assignment operator)] it is possible to compute the optimal expected number of trials per event whenever \(\max(r)\) is known,</p>
@@ -475,26 +497,28 @@ variant of the rejection method where the trial probability of event \(i\) depen
 \[
 	W \gets W + (k - k_\text{opt}) \omega.
 \]<p>So after each event our adaptive correction criterion is: if \(W>N\) then correct \(\hat{r}\) and \(k_\text{opt}\).  Note we also correct whenever we encounter a new rate higher than \(\hat{r}\) because it is essentially free.  Whenever a correction occurs we reset the cumulative waste \(W=0\).</p>
-<h4 id="51-implementation-and-test">5.1. Implementation and test</h4>
+<h4 id="51-implementation-and-test">5.1. Implementation and test<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
 <p>A sample implementation of adaptive correction is shown in <a href="/~rikblok/research/notes/parallel_poisson/index.html#list-1">Listing 1</a>.  A simulation based on this code was compiled and run with a range of processes from \(N=1\) to \(N=10^7\).  The process rates were initially sampled (and resampled after each event) from a log-normal distribution with some spread \(\sigma\) (the standard deviation of the normal distribution).  For small \(\sigma\) the rates tend to be narrowly distributed, as \(\sigma\) grows the highest rates can grow to be many orders of magnitude faster than the slowest.  The results are shown in <a href="/~rikblok/research/notes/parallel_poisson/index.html#fig-3">Figure 3</a>.  Note that for small and moderate spreads (\(\leq 2\) orders of magnitude) the simulation speed is \(O(1)\), constant independent of the number of parallel processes, \(N\).</p>
 <div id="list-1">
-<div class="tab-panel" data-tab-group="87cc68d5d458bfa1bd8fb15edf2f3287">
+<div class="tab-panel" data-tab-group="R-tabs-7cc580dca6ece5d0923aad2e79af12d0">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="listing-1"
+      aria-controls="R-tab-id-a6909be3dce47530474de80008d62fce" aria-expanded="true"
+      data-tab-item="R-tab-d96ab3572aa21bdd124273bc0bf50434"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('87cc68d5d458bfa1bd8fb15edf2f3287','listing-1')"
+      onclick="switchTab('R-tabs-7cc580dca6ece5d0923aad2e79af12d0','R-tab-d96ab3572aa21bdd124273bc0bf50434')"
     >
       <span class="tab-nav-text">Listing 1</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="listing-1"
+      id="R-tab-id-a6909be3dce47530474de80008d62fce"
+      data-tab-item="R-tab-d96ab3572aa21bdd124273bc0bf50434"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<div class="highlight wrap-code"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">TParallelPoisson</span> <span class="p">{</span>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">TParallelPoisson</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">  Intended usage:
 </span></span></span><span class="line"><span class="cl"><span class="cm">
@@ -532,7 +556,7 @@ variant of the rejection method where the trial probability of event \(i\) depen
 </span></span><span class="line"><span class="cl">  <span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">TParallelPoisson</span><span class="p">(</span><span class="kt">double</span> <span class="n">newcost</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// constructor
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="n">reset</span><span class="p">();</span>
+</span></span></span><span class="line"><span class="cl">      <span class="n">reset</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">reset</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="n">waste</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
@@ -548,13 +572,13 @@ variant of the rejection method where the trial probability of event \(i\) depen
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">correctionNeeded</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">trials</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// after rejection trials update waste cumulator 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// and report if correction necessary
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="n">waste</span> <span class="o">+=</span> <span class="n">cost</span> <span class="o">*</span> <span class="p">((</span><span class="kt">double</span><span class="p">)</span><span class="n">trials</span> <span class="o">-</span> <span class="n">opttrials</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">    <span class="c1">// and report if correction necessary
+</span></span></span><span class="line"><span class="cl">      <span class="n">waste</span> <span class="o">+=</span> <span class="n">cost</span> <span class="o">*</span> <span class="p">((</span><span class="kt">double</span><span class="p">)</span><span class="n">trials</span> <span class="o">-</span> <span class="n">opttrials</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">(</span><span class="n">waste</span> <span class="o">&gt;</span> <span class="n">numprocesses</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setMaxSumRate</span><span class="p">(</span><span class="kt">double</span> <span class="n">newmaxrate</span><span class="p">,</span> <span class="kt">double</span> <span class="n">newsumrates</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// sets maxrate (and sumrates if passed)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="n">maxrate</span> <span class="o">=</span> <span class="n">newmaxrate</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">      <span class="n">maxrate</span> <span class="o">=</span> <span class="n">newmaxrate</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="n">sumrates</span> <span class="o">=</span> <span class="n">newsumrates</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="n">avgrate</span> <span class="o">=</span> <span class="n">sumrates</span> <span class="o">/</span> <span class="n">numprocesses</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="n">opttrials</span> <span class="o">=</span> <span class="n">maxrate</span> <span class="o">/</span> <span class="n">avgrate</span><span class="p">;</span>
@@ -562,7 +586,7 @@ variant of the rejection method where the trial probability of event \(i\) depen
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">adjustRate</span><span class="p">(</span><span class="kt">double</span> <span class="n">oldrate</span><span class="p">,</span> <span class="kt">double</span> <span class="n">newrate</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// returns true if maxrate reset
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="n">numprocesses</span> <span class="o">+=</span> <span class="p">(</span><span class="n">newrate</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">oldrate</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">      <span class="n">numprocesses</span> <span class="o">+=</span> <span class="p">(</span><span class="n">newrate</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">oldrate</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">      <span class="n">sumrates</span> <span class="o">+=</span> <span class="n">newrate</span> <span class="o">-</span> <span class="n">oldrate</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="n">avgrate</span> <span class="o">=</span> <span class="n">sumrates</span> <span class="o">/</span> <span class="n">numprocesses</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">newrate</span> <span class="o">&gt;=</span> <span class="n">maxrate</span><span class="p">)</span>  <span class="n">setMaxRateInt</span><span class="p">(</span><span class="n">newrate</span><span class="p">);</span>
@@ -580,24 +604,26 @@ variant of the rejection method where the trial probability of event \(i\) depen
 </div>
 </div>
 <div id="fig-3">
-<div class="tab-panel" data-tab-group="684967f9b582aa45de6eaa4b78d98b38">
+<div class="tab-panel" data-tab-group="R-tabs-478c8503a6f76e1442964a2d8f45909d">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="figure-3"
+      aria-controls="R-tab-id-c3d6889be30f800d662164df1e90a7c1" aria-expanded="true"
+      data-tab-item="R-tab-50baf8ce027f79388371f6dbea5a8e9b"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('684967f9b582aa45de6eaa4b78d98b38','figure-3')"
+      onclick="switchTab('R-tabs-478c8503a6f76e1442964a2d8f45909d','R-tab-50baf8ce027f79388371f6dbea5a8e9b')"
     >
       <span class="tab-nav-text">Figure 3</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="figure-3"
+      id="R-tab-id-c3d6889be30f800d662164df1e90a7c1"
+      data-tab-item="R-tab-50baf8ce027f79388371f6dbea5a8e9b"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-775f287dd7c9d71966008b5726851c13" class="lightbox-link"><img alt="Figure 3" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure3.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-775f287dd7c9d71966008b5726851c13"><img alt="Figure 3" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure3.png"></a></p>
+<p><a href="#R-image-69612347c54408beedf416de4498a5d2" class="lightbox-link"><img alt="Figure 3" class="lazy lightbox figure-image" loading="lazy" src="figure3.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-69612347c54408beedf416de4498a5d2"><img alt="Figure 3" class="lazy lightbox lightbox-image" loading="lazy" src="figure3.png"></a></p>
 <p>Figure 3: Performance of adaptive correction rejection method as a function of the number of parallel processes, \(N\).  For low to moderate \(N\) and spreads the running time is roughly constant.  Rates are sampled from log-normal distribution [exponential of normally-distributed deviates with mean zero and variance \(\sigma^2\)].  The spread is estimated to be the ratio of the 95th upper- versus lower-percentiles of the normal distributions, \(e^{+2\sigma}/e^{-2\sigma}=e^{+4\sigma}\).  \(10^6\) events were simulated and on each event the associated rate was resampled.</p>
       </div>
     </div>
@@ -605,29 +631,31 @@ variant of the rejection method where the trial probability of event \(i\) depen
 </div>
 </div>
 <p>Unfortunately, for large spreads the news is not as good: recall from <a href="/~rikblok/research/notes/parallel_poisson/index.html#eq-2">Eq. 2</a> the expected number of trials grows as the ratio of the maximum rate over the average rate.  If the rates are widely distributed then the highest may be orders of magnitude above average.  In the tests this was simulated by setting \(\sigma\) large and <a href="/~rikblok/research/notes/parallel_poisson/index.html#fig-3">Figure 3</a> demonstrates that this had a severe impact on performance (top curve) for all \(N\). So the efficiency of adaptive correction depends critically on the distribution of rates; ideally, it would be better to have a method that didn&rsquo;t depend on the distribution (which may not be known in advance).</p>
-<h3 id="6-roulette-in-a-tree">6. Roulette in a tree</h3>
+<h3 id="6-roulette-in-a-tree">6. Roulette in a tree<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>&mdash; Rik Blok, 2004-10-14</p>
 <p>I&rsquo;ve thought of a faster way to implement the roulette wheel method.  It relies on storing partial sums on a balanced binary tree structure and should run in \(O(\log_2 N)\) time, independent of the distribution of rates.  Unlike the adaptive correction rejection method the rates are now explicitly stored and manipulated as part of the data structure and each process must be labelled by an index \(i=1,\ldots, N\) in order to access its corresponding rate.</p>
 <p>The tree, shown in <a href="/~rikblok/research/notes/parallel_poisson/index.html#fig-4">Figure 4</a>, is important because it is guaranteed to be as well balanced as possible for any number of processes, \(N\).  Further, it is easy to add or remove processes as necessary.  (Removing is done by setting the appropriate rate to zero but leaving it in the tree.) Locating a node is also efficient, requiring \(O(\log_2 N)\) operations.</p>
 <div id="fig-4">
-<div class="tab-panel" data-tab-group="7b42586be2d47a0021235fae830e9209">
+<div class="tab-panel" data-tab-group="R-tabs-00dcbdb028fbdee03f7b72c07fcf8246">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="figure-4"
+      aria-controls="R-tab-id-57b94ea0d7cf2f977e763e98fde05199" aria-expanded="true"
+      data-tab-item="R-tab-cb64677c25f0deab53e5427c6af25f94"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('7b42586be2d47a0021235fae830e9209','figure-4')"
+      onclick="switchTab('R-tabs-00dcbdb028fbdee03f7b72c07fcf8246','R-tab-cb64677c25f0deab53e5427c6af25f94')"
     >
       <span class="tab-nav-text">Figure 4</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="figure-4"
+      id="R-tab-id-57b94ea0d7cf2f977e763e98fde05199"
+      data-tab-item="R-tab-cb64677c25f0deab53e5427c6af25f94"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-28c0712b1214f07340857885ce714751" class="lightbox-link"><img alt="Figure 4" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure4.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-28c0712b1214f07340857885ce714751"><img alt="Figure 4" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure4.png"></a></p>
+<p><a href="#R-image-aaa2ac0c7a8fb8a6fc4732eb7fe4063e" class="lightbox-link"><img alt="Figure 4" class="lazy lightbox figure-image" loading="lazy" src="figure4.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-aaa2ac0c7a8fb8a6fc4732eb7fe4063e"><img alt="Figure 4" class="lazy lightbox lightbox-image" loading="lazy" src="figure4.png"></a></p>
 <p>Figure 4: A binary tree with a one-to-one mapping onto positive integers.  Each node has two children indicated by the branches 0 and 1.  To locate the node representing an index we represent the index in binary.  Starting at the root (which is always index 1) we follow the branches by reading the binary representation from right to left until we reach the final 1.  For instance, the highlighted path to \(i=14\) (1110 in binary) is \(0\rightarrow 1 \rightarrow 1\).</p>
       </div>
     </div>
@@ -635,24 +663,26 @@ variant of the rejection method where the trial probability of event \(i\) depen
 </div>
 </div>
 <div id="fig-5">
-<div class="tab-panel" data-tab-group="4738fc062517fcb401baa3c305eb942c">
+<div class="tab-panel" data-tab-group="R-tabs-8da56985bd347289a878b9a2476b86cb">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="figure-5"
+      aria-controls="R-tab-id-4158fcfd35d39bc988dabb6b5e8a4348" aria-expanded="true"
+      data-tab-item="R-tab-65a7d7cccc69f1e2a452e9d9046385d5"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('4738fc062517fcb401baa3c305eb942c','figure-5')"
+      onclick="switchTab('R-tabs-8da56985bd347289a878b9a2476b86cb','R-tab-65a7d7cccc69f1e2a452e9d9046385d5')"
     >
       <span class="tab-nav-text">Figure 5</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="figure-5"
+      id="R-tab-id-4158fcfd35d39bc988dabb6b5e8a4348"
+      data-tab-item="R-tab-65a7d7cccc69f1e2a452e9d9046385d5"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-498d5cf99e00cd73e9d4347dda639047" class="lightbox-link"><img alt="Figure 5" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure5.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-498d5cf99e00cd73e9d4347dda639047"><img alt="Figure 5" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure5.png"></a></p>
+<p><a href="#R-image-da1a05b355633ced3062e50347cefb1e" class="lightbox-link"><img alt="Figure 5" class="lazy lightbox figure-image" loading="lazy" src="figure5.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-da1a05b355633ced3062e50347cefb1e"><img alt="Figure 5" class="lazy lightbox lightbox-image" loading="lazy" src="figure5.png"></a></p>
 <p>Figure 5: A single node in the binary tree used to optimize the roulette wheel algorithm.  Each node \(A\) contains a rate \(r_A\), sum of rates \(\Sigma_A\), and links to its parent \(P\) and children \(C_0\) and \(C_1\).  \(\Sigma_A\) is the sum of all the rates down the branch of \(A\), including \(r_A\) itself, \(\Sigma_A = r_A + \Sigma_{C_0} + \Sigma_{C_1}\).  Any non-existant nodes are assumed to have \(r=\Sigma=0\).</p>
       </div>
     </div>
@@ -670,24 +700,26 @@ variant of the rejection method where the trial probability of event \(i\) depen
 </ol>
 <p>The full code is given in <a href="/~rikblok/research/notes/parallel_poisson/index.html#list-2">Listing 2</a>.</p>
 <div id="fig-6">
-<div class="tab-panel" data-tab-group="ac99a7a5b950493da61956611a22737e">
+<div class="tab-panel" data-tab-group="R-tabs-3795853202e259cf957875c7a3438639">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="figure-6"
+      aria-controls="R-tab-id-2f0580978e3e359e7b7dde0bf497b0d7" aria-expanded="true"
+      data-tab-item="R-tab-83a33586a6893316e46f6a1d49bc5519"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('ac99a7a5b950493da61956611a22737e','figure-6')"
+      onclick="switchTab('R-tabs-3795853202e259cf957875c7a3438639','R-tab-83a33586a6893316e46f6a1d49bc5519')"
     >
       <span class="tab-nav-text">Figure 6</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="figure-6"
+      id="R-tab-id-2f0580978e3e359e7b7dde0bf497b0d7"
+      data-tab-item="R-tab-83a33586a6893316e46f6a1d49bc5519"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-e5370f4eebc77513f5a068c46b5ae13a" class="lightbox-link"><img alt="Figure 6" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure6.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-e5370f4eebc77513f5a068c46b5ae13a"><img alt="Figure 6" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure6.png"></a></p>
+<p><a href="#R-image-23666354d4e4c31f5ac64e62c9812790" class="lightbox-link"><img alt="Figure 6" class="lazy lightbox figure-image" loading="lazy" src="figure6.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-23666354d4e4c31f5ac64e62c9812790"><img alt="Figure 6" class="lazy lightbox lightbox-image" loading="lazy" src="figure6.png"></a></p>
 <p>Figure 6: To select an event via the binary tree Roulette Wheel algorithm pick a random number \(u\) between 0 and \(\Sigma_A = r_A + \Sigma_{C_0} + \Sigma_{C_1}\).  The area it lands in indicates the course of action (choose \(A\) or branches \(C_0\) or \(C_1\), respectively).</p>
       </div>
     </div>
@@ -695,56 +727,58 @@ variant of the rejection method where the trial probability of event \(i\) depen
 </div>
 </div>
 <div id="list-2">
-<div class="tab-panel" data-tab-group="351c62805dec580a15db9b426b10c783">
+<div class="tab-panel" data-tab-group="R-tabs-0695cdf299c61cacd959b5339fd45d20">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="listing-2-parallelpoissonh"
+      aria-controls="R-tab-id-fa44dfce9b1e3aad39b18ebcbf29b67b" aria-expanded="true"
+      data-tab-item="R-tab-ebef0e50dd4fdfc9d30be66d7ce14372"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('351c62805dec580a15db9b426b10c783','listing-2-parallelpoissonh')"
+      onclick="switchTab('R-tabs-0695cdf299c61cacd959b5339fd45d20','R-tab-ebef0e50dd4fdfc9d30be66d7ce14372')"
     >
       <span class="tab-nav-text">Listing 2: parallelpoisson.h</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="listing-2-parallelpoissonh"
+      id="R-tab-id-fa44dfce9b1e3aad39b18ebcbf29b67b"
+      data-tab-item="R-tab-ebef0e50dd4fdfc9d30be66d7ce14372"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<div class="highlight wrap-code"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">TPPNode</span> <span class="p">{</span>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">TPPNode</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// nodes for TParallelPoisson tree.  Each node uses ~32 bytes.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">private</span><span class="o">:</span>
+</span></span></span><span class="line"><span class="cl">  <span class="k">private</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">TPPNode</span> <span class="o">*</span><span class="n">odd</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">TPPNode</span> <span class="o">*</span><span class="n">even</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">TPPNode</span> <span class="o">*</span><span class="n">parent</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">index</span><span class="p">;</span>  <span class="c1">// &gt;= 1
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">double</span> <span class="n">rate</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="n">rate</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="n">sum</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">TPPNode</span><span class="p">(</span><span class="n">TPPNode</span> <span class="o">*</span><span class="n">newparent</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">path</span> <span class="o">=</span> <span class="mh">0x1</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// constructor
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="n">parent</span> <span class="o">=</span> <span class="n">newparent</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">      <span class="n">parent</span> <span class="o">=</span> <span class="n">newparent</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="n">rate</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="n">odd</span> <span class="o">=</span> <span class="n">even</span><span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="c1">// reverse path to get index
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">for</span> <span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">path</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span> <span class="n">path</span> <span class="o">=</span> <span class="p">(</span><span class="n">path</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">))</span>
+</span></span></span><span class="line"><span class="cl">      <span class="k">for</span> <span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">path</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span> <span class="n">path</span> <span class="o">=</span> <span class="p">(</span><span class="n">path</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">        <span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">index</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">path</span> <span class="o">&amp;</span> <span class="mh">0x1</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="o">~</span><span class="n">TPPNode</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// destructor
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">if</span> <span class="p">(</span><span class="n">odd</span><span class="p">)</span>  <span class="k">delete</span> <span class="n">odd</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">odd</span><span class="p">)</span>  <span class="k">delete</span> <span class="n">odd</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">even</span><span class="p">)</span>  <span class="k">delete</span> <span class="n">even</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="n">TPPNode</span> <span class="o">*</span><span class="nf">getNode</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">find</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">create</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                     <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">path</span> <span class="o">=</span> <span class="mh">0x1</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// returns pointer to node with index==find
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// creates node(s) if create==true, 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// else returns NULL if not found
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">if</span> <span class="p">(</span><span class="n">find</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>  <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="c1">// creates node(s) if create==true, 
+</span></span></span><span class="line"><span class="cl">    <span class="c1">// else returns NULL if not found
+</span></span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">find</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>  <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="n">path</span> <span class="o">=</span> <span class="n">path</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// shift bits
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">if</span> <span class="p">(</span><span class="n">find</span> <span class="o">&amp;</span> <span class="mh">0x1</span><span class="p">)</span>  <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">find</span> <span class="o">&amp;</span> <span class="mh">0x1</span><span class="p">)</span>  <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">path</span> <span class="o">|=</span> <span class="mh">0x1</span><span class="p">;</span>  <span class="c1">// append 1
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">odd</span><span class="p">)</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">odd</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">          <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">create</span><span class="p">)</span>  <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">          <span class="n">odd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TPPNode</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">path</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
@@ -760,7 +794,7 @@ variant of the rejection method where the trial probability of event \(i\) depen
 </span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="nf">choose</span><span class="p">(</span><span class="kt">double</span> <span class="n">roulette</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">roulette</span> <span class="o">&lt;</span> <span class="n">rate</span><span class="p">)</span>  <span class="k">return</span> <span class="n">index</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="n">roulette</span> <span class="o">-=</span> <span class="n">rate</span><span class="p">;</span>  <span class="c1">// now roulette &lt; odd-&gt;sum + even-&gt;sum
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="kt">double</span> <span class="n">oddsum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">evensum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">      <span class="kt">double</span> <span class="n">oddsum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">evensum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">odd</span><span class="p">)</span>  <span class="n">oddsum</span> <span class="o">=</span> <span class="n">odd</span><span class="o">-&gt;</span><span class="n">sum</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">even</span><span class="p">)</span>  <span class="n">evensum</span><span class="o">=</span> <span class="n">even</span><span class="o">-&gt;</span><span class="n">sum</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">roulette</span> <span class="o">&lt;</span> <span class="n">oddsum</span><span class="p">)</span>
@@ -793,10 +827,10 @@ variant of the rejection method where the trial probability of event \(i\) depen
 </span></span><span class="line"><span class="cl">    <span class="n">TPPNode</span> <span class="o">*</span><span class="n">root</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="k">public</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">TParallelPoisson</span><span class="p">()</span> <span class="p">{</span>  <span class="c1">// constructor
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TPPNode</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">      <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TPPNode</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="o">~</span><span class="n">TParallelPoisson</span><span class="p">()</span> <span class="p">{</span>  <span class="c1">// destructor
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="p">)</span>  <span class="k">delete</span> <span class="n">root</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="p">)</span>  <span class="k">delete</span> <span class="n">root</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="n">root</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">reset</span><span class="p">()</span> <span class="p">{</span>
@@ -806,20 +840,20 @@ variant of the rejection method where the trial probability of event \(i\) depen
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="nf">eventTime</span><span class="p">(</span><span class="kt">double</span> <span class="n">u</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// returns time to first event.  Assumes 0 &lt;= u &lt; 1.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span>      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span>      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">sum</span><span class="p">))</span>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="o">-</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">u</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">sum</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="nf">getRate</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// gets rate of node i (zero if not found)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="n">TPPNode</span> <span class="o">*</span><span class="n">node</span><span class="o">=</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">getNode</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="nb">false</span><span class="p">);</span> <span class="c1">// don&#39;t create node
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="p">)</span>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">      <span class="n">TPPNode</span> <span class="o">*</span><span class="n">node</span><span class="o">=</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">getNode</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="nb">false</span><span class="p">);</span> <span class="c1">// don&#39;t create node
+</span></span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="p">)</span>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">rate</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="nf">setRate</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">i</span><span class="p">,</span> <span class="kt">double</span> <span class="n">newrate</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// sets rate of node i, returns old rate
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="n">TPPNode</span> <span class="o">*</span><span class="n">node</span><span class="o">=</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">getNode</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="nb">true</span><span class="p">);</span> <span class="c1">// create node if needed
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="kt">double</span> <span class="n">oldrate</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">rate</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">      <span class="n">TPPNode</span> <span class="o">*</span><span class="n">node</span><span class="o">=</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">getNode</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="nb">true</span><span class="p">);</span> <span class="c1">// create node if needed
+</span></span></span><span class="line"><span class="cl">      <span class="kt">double</span> <span class="n">oldrate</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">rate</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="kt">double</span> <span class="n">dr</span> <span class="o">=</span> <span class="n">newrate</span> <span class="o">-</span> <span class="n">oldrate</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="n">node</span><span class="o">-&gt;</span><span class="n">rate</span> <span class="o">=</span> <span class="n">newrate</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="k">for</span> <span class="p">(;</span> <span class="n">node</span><span class="p">;</span> <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">)</span>  <span class="n">node</span><span class="o">-&gt;</span><span class="n">sum</span> <span class="o">+=</span> <span class="n">dr</span><span class="p">;</span>
@@ -827,17 +861,17 @@ variant of the rejection method where the trial probability of event \(i\) depen
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="nf">modRate</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">i</span><span class="p">,</span> <span class="kt">double</span> <span class="n">deltarate</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// adjust rate of node i, returns new rate
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="n">TPPNode</span> <span class="o">*</span><span class="n">node</span><span class="o">=</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">getNode</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="nb">true</span><span class="p">);</span> <span class="c1">// create node if needed
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="kt">double</span> <span class="n">newrate</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">rate</span> <span class="o">+</span> <span class="n">deltarate</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">      <span class="n">TPPNode</span> <span class="o">*</span><span class="n">node</span><span class="o">=</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">getNode</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="nb">true</span><span class="p">);</span> <span class="c1">// create node if needed
+</span></span></span><span class="line"><span class="cl">      <span class="kt">double</span> <span class="n">newrate</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">rate</span> <span class="o">+</span> <span class="n">deltarate</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="n">node</span><span class="o">-&gt;</span><span class="n">rate</span> <span class="o">=</span> <span class="n">newrate</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="k">for</span> <span class="p">(;</span> <span class="n">node</span><span class="p">;</span> <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">)</span>  <span class="n">node</span><span class="o">-&gt;</span><span class="n">sum</span> <span class="o">+=</span> <span class="n">deltarate</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="n">newrate</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="nf">choose</span><span class="p">(</span><span class="kt">double</span> <span class="n">u</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// chooses which event happens next, assumes 0 &lt;= u &lt; 1
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">// error value
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">sum</span><span class="p">))</span>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">// error value
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">return</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">choose</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">sum</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">// error value
+</span></span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">sum</span><span class="p">))</span>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">// error value
+</span></span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">choose</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">sum</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></div>
 <p>Listing 2: C++ implementation of binary tree roulette wheel method.</p>
@@ -846,7 +880,7 @@ variant of the rejection method where the trial probability of event \(i\) depen
   </div>
 </div>
 </div>
-<h3 id="7-references">7. References</h3>
+<h3 id="7-references">7. References<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 
   
   
@@ -905,6 +939,7 @@ variant of the rejection method where the trial probability of event \(i\) depen
 
 
   <footer class="footline">
+              <i class='fa-fw fas fa-calendar'></i> Jan 18, 2025
   </footer>
 </article>
         </div>
@@ -913,122 +948,83 @@ variant of the rejection method where the trial probability of event \(i\) depen
     <aside id="R-sidebar" class="default-animation">
       <div id="R-header-topbar" class="default-animation"></div>
       <div id="R-header-wrapper" class="default-animation">
-        <div id="R-header" class="default-animation">
-          <a id="R-logo" class="R-default" href="/~rikblok/index.html">
-Rik&#39;s Treehouse
-          </a>
-        </div>
-        <script>
-          window.index_js_url="/~rikblok/searchindex.en.js?1770597923";
-        </script>
+        <a id="R-logo" class="R-default direction-row" href="/~rikblok/index.html">
+          <span class="logo-title default-animation">Rik&#39;s Treehouse</span>
+        </a>
         <search><form action="/~rikblok/search/index.html" method="get">
           <div class="searchbox default-animation">
-            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
             <label class="a11y-only" for="R-search-by">Search</label>
             <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
-            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
           </div>
         </form></search>
-        <script>
-          var contentLangs=['en'];
-        </script>
-        <script src="/~rikblok/js/auto-complete.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.en.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/search.js?1770597923" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
-        <ul>
-          <li><a class="padding" href="/~rikblok/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
-        </ul>
-        <hr class="padding">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/index.html"><a class="padding" href="/~rikblok/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
       </div>
       <div id="R-content-wrapper" class="highlightable">
-        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
           <ul class="enlarge morespace collapsible-menu">
-            <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/compute/index.html"><a class="padding" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
-            <li class="parent " data-nav-id="/~rikblok/research/index.html"><a class="padding" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu">
-            <li class="alwaysopen " data-nav-id="/~rikblok/research/published/index.html"><a class="padding" href="/~rikblok/research/published/index.html">Published</a><ul id="R-subsections-fd150925b32c297bd80b32c85dbf53c7" class="collapsible-menu"></ul></li>
-            <li class="alwaysopen " data-nav-id="/~rikblok/research/presented/index.html"><a class="padding" href="/~rikblok/research/presented/index.html">Presented</a><ul id="R-subsections-0a29c1db3dbf4a3f6a288fc3847b4ef0" class="collapsible-menu"></ul></li>
-            <li class="parent alwaysopen " data-nav-id="/~rikblok/research/notes/index.html"><a class="padding" href="/~rikblok/research/notes/index.html">Unpublished notes</a><ul id="R-subsections-950ca40a4602333597e39987a4c77254" class="collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding default-animation" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/compute/index.html"><a class="padding default-animation" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding default-animation" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/~rikblok/research/index.html"><a class="padding default-animation" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/~rikblok/research/published/index.html"><a class="padding default-animation" href="/~rikblok/research/published/index.html">Published</a><ul id="R-subsections-fd150925b32c297bd80b32c85dbf53c7" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/~rikblok/research/presented/index.html"><a class="padding default-animation" href="/~rikblok/research/presented/index.html">Presented</a><ul id="R-subsections-0a29c1db3dbf4a3f6a288fc3847b4ef0" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-id="/~rikblok/research/notes/index.html"><a class="padding default-animation" href="/~rikblok/research/notes/index.html">Unpublished notes</a><ul id="R-subsections-950ca40a4602333597e39987a4c77254" class="collapsible-menu">
             <li class="" data-nav-id="/~rikblok/research/notes/replicator_kinetics/index.html"><a class="padding" href="/~rikblok/research/notes/replicator_kinetics/index.html">Replicator Kinetics (2013)</a></li>
             <li class="active " data-nav-id="/~rikblok/research/notes/parallel_poisson/index.html"><a class="padding" href="/~rikblok/research/notes/parallel_poisson/index.html">Parallel Poisson (2004)</a></li>
             <li class="" data-nav-id="/~rikblok/research/notes/discounted_least_squares/index.html"><a class="padding" href="/~rikblok/research/notes/discounted_least_squares/index.html">Discounted Least Squares (1997)</a></li></ul></li></ul></li>
-            <li class="" data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/science/index.html"><a class="padding default-animation" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu"></ul></li>
           </ul>
         </div>
-    
-        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
-        <div id="R-menu-footer">
-          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
-          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
-            <ul>
-              <li id="R-select-language-container" class="footerLangSwitch">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-language"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <label class="a11y-only" for="R-select-language">Language</label>
-                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/research/notes/parallel_poisson/index.html" lang="en-us" selected></option>
-                    </select>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-              </li>
-              <li id="R-select-variant-container" class="footerVariantSwitch">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-paint-brush"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <label class="a11y-only" for="R-select-variant">Theme</label>
-                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
-                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
-                    </select>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-                <script>window.relearn.markVariant();</script>
-              </li>
-              <li class="footerVisitedLinks">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-history"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <button onclick="clearHistory();">Clear History</button>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div id="R-footer" class="footerFooter showFooter">
-        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
-          </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
         </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/~rikblok/js/clipboard.min.js?1770597923" defer></script>
-    <script src="/~rikblok/js/perfect-scrollbar.min.js?1770597923" defer></script>
     <script>
-      function useMathJax( config ){
-        window.MathJax = Object.assign( window.MathJax || {}, {
-          tex: {
-            inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
-            displayMath: [['\\[', '\\]'], ['$$', '$$']], 
-          },
-          options: {
-            enableMenu: false 
-          }
-        }, config );
-      }
-      useMathJax( JSON.parse("{}") );
+      window.MathJax = Object.assign( window.MathJax || {}, {
+        tex: {
+          inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
+          displayMath: [['\\[', '\\]'], ['$$', '$$']], 
+        },
+        options: {
+          enableMenu: false 
+        }
+      }, JSON.parse("{}") );
     </script>
-    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1770597923"></script>
-    <script src="/~rikblok/js/theme.js?1770597923" defer></script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1779480491"></script>
+    <script src="/~rikblok/js/perfect-scrollbar/perfect-scrollbar.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/theme.min.js?1779480491" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

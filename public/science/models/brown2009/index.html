@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.139.0">
-    <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
+    <meta name="generator" content="Hugo 0.161.1">
+    <meta name="generator" content="Relearn 9.0.3+36307e4ed23582638ab689240ac7b427217803ee">
     <meta name="description" content="I recently read an interesting review paper that explores the possibility of fighting a bacterial infection with Darwinian medicine through the introduction of a “cheater” strain of bacteria into a wild population.  I extended the analytic model in the paper to an agent-based model with explicit spatial structure.">
     <meta name="author" content="Rik Blok">
     <meta name="twitter:card" content="summary">
@@ -23,41 +23,66 @@
     <meta itemprop="wordCount" content="2084">
     <title>A Trojan horse approach to medical intervention strategies (2017) :: Rik&#39;s Treehouse</title>
     <link href="/~rikblok/science/models/brown2009/index.xml" rel="alternate" type="application/rss+xml" title="A Trojan horse approach to medical intervention strategies (2017) :: Rik&#39;s Treehouse">
-    <link href="/~rikblok/css/fontawesome-all.min.css?1770597923" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1770597923" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/auto-complete.css?1770597923" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1770597923" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/perfect-scrollbar.min.css?1770597923" rel="stylesheet">
-    <link href="/~rikblok/css/theme.min.css?1770597923" rel="stylesheet">
-    <link href="/~rikblok/css/format-html.min.css?1770597923" rel="stylesheet" id="R-format-style">
+    <link href="/~rikblok/css/auto-complete/auto-complete.min.css?1779480491" rel="stylesheet">
+    <script src="/~rikblok/js/auto-complete/auto-complete.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/search-lunr.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/search.min.js?1779480491" defer></script>
     <script>
       window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/~rikblok/searchindex.en.js?1779480491";
+    </script>
+    <script src="/~rikblok/js/lunr/lunr.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.multi.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.en.min.js?1779480491" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/~rikblok/fonts/fontawesome/css/all.min.css?1779480491" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/fonts/fontawesome/css/all.min.css?1779480491" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar/perfect-scrollbar.min.css?1779480491" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1779480491" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1779480491" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/science\/models\/brown2009\/index.html';
       window.relearn.relBasePath='..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..\/..';
       window.relearn.absBaseUri='https:\/\/www.cs.ubc.ca\/~rikblok';
-      window.relearn.min = `.min`;
-      window.relearn.disableAnchorCopy=false;
-      window.relearn.disableAnchorScrolling=false;
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
       // variant stuff
       window.relearn.themevariants = [ 'auto' ];
-      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.customvariantprefix = "my-custom-";
       window.relearn.changeVariant = function(variant) {
         var oldVariant = document.documentElement.dataset.rThemeVariant;
         window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
         document.documentElement.dataset.rThemeVariant = variant;
         if (oldVariant != variant) {
           document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
         }
       }
       window.relearn.markVariant = function() {
         var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
-        var select = document.querySelector("#R-select-variant");
-        if (select) {
-          select.value = variant;
-        }
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
       }
       window.relearn.initVariant = function() {
         var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
-        if( variant == window.relearn.customvariantname ){
-        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
           variant = window.relearn.themevariants[0];
           window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
         }
@@ -65,15 +90,6 @@
       }
       window.relearn.initVariant();
       window.relearn.markVariant();
-      // translations
-      window.T_Copy_to_clipboard = `Copy to clipboard`;
-      window.T_Copied_to_clipboard = `Copied to clipboard!`;
-      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
-      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
-      window.T_Reset_view = `Reset view`;
-      window.T_View_reset = `View reset!`;
-      window.T_No_results_found = `No results found for "{0}"`;
-      window.T_N_results_found = `{1} results found for "{0}"`;
     </script><link rel="stylesheet" type="text/css" href="/~rikblok/hugo-cite.css" />
 
 
@@ -95,16 +111,18 @@ function expandAllDetails() {
 }
 </script>
   </head>
-  <body class="mobile-support html" data-url="/~rikblok/science/models/brown2009/index.html">
+  <body class="mobile-support html" data-origin="/~rikblok/science/models/brown2009/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
-      <nav id="R-topbar">
-        <div class="topbar-wrapper">
-          <div class="topbar-sidebar-divider"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
           <div class="topbar-area topbar-area-start" data-area="start">
-            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
             </div>
-            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
               <div class="topbar-content">
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
@@ -123,17 +141,17 @@ function expandAllDetails() {
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/science/index.html"><span itemprop="name">Scientific scribblings</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/science/models/index.html"><span itemprop="name">Models</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">A Trojan horse approach to medical intervention strategies (2017)</span><meta itemprop="position" content="3"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/~rikblok/index.html"><span itemprop="name">Rik&#39;s Treehouse</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/~rikblok/science/index.html"><span itemprop="name">Scientific scribblings</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/~rikblok/science/models/index.html"><span itemprop="name">Models</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">A Trojan horse approach to medical intervention strategies (2017)</span><meta itemprop="position" content="4"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/science/models/aquaworld/index.html" title="Aquaworld Radiation Balance (2018) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/~rikblok/science/models/aquaworld/index.html" title="Aquaworld Radiation Balance (2018) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/science/models/flame/index.html" title="Flame (2017) (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/~rikblok/science/models/flame/index.html" title="Flame (2017) (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
             </div>
-            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
               <div class="topbar-content">
                 <div class="topbar-content-wrapper">
                   <div class="topbar-area topbar-area-more" data-area="more">
@@ -153,7 +171,7 @@ function expandAllDetails() {
 
 <h1 id="a-trojan-horse-approach-to-medical-intervention-strategies-2017">A Trojan horse approach to medical intervention strategies (2017)</h1>
 
-<p>A <a href="http://ccl.northwestern.edu/netlogo/" rel="external" target="_blank">NetLogo</a> 
+<p>A <a href="http://ccl.northwestern.edu/netlogo/" rel="external">NetLogo</a> 
 
 
 
@@ -239,7 +257,7 @@ function expandAllDetails() {
 
 
 </span></span>)</span>
- that explores the possibility of fighting a bacterial infection with <a href="https://en.wikipedia.org/wiki/Evolutionary%20medicine" rel="external" target="_blank">Darwinian medicine</a> through the introduction of a &ldquo;cheater&rdquo; strain of bacteria into a wild population.  I extended the analytic model in the paper to an agent-based model with explicit spatial structure.</p>
+ that explores the possibility of fighting a bacterial infection with <a href="https://en.wikipedia.org/wiki/Evolutionary%20medicine" rel="external">Darwinian medicine</a> through the introduction of a &ldquo;cheater&rdquo; strain of bacteria into a wild population.  I extended the analytic model in the paper to an agent-based model with explicit spatial structure.</p>
 <p align="center"><iframe title="" src="https://netlogoweb.org/web?https://raw.githubusercontent.com/rikblok/NetLogo-models/master/brown2009-web.nlogo" style="width:769px; height:990px"></iframe></p>
 <p>This agent-based model represents a bacterial infection as described in 
 
@@ -296,7 +314,7 @@ function expandAllDetails() {
 <li>It produces a toxin ($T$) that harms all,</li>
 <li>It produces a bacteriocinogen ($B$) it is immune to but harms the wild type.</li>
 </ul>
-<h2 id="1-how-it-works">1 How it works</h2>
+<h2 id="1-how-it-works">1 How it works<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <p>The simulation approximates a Poisson process for each of the above events.  The best known technique would be the Gillespie algorithm 
 
 
@@ -342,15 +360,15 @@ function expandAllDetails() {
  but it isn&rsquo;t well suited to NetLogo&rsquo;s strengths.  Instead, time proceeds in steps with multiple events occurring in each timestep.</p>
 <p>The step size is adaptive, chosen to achieve a desired error tolerance, compared with the Gillespie algorithm.  When the error tolerance is near zero the likelihood of each event is small and we may expect just a few events to occur per timestep.  Then we&rsquo;re accurately &ndash; but inefficiently &ndash; mimicking the Gillespie algorithm.  As the tolerance increases we have more simultaneous events, lowering accuracy but increasing performance.</p>
 
-<details open class=" box cstyle notices tip">
-  <summary class="box-label">
+<details open class="box cstyle notices tip">
+  <summary class="box-label" tabindex="-1">
     <i class="fa-fw fas fa-lightbulb"></i> 
     Tip
   </summary>
   <div class="box-content">
-<p><ul>
-<li>For a long run you may want to increase the speed slider (reduces frame rate) <a href="#R-image-4d5782bf58e44a98a4fae2431e601a65" class="lightbox-link"><img alt="faster.gif" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="faster.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-4d5782bf58e44a98a4fae2431e601a65"><img alt="faster.gif" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="faster.gif"></a> and/or increase <strong>err-tolerance</strong> (reduces <strong>accuracy</strong>).</li>
+<ul>
+<li>For a long run you may want to increase the speed slider (reduces frame rate) <a href="#R-image-cb058b5928ea6a9a6bded8b5f58ada9e" class="lightbox-link"><img alt="faster.gif" class="lazy lightbox figure-image" loading="lazy" src="faster.gif" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-cb058b5928ea6a9a6bded8b5f58ada9e"><img alt="faster.gif" class="lazy lightbox lightbox-image" loading="lazy" src="faster.gif"></a> and/or increase <strong>err-tolerance</strong> (reduces <strong>accuracy</strong>).</li>
 <li>The default parameters often give interesting cyclical patterns<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.  <a href="/~rikblok/science/models/brown2009/index.html#table-1">Table 1</a> has parameter values that can be used to compare against 
 
 
@@ -404,7 +422,7 @@ function expandAllDetails() {
 </ul>
   </div>
 </details>
-<h2 id="2-theory">2 Theory</h2>
+<h2 id="2-theory">2 Theory<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <p>This simulation incorporates three ideas from Section 2 of 
 
 
@@ -461,7 +479,7 @@ function expandAllDetails() {
 <li>(d) Bacteriocinogen cheat invasion.</li>
 </ul>
 <p>Instead of approximating spatial structure with the relatedness factor $r$ in 2(c) &ldquo;Trojan horse cheat in a spatially structured host&rdquo; I just explicitly put the bacteria in space &ndash; they diffuse in a two-dimensional continuum with periodic boundaries.</p>
-<h2 id="3-numeric-model">3 Numeric model</h2>
+<h2 id="3-numeric-model">3 Numeric model<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <p>Combining (a), (b), and (d) gives the following dynamical equations for the rate of change of the wild ($W$) and cheat ($C$) strain densities:</p>
 
 <table id="eq-1" class="equation-wrapper">
@@ -544,20 +562,22 @@ function expandAllDetails() {
 </span></span>)</span>
  &ndash; the effects can be explored separately in the simulation by moving sliders of other parameters to zero.  The numeric dynamics are displayed as faint curves in the &ldquo;dynamics&rdquo; and &ldquo;phase&rdquo; graphs.  They are included to validate and compare with the agent-based model.</p>
 <div id="table-1">
-<div class="tab-panel" data-tab-group="39a5f48f5975d23af9cf82aba754eb10">
+<div class="tab-panel" data-tab-group="R-tabs-32c4a157f440fb22305e7efb50dfcb05">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="table-1"
+      aria-controls="R-tab-id-fc498c7a1e910765db4b71d06c97363a" aria-expanded="true"
+      data-tab-item="R-tab-295bea63794242b0334ccec0d6af4549"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('39a5f48f5975d23af9cf82aba754eb10','table-1')"
+      onclick="switchTab('R-tabs-32c4a157f440fb22305e7efb50dfcb05','R-tab-295bea63794242b0334ccec0d6af4549')"
     >
       <span class="tab-nav-text">Table 1</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="table-1"
+      id="R-tab-id-fc498c7a1e910765db4b71d06c97363a"
+      data-tab-item="R-tab-295bea63794242b0334ccec0d6af4549"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
 <table>
@@ -693,8 +713,8 @@ function expandAllDetails() {
   </div>
 </div>
 </div>
-<h2 id="4-agent-based-model">4 Agent-based model</h2>
-<p>The numeric model can be derived as a non-spatial limiting case of an agent-based model.  In this model we explicitly represent each individual &ldquo;agent&rdquo; in the system instead of treating them as identical and just tracking aggregate population densities.  A convenient approach is to borrow <a href="https://en.wikipedia.org/wiki/Chemical_kinetics" rel="external" target="_blank">reaction kinetics</a> from physical chemistry to describe allowed interactions in our model.</p>
+<h2 id="4-agent-based-model">4 Agent-based model<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>The numeric model can be derived as a non-spatial limiting case of an agent-based model.  In this model we explicitly represent each individual &ldquo;agent&rdquo; in the system instead of treating them as identical and just tracking aggregate population densities.  A convenient approach is to borrow <a href="https://en.wikipedia.org/wiki/Chemical_kinetics" rel="external">reaction kinetics</a> from physical chemistry to describe allowed interactions in our model.</p>
 <p>To capture the numeric model we require five types/species<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>:</p>
 <ul>
 <li>$W$ is a wild-type bacterium,</li>
@@ -730,7 +750,7 @@ function expandAllDetails() {
  
 <p>where $\emptyset$ indicates an absence of products and $N$ is shorthand for either $W$ or $C$.</p>
 <p>A moment&rsquo;s review should satisfy the reader that these reactions are reasonable prescriptions.  For example, $W \xrightarrow{b} W + F$ indicates that each wild-type bacterium produces a food parcel at an average rate of $b$ per unit time.  A bacterium that encounters a food parcel consumes it at rate $\beta$ and benefits by reproducing, $N + F \xrightarrow{\beta} 2 N$.</p>
-<p>In the agent-based approach we model these processes explicitly and track all of the agents as they are produced, changed, or removed from the system.  To connect with the numeric model we apply the <a href="https://en.wikipedia.org/wiki/Law_of_mass_action" rel="external" target="_blank">law of mass action</a> to compute the dynamics of a large, well-mixed population following the above reactions:</p>
+<p>In the agent-based approach we model these processes explicitly and track all of the agents as they are produced, changed, or removed from the system.  To connect with the numeric model we apply the <a href="https://en.wikipedia.org/wiki/Law_of_mass_action" rel="external">law of mass action</a> to compute the dynamics of a large, well-mixed population following the above reactions:</p>
 
 <table id="eq-3" class="equation-wrapper">
   <tbody style="display: block; width: 100%">
@@ -754,7 +774,7 @@ function expandAllDetails() {
   </tbody>
 </table>
  
-<h2 id="5-quasi-steady-state-approximation">5 Quasi-steady-state approximation</h2>
+<h2 id="5-quasi-steady-state-approximation">5 Quasi-steady-state approximation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <p>Eq. (<a href="/~rikblok/science/models/brown2009/index.html#eq-3">3</a>) looks much more complicated than Eq. (<a href="/~rikblok/science/models/brown2009/index.html#eq-1">1</a>) we&rsquo;re trying to relate it to.  But we can reduce the system if we assume that the densities $F$, $T$, and $B$ are //fast// variables &ndash; that they respond quickly to perturbations and quickly converge to equilibrium.  If we assume that they converge so quickly that the slow variables ($W$ and $C$) don&rsquo;t change appreciably while the fast ones equilibrate then we can approximate the fast variables as always being in equilibrium &ndash; the [[wp&gt;Michaelis%E2%80%93Menten_kinetics#Quasi-steady-state_approximation | quasi-steady-state approximation]] (QSSA):</p>
 \[
 \begin{array}{rcl}
@@ -854,7 +874,7 @@ function expandAllDetails() {
 
 </span></span>)</span>
 .  Nevertheless, it should be satisfied if all of the rate constants $\beta$, $\delta$, and $\gamma$ are large.  In the simulation I set them all to the same large constant so we may expect differences between the agent-based and numeric models result from other causes, such as spatial structure.</p>
-<h2 id="6-spatial-structure">6 Spatial structure</h2>
+<h2 id="6-spatial-structure">6 Spatial structure<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <p>Brown et al. 
 
 
@@ -903,10 +923,10 @@ function expandAllDetails() {
 
 
 </span></span>)</span>
- create a structured population in Section 2(c) through preferential interactions of the bacteria with kin, mimicking spatial segregation.  Implementing it as an agent-based model  in <a href="http://ccl.northwestern.edu/netlogo/" rel="external" target="_blank">NetLogo</a> allows me to explicitly include space: agents move continuously in a two-dimensional plane with periodic boundary conditions.  Reactions are localized to patches on a square grid.  In the limit of large population size and infinitesimal patch size mass action swamps stochastic effects and the model should become equivalent to a <a href="https://en.wikipedia.org/wiki/Reaction%E2%80%93diffusion_system" rel="external" target="_blank">reaction-diffusion system</a>.</p>
-<p>I arbitrarily chose to allow only the bacteria (wild and cheater types) to move.  Byproducts (food, toxin, &amp; bacteriocinogen) are stationary after being created.  Some other options would be to allow the byproducts to move (for example, as if they were diffusing via <a href="https://en.wikipedia.org/wiki/Brownian_motion" rel="external" target="_blank">Brownian motion</a>) or for both bacteria and byproducts to move (possibly at different rates).</p>
-<p>Unlike other events, which are treated as probabilistic <a href="https://en.wikipedia.org/wiki/Stochastic_process" rel="external" target="_blank">stochastic processes</a>, every moving agent moves in every time increment according to a <a href="https://en.wikipedia.org/wiki/Random_walk" rel="external" target="_blank">random walk</a>, with a jump size is governed by the diffusion constant.  The effects of spatial structure can be minimized by mixing((Enable the <strong>well-mixed</strong> switch to rapidly stir the system.)).  Only bacteria move so there may still be some spatial effects from the stationary byproducts but the dynamics should be more similar to the numeric (<a href="https://en.wikipedia.org/wiki/Mean-field_theory" rel="external" target="_blank">mean field</a>) approximation.</p>
-<h2 id="7-references">7 References</h2>
+ create a structured population in Section 2(c) through preferential interactions of the bacteria with kin, mimicking spatial segregation.  Implementing it as an agent-based model  in <a href="http://ccl.northwestern.edu/netlogo/" rel="external">NetLogo</a> allows me to explicitly include space: agents move continuously in a two-dimensional plane with periodic boundary conditions.  Reactions are localized to patches on a square grid.  In the limit of large population size and infinitesimal patch size mass action swamps stochastic effects and the model should become equivalent to a <a href="https://en.wikipedia.org/wiki/Reaction%E2%80%93diffusion_system" rel="external">reaction-diffusion system</a>.</p>
+<p>I arbitrarily chose to allow only the bacteria (wild and cheater types) to move.  Byproducts (food, toxin, &amp; bacteriocinogen) are stationary after being created.  Some other options would be to allow the byproducts to move (for example, as if they were diffusing via <a href="https://en.wikipedia.org/wiki/Brownian_motion" rel="external">Brownian motion</a>) or for both bacteria and byproducts to move (possibly at different rates).</p>
+<p>Unlike other events, which are treated as probabilistic <a href="https://en.wikipedia.org/wiki/Stochastic_process" rel="external">stochastic processes</a>, every moving agent moves in every time increment according to a <a href="https://en.wikipedia.org/wiki/Random_walk" rel="external">random walk</a>, with a jump size is governed by the diffusion constant.  The effects of spatial structure can be minimized by mixing((Enable the <strong>well-mixed</strong> switch to rapidly stir the system.)).  Only bacteria move so there may still be some spatial effects from the stationary byproducts but the dynamics should be more similar to the numeric (<a href="https://en.wikipedia.org/wiki/Mean-field_theory" rel="external">mean field</a>) approximation.</p>
+<h2 id="7-references">7 References<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 
   
   
@@ -1094,7 +1114,7 @@ function expandAllDetails() {
 
 
 
-<h2 id="8-footnotes">8 Footnotes</h2>
+<h2 id="8-footnotes">8 Footnotes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -1157,6 +1177,7 @@ function expandAllDetails() {
 </div>
 
   <footer class="footline">
+              <i class='fa-fw fas fa-calendar'></i> Oct 6, 2017
   </footer>
 </article>
         </div>
@@ -1165,47 +1186,47 @@ function expandAllDetails() {
     <aside id="R-sidebar" class="default-animation">
       <div id="R-header-topbar" class="default-animation"></div>
       <div id="R-header-wrapper" class="default-animation">
-        <div id="R-header" class="default-animation">
-          <a id="R-logo" class="R-default" href="/~rikblok/index.html">
-Rik&#39;s Treehouse
-          </a>
-        </div>
-        <script>
-          window.index_js_url="/~rikblok/searchindex.en.js?1770597923";
-        </script>
+        <a id="R-logo" class="R-default direction-row" href="/~rikblok/index.html">
+          <span class="logo-title default-animation">Rik&#39;s Treehouse</span>
+        </a>
         <search><form action="/~rikblok/search/index.html" method="get">
           <div class="searchbox default-animation">
-            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
             <label class="a11y-only" for="R-search-by">Search</label>
             <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
-            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
           </div>
         </form></search>
-        <script>
-          var contentLangs=['en'];
-        </script>
-        <script src="/~rikblok/js/auto-complete.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.en.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/search.js?1770597923" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
-        <ul>
-          <li><a class="padding" href="/~rikblok/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
-        </ul>
-        <hr class="padding">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/index.html"><a class="padding" href="/~rikblok/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
       </div>
       <div id="R-content-wrapper" class="highlightable">
-        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
           <ul class="enlarge morespace collapsible-menu">
-            <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/compute/index.html"><a class="padding" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/research/index.html"><a class="padding" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu"></ul></li>
-            <li class="parent " data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu">
-            <li class="parent alwaysopen " data-nav-id="/~rikblok/science/models/index.html"><a class="padding" href="/~rikblok/science/models/index.html">Models</a><ul id="R-subsections-c61e93325435f6b5622b2acdf7d55a4f" class="collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding default-animation" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/compute/index.html"><a class="padding default-animation" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding default-animation" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/research/index.html"><a class="padding default-animation" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/~rikblok/science/index.html"><a class="padding default-animation" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu">
+            <li class="parent alwaysopen " data-nav-id="/~rikblok/science/models/index.html"><a class="padding default-animation" href="/~rikblok/science/models/index.html">Models</a><ul id="R-subsections-c61e93325435f6b5622b2acdf7d55a4f" class="collapsible-menu">
             <li class="" data-nav-id="/~rikblok/science/models/goblintown/index.html"><a class="padding" href="/~rikblok/science/models/goblintown/index.html">Escape from Goblin-town! (2025)</a></li>
             <li class="" data-nav-id="/~rikblok/science/models/game_of_life/index.html"><a class="padding" href="/~rikblok/science/models/game_of_life/index.html">Conway&#39;s Game of Life (2020)</a></li>
             <li class="" data-nav-id="/~rikblok/science/models/axelrods_tournament/index.html"><a class="padding" href="/~rikblok/science/models/axelrods_tournament/index.html">Axelrod&#39;s tournament (2018)</a></li>
@@ -1218,74 +1239,35 @@ Rik&#39;s Treehouse
             <li class="" data-nav-id="/~rikblok/science/onion_of_science/index.html"><a class="padding" href="/~rikblok/science/onion_of_science/index.html">The onion of Science (2002)</a></li></ul></li>
           </ul>
         </div>
-    
-        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
-        <div id="R-menu-footer">
-          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
-          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
-            <ul>
-              <li id="R-select-language-container" class="footerLangSwitch">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-language"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <label class="a11y-only" for="R-select-language">Language</label>
-                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/science/models/brown2009/index.html" lang="en-us" selected></option>
-                    </select>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-              </li>
-              <li id="R-select-variant-container" class="footerVariantSwitch">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-paint-brush"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <label class="a11y-only" for="R-select-variant">Theme</label>
-                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
-                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
-                    </select>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-                <script>window.relearn.markVariant();</script>
-              </li>
-              <li class="footerVisitedLinks">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-history"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <button onclick="clearHistory();">Clear History</button>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div id="R-footer" class="footerFooter showFooter">
-        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
-          </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
         </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/~rikblok/js/clipboard.min.js?1770597923" defer></script>
-    <script src="/~rikblok/js/perfect-scrollbar.min.js?1770597923" defer></script>
     <script>
-      function useMathJax( config ){
-        window.MathJax = Object.assign( window.MathJax || {}, {
-          tex: {
-            inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
-            displayMath: [['\\[', '\\]'], ['$$', '$$']], 
-          },
-          options: {
-            enableMenu: false 
-          }
-        }, config );
-      }
-      useMathJax( JSON.parse("{}") );
+      window.MathJax = Object.assign( window.MathJax || {}, {
+        tex: {
+          inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
+          displayMath: [['\\[', '\\]'], ['$$', '$$']], 
+        },
+        options: {
+          enableMenu: false 
+        }
+      }, JSON.parse("{}") );
     </script>
-    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1770597923"></script>
-    <script src="/~rikblok/js/theme.js?1770597923" defer></script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1779480491"></script>
+    <script src="/~rikblok/js/perfect-scrollbar/perfect-scrollbar.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/theme.min.js?1779480491" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

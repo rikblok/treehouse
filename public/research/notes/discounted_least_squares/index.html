@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.139.0">
-    <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
+    <meta name="generator" content="Hugo 0.161.1">
+    <meta name="generator" content="Relearn 9.0.3+36307e4ed23582638ab689240ac7b427217803ee">
     <meta name="description" content="I recently wrote some code to make simple forecasts in a time series. I began to wonder if there was a way of steadily discounting the relevance of past data in a smoother and more natural way…">
     <meta name="author" content="Rik Blok">
     <meta name="twitter:card" content="summary">
@@ -25,41 +25,66 @@
     <meta itemprop="dateModified" content="2025-01-02T22:07:32-08:00">
     <meta itemprop="wordCount" content="3625">
     <title>Discounted Least Squares (1997) :: Rik&#39;s Treehouse</title>
-    <link href="/~rikblok/css/fontawesome-all.min.css?1770597923" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1770597923" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/auto-complete.css?1770597923" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1770597923" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/perfect-scrollbar.min.css?1770597923" rel="stylesheet">
-    <link href="/~rikblok/css/theme.min.css?1770597923" rel="stylesheet">
-    <link href="/~rikblok/css/format-html.min.css?1770597923" rel="stylesheet" id="R-format-style">
+    <link href="/~rikblok/css/auto-complete/auto-complete.min.css?1779480491" rel="stylesheet">
+    <script src="/~rikblok/js/auto-complete/auto-complete.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/search-lunr.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/search.min.js?1779480491" defer></script>
     <script>
       window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/~rikblok/searchindex.en.js?1779480491";
+    </script>
+    <script src="/~rikblok/js/lunr/lunr.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.multi.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.en.min.js?1779480491" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/~rikblok/fonts/fontawesome/css/all.min.css?1779480491" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/fonts/fontawesome/css/all.min.css?1779480491" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar/perfect-scrollbar.min.css?1779480491" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1779480491" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1779480491" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/research\/notes\/discounted_least_squares\/index.html';
       window.relearn.relBasePath='..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..\/..';
       window.relearn.absBaseUri='https:\/\/www.cs.ubc.ca\/~rikblok';
-      window.relearn.min = `.min`;
-      window.relearn.disableAnchorCopy=false;
-      window.relearn.disableAnchorScrolling=false;
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
       // variant stuff
       window.relearn.themevariants = [ 'auto' ];
-      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.customvariantprefix = "my-custom-";
       window.relearn.changeVariant = function(variant) {
         var oldVariant = document.documentElement.dataset.rThemeVariant;
         window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
         document.documentElement.dataset.rThemeVariant = variant;
         if (oldVariant != variant) {
           document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
         }
       }
       window.relearn.markVariant = function() {
         var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
-        var select = document.querySelector("#R-select-variant");
-        if (select) {
-          select.value = variant;
-        }
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
       }
       window.relearn.initVariant = function() {
         var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
-        if( variant == window.relearn.customvariantname ){
-        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
           variant = window.relearn.themevariants[0];
           window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
         }
@@ -67,15 +92,6 @@
       }
       window.relearn.initVariant();
       window.relearn.markVariant();
-      // translations
-      window.T_Copy_to_clipboard = `Copy to clipboard`;
-      window.T_Copied_to_clipboard = `Copied to clipboard!`;
-      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
-      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
-      window.T_Reset_view = `Reset view`;
-      window.T_View_reset = `View reset!`;
-      window.T_No_results_found = `No results found for "{0}"`;
-      window.T_N_results_found = `{1} results found for "{0}"`;
     </script><link rel="stylesheet" type="text/css" href="/~rikblok/hugo-cite.css" />
 
 
@@ -97,16 +113,18 @@ function expandAllDetails() {
 }
 </script>
   </head>
-  <body class="mobile-support html" data-url="/~rikblok/research/notes/discounted_least_squares/index.html">
+  <body class="mobile-support html" data-origin="/~rikblok/research/notes/discounted_least_squares/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
-      <nav id="R-topbar">
-        <div class="topbar-wrapper">
-          <div class="topbar-sidebar-divider"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
           <div class="topbar-area topbar-area-start" data-area="start">
-            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
             </div>
-            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
               <div class="topbar-content">
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
@@ -131,17 +149,17 @@ function expandAllDetails() {
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/research/index.html"><span itemprop="name">Research ramblings</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/research/notes/index.html"><span itemprop="name">Unpublished notes</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Discounted Least Squares (1997)</span><meta itemprop="position" content="3"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/~rikblok/index.html"><span itemprop="name">Rik&#39;s Treehouse</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/~rikblok/research/index.html"><span itemprop="name">Research ramblings</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/~rikblok/research/notes/index.html"><span itemprop="name">Unpublished notes</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Discounted Least Squares (1997)</span><meta itemprop="position" content="4"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/research/notes/parallel_poisson/index.html" title="Parallel Poisson (2004) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/~rikblok/research/notes/parallel_poisson/index.html" title="Parallel Poisson (2004) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/science/index.html" title="Scientific scribblings (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/~rikblok/science/index.html" title="Scientific scribblings (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
             </div>
-            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
               <div class="topbar-content">
                 <div class="topbar-content-wrapper">
                   <div class="topbar-area topbar-area-more" data-area="more">
@@ -162,7 +180,7 @@ function expandAllDetails() {
 <h1 id="discounted-least-squares-1997">Discounted Least Squares (1997)</h1>
 
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
-<h2 id="discounted-least-squares-curve-fitting">Discounted Least Squares Curve Fitting</h2>
+<h2 id="discounted-least-squares-curve-fitting">Discounted Least Squares Curve Fitting<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <!-- 
 
 
@@ -260,7 +278,7 @@ function expandAllDetails() {
 
 <p>Version 1
 &mdash; Rik Blok, 1997-07-20</p>
-<h3 id="1-introduction">1. Introduction</h3>
+<h3 id="1-introduction">1. Introduction<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>I recently wrote some code to make simple forecasts in a time series (a steadily accumulating set of \((x,y)\) data points). For its simplicity, I chose a least-squares fit to a straight line. The underlying behaviour of the system was continuously changing so it was unreasonable to expect the same parameters to be valid for all the data. As new data came in, I expected old data to become irrelevant, and I handled this by only fitting over the last \(N\) data points. Unfortunately, it became evident that this arbitrary parameter \(N\) I had chosen was very important to the fit, often producing pathological results: as \(N\) new data points were accumulated after an <em>outlier</em> (a strongly atypical \(y\)-value), it would suddenly be dropped from consideration and the forecast would undergo a discontinuous &ldquo;jump&rdquo;. I began to wonder if there was a way of steadily <em>discounting</em> the relevance of past data in a smoother and more natural way&hellip;</p>
 <p>(Note: much of the text written here is a blatant copy from Press et al. 
 
@@ -316,7 +334,7 @@ function expandAllDetails() {
 
 </span></span>)</span>
 . They said it so well, I could not word it any better myself. In Chapter 16 they derive the least-squares technique I described above.)</p>
-<h3 id="2-solution">2. Solution</h3>
+<h3 id="2-solution">2. Solution<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>We use the index \(i\) to label our data points where \(i=0\) indicates the most recently acquired data and \(i=1,2,3,\ldots\) indicate successively older data.  Each data point consists of a triplet \((x,y,\sigma)\) where \(x\) is the independent variable (eg. time), \(y\) is the dependent variable, and \(\sigma\) is the associated measurement error in \(y\).</p>
 <p>As new data arrives \((x_0,y_0,\sigma_0)\) we shift the indices of prior data to make room, and scale up the errors by some factor \(\gamma\in (0,1)\):</p>
 \[
@@ -521,7 +539,7 @@ function expandAllDetails() {
   </tbody>
 </table>
  
-<h3 id="3-covariance-matrix">3. Covariance matrix</h3>
+<h3 id="3-covariance-matrix">3. Covariance matrix<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>Let us define</p>
 
 <table id="eq-3-1" class="equation-wrapper">
@@ -611,7 +629,7 @@ function expandAllDetails() {
   </tbody>
 </table>
  
-<h3 id="4-storage-and-updating">4. Storage and updating</h3>
+<h3 id="4-storage-and-updating">4. Storage and updating<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>So far we have made no mention of \(N\), the number of data points to be fit.  As we will see an advantage of the discounted least squares method is that \(N\) becomes irrelevant.  As data points are accumulated the oldest data becomes decreasingly relevant and eventually contribute negligibly to the fitting procedure.  Hence we can <em>theoretically</em> apply this data to an infinite data set.  But can this be <em>practically</em> implemented?  The answer is&hellip;Yes!</p>
 <p>Notice that as we acquire new data \((x_0,y_0,\sigma_0)\) according to <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-7">Eq. (2.7)</a> and <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-8">(2.8)</a> the matrix \([\alpha]\) and vector \([\beta]\) update as</p>
 
@@ -672,24 +690,26 @@ function expandAllDetails() {
 </table>
  
 <div id="fig-4-1">
-<div class="tab-panel" data-tab-group="67aa086c80e30292c06663f00a7a8bc3">
+<div class="tab-panel" data-tab-group="R-tabs-c1ddcb9ee93037d2e280d5339325cd23">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="figure-41"
+      aria-controls="R-tab-id-253c8ab957ba44656f0bc60299ae8746" aria-expanded="true"
+      data-tab-item="R-tab-aa37fedd0423e7708f6d23e5c5e1f49d"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('67aa086c80e30292c06663f00a7a8bc3','figure-41')"
+      onclick="switchTab('R-tabs-c1ddcb9ee93037d2e280d5339325cd23','R-tab-aa37fedd0423e7708f6d23e5c5e1f49d')"
     >
       <span class="tab-nav-text">Figure 4.1</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="figure-41"
+      id="R-tab-id-253c8ab957ba44656f0bc60299ae8746"
+      data-tab-item="R-tab-aa37fedd0423e7708f6d23e5c5e1f49d"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-73f053980e82ceb98b628a3cb9b55d51" class="lightbox-link"><img alt="Figure 4.1" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure_4_1.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-73f053980e82ceb98b628a3cb9b55d51"><img alt="Figure 4.1" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure_4_1.png"></a></p>
+<p><a href="#R-image-6546c31649c73dbbe0a135b1e74dadcc" class="lightbox-link"><img alt="Figure 4.1" class="lazy lightbox figure-image" loading="lazy" src="figure_4_1.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-6546c31649c73dbbe0a135b1e74dadcc"><img alt="Figure 4.1" class="lazy lightbox lightbox-image" loading="lazy" src="figure_4_1.png"></a></p>
 <p>Figure 4.1: Discounted least-squares fitting has a computational storage advantage over traditional least-squares when \(N>M^2+M+4\) where \(N\) is the number of data points and \(M\) is the number of parameters to be fitted.</p>
       </div>
     </div>
@@ -698,7 +718,7 @@ function expandAllDetails() {
 </div>
 <p>So, to store all relevant history information we need only remember \([\alpha]\), \([\beta]\), and \(\delta\) as well as the latest data triplet \((x_0,y_0,\sigma_0)\) for a total of \(M^2+M+4\) numbers, regardless of how many data points have been acquired.  <a href="/~rikblok/research/notes/discounted_least_squares/index.html#fig-4-1">Figure 4.1</a> shows that for many practical problems discounted least-squares fitting requires less storage than other methods.  Although it has not been tested, we expect a similar condition to hold for processing time because the number of calculations depend only on \(M\) instead of \(M\) and \(N\) as in traditional least-squares methods.</p>
 <p>As the reader can justify, all of these values should be initialized (prior to any data) with null values: \([\alpha]={\bf 0}\), \([\beta]={\bf 0}\), and \(\delta=0\).</p>
-<h3 id="5-memory-effective-number-of-data-points">5. Memory, effective number of data points</h3>
+<h3 id="5-memory-effective-number-of-data-points">5. Memory, effective number of data points<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>For traditional least-squares fitting it is well known that if the measurement errors of \(y_i\) are distributed normally then the method is a <em>maximum likelihood estimation</em> and the expectation value (average) of <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-3">Eq. (2.3)</a> evaluates to</p>
 \[
   \left\langle \chi^2 \right\rangle = N-M.
@@ -737,7 +757,7 @@ function expandAllDetails() {
   </tbody>
 </table>
  
-<h4 id="51-memory">5.1. Memory</h4>
+<h4 id="51-memory">5.1. Memory<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
 <p>We now undertake a thought experiment to understand how \(N_{eff}\) comes into play.  Consider a single parameter fit \(X(x_i)=1\) or \(y(x_i)=a\) to a long history of values \(y_i=1\) (regardless of \(x_i\)).  Updating according to <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-4-1">Eq. (4.1)</a>, <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-4-2">(4.2)</a>, and <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-4-3">(4.3)</a> gives</p>
 \[
 \begin{array}{rcr}
@@ -801,24 +821,26 @@ function expandAllDetails() {
 \end{array}
 \]<p>which is, as <a href="/~rikblok/research/notes/discounted_least_squares/index.html#fig-5-1">Figure 5.1</a> shows, almost identical to \(N_{eff}\) for all \(\gamma\).</p>
 <div id="fig-5-1">
-<div class="tab-panel" data-tab-group="ff7480022fd1cf320d623dfe6ffa82b7">
+<div class="tab-panel" data-tab-group="R-tabs-f29ab9528fac965bcc416e546e0f54a6">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="figure-51"
+      aria-controls="R-tab-id-03c6a276ea90af29644b3da2cc92e975" aria-expanded="true"
+      data-tab-item="R-tab-7640ee7939b684a3af460ed17e08ec29"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('ff7480022fd1cf320d623dfe6ffa82b7','figure-51')"
+      onclick="switchTab('R-tabs-f29ab9528fac965bcc416e546e0f54a6','R-tab-7640ee7939b684a3af460ed17e08ec29')"
     >
       <span class="tab-nav-text">Figure 5.1</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="figure-51"
+      id="R-tab-id-03c6a276ea90af29644b3da2cc92e975"
+      data-tab-item="R-tab-7640ee7939b684a3af460ed17e08ec29"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-d166dd9397669fa58c8e596ea271511f" class="lightbox-link"><img alt="Figure 5.1" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="figure_51.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-d166dd9397669fa58c8e596ea271511f"><img alt="Figure 5.1" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="figure_51.png"></a></p>
+<p><a href="#R-image-a28e170e23e2a1c578125c698facf2e6" class="lightbox-link"><img alt="Figure 5.1" class="lazy lightbox figure-image" loading="lazy" src="figure_51.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-a28e170e23e2a1c578125c698facf2e6"><img alt="Figure 5.1" class="lazy lightbox lightbox-image" loading="lazy" src="figure_51.png"></a></p>
 <p>Figure 5.1: The difference between \(N_{eff}\) and \(\tau\) is strictly less than one.  The main difference between the two is that \(\sigma_{N_{eff}} \rightarrow \infty \) as \(N_{eff}\rightarrow 1\) (as it should) while \(\sigma_\tau = \sqrt{e} \sigma_\tau^*\) for all \(\tau\).  They converge as \(N_{eff}\rightarrow \infty\).</p>
       </div>
     </div>
@@ -826,7 +848,7 @@ function expandAllDetails() {
 </div>
 </div>
 <p>Thus, \(N_{eff}\) is indeed a practical measure of the effective number of data points in a fit.  The fit is dominated by the most recent data \(i\leq N_{eff}\), and \(N_{eff}\) acts as the <em>memory</em> of the fitting procedure.</p>
-<h3 id="6-unknown-measurement-errors">6. Unknown measurement errors</h3>
+<h3 id="6-unknown-measurement-errors">6. Unknown measurement errors<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>On occasion measurement uncertainties are unknown and least-squares fitting can be used to recover an estimate of these uncertainties.  Be forewarned that this technique assumes normally distributed y data with identical variances.  If this is not the case, the results become meaningless.  It also precludes the use of a &ldquo;goodness-of-fit&rdquo; estimator (such as the incomplete gamma function, see Press et al. 
 
 
@@ -914,7 +936,7 @@ function expandAllDetails() {
   </tbody>
 </table>
  
-<h3 id="7-forecasting">7. Forecasting</h3>
+<h3 id="7-forecasting">7. Forecasting<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>Forecasting via curve fitting is a dangerous proposition because it requires extrapolating into a region beyond the scope of the data, where different rules may apply, and hence, different parameter values.  Nevertheless, it often used simply for its convenience.  We assume the latest parameter estimations apply at the forecasted point \(x\) and simply use <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-2">Eq. (2.2)</a> to predict \(y(x)\).</p>
 <p>The uncertainty in the prediction can be estimated from the covariance matrix.  The definition of variance for <em>any</em> distribution is the expectation value of the squared difference from the mean:</p>
 \[
@@ -968,25 +990,27 @@ function expandAllDetails() {
 </table>
  
 <p>If \(\sigma'\) is unknown it should be set to the same scale as historical measurement errors.  If they are unknown, \(\sigma'\) should be estimated from <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-6-1">Eq. (6.1)</a>.</p>
-<h3 id="8-implementation">8. Implementation</h3>
+<h3 id="8-implementation">8. Implementation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>A sample implementation of the above method, using a polynomial fitting function is included in the DOS program <code>dpolyfit.exe</code>((Download {{:random_research:rik_s_notes:discounted_least_squares:dls.zip|dls.zip}} source code and executable, released to the public domain)).  It is designed to make continuously updated parameter fits from data in the input stream, and output these parameters, or forecasts derived therefrom, to the output stream.  It takes as a command-line parameter an initialization file containing preset parameters for the input format, fitting procedure, and output display.  Common usages of this program are:</p>
-<div class="tab-panel" data-tab-group="b1325ec3bfb3541f3bb3b494023e9535">
+<div class="tab-panel" data-tab-group="R-tabs-f1853a490694996871b468c6cea96f77">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="listing-81"
+      aria-controls="R-tab-id-8e70ece88dad365e39417a19bc2ab678" aria-expanded="true"
+      data-tab-item="R-tab-2d7c92749b4e50c9a7e23065c061febe"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('b1325ec3bfb3541f3bb3b494023e9535','listing-81')"
+      onclick="switchTab('R-tabs-f1853a490694996871b468c6cea96f77','R-tab-2d7c92749b4e50c9a7e23065c061febe')"
     >
       <span class="tab-nav-text">Listing 8.1</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="listing-81"
+      id="R-tab-id-8e70ece88dad365e39417a19bc2ab678"
+      data-tab-item="R-tab-2d7c92749b4e50c9a7e23065c061febe"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<div class="highlight wrap-code"><pre tabindex="0"><code>dpolyfit.exe inifile.ini &lt;in.dat &gt;out.dat
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>dpolyfit.exe inifile.ini &lt;in.dat &gt;out.dat
 dpolyfit.exe inifile.ini &lt;in.dat &gt;&gt;out.dat</code></pre></div>
 <p>Listing 8.1: Sample command-line parameters for program, where <code>inifile.ini</code>, <code>in.dat</code>, and <code>out.dat</code> are replaced with desired configuration, input and output files, respectively.  The second version appends output to <code>out.dat</code> rather than overwriting it.</p>
       </div>
@@ -994,23 +1018,25 @@ dpolyfit.exe inifile.ini &lt;in.dat &gt;&gt;out.dat</code></pre></div>
   </div>
 </div>
 <p>The behaviour of the program is controlled by the initialization file which contains the following options:</p>
-<div class="tab-panel" data-tab-group="ea344a3ef625171c750045ce298ccde1">
+<div class="tab-panel" data-tab-group="R-tabs-e42b2d4caa931a64613a60a18c7e05a9">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="listing-82"
+      aria-controls="R-tab-id-a20b06eec7d50e88e97fe1ca910df2bf" aria-expanded="true"
+      data-tab-item="R-tab-98928f69d4e7e0227f5ca0a5a85b8385"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('ea344a3ef625171c750045ce298ccde1','listing-82')"
+      onclick="switchTab('R-tabs-e42b2d4caa931a64613a60a18c7e05a9','R-tab-98928f69d4e7e0227f5ca0a5a85b8385')"
     >
       <span class="tab-nav-text">Listing 8.2</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="listing-82"
+      id="R-tab-id-a20b06eec7d50e88e97fe1ca910df2bf"
+      data-tab-item="R-tab-98928f69d4e7e0227f5ca0a5a85b8385"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<div class="highlight wrap-code"><pre tabindex="0" class="chroma"><code class="language-inifile.ini" data-lang="inifile.ini"><span class="line"><span class="cl"><span class="na">[Input] </span>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" class="chroma"><code class="language-inifile.ini" data-lang="inifile.ini"><span class="line"><span class="cl"><span class="na">[Input] </span>
 </span></span><span class="line"><span class="cl"><span class="na">Errors</span><span class="o">=</span><span class="s">No	; input s values?</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">[Fit]</span>
@@ -1039,10 +1065,10 @@ dpolyfit.exe inifile.ini &lt;in.dat &gt;&gt;out.dat</code></pre></div>
 <p>If &ldquo;<code>[Output] Forecast=Yes</code>&rdquo; then the program generates another two columns of output.  It calculates the forecast of \(y\) at \(x=x_0+\)&quot;<code>[Output] Forecast Distance</code>&quot; from <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-7-1">Eq. (7.1)</a> and prints out the forecasted \(y\) and its uncertainty.</p>
 <p>The program ends when the input \((x_0,y_0,\sigma_0)\) or \((x_0,y_0)\) matches the values in &ldquo;<code>[Abort] x=... y=... sig=...</code>&rdquo; or &ldquo;<code>[Abort] x=... y=...</code>&rdquo;, respectively.</p>
 <p>The design of this program might cause some confusion: even though the input data file is a complete set of data, the program only analyzes each data point successively, and all output is based on just this point and prior data.  For example, forecasts are based only on past data, so by the end of the output file, all data points are considered but in the beginning results are based only on a single data point.  The technique derived herein is better suited to time series with slowly accumulating data, rather than a complete data set on startup.</p>
-<h3 id="9-summary">9. Summary</h3>
+<h3 id="9-summary">9. Summary<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>As in traditional least-squares methods, by differentiating the \(\chi^2\) merit function (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-3">Eq. (2.3)</a>) of a linear model (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-2">Eq. (2.2)</a>) we were able find a set of linear equations (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-9">Eq. (2.9)</a>) which allowed us to solve for the optimal parameters which minimize \(\chi^2\).  By scaling up the error tolerance of old data as new data is acquired (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-2-1">Eq. (2.1)</a>) we were able to compact the information such that only an \(M \times M\) matrix \([\alpha]\) (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-4-1">Eq. (4.1)</a>), an \(M\times 1\) vector \([\beta]\) (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-4-2">Eq. (4.2)</a>), and a scalar \(\delta\) (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-4-3">Eq. (4.3)</a>) need be stored to retain the full history of accumulated data.  We found that the inverse of \([\alpha]\) (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-3-1">Eq. (3.1)</a>) held the covariance matrix of the fitted parameters (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-3-4">Eq. (3.4)</a> and <a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-3-5">(3.5)</a>).  We were able to compute a <em>memory</em> for this technique (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-5-2">Eq. (5.2)</a>) which is comparable to the number of data points used in traditional least-squares fitting.  By assuming a good fit we were able to estimate the measurement uncertainties if they were unknown, and apply this to reconstruct reasonable deviations in the fitted parameters (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-6-2">Eq. (6.2)</a>).  Finally, by extrapolating with the latest parameter estimates (assuming they were valid in the forecasted domain), we were able to make forecasts and estimate their uncertainties (<a href="/~rikblok/research/notes/discounted_least_squares/index.html#eq-7-1">Eq. (7.1)</a>).</p>
 <p>As my list of references will attest, I have done virtually no research to see whether the <em>discounted least-squares</em> method has already been discovered (as is undoubtedly the case) and what name it goes by.  In deriving this, I did not care if I &ldquo;reinvented the wheel&rdquo; because my goal was to introduce myself to some of the statistical techniques, particularly those used in the derivation of uncertainties.</p>
-<h3 id="10-references">10. References</h3>
+<h3 id="10-references">10. References<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 
   
   
@@ -1155,6 +1181,7 @@ dpolyfit.exe inifile.ini &lt;in.dat &gt;&gt;out.dat</code></pre></div>
 
 
   <footer class="footline">
+              <i class='fa-fw fas fa-calendar'></i> Jan 2, 2025
   </footer>
 </article>
         </div>
@@ -1163,122 +1190,83 @@ dpolyfit.exe inifile.ini &lt;in.dat &gt;&gt;out.dat</code></pre></div>
     <aside id="R-sidebar" class="default-animation">
       <div id="R-header-topbar" class="default-animation"></div>
       <div id="R-header-wrapper" class="default-animation">
-        <div id="R-header" class="default-animation">
-          <a id="R-logo" class="R-default" href="/~rikblok/index.html">
-Rik&#39;s Treehouse
-          </a>
-        </div>
-        <script>
-          window.index_js_url="/~rikblok/searchindex.en.js?1770597923";
-        </script>
+        <a id="R-logo" class="R-default direction-row" href="/~rikblok/index.html">
+          <span class="logo-title default-animation">Rik&#39;s Treehouse</span>
+        </a>
         <search><form action="/~rikblok/search/index.html" method="get">
           <div class="searchbox default-animation">
-            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
             <label class="a11y-only" for="R-search-by">Search</label>
             <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
-            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
           </div>
         </form></search>
-        <script>
-          var contentLangs=['en'];
-        </script>
-        <script src="/~rikblok/js/auto-complete.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.en.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/search.js?1770597923" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
-        <ul>
-          <li><a class="padding" href="/~rikblok/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
-        </ul>
-        <hr class="padding">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/index.html"><a class="padding" href="/~rikblok/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
       </div>
       <div id="R-content-wrapper" class="highlightable">
-        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
           <ul class="enlarge morespace collapsible-menu">
-            <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/compute/index.html"><a class="padding" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
-            <li class="parent " data-nav-id="/~rikblok/research/index.html"><a class="padding" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu">
-            <li class="alwaysopen " data-nav-id="/~rikblok/research/published/index.html"><a class="padding" href="/~rikblok/research/published/index.html">Published</a><ul id="R-subsections-fd150925b32c297bd80b32c85dbf53c7" class="collapsible-menu"></ul></li>
-            <li class="alwaysopen " data-nav-id="/~rikblok/research/presented/index.html"><a class="padding" href="/~rikblok/research/presented/index.html">Presented</a><ul id="R-subsections-0a29c1db3dbf4a3f6a288fc3847b4ef0" class="collapsible-menu"></ul></li>
-            <li class="parent alwaysopen " data-nav-id="/~rikblok/research/notes/index.html"><a class="padding" href="/~rikblok/research/notes/index.html">Unpublished notes</a><ul id="R-subsections-950ca40a4602333597e39987a4c77254" class="collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding default-animation" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/compute/index.html"><a class="padding default-animation" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding default-animation" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/~rikblok/research/index.html"><a class="padding default-animation" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu">
+            <li class="alwaysopen " data-nav-id="/~rikblok/research/published/index.html"><a class="padding default-animation" href="/~rikblok/research/published/index.html">Published</a><ul id="R-subsections-fd150925b32c297bd80b32c85dbf53c7" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/~rikblok/research/presented/index.html"><a class="padding default-animation" href="/~rikblok/research/presented/index.html">Presented</a><ul id="R-subsections-0a29c1db3dbf4a3f6a288fc3847b4ef0" class="collapsible-menu"></ul></li>
+            <li class="parent alwaysopen " data-nav-id="/~rikblok/research/notes/index.html"><a class="padding default-animation" href="/~rikblok/research/notes/index.html">Unpublished notes</a><ul id="R-subsections-950ca40a4602333597e39987a4c77254" class="collapsible-menu">
             <li class="" data-nav-id="/~rikblok/research/notes/replicator_kinetics/index.html"><a class="padding" href="/~rikblok/research/notes/replicator_kinetics/index.html">Replicator Kinetics (2013)</a></li>
             <li class="" data-nav-id="/~rikblok/research/notes/parallel_poisson/index.html"><a class="padding" href="/~rikblok/research/notes/parallel_poisson/index.html">Parallel Poisson (2004)</a></li>
             <li class="active " data-nav-id="/~rikblok/research/notes/discounted_least_squares/index.html"><a class="padding" href="/~rikblok/research/notes/discounted_least_squares/index.html">Discounted Least Squares (1997)</a></li></ul></li></ul></li>
-            <li class="" data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/science/index.html"><a class="padding default-animation" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu"></ul></li>
           </ul>
         </div>
-    
-        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
-        <div id="R-menu-footer">
-          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
-          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
-            <ul>
-              <li id="R-select-language-container" class="footerLangSwitch">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-language"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <label class="a11y-only" for="R-select-language">Language</label>
-                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/research/notes/discounted_least_squares/index.html" lang="en-us" selected></option>
-                    </select>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-              </li>
-              <li id="R-select-variant-container" class="footerVariantSwitch">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-paint-brush"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <label class="a11y-only" for="R-select-variant">Theme</label>
-                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
-                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
-                    </select>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-                <script>window.relearn.markVariant();</script>
-              </li>
-              <li class="footerVisitedLinks">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-history"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <button onclick="clearHistory();">Clear History</button>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div id="R-footer" class="footerFooter showFooter">
-        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
-          </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
         </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/~rikblok/js/clipboard.min.js?1770597923" defer></script>
-    <script src="/~rikblok/js/perfect-scrollbar.min.js?1770597923" defer></script>
     <script>
-      function useMathJax( config ){
-        window.MathJax = Object.assign( window.MathJax || {}, {
-          tex: {
-            inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
-            displayMath: [['\\[', '\\]'], ['$$', '$$']], 
-          },
-          options: {
-            enableMenu: false 
-          }
-        }, config );
-      }
-      useMathJax( JSON.parse("{}") );
+      window.MathJax = Object.assign( window.MathJax || {}, {
+        tex: {
+          inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
+          displayMath: [['\\[', '\\]'], ['$$', '$$']], 
+        },
+        options: {
+          enableMenu: false 
+        }
+      }, JSON.parse("{}") );
     </script>
-    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1770597923"></script>
-    <script src="/~rikblok/js/theme.js?1770597923" defer></script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1779480491"></script>
+    <script src="/~rikblok/js/perfect-scrollbar/perfect-scrollbar.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/theme.min.js?1779480491" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.139.0">
-    <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
+    <meta name="generator" content="Hugo 0.161.1">
+    <meta name="generator" content="Relearn 9.0.3+36307e4ed23582638ab689240ac7b427217803ee">
     <meta name="description" content="Years ago I heard it said that computers were doubling in performance every year or two; that is, two years from now you could buy a computer twice as powerful/fast as today for the same price or less. I was curious to see if this was true so I started tracking the prices of individual components on a monthly basis.">
     <meta name="author" content="Rik Blok">
     <meta name="twitter:card" content="summary">
@@ -23,41 +23,66 @@
     <meta itemprop="wordCount" content="1569">
     <title>Trends in Computing (2011) :: Rik&#39;s Treehouse</title>
     <link href="/~rikblok/compute/trends/index.xml" rel="alternate" type="application/rss+xml" title="Trends in Computing (2011) :: Rik&#39;s Treehouse">
-    <link href="/~rikblok/css/fontawesome-all.min.css?1770597923" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1770597923" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/auto-complete.css?1770597923" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1770597923" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/perfect-scrollbar.min.css?1770597923" rel="stylesheet">
-    <link href="/~rikblok/css/theme.min.css?1770597923" rel="stylesheet">
-    <link href="/~rikblok/css/format-html.min.css?1770597923" rel="stylesheet" id="R-format-style">
+    <link href="/~rikblok/css/auto-complete/auto-complete.min.css?1779480491" rel="stylesheet">
+    <script src="/~rikblok/js/auto-complete/auto-complete.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/search-lunr.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/search.min.js?1779480491" defer></script>
     <script>
       window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/~rikblok/searchindex.en.js?1779480491";
+    </script>
+    <script src="/~rikblok/js/lunr/lunr.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.multi.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.en.min.js?1779480491" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/~rikblok/fonts/fontawesome/css/all.min.css?1779480491" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/fonts/fontawesome/css/all.min.css?1779480491" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar/perfect-scrollbar.min.css?1779480491" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1779480491" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1779480491" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/compute\/trends\/index.html';
       window.relearn.relBasePath='..\/..';
       window.relearn.relBaseUri='..\/..\/..';
       window.relearn.absBaseUri='https:\/\/www.cs.ubc.ca\/~rikblok';
-      window.relearn.min = `.min`;
-      window.relearn.disableAnchorCopy=false;
-      window.relearn.disableAnchorScrolling=false;
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
       // variant stuff
       window.relearn.themevariants = [ 'auto' ];
-      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.customvariantprefix = "my-custom-";
       window.relearn.changeVariant = function(variant) {
         var oldVariant = document.documentElement.dataset.rThemeVariant;
         window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
         document.documentElement.dataset.rThemeVariant = variant;
         if (oldVariant != variant) {
           document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
         }
       }
       window.relearn.markVariant = function() {
         var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
-        var select = document.querySelector("#R-select-variant");
-        if (select) {
-          select.value = variant;
-        }
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
       }
       window.relearn.initVariant = function() {
         var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
-        if( variant == window.relearn.customvariantname ){
-        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
           variant = window.relearn.themevariants[0];
           window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
         }
@@ -65,15 +90,6 @@
       }
       window.relearn.initVariant();
       window.relearn.markVariant();
-      // translations
-      window.T_Copy_to_clipboard = `Copy to clipboard`;
-      window.T_Copied_to_clipboard = `Copied to clipboard!`;
-      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
-      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
-      window.T_Reset_view = `Reset view`;
-      window.T_View_reset = `View reset!`;
-      window.T_No_results_found = `No results found for "{0}"`;
-      window.T_N_results_found = `{1} results found for "{0}"`;
     </script><link rel="stylesheet" type="text/css" href="/~rikblok/hugo-cite.css" />
 
 
@@ -95,16 +111,18 @@ function expandAllDetails() {
 }
 </script>
   </head>
-  <body class="mobile-support html" data-url="/~rikblok/compute/trends/index.html">
+  <body class="mobile-support html" data-origin="/~rikblok/compute/trends/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
-      <nav id="R-topbar">
-        <div class="topbar-wrapper">
-          <div class="topbar-sidebar-divider"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
           <div class="topbar-area topbar-area-start" data-area="start">
-            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
             </div>
-            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
               <div class="topbar-content">
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
@@ -127,16 +145,17 @@ function expandAllDetails() {
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/compute/index.html"><span itemprop="name">Computational capers</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Trends in Computing (2011)</span><meta itemprop="position" content="2"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/~rikblok/index.html"><span itemprop="name">Rik&#39;s Treehouse</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/~rikblok/compute/index.html"><span itemprop="name">Computational capers</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Trends in Computing (2011)</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/compute/index.html" title="Computational capers (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/~rikblok/compute/index.html" title="Computational capers (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/compute/orphanware/index.html" title="Orphanware (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/~rikblok/compute/orphanware/index.html" title="Orphanware (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
             </div>
-            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
               <div class="topbar-content">
                 <div class="topbar-content-wrapper">
                   <div class="topbar-area topbar-area-more" data-area="more">
@@ -159,8 +178,8 @@ function expandAllDetails() {
 <!-- Must include "bib" in filename: https://labs.loupbrun.ca/hugo-cite/usage/ -->
 <p>&mdash; Rik Blok, 2011-03-20 (with data thru 2021-01)</p>
 
-<details open class=" box cstyle notices note">
-  <summary class="box-label">
+<details open class="box cstyle notices note">
+  <summary class="box-label" tabindex="-1">
     <i class="fa-fw fas fa-exclamation-circle"></i> 
     Note
   </summary>
@@ -169,27 +188,29 @@ function expandAllDetails() {
 <p>&mdash; Rik Blok, 2025-02-06</p>
   </div>
 </details>
-<p>Years ago I heard it said that computers were doubling in performance every year or two (a claim related&ndash;but not identical&ndash;to <a href="https://en.wikipedia.org/wiki/Moore's%20Law" rel="external" target="_blank">Moore&rsquo;s Law</a>); that is, two years from now you could buy a computer twice as powerful/fast as today for the same price or less. I was curious to see if this was true so I started tracking the prices of individual components on a monthly basis. I am biased towards [[wp&gt;Wintel]] PCs with a total price under $2000 Canadian, so I track components typical for such machines.</p>
-<h3 id="motherboards">Motherboards</h3>
+<p>Years ago I heard it said that computers were doubling in performance every year or two (a claim related&ndash;but not identical&ndash;to <a href="https://en.wikipedia.org/wiki/Moore's%20Law" rel="external">Moore&rsquo;s Law</a>); that is, two years from now you could buy a computer twice as powerful/fast as today for the same price or less. I was curious to see if this was true so I started tracking the prices of individual components on a monthly basis. I am biased towards [[wp&gt;Wintel]] PCs with a total price under $2000 Canadian, so I track components typical for such machines.</p>
+<h3 id="motherboards">Motherboards<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <div id="fig-motherboard">
-<div class="tab-panel" data-tab-group="67a535a6633a26fcfa0ecd4a0f6f1288">
+<div class="tab-panel" data-tab-group="R-tabs-241c6bd09a0e54e50d9414f38c5f9e98">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="motherboards"
+      aria-controls="R-tab-id-9a51c4915708994ea8de197f2f60c697" aria-expanded="true"
+      data-tab-item="R-tab-49fc352054133d796cab3a86a93220f2"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('67a535a6633a26fcfa0ecd4a0f6f1288','motherboards')"
+      onclick="switchTab('R-tabs-241c6bd09a0e54e50d9414f38c5f9e98','R-tab-49fc352054133d796cab3a86a93220f2')"
     >
       <span class="tab-nav-text">Motherboards</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="motherboards"
+      id="R-tab-id-9a51c4915708994ea8de197f2f60c697"
+      data-tab-item="R-tab-49fc352054133d796cab3a86a93220f2"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-fa374944ee2cc0e638e035821832656d" class="lightbox-link"><img alt="Motherboard.gif" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="Motherboard.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-fa374944ee2cc0e638e035821832656d"><img alt="Motherboard.gif" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="Motherboard.gif"></a>
+<p><a href="#R-image-62354f8d93030569f8e47bacf9c2d0d8" class="lightbox-link"><img alt="Motherboard.gif" class="lazy lightbox figure-image" loading="lazy" src="Motherboard.gif" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-62354f8d93030569f8e47bacf9c2d0d8"><img alt="Motherboard.gif" class="lazy lightbox lightbox-image" loading="lazy" src="Motherboard.gif"></a>
 Figure 1: Historical motherboard performance</p>
       </div>
     </div>
@@ -204,20 +225,22 @@ Figure 1: Historical motherboard performance</p>
 <p>Processor speed depends on how many transistors can be fit on a chip, which has a theoretical maximum set by quantum mechanics. If the circuits get too close together the electrons will start &ldquo;tunneling&rdquo; through barriers and the chip won&rsquo;t function properly. I&rsquo;m not sure what the limit is, but as we approach it, expect the doubling time to stretch out&ndash;at least until manufacturers find a new way to get around (or take advantage of) this problem.</p>
 <p>Of course, every new generation of processor may perform better (or worse!) than the last, even at the same clock speed so I weighted the clock speed by an estimation of how fast each chip architecture is compared to a current chip:</p>
 <div id="table-speed">
-<div class="tab-panel" data-tab-group="b41366890edd8568b2fc907f83422633">
+<div class="tab-panel" data-tab-group="R-tabs-7099d01406d5d78988f3955390a3d537">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="speed-factors"
+      aria-controls="R-tab-id-ad14a5ef9ff53ef41345f12f0e11f73d" aria-expanded="true"
+      data-tab-item="R-tab-46010ffc05e58472d029fc66fbab809f"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('b41366890edd8568b2fc907f83422633','speed-factors')"
+      onclick="switchTab('R-tabs-7099d01406d5d78988f3955390a3d537','R-tab-46010ffc05e58472d029fc66fbab809f')"
     >
       <span class="tab-nav-text">Speed factors</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="speed-factors"
+      id="R-tab-id-ad14a5ef9ff53ef41345f12f0e11f73d"
+      data-tab-item="R-tab-46010ffc05e58472d029fc66fbab809f"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
 <table>
@@ -306,26 +329,28 @@ Figure 1: Historical motherboard performance</p>
 </div>
 <p>So a 2.4GHz Core 2 Duo E6600 will perform about five times as fast as an Athlon XP 2000+.</p>
 <p>Comparing different processors opens up a can of worms such as the impact of other components (eg. RAM, front-side bus, etc.) on performance. But, I don&rsquo;t really care about all this&hellip;I just want to get an estimate of the <em>typical</em> speed of these machines so I just get my numbers by comparing application and game benchmarks for typically-configured machines.</p>
-<h3 id="ram">RAM</h3>
+<h3 id="ram">RAM<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <div id="fig-ram">
-<div class="tab-panel" data-tab-group="e7af3eb555b09dadd066ff61ed7f35a8">
+<div class="tab-panel" data-tab-group="R-tabs-714ad3c568779c103f1498ebd043cd10">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="ram"
+      aria-controls="R-tab-id-b6427b48468f5c6fbc747ea9f315fa75" aria-expanded="true"
+      data-tab-item="R-tab-e53619c1fe611a51eeeb8d148ba6e532"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('e7af3eb555b09dadd066ff61ed7f35a8','ram')"
+      onclick="switchTab('R-tabs-714ad3c568779c103f1498ebd043cd10','R-tab-e53619c1fe611a51eeeb8d148ba6e532')"
     >
       <span class="tab-nav-text">RAM</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="ram"
+      id="R-tab-id-b6427b48468f5c6fbc747ea9f315fa75"
+      data-tab-item="R-tab-e53619c1fe611a51eeeb8d148ba6e532"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-d812abc4dd1a737cf1b4b96b120473a9" class="lightbox-link"><img alt="RAM.gif" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="RAM.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-d812abc4dd1a737cf1b4b96b120473a9"><img alt="RAM.gif" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="RAM.gif"></a>
+<p><a href="#R-image-52731192b135fbe465f8c17c5755e354" class="lightbox-link"><img alt="RAM.gif" class="lazy lightbox figure-image" loading="lazy" src="RAM.gif" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-52731192b135fbe465f8c17c5755e354"><img alt="RAM.gif" class="lazy lightbox lightbox-image" loading="lazy" src="RAM.gif"></a>
 Figure 2: Historical RAM performance</p>
       </div>
     </div>
@@ -333,32 +358,34 @@ Figure 2: Historical RAM performance</p>
 </div>
 </div>
 <ul>
-<li>Units: <a href="https://en.wikipedia.org/wiki/Binary_prefix#IEC_standard_prefixes" rel="external" target="_blank">MiB</a>/$, <a href="https://en.wikipedia.org/wiki/Binary_prefix#IEC_standard_prefixes" rel="external" target="_blank">mebiBytes</a> per dollar (Cdn)</li>
+<li>Units: <a href="https://en.wikipedia.org/wiki/Binary_prefix#IEC_standard_prefixes" rel="external">MiB</a>/$, <a href="https://en.wikipedia.org/wiki/Binary_prefix#IEC_standard_prefixes" rel="external">mebiBytes</a> per dollar (Cdn)</li>
 <li>Doubling time: 53 ± 19 months<sup id="fnref2:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
 </ul>
-<p>RAM performance, measured in <a href="https://en.wikipedia.org/wiki/Binary_prefix#IEC_standard_prefixes" rel="external" target="_blank">MiB</a>/$, is currently doubling every 53 ± 19 months&hellip;but it&rsquo;s a real wild ride! Notice that the graph is virtually flat until November 1995 and then explodes upwards. As I understand it this is due to a monopoly on SIMM modules which toppled around then. At the time (October 1995) the doubling time was a whopping 53 ± 9 months! After some fluctuations when the market opened up, it looks like RAM performance grew at a natural rate for a while.</p>
-<p>There was an huge hiccup at the end of 2001 which was apparently due to <a href="http://www.theregister.co.uk/2004/02/27/memory_makers_hit_by_pricefixing/" rel="external" target="_blank">price fixing</a>.</p>
+<p>RAM performance, measured in <a href="https://en.wikipedia.org/wiki/Binary_prefix#IEC_standard_prefixes" rel="external">MiB</a>/$, is currently doubling every 53 ± 19 months&hellip;but it&rsquo;s a real wild ride! Notice that the graph is virtually flat until November 1995 and then explodes upwards. As I understand it this is due to a monopoly on SIMM modules which toppled around then. At the time (October 1995) the doubling time was a whopping 53 ± 9 months! After some fluctuations when the market opened up, it looks like RAM performance grew at a natural rate for a while.</p>
+<p>There was an huge hiccup at the end of 2001 which was apparently due to <a href="http://www.theregister.co.uk/2004/02/27/memory_makers_hit_by_pricefixing/" rel="external">price fixing</a>.</p>
 <p>Again, performance depends on how many transistors can be fit on a chip which has a theoretical maximum. Unlike motherboard performance, however, I don&rsquo;t expect this to slow down the RAM performance doubling time because&ndash;Hey!&ndash;the manufacturers can always just add more memory banks, right?</p>
-<h3 id="storage">Storage</h3>
+<h3 id="storage">Storage<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <div id="fig-storage">
-<div class="tab-panel" data-tab-group="9b1b935a8cae9c49f3883eef84d218dd">
+<div class="tab-panel" data-tab-group="R-tabs-2a65f30a956db3ac9b24e98b72f3ebc9">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="storage"
+      aria-controls="R-tab-id-41cc45935cf99ebf2f08398668bdfdf7" aria-expanded="true"
+      data-tab-item="R-tab-8c4aa541ee911e8d80451ef8cc304806"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('9b1b935a8cae9c49f3883eef84d218dd','storage')"
+      onclick="switchTab('R-tabs-2a65f30a956db3ac9b24e98b72f3ebc9','R-tab-8c4aa541ee911e8d80451ef8cc304806')"
     >
       <span class="tab-nav-text">Storage</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="storage"
+      id="R-tab-id-41cc45935cf99ebf2f08398668bdfdf7"
+      data-tab-item="R-tab-8c4aa541ee911e8d80451ef8cc304806"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-cafbc63f69f533af7d0bfb87e8ae81d8" class="lightbox-link"><img alt="HardDrive.gif" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="HardDrive.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-cafbc63f69f533af7d0bfb87e8ae81d8"><img alt="HardDrive.gif" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="HardDrive.gif"></a>
+<p><a href="#R-image-ec890525490cb6ed8285890c3b704511" class="lightbox-link"><img alt="HardDrive.gif" class="lazy lightbox figure-image" loading="lazy" src="HardDrive.gif" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-ec890525490cb6ed8285890c3b704511"><img alt="HardDrive.gif" class="lazy lightbox lightbox-image" loading="lazy" src="HardDrive.gif"></a>
 Figure 3: Historical storage performance</p>
       </div>
     </div>
@@ -369,27 +396,29 @@ Figure 3: Historical storage performance</p>
 <li>Units: GB/$, gigabytes per dollar (Cdn)</li>
 <li>Doubling time: -85 ± 34 months<sup id="fnref3:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> (declining)</li>
 </ul>
-<p>Hard drive capacity, measured in GB/$, is currently doubling every -85 ± 34 months (declining). The graph was showing exponential growth until late 2011 when <a href="http://www.nytimes.com/2011/11/07/business/global/07iht-floods07.html?pagewanted=all" rel="external" target="_blank">flooding in Thailand</a> caused production shortages.</p>
-<h3 id="bandwidth">Bandwidth</h3>
+<p>Hard drive capacity, measured in GB/$, is currently doubling every -85 ± 34 months (declining). The graph was showing exponential growth until late 2011 when <a href="http://www.nytimes.com/2011/11/07/business/global/07iht-floods07.html?pagewanted=all" rel="external">flooding in Thailand</a> caused production shortages.</p>
+<h3 id="bandwidth">Bandwidth<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <div id="fig-bandwidth">
-<div class="tab-panel" data-tab-group="70d99ab7f22583e2f5f1d0a70d26d0b0">
+<div class="tab-panel" data-tab-group="R-tabs-74a4e11c6b0d5c13dd1bc871a8c9e0cf">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="bandwidth"
+      aria-controls="R-tab-id-f19eb3c16021e98229d3efc55ce924a4" aria-expanded="true"
+      data-tab-item="R-tab-7d724e4bd163fe8323200b15500517f9"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('70d99ab7f22583e2f5f1d0a70d26d0b0','bandwidth')"
+      onclick="switchTab('R-tabs-74a4e11c6b0d5c13dd1bc871a8c9e0cf','R-tab-7d724e4bd163fe8323200b15500517f9')"
     >
       <span class="tab-nav-text">Bandwidth</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="bandwidth"
+      id="R-tab-id-f19eb3c16021e98229d3efc55ce924a4"
+      data-tab-item="R-tab-7d724e4bd163fe8323200b15500517f9"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-71fedbaff46aeabac74e9c462f319676" class="lightbox-link"><img alt="Bandwidth.gif" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="Bandwidth.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-71fedbaff46aeabac74e9c462f319676"><img alt="Bandwidth.gif" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="Bandwidth.gif"></a>
+<p><a href="#R-image-265e92f483c6460a5339817dda6f64ae" class="lightbox-link"><img alt="Bandwidth.gif" class="lazy lightbox figure-image" loading="lazy" src="Bandwidth.gif" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-265e92f483c6460a5339817dda6f64ae"><img alt="Bandwidth.gif" class="lazy lightbox lightbox-image" loading="lazy" src="Bandwidth.gif"></a>
 Figure 4: Historical bandwidth performance</p>
       </div>
     </div>
@@ -401,26 +430,28 @@ Figure 4: Historical bandwidth performance</p>
 <li>Doubling time: 56 ± 14 months<sup id="fnref4:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
 </ul>
 <p>Bandwidth (the speed of an internet connection) is difficult to measure because it depends on your internet provider, and current conditions (eg. is there heavy usage?) so I don&rsquo;t have as good of data. But the data I do have suggests the doubling time for bandwidth performance (versus monthly fees) is 56 ± 14 months. I calculate my bandwidth by doing speed tests weekly and then taking the median value from the last five weeks to reduce the noise.</p>
-<h3 id="modems">Modems</h3>
+<h3 id="modems">Modems<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <div id="fig-modems">
-<div class="tab-panel" data-tab-group="bd796a532c3831c87ecbc05a2c63a911">
+<div class="tab-panel" data-tab-group="R-tabs-d875bbd4f35855b0998e1cdb2e19173d">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="modems"
+      aria-controls="R-tab-id-89bcf76bf2fbc9d64f3a91a5092899ed" aria-expanded="true"
+      data-tab-item="R-tab-3f4eac85335ee4f50cddb45912ad30cd"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('bd796a532c3831c87ecbc05a2c63a911','modems')"
+      onclick="switchTab('R-tabs-d875bbd4f35855b0998e1cdb2e19173d','R-tab-3f4eac85335ee4f50cddb45912ad30cd')"
     >
       <span class="tab-nav-text">Modems</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="modems"
+      id="R-tab-id-89bcf76bf2fbc9d64f3a91a5092899ed"
+      data-tab-item="R-tab-3f4eac85335ee4f50cddb45912ad30cd"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
-<p><a href="#R-image-01eac164b96f24d840a039af202d31ab" class="lightbox-link"><img alt="Modem.gif" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="Modem.gif" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-01eac164b96f24d840a039af202d31ab"><img alt="Modem.gif" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="Modem.gif"></a>
+<p><a href="#R-image-079157c8f199c0eaaee296078951ae9b" class="lightbox-link"><img alt="Modem.gif" class="lazy lightbox figure-image" loading="lazy" src="Modem.gif" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-079157c8f199c0eaaee296078951ae9b"><img alt="Modem.gif" class="lazy lightbox lightbox-image" loading="lazy" src="Modem.gif"></a>
 Figure 5: Historical modem performance</p>
       </div>
     </div>
@@ -433,11 +464,11 @@ Figure 5: Historical modem performance</p>
 </ul>
 <p>They&rsquo;ve stopped advertising dial-up modems in my local sources so I&rsquo;m not tracking this technology anymore. But before they were obsoleted the estimated doubling time for modem performance was 200 ± 77 months. But you just have to look at the graph to realize exponential growth isn&rsquo;t a good fit. Did modem performance plateau due to technical or economic factors, I wonder?</p>
 <p>Note that 56kbps modems never actually ran at that rate, it&rsquo;s just a theoretical maximum (and a nice marketing ploy). The fastest my modem ever connected at (and maintained) was 46kbps so that&rsquo;s the speed I used when calculating performance.</p>
-<h3 id="the-bottom-line">The Bottom Line</h3>
+<h3 id="the-bottom-line">The Bottom Line<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>The average doubling time for the motherboard, memory, and hard drive is currently 511 months. Sounds good, right? Well, the down side is that you&rsquo;ll have to keep laying out cash to keep your computer current. In that amount of time your brand-spanking new computer will only be half as &ldquo;good&rdquo; as the latest. (Actually I&rsquo;m neglecting a lot of components like monitors and sound cards, but this should still be a good estimate.) This is the same as saying a computer loses 1.6% of its value each year. To maintain it you will have to regularly lay out some cash for upgrades.</p>
 <p>If you&rsquo;re laying out that kind of cash you might as well buy an entirely new system every 743 months! (That&rsquo;s neglecting the money you&rsquo;ll get back for selling your old computer. If you factor it in then you should replace your system even more often&ndash;every time the performance doubles, every 511 months!) Most people use a combination of the above strategies: they upgrade a bit to slow the decline of their system, and when it just gets too outdated they replace it.</p>
 <p>When buying a new system, be careful of unscrupulous vendors that may take advantage of this rapid drop in prices to make money. After the price is settled and the down payment made, some vendors may delay ordering the system for a week or two. In the meantime the value of your system drops marginally. Then the vendors buy at the lower price, but sell to you at the original higher price, and skim a profit off the top. For a \$2000 machine, a two week delay will earn them roughly \$1.96. Not much, but still something to watch out for.</p>
-<h3 id="math-stuff">Math Stuff</h3>
+<h3 id="math-stuff">Math Stuff<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>The component prices come from advertisements in local shops. I compiled the data and made estimates of what the actual doubling time, \(\tau\), is, as follows. If there is a doubling trend over time, \(t\), then the performance (per dollar), \(P(t)\),  should increase as</p>
 \[
   P(t) = P(0) 2^{t/\tau}.
@@ -505,7 +536,7 @@ Figure 5: Historical modem performance</p>
 \[
 \frac{\sigma_\tau}{\tau} = \frac{\sigma_m}{m}.
 \]<p>By using this method the &ldquo;goodness of fit&rdquo; is incorporated into the doubling time uncertainty: a large uncertainty means a poor fit.</p>
-<h3 id="references">References</h3>
+<h3 id="references">References<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 
   
   
@@ -591,6 +622,7 @@ Figure 5: Historical modem performance</p>
 </div>
 
   <footer class="footline">
+              <i class='fa-fw fas fa-calendar'></i> Mar 20, 2011
   </footer>
 </article>
         </div>
@@ -599,118 +631,79 @@ Figure 5: Historical modem performance</p>
     <aside id="R-sidebar" class="default-animation">
       <div id="R-header-topbar" class="default-animation"></div>
       <div id="R-header-wrapper" class="default-animation">
-        <div id="R-header" class="default-animation">
-          <a id="R-logo" class="R-default" href="/~rikblok/index.html">
-Rik&#39;s Treehouse
-          </a>
-        </div>
-        <script>
-          window.index_js_url="/~rikblok/searchindex.en.js?1770597923";
-        </script>
+        <a id="R-logo" class="R-default direction-row" href="/~rikblok/index.html">
+          <span class="logo-title default-animation">Rik&#39;s Treehouse</span>
+        </a>
         <search><form action="/~rikblok/search/index.html" method="get">
           <div class="searchbox default-animation">
-            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
             <label class="a11y-only" for="R-search-by">Search</label>
             <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
-            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
           </div>
         </form></search>
-        <script>
-          var contentLangs=['en'];
-        </script>
-        <script src="/~rikblok/js/auto-complete.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.en.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/search.js?1770597923" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
-        <ul>
-          <li><a class="padding" href="/~rikblok/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
-        </ul>
-        <hr class="padding">
-      </div>
-      <div id="R-content-wrapper" class="highlightable">
-        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
-          <ul class="enlarge morespace collapsible-menu">
-            <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
-            <li class="parent " data-nav-id="/~rikblok/compute/index.html"><a class="padding" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu">
-            <li class="active " data-nav-id="/~rikblok/compute/trends/index.html"><a class="padding" href="/~rikblok/compute/trends/index.html">Trends in Computing (2011)</a></li>
-            <li class="alwaysopen " data-nav-id="/~rikblok/compute/orphanware/index.html"><a class="padding" href="/~rikblok/compute/orphanware/index.html">Orphanware</a><ul id="R-subsections-fce2e90aa26b68a25b1fe569731ceecc" class="collapsible-menu"></ul></li></ul></li>
-            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/research/index.html"><a class="padding" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu"></ul></li>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/index.html"><a class="padding" href="/~rikblok/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
           </ul>
         </div>
-    
-        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
-        <div id="R-menu-footer">
-          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
-          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
-            <ul>
-              <li id="R-select-language-container" class="footerLangSwitch">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-language"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <label class="a11y-only" for="R-select-language">Language</label>
-                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/compute/trends/index.html" lang="en-us" selected></option>
-                    </select>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-              </li>
-              <li id="R-select-variant-container" class="footerVariantSwitch">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-paint-brush"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <label class="a11y-only" for="R-select-variant">Theme</label>
-                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
-                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
-                    </select>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-                <script>window.relearn.markVariant();</script>
-              </li>
-              <li class="footerVisitedLinks">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-history"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <button onclick="clearHistory();">Clear History</button>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div id="R-footer" class="footerFooter showFooter">
-        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
-          </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
         </div>
       </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding default-animation" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/~rikblok/compute/index.html"><a class="padding default-animation" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu">
+            <li class="active " data-nav-id="/~rikblok/compute/trends/index.html"><a class="padding" href="/~rikblok/compute/trends/index.html">Trends in Computing (2011)</a></li>
+            <li class="alwaysopen " data-nav-id="/~rikblok/compute/orphanware/index.html"><a class="padding default-animation" href="/~rikblok/compute/orphanware/index.html">Orphanware</a><ul id="R-subsections-fce2e90aa26b68a25b1fe569731ceecc" class="collapsible-menu"></ul></li></ul></li>
+            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding default-animation" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/research/index.html"><a class="padding default-animation" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/science/index.html"><a class="padding default-animation" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
     </aside>
-    <script src="/~rikblok/js/clipboard.min.js?1770597923" defer></script>
-    <script src="/~rikblok/js/perfect-scrollbar.min.js?1770597923" defer></script>
     <script>
-      function useMathJax( config ){
-        window.MathJax = Object.assign( window.MathJax || {}, {
-          tex: {
-            inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
-            displayMath: [['\\[', '\\]'], ['$$', '$$']], 
-          },
-          options: {
-            enableMenu: false 
-          }
-        }, config );
-      }
-      useMathJax( JSON.parse("{}") );
+      window.MathJax = Object.assign( window.MathJax || {}, {
+        tex: {
+          inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
+          displayMath: [['\\[', '\\]'], ['$$', '$$']], 
+        },
+        options: {
+          enableMenu: false 
+        }
+      }, JSON.parse("{}") );
     </script>
-    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1770597923"></script>
-    <script src="/~rikblok/js/theme.js?1770597923" defer></script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1779480491"></script>
+    <script src="/~rikblok/js/perfect-scrollbar/perfect-scrollbar.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/theme.min.js?1779480491" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

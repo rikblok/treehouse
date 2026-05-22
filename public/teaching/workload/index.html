@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.139.0">
-    <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
+    <meta name="generator" content="Hugo 0.161.1">
+    <meta name="generator" content="Relearn 9.0.3+36307e4ed23582638ab689240ac7b427217803ee">
     <meta name="description" content="View my historical workload, automatically generated from the emails waiting in my inbox.">
     <meta name="author" content="Rik Blok">
     <meta name="twitter:card" content="summary">
@@ -25,41 +25,66 @@
     <meta itemprop="dateModified" content="2024-12-22T11:54:25-08:00">
     <meta itemprop="wordCount" content="98">
     <title>Workload :: Rik&#39;s Treehouse</title>
-    <link href="/~rikblok/css/fontawesome-all.min.css?1770597923" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1770597923" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/auto-complete.css?1770597923" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1770597923" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/perfect-scrollbar.min.css?1770597923" rel="stylesheet">
-    <link href="/~rikblok/css/theme.min.css?1770597923" rel="stylesheet">
-    <link href="/~rikblok/css/format-html.min.css?1770597923" rel="stylesheet" id="R-format-style">
+    <link href="/~rikblok/css/auto-complete/auto-complete.min.css?1779480491" rel="stylesheet">
+    <script src="/~rikblok/js/auto-complete/auto-complete.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/search-lunr.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/search.min.js?1779480491" defer></script>
     <script>
       window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/~rikblok/searchindex.en.js?1779480491";
+    </script>
+    <script src="/~rikblok/js/lunr/lunr.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.multi.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.en.min.js?1779480491" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/~rikblok/fonts/fontawesome/css/all.min.css?1779480491" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/fonts/fontawesome/css/all.min.css?1779480491" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar/perfect-scrollbar.min.css?1779480491" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1779480491" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1779480491" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/teaching\/workload\/index.html';
       window.relearn.relBasePath='..\/..';
       window.relearn.relBaseUri='..\/..\/..';
       window.relearn.absBaseUri='https:\/\/www.cs.ubc.ca\/~rikblok';
-      window.relearn.min = `.min`;
-      window.relearn.disableAnchorCopy=false;
-      window.relearn.disableAnchorScrolling=false;
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
       // variant stuff
       window.relearn.themevariants = [ 'auto' ];
-      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.customvariantprefix = "my-custom-";
       window.relearn.changeVariant = function(variant) {
         var oldVariant = document.documentElement.dataset.rThemeVariant;
         window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
         document.documentElement.dataset.rThemeVariant = variant;
         if (oldVariant != variant) {
           document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
         }
       }
       window.relearn.markVariant = function() {
         var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
-        var select = document.querySelector("#R-select-variant");
-        if (select) {
-          select.value = variant;
-        }
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
       }
       window.relearn.initVariant = function() {
         var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
-        if( variant == window.relearn.customvariantname ){
-        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
           variant = window.relearn.themevariants[0];
           window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
         }
@@ -67,15 +92,6 @@
       }
       window.relearn.initVariant();
       window.relearn.markVariant();
-      // translations
-      window.T_Copy_to_clipboard = `Copy to clipboard`;
-      window.T_Copied_to_clipboard = `Copied to clipboard!`;
-      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
-      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
-      window.T_Reset_view = `Reset view`;
-      window.T_View_reset = `View reset!`;
-      window.T_No_results_found = `No results found for "{0}"`;
-      window.T_N_results_found = `{1} results found for "{0}"`;
     </script><link rel="stylesheet" type="text/css" href="/~rikblok/hugo-cite.css" />
 
 
@@ -97,32 +113,35 @@ function expandAllDetails() {
 }
 </script>
   </head>
-  <body class="mobile-support html" data-url="/~rikblok/teaching/workload/index.html">
+  <body class="mobile-support html" data-origin="/~rikblok/teaching/workload/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
-      <nav id="R-topbar">
-        <div class="topbar-wrapper">
-          <div class="topbar-sidebar-divider"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
           <div class="topbar-area topbar-area-start" data-area="start">
-            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
             </div>
-            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
               <div class="topbar-content">
                 <div class="topbar-content-wrapper"> 
                 </div>
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/teaching/index.html"><span itemprop="name">Academic anecdotes</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Workload</span><meta itemprop="position" content="2"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/~rikblok/index.html"><span itemprop="name">Rik&#39;s Treehouse</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/~rikblok/teaching/index.html"><span itemprop="name">Academic anecdotes</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Workload</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/teaching/contact/index.html" title="Contact Rik (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/~rikblok/teaching/contact/index.html" title="Contact Rik (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/teaching/current/index.html" title="Recent courses (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/~rikblok/teaching/current/index.html" title="Recent courses (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
             </div>
-            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
               <div class="topbar-content">
                 <div class="topbar-content-wrapper">
                   <div class="topbar-area topbar-area-more" data-area="more">
@@ -429,62 +448,70 @@ drawChart();
 </script>
 <!--
 
-<div class="tab-panel" data-tab-group="1550c1bc2694ecf768d6769b4b48f89b">
+<div class="tab-panel" data-tab-group="R-tabs-5287b4d449aa6acf047f5c7a56d84b59">
   <div class="tab-nav">
     <div class="tab-nav-title">&#8203;</div>
     <button
-      data-tab-item="2-weeks"
+      aria-controls="R-tab-id-f7c49285fb4e0b4f67b31ed4fb6abbde" aria-expanded="true"
+      data-tab-item="R-tab-a9adf02fea7b0107b5a712a45e51076a"
       class="tab-nav-button tab-panel-style cstyle initial active" tabindex="-1"
-      onclick="switchTab('1550c1bc2694ecf768d6769b4b48f89b','2-weeks')"
+      onclick="switchTab('R-tabs-5287b4d449aa6acf047f5c7a56d84b59','R-tab-a9adf02fea7b0107b5a712a45e51076a')"
     >
       <span class="tab-nav-text">2 weeks</span>
     </button>
     <button
-      data-tab-item="1-month"
+      aria-controls="R-tab-id-b0740615babbcce7e50399639bc7ed36" aria-expanded="false"
+      data-tab-item="R-tab-1634e66b522edaa910370cc5581a47f1"
       class="tab-nav-button tab-panel-style cstyle initial"
-      onclick="switchTab('1550c1bc2694ecf768d6769b4b48f89b','1-month')"
+      onclick="switchTab('R-tabs-5287b4d449aa6acf047f5c7a56d84b59','R-tab-1634e66b522edaa910370cc5581a47f1')"
     >
       <span class="tab-nav-text">1 month</span>
     </button>
     <button
-      data-tab-item="4-months"
+      aria-controls="R-tab-id-a824836a3ff9f2d6aeaf94c9caaf7989" aria-expanded="false"
+      data-tab-item="R-tab-790939a66fc982107ea1f87bc6dc0109"
       class="tab-nav-button tab-panel-style cstyle initial"
-      onclick="switchTab('1550c1bc2694ecf768d6769b4b48f89b','4-months')"
+      onclick="switchTab('R-tabs-5287b4d449aa6acf047f5c7a56d84b59','R-tab-790939a66fc982107ea1f87bc6dc0109')"
     >
       <span class="tab-nav-text">4 months</span>
     </button>
     <button
-      data-tab-item="1-year"
+      aria-controls="R-tab-id-9f28c25c8d6e0cfec198aff0d348db81" aria-expanded="false"
+      data-tab-item="R-tab-ca4c73c1f333c437a47c58afd0623530"
       class="tab-nav-button tab-panel-style cstyle initial"
-      onclick="switchTab('1550c1bc2694ecf768d6769b4b48f89b','1-year')"
+      onclick="switchTab('R-tabs-5287b4d449aa6acf047f5c7a56d84b59','R-tab-ca4c73c1f333c437a47c58afd0623530')"
     >
       <span class="tab-nav-text">1 year</span>
     </button>
     <button
-      data-tab-item="3-years"
+      aria-controls="R-tab-id-b2eda40491173c11077fd0218bd7e9a4" aria-expanded="false"
+      data-tab-item="R-tab-89ee81dad12fa06ec6a5b8461129cdd0"
       class="tab-nav-button tab-panel-style cstyle initial"
-      onclick="switchTab('1550c1bc2694ecf768d6769b4b48f89b','3-years')"
+      onclick="switchTab('R-tabs-5287b4d449aa6acf047f5c7a56d84b59','R-tab-89ee81dad12fa06ec6a5b8461129cdd0')"
     >
       <span class="tab-nav-text">3 years</span>
     </button>
     <button
-      data-tab-item="10-years"
+      aria-controls="R-tab-id-789a4fe273d3859edbfa8259d24fd4ee" aria-expanded="false"
+      data-tab-item="R-tab-7e3b12c56f619bbb75e9e88ee9b3b833"
       class="tab-nav-button tab-panel-style cstyle initial"
-      onclick="switchTab('1550c1bc2694ecf768d6769b4b48f89b','10-years')"
+      onclick="switchTab('R-tabs-5287b4d449aa6acf047f5c7a56d84b59','R-tab-7e3b12c56f619bbb75e9e88ee9b3b833')"
     >
       <span class="tab-nav-text">10 years</span>
     </button>
     <button
-      data-tab-item="all-time"
+      aria-controls="R-tab-id-345db747db77d17616397ed477bd8159" aria-expanded="false"
+      data-tab-item="R-tab-f270cf82d6f4111caff626149a9b9272"
       class="tab-nav-button tab-panel-style cstyle initial"
-      onclick="switchTab('1550c1bc2694ecf768d6769b4b48f89b','all-time')"
+      onclick="switchTab('R-tabs-5287b4d449aa6acf047f5c7a56d84b59','R-tab-f270cf82d6f4111caff626149a9b9272')"
     >
       <span class="tab-nav-text">all time</span>
     </button>
   </div>
   <div class="tab-content-container">
     <div
-      data-tab-item="2-weeks"
+      id="R-tab-id-f7c49285fb4e0b4f67b31ed4fb6abbde"
+      data-tab-item="R-tab-a9adf02fea7b0107b5a712a45e51076a"
       class="tab-content tab-panel-style cstyle initial active">
       <div class="tab-content-text">
 <iframe src="https://drive.google.com/file/d/1pbK1FHxB3K56_Py6_mDYHmGEyV_syG4I/preview" width="720" height="405" allow="autoplay"></iframe>
@@ -492,7 +519,8 @@ drawChart();
       </div>
     </div>
     <div
-      data-tab-item="1-month"
+      id="R-tab-id-b0740615babbcce7e50399639bc7ed36"
+      data-tab-item="R-tab-1634e66b522edaa910370cc5581a47f1"
       class="tab-content tab-panel-style cstyle initial">
       <div class="tab-content-text">
 <iframe src="https://drive.google.com/file/d/1L50bXifTVryDj1t_dS7KmmWi0Cs9PoZ6/preview" width="720" height="405" allow="autoplay"></iframe>
@@ -500,7 +528,8 @@ drawChart();
       </div>
     </div>
     <div
-      data-tab-item="4-months"
+      id="R-tab-id-a824836a3ff9f2d6aeaf94c9caaf7989"
+      data-tab-item="R-tab-790939a66fc982107ea1f87bc6dc0109"
       class="tab-content tab-panel-style cstyle initial">
       <div class="tab-content-text">
 <iframe src="https://drive.google.com/file/d/1LhyqEsc7W8128bIE-_0cFZ8ZmwaKt6mM/preview" width="720" height="405" allow="autoplay"></iframe>
@@ -508,7 +537,8 @@ drawChart();
       </div>
     </div>
     <div
-      data-tab-item="1-year"
+      id="R-tab-id-9f28c25c8d6e0cfec198aff0d348db81"
+      data-tab-item="R-tab-ca4c73c1f333c437a47c58afd0623530"
       class="tab-content tab-panel-style cstyle initial">
       <div class="tab-content-text">
 <iframe src="https://drive.google.com/file/d/11PuT5Gdo7nfPBXkwcNn1xCNtgZzP1JH-/preview" width="720" height="405" allow="autoplay"></iframe>
@@ -516,7 +546,8 @@ drawChart();
       </div>
     </div>
     <div
-      data-tab-item="3-years"
+      id="R-tab-id-b2eda40491173c11077fd0218bd7e9a4"
+      data-tab-item="R-tab-89ee81dad12fa06ec6a5b8461129cdd0"
       class="tab-content tab-panel-style cstyle initial">
       <div class="tab-content-text">
 <iframe src="https://drive.google.com/file/d/1BXqD7MxDQKFt_IFQCjhzQUKUsB58acRt/preview" width="720" height="405" allow="autoplay"></iframe>
@@ -524,7 +555,8 @@ drawChart();
       </div>
     </div>
     <div
-      data-tab-item="10-years"
+      id="R-tab-id-789a4fe273d3859edbfa8259d24fd4ee"
+      data-tab-item="R-tab-7e3b12c56f619bbb75e9e88ee9b3b833"
       class="tab-content tab-panel-style cstyle initial">
       <div class="tab-content-text">
 <iframe src="https://drive.google.com/file/d/11U7FtLED_vDaiFjaxSPg99OkknBwlOfW/preview" width="720" height="405" allow="autoplay"></iframe>
@@ -532,7 +564,8 @@ drawChart();
       </div>
     </div>
     <div
-      data-tab-item="all-time"
+      id="R-tab-id-345db747db77d17616397ed477bd8159"
+      data-tab-item="R-tab-f270cf82d6f4111caff626149a9b9272"
       class="tab-content tab-panel-style cstyle initial">
       <div class="tab-content-text">
 <iframe src="https://drive.google.com/file/d/11TnjNff9DnS6UJnslzA4eCsuSy8gG3BS/preview" width="720" height="405" allow="autoplay"></iframe>
@@ -546,6 +579,7 @@ drawChart();
 <p>Under light workloads expect a response within a few days.  I should be able to get back to you within a week under moderate workloads.  But when my workload is heavy, it could take a few weeks.</p>
 
   <footer class="footline">
+              <i class='fa-fw fas fa-calendar'></i> Dec 22, 2024
   </footer>
 </article>
         </div>
@@ -554,120 +588,81 @@ drawChart();
     <aside id="R-sidebar" class="default-animation">
       <div id="R-header-topbar" class="default-animation"></div>
       <div id="R-header-wrapper" class="default-animation">
-        <div id="R-header" class="default-animation">
-          <a id="R-logo" class="R-default" href="/~rikblok/index.html">
-Rik&#39;s Treehouse
-          </a>
-        </div>
-        <script>
-          window.index_js_url="/~rikblok/searchindex.en.js?1770597923";
-        </script>
+        <a id="R-logo" class="R-default direction-row" href="/~rikblok/index.html">
+          <span class="logo-title default-animation">Rik&#39;s Treehouse</span>
+        </a>
         <search><form action="/~rikblok/search/index.html" method="get">
           <div class="searchbox default-animation">
-            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
             <label class="a11y-only" for="R-search-by">Search</label>
             <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
-            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
           </div>
         </form></search>
-        <script>
-          var contentLangs=['en'];
-        </script>
-        <script src="/~rikblok/js/auto-complete.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.en.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/search.js?1770597923" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
-        <ul>
-          <li><a class="padding" href="/~rikblok/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
-        </ul>
-        <hr class="padding">
-      </div>
-      <div id="R-content-wrapper" class="highlightable">
-        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
-          <ul class="enlarge morespace collapsible-menu">
-            <li class="parent " data-nav-id="/~rikblok/teaching/index.html"><a class="padding" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu">
-            <li class="" data-nav-id="/~rikblok/teaching/contact/index.html"><a class="padding" href="/~rikblok/teaching/contact/index.html">Contact Rik</a></li>
-            <li class="active " data-nav-id="/~rikblok/teaching/workload/index.html"><a class="padding" href="/~rikblok/teaching/workload/index.html">Workload</a></li>
-            <li class="alwaysopen " data-nav-id="/~rikblok/teaching/current/index.html"><a class="padding" href="/~rikblok/teaching/current/index.html">Recent courses</a><ul id="R-subsections-45fbabadbb7a724e2bfed3067baa0629" class="collapsible-menu"></ul></li>
-            <li class="alwaysopen " data-nav-id="/~rikblok/teaching/past/index.html"><a class="padding" href="/~rikblok/teaching/past/index.html">Old courses</a><ul id="R-subsections-876671ea0f88d7043b8c3cb15b15a5ec" class="collapsible-menu"></ul></li></ul></li>
-            <li class="" data-nav-id="/~rikblok/compute/index.html"><a class="padding" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/research/index.html"><a class="padding" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu"></ul></li>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/index.html"><a class="padding" href="/~rikblok/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
           </ul>
         </div>
-    
-        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
-        <div id="R-menu-footer">
-          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
-          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
-            <ul>
-              <li id="R-select-language-container" class="footerLangSwitch">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-language"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <label class="a11y-only" for="R-select-language">Language</label>
-                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/teaching/workload/index.html" lang="en-us" selected></option>
-                    </select>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-              </li>
-              <li id="R-select-variant-container" class="footerVariantSwitch">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-paint-brush"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <label class="a11y-only" for="R-select-variant">Theme</label>
-                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
-                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
-                    </select>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-                <script>window.relearn.markVariant();</script>
-              </li>
-              <li class="footerVisitedLinks">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-history"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <button onclick="clearHistory();">Clear History</button>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div id="R-footer" class="footerFooter showFooter">
-        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
-          </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
         </div>
       </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="parent " data-nav-id="/~rikblok/teaching/index.html"><a class="padding default-animation" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/teaching/contact/index.html"><a class="padding" href="/~rikblok/teaching/contact/index.html">Contact Rik</a></li>
+            <li class="active " data-nav-id="/~rikblok/teaching/workload/index.html"><a class="padding" href="/~rikblok/teaching/workload/index.html">Workload</a></li>
+            <li class="alwaysopen " data-nav-id="/~rikblok/teaching/current/index.html"><a class="padding default-animation" href="/~rikblok/teaching/current/index.html">Recent courses</a><ul id="R-subsections-45fbabadbb7a724e2bfed3067baa0629" class="collapsible-menu"></ul></li>
+            <li class="alwaysopen " data-nav-id="/~rikblok/teaching/past/index.html"><a class="padding default-animation" href="/~rikblok/teaching/past/index.html">Old courses</a><ul id="R-subsections-876671ea0f88d7043b8c3cb15b15a5ec" class="collapsible-menu"></ul></li></ul></li>
+            <li class="" data-nav-id="/~rikblok/compute/index.html"><a class="padding default-animation" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding default-animation" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/research/index.html"><a class="padding default-animation" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/science/index.html"><a class="padding default-animation" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu"></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
     </aside>
-    <script src="/~rikblok/js/clipboard.min.js?1770597923" defer></script>
-    <script src="/~rikblok/js/perfect-scrollbar.min.js?1770597923" defer></script>
     <script>
-      function useMathJax( config ){
-        window.MathJax = Object.assign( window.MathJax || {}, {
-          tex: {
-            inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
-            displayMath: [['\\[', '\\]'], ['$$', '$$']], 
-          },
-          options: {
-            enableMenu: false 
-          }
-        }, config );
-      }
-      useMathJax( JSON.parse("{}") );
+      window.MathJax = Object.assign( window.MathJax || {}, {
+        tex: {
+          inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
+          displayMath: [['\\[', '\\]'], ['$$', '$$']], 
+        },
+        options: {
+          enableMenu: false 
+        }
+      }, JSON.parse("{}") );
     </script>
-    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1770597923"></script>
-    <script src="/~rikblok/js/theme.js?1770597923" defer></script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1779480491"></script>
+    <script src="/~rikblok/js/perfect-scrollbar/perfect-scrollbar.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/theme.min.js?1779480491" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

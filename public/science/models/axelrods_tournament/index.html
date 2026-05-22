@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+<html id="R-html" lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="generator" content="Hugo 0.139.0">
-    <meta name="generator" content="Relearn 7.2.1+16d4de84becfa2d2e6bdb2394a2f4fa411bc0007">
+    <meta name="generator" content="Hugo 0.161.1">
+    <meta name="generator" content="Relearn 9.0.3+36307e4ed23582638ab689240ac7b427217803ee">
     <meta name="description" content="In the early 1980s Robert Axelrod invited colleagues to submit strategies to a series of round-robin tournaments to see which strategies would do well playing an iterated Prisoner’s Dilemma.  This NetLogo model allows you to try Axelrod’s tournaments yourself by creating some strategies and testing them in an iterated Prisoner’s Dilemma.">
     <meta name="author" content="Rik Blok">
     <meta name="twitter:card" content="summary">
@@ -23,41 +23,66 @@
     <meta itemprop="wordCount" content="1902">
     <title>Axelrod&#39;s tournament (2018) :: Rik&#39;s Treehouse</title>
     <link href="/~rikblok/science/models/axelrods_tournament/index.xml" rel="alternate" type="application/rss+xml" title="Axelrod&#39;s tournament (2018) :: Rik&#39;s Treehouse">
-    <link href="/~rikblok/css/fontawesome-all.min.css?1770597923" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/fontawesome-all.min.css?1770597923" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/auto-complete.css?1770597923" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/css/auto-complete.css?1770597923" rel="stylesheet"></noscript>
-    <link href="/~rikblok/css/perfect-scrollbar.min.css?1770597923" rel="stylesheet">
-    <link href="/~rikblok/css/theme.min.css?1770597923" rel="stylesheet">
-    <link href="/~rikblok/css/format-html.min.css?1770597923" rel="stylesheet" id="R-format-style">
+    <link href="/~rikblok/css/auto-complete/auto-complete.min.css?1779480491" rel="stylesheet">
+    <script src="/~rikblok/js/auto-complete/auto-complete.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/search-lunr.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/search.min.js?1779480491" defer></script>
     <script>
       window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/~rikblok/searchindex.en.js?1779480491";
+    </script>
+    <script src="/~rikblok/js/lunr/lunr.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.multi.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/lunr/lunr.en.min.js?1779480491" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['en'];
+    </script>
+    <link href="/~rikblok/fonts/fontawesome/css/all.min.css?1779480491" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/~rikblok/fonts/fontawesome/css/all.min.css?1779480491" rel="stylesheet"></noscript>
+    <link href="/~rikblok/css/perfect-scrollbar/perfect-scrollbar.min.css?1779480491" rel="stylesheet">
+    <link href="/~rikblok/css/theme.min.css?1779480491" rel="stylesheet">
+    <link href="/~rikblok/css/format-html.min.css?1779480491" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/science\/models\/axelrods_tournament\/index.html';
       window.relearn.relBasePath='..\/..\/..';
       window.relearn.relBaseUri='..\/..\/..\/..';
       window.relearn.absBaseUri='https:\/\/www.cs.ubc.ca\/~rikblok';
-      window.relearn.min = `.min`;
-      window.relearn.disableAnchorCopy=false;
-      window.relearn.disableAnchorScrolling=false;
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
       // variant stuff
       window.relearn.themevariants = [ 'auto' ];
-      window.relearn.customvariantname = "my-custom-variant";
+      window.relearn.customvariantprefix = "my-custom-";
       window.relearn.changeVariant = function(variant) {
         var oldVariant = document.documentElement.dataset.rThemeVariant;
         window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
         document.documentElement.dataset.rThemeVariant = variant;
         if (oldVariant != variant) {
           document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
         }
       }
       window.relearn.markVariant = function() {
         var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
-        var select = document.querySelector("#R-select-variant");
-        if (select) {
-          select.value = variant;
-        }
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
       }
       window.relearn.initVariant = function() {
         var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
-        if( variant == window.relearn.customvariantname ){
-        }else if( !variant || !window.relearn.themevariants.includes(variant) ){
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
           variant = window.relearn.themevariants[0];
           window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
         }
@@ -65,15 +90,6 @@
       }
       window.relearn.initVariant();
       window.relearn.markVariant();
-      // translations
-      window.T_Copy_to_clipboard = `Copy to clipboard`;
-      window.T_Copied_to_clipboard = `Copied to clipboard!`;
-      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
-      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
-      window.T_Reset_view = `Reset view`;
-      window.T_View_reset = `View reset!`;
-      window.T_No_results_found = `No results found for "{0}"`;
-      window.T_N_results_found = `{1} results found for "{0}"`;
     </script><link rel="stylesheet" type="text/css" href="/~rikblok/hugo-cite.css" />
 
 
@@ -95,16 +111,18 @@ function expandAllDetails() {
 }
 </script>
   </head>
-  <body class="mobile-support html" data-url="/~rikblok/science/models/axelrods_tournament/index.html">
+  <body class="mobile-support html" data-origin="/~rikblok/science/models/axelrods_tournament/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
-      <nav id="R-topbar">
-        <div class="topbar-wrapper">
-          <div class="topbar-sidebar-divider"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
           <div class="topbar-area topbar-area-start" data-area="start">
-            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
             </div>
-            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
               <div class="topbar-content">
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
@@ -138,17 +156,17 @@ function expandAllDetails() {
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/science/index.html"><span itemprop="name">Scientific scribblings</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/~rikblok/science/models/index.html"><span itemprop="name">Models</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Axelrod&#39;s tournament (2018)</span><meta itemprop="position" content="3"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/~rikblok/index.html"><span itemprop="name">Rik&#39;s Treehouse</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/~rikblok/science/index.html"><span itemprop="name">Scientific scribblings</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/~rikblok/science/models/index.html"><span itemprop="name">Models</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Axelrod&#39;s tournament (2018)</span><meta itemprop="position" content="4"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/science/models/game_of_life/index.html" title="Conway&#39;s Game of Life (2020) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/~rikblok/science/models/game_of_life/index.html" title="Conway's Game of Life (2020) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/~rikblok/science/models/aquaworld/index.html" title="Aquaworld Radiation Balance (2018) (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/~rikblok/science/models/aquaworld/index.html" title="Aquaworld Radiation Balance (2018) (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
             </div>
-            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
               <div class="topbar-content">
                 <div class="topbar-content-wrapper">
                   <div class="topbar-area topbar-area-more" data-area="more">
@@ -168,7 +186,7 @@ function expandAllDetails() {
 
 <h1 id="axelrods-tournament-2018">Axelrod&#39;s tournament (2018)</h1>
 
-<p>A <a href="http://ccl.northwestern.edu/netlogo/" rel="external" target="_blank">NetLogo</a> 
+<p>A <a href="http://ccl.northwestern.edu/netlogo/" rel="external">NetLogo</a> 
 
 
 
@@ -205,7 +223,7 @@ function expandAllDetails() {
 
 </span></span>)</span>
  model by Rik Blok.</p>
-<p>In the early 1980s <a href="https://en.wikipedia.org/wiki/Robert%20Axelrod" rel="external" target="_blank">Robert Axelrod</a> invited colleagues to submit strategies to a series of round-robin tournaments 
+<p>In the early 1980s <a href="https://en.wikipedia.org/wiki/Robert%20Axelrod" rel="external">Robert Axelrod</a> invited colleagues to submit strategies to a series of round-robin tournaments 
 
 
 
@@ -247,18 +265,18 @@ function expandAllDetails() {
 
 
 </span></span>)</span>
- to see which strategies would do well playing an <a href="https://en.wikipedia.org/wiki/Prisoner%2527s_dilemma#The_iterated_prisoner.27s_dilemma" rel="external" target="_blank">iterated Prisoner&rsquo;s Dilemma</a>.  This <a href="http://ccl.northwestern.edu/netlogo/" rel="external" target="_blank">NetLogo</a> model allows you to try <a href="https://en.wikipedia.org/wiki/The_Evolution_of_Cooperation#Axelrod.27s_tournaments" rel="external" target="_blank">Axelrod&rsquo;s tournaments</a> yourself by creating some strategies and testing them in an iterated Prisoner&rsquo;s Dilemma.</p>
+ to see which strategies would do well playing an <a href="https://en.wikipedia.org/wiki/Prisoner%2527s_dilemma#The_iterated_prisoner.27s_dilemma" rel="external">iterated Prisoner&rsquo;s Dilemma</a>.  This <a href="http://ccl.northwestern.edu/netlogo/" rel="external">NetLogo</a> model allows you to try <a href="https://en.wikipedia.org/wiki/The_Evolution_of_Cooperation#Axelrod.27s_tournaments" rel="external">Axelrod&rsquo;s tournaments</a> yourself by creating some strategies and testing them in an iterated Prisoner&rsquo;s Dilemma.</p>
 <p align="center"><iframe title="" src="https://netlogoweb.org/web?https://raw.githubusercontent.com/rikblok/NetLogo-models/master/axelrod-tournament.nlogo" style="width:762px; height:804px"></iframe></p>
-<p>How can cooperation arise and persist when there is a temptation to &ldquo;defect&rdquo; from cooperation for personal gain? <a href="https://en.wikipedia.org/wiki/Cooperation" rel="external" target="_blank">Cooperation</a> is a well-studied problem in economics, social sciences, and evolution.</p>
+<p>How can cooperation arise and persist when there is a temptation to &ldquo;defect&rdquo; from cooperation for personal gain? <a href="https://en.wikipedia.org/wiki/Cooperation" rel="external">Cooperation</a> is a well-studied problem in economics, social sciences, and evolution.</p>
 <p>Let&rsquo;s construct a simple scenario to highlight the problem.  Consider an interaction between two individuals where each player can, at a cost $c&gt;0$ to themselves, confer a benefit $b&gt;c$ to the other player:</p>
 <ul>
 <li>If I cooperate I pay a cost $c$ and</li>
 <li>If you cooperate I receive a benefit $b$.</li>
 </ul>
-<p>If you and I are playing this <a href="https://en.wikipedia.org/wiki/Prisoner%27s_dilemma" rel="external" target="_blank">Prisoner&rsquo;s Dilemma</a> game what should we choose?  Clearly it would be best for both of us if we could <strong>cooperate</strong> so we each earn a net amount of $b-c&gt;0$.  But it would be even better for me if I didn&rsquo;t pay the cost $c$.  If we both try to gain the highest payoff by avoiding the cost then we will get nothing (because nobody generated the benefit).  Cooperation is undermined because <em>no matter what you choose</em>, <em>I</em> always feel the temptation to <strong>defect</strong> and avoid paying the cost &ndash; it is difficult for cooperation to arise and persist in this game.</p>
+<p>If you and I are playing this <a href="https://en.wikipedia.org/wiki/Prisoner%27s_dilemma" rel="external">Prisoner&rsquo;s Dilemma</a> game what should we choose?  Clearly it would be best for both of us if we could <strong>cooperate</strong> so we each earn a net amount of $b-c&gt;0$.  But it would be even better for me if I didn&rsquo;t pay the cost $c$.  If we both try to gain the highest payoff by avoiding the cost then we will get nothing (because nobody generated the benefit).  Cooperation is undermined because <em>no matter what you choose</em>, <em>I</em> always feel the temptation to <strong>defect</strong> and avoid paying the cost &ndash; it is difficult for cooperation to arise and persist in this game.</p>
 <p>Repetition was proposed as a solution to this dilemma: perhaps if the players repeated the interaction many times, the prospect of reciprocal cooperation in the future would encourage players to cooperate now.</p>
-<p>In each round a player can choose to <strong>cooperate</strong> or <strong>defect</strong> but their choice may depend on many details, such as what they and/or the other player did in the past.  For example, I would like to receive the benefit $b$ from you in every round.  If I received it in the prior round I might repeat the same choice (don&rsquo;t make any changes if things are going well, or &ldquo;win-stay&rdquo;) but if I didn&rsquo;t I might choose the other option (switch if things are going poorly, or &ldquo;lose-switch&rdquo;).  This well-known strategy is called Pavlov, or <a href="https://en.wikipedia.org/wiki/Win%E2%80%93stay,_lose%E2%80%93switch" rel="external" target="_blank">win-stay, lose-switch</a>.  If both players use the Pavlov strategy and cooperate in the first round, they will continue to cooperate for all rounds, doing much better than strategies that mutually fall for the temptation to defect.  (But Pavlov is not guaranteed to perform well when playing against these strategies.)</p>
-<p>In the early 1980s <a href="https://en.wikipedia.org/wiki/Robert_Axelrod" rel="external" target="_blank">Robert Axelrod</a> invited colleagues to submit strategies to a series of round-robin tournaments 
+<p>In each round a player can choose to <strong>cooperate</strong> or <strong>defect</strong> but their choice may depend on many details, such as what they and/or the other player did in the past.  For example, I would like to receive the benefit $b$ from you in every round.  If I received it in the prior round I might repeat the same choice (don&rsquo;t make any changes if things are going well, or &ldquo;win-stay&rdquo;) but if I didn&rsquo;t I might choose the other option (switch if things are going poorly, or &ldquo;lose-switch&rdquo;).  This well-known strategy is called Pavlov, or <a href="https://en.wikipedia.org/wiki/Win%E2%80%93stay,_lose%E2%80%93switch" rel="external">win-stay, lose-switch</a>.  If both players use the Pavlov strategy and cooperate in the first round, they will continue to cooperate for all rounds, doing much better than strategies that mutually fall for the temptation to defect.  (But Pavlov is not guaranteed to perform well when playing against these strategies.)</p>
+<p>In the early 1980s <a href="https://en.wikipedia.org/wiki/Robert_Axelrod" rel="external">Robert Axelrod</a> invited colleagues to submit strategies to a series of round-robin tournaments 
 
 
 
@@ -300,11 +318,11 @@ function expandAllDetails() {
 
 
 </span></span>)</span>
- to see which strategies would do well playing an <a href="https://en.wikipedia.org/wiki/Prisoner%27s_dilemma#The_iterated_prisoner.27s_dilemma" rel="external" target="_blank">iterated Prisoner&rsquo;s Dilemma</a>.  This <a href="http://ccl.northwestern.edu/netlogo/" rel="external" target="_blank">NetLogo</a> model allows you to try <a href="https://en.wikipedia.org/wiki/The_Evolution_of_Cooperation#Axelrod.27s_tournaments" rel="external" target="_blank">Axelrod&rsquo;s tournaments</a> yourself by creating some strategies and testing them in an iterated Prisoner&rsquo;s Dilemma.</p>
-<h2 id="1-how-it-works">1 How it works</h2>
-<h3 id="11-go">1.1 go</h3>
-<p>The [go] button starts a <a href="https://en.wikipedia.org/wiki/Round-robin_tournament" rel="external" target="_blank">round-robin tournament</a> where all strategies are paired with each other to play the Prisoner&rsquo;s Dilemma for a specified number of rounds.  The average score for each player is shown beside their name.  At the end of the tournament all players&rsquo; average scores are shown in the output window.</p>
-<h3 id="12-memory-one-strategies">1.2 Memory-one strategies</h3>
+ to see which strategies would do well playing an <a href="https://en.wikipedia.org/wiki/Prisoner%27s_dilemma#The_iterated_prisoner.27s_dilemma" rel="external">iterated Prisoner&rsquo;s Dilemma</a>.  This <a href="http://ccl.northwestern.edu/netlogo/" rel="external">NetLogo</a> model allows you to try <a href="https://en.wikipedia.org/wiki/The_Evolution_of_Cooperation#Axelrod.27s_tournaments" rel="external">Axelrod&rsquo;s tournaments</a> yourself by creating some strategies and testing them in an iterated Prisoner&rsquo;s Dilemma.</p>
+<h2 id="1-how-it-works">1 How it works<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="11-go">1.1 go<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>The [go] button starts a <a href="https://en.wikipedia.org/wiki/Round-robin_tournament" rel="external">round-robin tournament</a> where all strategies are paired with each other to play the Prisoner&rsquo;s Dilemma for a specified number of rounds.  The average score for each player is shown beside their name.  At the end of the tournament all players&rsquo; average scores are shown in the output window.</p>
+<h3 id="12-memory-one-strategies">1.2 Memory-one strategies<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>In Axelrod&rsquo;s tournament game theorists were invited to submit any strategies that could be encoded as computer programs.  The programs had as input the entire history of the interaction so far and would respond with a choice to <strong>cooperate</strong> or <strong>defect</strong> in the next round 
 
 
@@ -358,20 +376,20 @@ function expandAllDetails() {
 <ul>
 <li>AllC = (100%, 100%, 100%, 100%, 100%).  Always cooperates.</li>
 <li>AllD = ( 0%, 0%, 0%, 0%, 0%).  Always defects.</li>
-<li><a href="https://en.wikipedia.org/wiki/Tit_for_tat#In_game_theory" rel="external" target="_blank">Tit-for-tat</a> = (100%, 100%, 0%, 100%, 0%).  Cooperates on first round.  After that, repeats other player&rsquo;s last choice.</li>
-<li><a href="https://en.wikipedia.org/wiki/Win%E2%80%93stay,_lose%E2%80%93switch" rel="external" target="_blank">Pavlov</a> = (100%, 100%, 0%, 0%, 100%).  Cooperates on first round.  After that, repeats last move if received <em>b</em>, otherwise switches.</li>
-<li><a href="https://en.wikipedia.org/wiki/Grim_trigger" rel="external" target="_blank">Grim</a> = (100%, 100%, 0%, 0%, 0%).  Cooperates on first round.  After that, keeps cooperating until anybody defects.  Then defects for rest of game.</li>
+<li><a href="https://en.wikipedia.org/wiki/Tit_for_tat#In_game_theory" rel="external">Tit-for-tat</a> = (100%, 100%, 0%, 100%, 0%).  Cooperates on first round.  After that, repeats other player&rsquo;s last choice.</li>
+<li><a href="https://en.wikipedia.org/wiki/Win%E2%80%93stay,_lose%E2%80%93switch" rel="external">Pavlov</a> = (100%, 100%, 0%, 0%, 100%).  Cooperates on first round.  After that, repeats last move if received <em>b</em>, otherwise switches.</li>
+<li><a href="https://en.wikipedia.org/wiki/Grim_trigger" rel="external">Grim</a> = (100%, 100%, 0%, 0%, 0%).  Cooperates on first round.  After that, keeps cooperating until anybody defects.  Then defects for rest of game.</li>
 </ul>
 <p>Click [presets] to explore other interesting strategies.</p>
-<h3 id="13-evolve">1.3 evolve</h3>
+<h3 id="13-evolve">1.3 evolve<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>The [evolve] button allows the user to explore how the population of strategies evolves over many tournaments.  Between each tournament a new generation of strategies is created by sampling the current generation.  The probability of each strategy reproducing into the next generation is proportional to how much better its score is than the lowest-scoring player in the population.  The lowest-scoring player therefore has zero probability of reproducing.</p>
-<h2 id="2-how-to-use-it">2 How to use it</h2>
-<h3 id="21-adding-players">2.1 Adding players</h3>
+<h2 id="2-how-to-use-it">2 How to use it<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="21-adding-players">2.1 Adding players<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>To run a tournament you first need to add some players (also called strategies).  You can add your own by choosing slider values and (optionally) giving the strategy a name, then clicking the [add-players] button.  (You can add duplicates of a strategy by adjusting the [how-many] slider before clicking [add-players].)</p>
 <p>Alternatively, you can click the [random-players] button to add one (or [how-many]) randomly-chosen strategies.</p>
 <p>You can also click the [presets] button at the bottom to add a bunch of pre-defined strategies.  Most of these were submitted by students in the UBC course <a href="/~rikblok/teaching/past/isci344/index.html">ISCI 344 Game Theory</a>.</p>
-<h3 id="22-running-a-tournament">2.2 Running a tournament</h3>
-<h4 id="221-go">2.2.1 go</h4>
+<h3 id="22-running-a-tournament">2.2 Running a tournament<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="221-go">2.2.1 go<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
 <p>Once you&rsquo;ve got a pool of players you can run a round-robin tournament between them by clicking the [go] button.  Choose the following parameters:</p>
 <ul>
 <li><strong>number-of-rounds</strong>: The number of repetitions (rounds) of the game played between each pair of players.</li>
@@ -381,25 +399,25 @@ function expandAllDetails() {
 <li><strong>errors</strong>: The chance of making an implementation error with any choice.  With implementation errors players perceive the conditions (eg. what happened in the last round) correctly and determine their response correctly according to their strategy, but they accidentally select the option opposite to what they intended.  Set this to zero for perfect fidelity (players always successfully make the choice they intended).  <strong>errors</strong> also sets the mutation rate under [evolve] (see the next section).</li>
 </ul>
 <p>At the end of the tournament all the player scores and level of cooperation (fraction of times they cooperated) are shown.</p>
-<h4 id="222-inspect-players">2.2.2 inspect-players</h4>
+<h4 id="222-inspect-players">2.2.2 inspect-players<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
 <p>You can view the score and other details of any of the players.  Press the [inspect-players] button to enable this functionality.  Then hover over any player to see their attributes including their name, strategy (five percentages), average frequency of cooperation, and average score so far.</p>
 <p>Inspecting a player also populates the &ldquo;Players:&rdquo; view (name and strategy sliders) so you can easily remove this player or add more of the same.  (Hint: You can stop [inspect-players] so that the current player remains in the view by clicking on the player.)</p>
-<h4 id="223-evolve">2.2.3 evolve</h4>
-<p>In addition to running the tournament once and seeing the scores, it is possible to run it repeatedly, and select for the highest scoring strategies.  Each generation, the players are selected to form the next generation with likelihood <a href="https://en.wikipedia.org/wiki/Fitness_proportionate_selection" rel="external" target="_blank">proportional to their fitness</a> where</p>
+<h4 id="223-evolve">2.2.3 evolve<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>In addition to running the tournament once and seeing the scores, it is possible to run it repeatedly, and select for the highest scoring strategies.  Each generation, the players are selected to form the next generation with likelihood <a href="https://en.wikipedia.org/wiki/Fitness_proportionate_selection" rel="external">proportional to their fitness</a> where</p>
 <blockquote>
 <p><em>my-fitness = my-average-score - lowest average-score</em></p>
 </blockquote>
 <p>so that the minimum probability of selection is never negative.  The lowest scoring strategies will have zero fitness and be removed from the population.</p>
 <p>The population size is conserved across generations.  Since lower-fitness strategies are less likely to be copied into the next generation this evolutionary process selects for higher fitness strategies.</p>
 <p>As strategies are copied into the next generation, replication errors (<em>mutations</em>) are possible.  The [errors] slider gives the likelihood that a child will have a mutation from its parent.  If a mutation occurs, one of the five probabilities is replaced with a random value.</p>
-<h3 id="23-removing-players">2.3 Removing players</h3>
+<h3 id="23-removing-players">2.3 Removing players<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>You can remove players at any time by entering their name in the [Name] box and clicking [remove-name].  Note that this removes <em>all</em> players with that name.</p>
 <p>You can also remove the player with the lowest average score with the [remove-worst] button.</p>
-<h2 id="3-things-to-notice">3 Things to notice</h2>
-<h3 id="31-errors">3.1 Errors</h3>
+<h2 id="3-things-to-notice">3 Things to notice<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="31-errors">3.1 Errors<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>Notice that it is possible to introduce <em>implementation errors</em> into the game: a strategy may intend to <strong>cooperate</strong> or <strong>defect</strong> but erroneously choose the other option.  The error rate (per choice) is given by the <strong>errors</strong> slider.</p>
 <p>The <strong>errors</strong> slider also allows reproduction errors, or mutations.  In this case the value gives the mutation rate per child.  If a mutation occurs one of the five variables representing the strategy is replaced with a random value.</p>
-<h3 id="32-fixed-number-of-rounds">3.2 Fixed number of rounds</h3>
+<h3 id="32-fixed-number-of-rounds">3.2 Fixed number of rounds<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <p>Axelrod set up his tournament so each game between two players had an uncertain duration 
 
 
@@ -441,11 +459,11 @@ function expandAllDetails() {
 
 </span></span>)</span>
 .  That prevented strategies from being conditioned on how many rounds remained.  (It&rsquo;s always best to <strong>defect</strong> in the last round.  But if I know that, I should also <strong>defect</strong> in the second-to-last round&hellip;)  That&rsquo;s not an issue in this simulation because memory-one strategies aren&rsquo;t sophisticated enough to condition their response on the number of remaining rounds.  So this tournament allows a certain, fixed number of rounds.</p>
-<h3 id="33-fitness-landscape">3.3 Fitness landscape</h3>
-<p>You may be surprised to see the average score (or <em>fitness</em>) drop as the population evolves.  Evolution is often thought of as climbing a <a href="https://en.wikipedia.org/wiki/Fitness_landscape" rel="external" target="_blank">fitness landscape</a>.  That makes sense when the fitness is unchanging.  But in this model the fitness of each strategy depends strictly on the other strategies in the population.  As the population composition changes the fitness of the population may decline.  Nevertheless, the most successful within that population will tend to reproduce more frequently.  Counterintuitively, in this way it is possible for the system to evolve to low fitness.  It is akin to climbing a hill that collapses as it is being climbed.</p>
-<h2 id="4-things-to-try">4 Things to try</h2>
+<h3 id="33-fitness-landscape">3.3 Fitness landscape<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>You may be surprised to see the average score (or <em>fitness</em>) drop as the population evolves.  Evolution is often thought of as climbing a <a href="https://en.wikipedia.org/wiki/Fitness_landscape" rel="external">fitness landscape</a>.  That makes sense when the fitness is unchanging.  But in this model the fitness of each strategy depends strictly on the other strategies in the population.  As the population composition changes the fitness of the population may decline.  Nevertheless, the most successful within that population will tend to reproduce more frequently.  Counterintuitively, in this way it is possible for the system to evolve to low fitness.  It is akin to climbing a hill that collapses as it is being climbed.</p>
+<h2 id="4-things-to-try">4 Things to try<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 <p>What do you expect to happen if the error rate is set to 50%?  (Hint: For each of the five memory-one conditions, what is the probability any player will choose erroneously?)  Check if you&rsquo;re right!</p>
-<h2 id="5-references">5 References</h2>
+<h2 id="5-references">5 References<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
 
   
   
@@ -584,6 +602,7 @@ function expandAllDetails() {
 
 
   <footer class="footline">
+              <i class='fa-fw fas fa-calendar'></i> Nov 7, 2018
   </footer>
 </article>
         </div>
@@ -592,47 +611,47 @@ function expandAllDetails() {
     <aside id="R-sidebar" class="default-animation">
       <div id="R-header-topbar" class="default-animation"></div>
       <div id="R-header-wrapper" class="default-animation">
-        <div id="R-header" class="default-animation">
-          <a id="R-logo" class="R-default" href="/~rikblok/index.html">
-Rik&#39;s Treehouse
-          </a>
-        </div>
-        <script>
-          window.index_js_url="/~rikblok/searchindex.en.js?1770597923";
-        </script>
+        <a id="R-logo" class="R-default direction-row" href="/~rikblok/index.html">
+          <span class="logo-title default-animation">Rik&#39;s Treehouse</span>
+        </a>
         <search><form action="/~rikblok/search/index.html" method="get">
           <div class="searchbox default-animation">
-            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
             <label class="a11y-only" for="R-search-by">Search</label>
             <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
-            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-fw fa-times" title="Clear search"></i></button>
           </div>
         </form></search>
-        <script>
-          var contentLangs=['en'];
-        </script>
-        <script src="/~rikblok/js/auto-complete.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.stemmer.support.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.multi.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/lunr/lunr.en.min.js?1770597923" defer></script>
-        <script src="/~rikblok/js/search.js?1770597923" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation homelinks">
-        <ul>
-          <li><a class="padding" href="/~rikblok/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
-        </ul>
-        <hr class="padding">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/index.html"><a class="padding" href="/~rikblok/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
       </div>
       <div id="R-content-wrapper" class="highlightable">
-        <div id="R-shortcutmenu-home" class="R-sidebarmenu">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
           <ul class="enlarge morespace collapsible-menu">
-            <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/compute/index.html"><a class="padding" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/~rikblok/research/index.html"><a class="padding" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu"></ul></li>
-            <li class="parent " data-nav-id="/~rikblok/science/index.html"><a class="padding" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu">
-            <li class="parent alwaysopen " data-nav-id="/~rikblok/science/models/index.html"><a class="padding" href="/~rikblok/science/models/index.html">Models</a><ul id="R-subsections-c61e93325435f6b5622b2acdf7d55a4f" class="collapsible-menu">
+            <li class="" data-nav-id="/~rikblok/teaching/index.html"><a class="padding default-animation" href="/~rikblok/teaching/index.html">Academic anecdotes</a><ul id="R-subsections-02a0e6106f06193d4cccbb78c090c98f" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/compute/index.html"><a class="padding default-animation" href="/~rikblok/compute/index.html">Computational capers</a><ul id="R-subsections-5249d5d503038b42a265b9f4aa38544a" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/math/index.html"><a class="padding default-animation" href="/~rikblok/math/index.html">Mathematical musings</a><ul id="R-subsections-833ca246cca04fd0b216c9c31c31cc5b" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/~rikblok/research/index.html"><a class="padding default-animation" href="/~rikblok/research/index.html">Research ramblings</a><ul id="R-subsections-bf769cd5c0601629d8bb28e4a133e31a" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/~rikblok/science/index.html"><a class="padding default-animation" href="/~rikblok/science/index.html">Scientific scribblings</a><ul id="R-subsections-657d6952e694aecb3333427c14fbacb9" class="collapsible-menu">
+            <li class="parent alwaysopen " data-nav-id="/~rikblok/science/models/index.html"><a class="padding default-animation" href="/~rikblok/science/models/index.html">Models</a><ul id="R-subsections-c61e93325435f6b5622b2acdf7d55a4f" class="collapsible-menu">
             <li class="" data-nav-id="/~rikblok/science/models/goblintown/index.html"><a class="padding" href="/~rikblok/science/models/goblintown/index.html">Escape from Goblin-town! (2025)</a></li>
             <li class="" data-nav-id="/~rikblok/science/models/game_of_life/index.html"><a class="padding" href="/~rikblok/science/models/game_of_life/index.html">Conway&#39;s Game of Life (2020)</a></li>
             <li class="active " data-nav-id="/~rikblok/science/models/axelrods_tournament/index.html"><a class="padding" href="/~rikblok/science/models/axelrods_tournament/index.html">Axelrod&#39;s tournament (2018)</a></li>
@@ -645,74 +664,35 @@ Rik&#39;s Treehouse
             <li class="" data-nav-id="/~rikblok/science/onion_of_science/index.html"><a class="padding" href="/~rikblok/science/onion_of_science/index.html">The onion of Science (2002)</a></li></ul></li>
           </ul>
         </div>
-    
-        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
-        <div id="R-menu-footer">
-          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
-          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
-            <ul>
-              <li id="R-select-language-container" class="footerLangSwitch">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-language"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <label class="a11y-only" for="R-select-language">Language</label>
-                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/~rikblok/science/models/axelrods_tournament/index.html" lang="en-us" selected></option>
-                    </select>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-              </li>
-              <li id="R-select-variant-container" class="footerVariantSwitch">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-paint-brush"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <label class="a11y-only" for="R-select-variant">Theme</label>
-                    <select id="R-select-variant" onchange="window.relearn.changeVariant( this.value );">
-                      <option id="R-select-variant-auto" value="auto" selected>Auto</option>
-                    </select>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-                <script>window.relearn.markVariant();</script>
-              </li>
-              <li class="footerVisitedLinks">
-                <div class="padding menu-control">
-                  <i class="fa-fw fas fa-history"></i>
-                  <span>&nbsp;</span>
-                  <div class="control-style">
-                    <button onclick="clearHistory();">Clear History</button>
-                  </div>
-                  <div class="clear"></div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div id="R-footer" class="footerFooter showFooter">
-        <p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p>
-          </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
         </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/~rikblok/js/clipboard.min.js?1770597923" defer></script>
-    <script src="/~rikblok/js/perfect-scrollbar.min.js?1770597923" defer></script>
     <script>
-      function useMathJax( config ){
-        window.MathJax = Object.assign( window.MathJax || {}, {
-          tex: {
-            inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
-            displayMath: [['\\[', '\\]'], ['$$', '$$']], 
-          },
-          options: {
-            enableMenu: false 
-          }
-        }, config );
-      }
-      useMathJax( JSON.parse("{}") );
+      window.MathJax = Object.assign( window.MathJax || {}, {
+        tex: {
+          inlineMath:  [['\\(', '\\)'], ['$',  '$']],  
+          displayMath: [['\\[', '\\]'], ['$$', '$$']], 
+        },
+        options: {
+          enableMenu: false 
+        }
+      }, JSON.parse("{}") );
     </script>
-    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1770597923"></script>
-    <script src="/~rikblok/js/theme.js?1770597923" defer></script>
+    <script id="MathJax-script" async src="/~rikblok/js/mathjax/tex-mml-chtml.js?1779480491"></script>
+    <script src="/~rikblok/js/perfect-scrollbar/perfect-scrollbar.min.js?1779480491" defer></script>
+    <script src="/~rikblok/js/theme.min.js?1779480491" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

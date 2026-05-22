@@ -1,5 +1,5 @@
 baseURL = 'https://www.cs.ubc.ca/~rikblok/'
-languageCode = 'en-us'
+locale = 'en-us'
 title = "Rik's Treehouse"
 theme = ['hugo-theme-relearn', 'hugo-cite']
 
