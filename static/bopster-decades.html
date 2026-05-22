@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bopster – Play by Decade</title>
+
+<!-- PWA meta tags for "Add to Home Screen" standalone mode -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bopster">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#161b22">
+<link rel="apple-touch-icon" href="https://www.bopster.app/img/mascot_ai.png">
+<link rel="icon" href="https://www.bopster.app/favicon.ico">
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap');
 
@@ -15,7 +25,7 @@
     --border:  #30363d;
     --accent:  #23a6d5;
     --tab-h:   48px;
-    --scale:   0.75;          /* iframe zoom: 1 = full size, 0.75 = 75% */
+    --scale:   0.75;
   }
 
   html, body {
@@ -69,31 +79,39 @@
   nav button.active { color: var(--accent); background: rgba(35,166,213,.1); }
   nav button.active::after { transform: scaleX(1); }
 
+  /* ── Fullscreen button ── */
+  #btn-fs {
+    flex: 0 0 44px;
+    min-width: unset;
+    font-family: inherit;
+    font-size: 18px;
+    color: #8b949e;
+    letter-spacing: 0;
+    border-left: 1px solid var(--border);
+  }
+  #btn-fs:hover { color: var(--accent); }
+
   /* ── Frame container ── */
   .frame-wrap {
     display: none;
     position: relative;
     width: 100%;
-    /* visible height = full viewport minus tab bar */
     height: calc(100vh - var(--tab-h));
     overflow: hidden;
   }
   .frame-wrap.active { display: block; }
 
-  /* Scale trick:
-     The iframe is rendered at (1/scale) × the visible size,
-     then shrunk back down with transform so it fits perfectly. */
   .frame-wrap iframe {
     position: absolute;
     top: 0; left: 0;
     border: none;
-    /* physical size before scaling */
     width:  calc(100% / var(--scale));
     height: calc(100% / var(--scale));
-    /* scale it down from top-left corner */
     transform: scale(var(--scale));
     transform-origin: top left;
   }
+
+
 
   /* ── Loading overlay ── */
   .loader {
@@ -142,9 +160,8 @@ const frames = document.getElementById('frames');
 const loaded = new Set();
 
 function activate(i) {
-  document.querySelectorAll('nav button').forEach((b, j) => b.classList.toggle('active', i === j));
+  document.querySelectorAll('nav button.decade').forEach((b, j) => b.classList.toggle('active', i === j));
   document.querySelectorAll('.frame-wrap').forEach((w, j) => w.classList.toggle('active', i === j));
-
   if (!loaded.has(i)) {
     loaded.add(i);
     const wrap   = frames.querySelectorAll('.frame-wrap')[i];
@@ -155,8 +172,10 @@ function activate(i) {
   }
 }
 
+// Decade tabs
 decades.forEach((d, i) => {
   const btn = document.createElement('button');
+  btn.className = 'decade';
   btn.textContent = d.label;
   btn.addEventListener('click', () => activate(i));
   nav.appendChild(btn);
@@ -170,12 +189,31 @@ decades.forEach((d, i) => {
 
   const iframe = document.createElement('iframe');
   iframe.title = d.label;
-  iframe.allow = 'autoplay; camera; microphone';
+  iframe.allow = 'autoplay; camera; microphone; fullscreen';
 
   wrap.appendChild(loader);
   wrap.appendChild(iframe);
   frames.appendChild(wrap);
 });
+
+// Fullscreen button
+const fsBtn = document.createElement('button');
+fsBtn.id = 'btn-fs';
+fsBtn.title = 'Fullscreen';
+fsBtn.textContent = '⛶';
+fsBtn.addEventListener('click', () => {
+  const el = document.documentElement;
+  if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+    (el.requestFullscreen || el.webkitRequestFullscreen).call(el);
+    fsBtn.textContent = '✕';
+  } else {
+    (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    fsBtn.textContent = '⛶';
+  }
+});
+document.addEventListener('fullscreenchange',       () => { if (!document.fullscreenElement)        fsBtn.textContent = '⛶'; });
+document.addEventListener('webkitfullscreenchange', () => { if (!document.webkitFullscreenElement)  fsBtn.textContent = '⛶'; });
+nav.appendChild(fsBtn);
 
 activate(0);
 </script>
