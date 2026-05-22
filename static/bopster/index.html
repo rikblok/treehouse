@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bopster – Play by Decade</title>
+
+<!-- PWA meta tags for "Add to Home Screen" standalone mode -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bopster">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#161b22">
+<link rel="apple-touch-icon" href="https://www.bopster.app/img/mascot_ai.png">
+<link rel="icon" href="https://www.bopster.app/favicon.ico">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:      #0d1117;
+    --surface: #161b22;
+    --border:  #30363d;
+    --accent:  #23a6d5;
+    --tab-h:   48px;
+    --scale:   0.75;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: #e6edf3;
+    font-family: 'DM Sans', sans-serif;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Frame container (grows to fill space above nav) ── */
+  #frames {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .frame-wrap {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .frame-wrap.active { display: block; }
+
+  .frame-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    border: none;
+    width:  calc(100% / var(--scale));
+    height: calc(100% / var(--scale));
+    transform: scale(var(--scale));
+    transform-origin: top left;
+  }
+
+  /* ── Tab bar (pinned to bottom) ── */
+  nav {
+    flex-shrink: 0;
+    height: var(--tab-h);
+    display: flex;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
+    /* respect iPhone home-bar safe area */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  nav::-webkit-scrollbar { display: none; }
+
+  nav button {
+    flex: 1;
+    min-width: 70px;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: #8b949e;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    position: relative;
+    transition: color .18s, background .18s;
+    border-right: 1px solid var(--border);
+    -webkit-tap-highlight-color: transparent;
+  }
+  nav button:last-child { border-right: none; }
+
+  /* active indicator now on top edge since bar is at bottom */
+  nav button::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform .2s ease;
+    border-radius: 0 0 3px 3px;
+  }
+  nav button:hover  { color: #e6edf3; background: rgba(35,166,213,.06); }
+  nav button.active { color: var(--accent); background: rgba(35,166,213,.1); }
+  nav button.active::after { transform: scaleX(1); }
+
+  /* ── Fullscreen button ── */
+  #btn-fs {
+    flex: 0 0 44px;
+    min-width: unset;
+    font-family: inherit;
+    font-size: 18px;
+    color: #8b949e;
+    letter-spacing: 0;
+    border-left: 1px solid var(--border);
+  }
+  #btn-fs:hover { color: var(--accent); }
+
+  /* ── Loading overlay ── */
+  .loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: var(--bg);
+    color: #8b949e;
+    font-size: 14px;
+    pointer-events: none;
+    transition: opacity .3s;
+    z-index: 2;
+  }
+  .loader.hidden { opacity: 0; pointer-events: none; }
+  .spinner {
+    width: 36px; height: 36px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<div id="frames"></div>
+<nav id="tabs"></nav>
+
+<script>
+const decades = [
+  { label: '1960s', url: 'https://www.bopster.app/en/live?load_list=5087' },
+  { label: '1970s', url: 'https://www.bopster.app/en/live?load_list=5088' },
+  { label: '1980s', url: 'https://www.bopster.app/en/live?load_list=5089' },
+  { label: '1990s', url: 'https://www.bopster.app/en/live?load_list=5090' },
+  { label: '2000s', url: 'https://www.bopster.app/en/live?load_list=5091' },
+  { label: '2010s', url: 'https://www.bopster.app/en/live?load_list=5092' },
+];
+
+const nav    = document.getElementById('tabs');
+const frames = document.getElementById('frames');
+const loaded = new Set();
+
+function activate(i) {
+  document.querySelectorAll('nav button.decade').forEach((b, j) => b.classList.toggle('active', i === j));
+  document.querySelectorAll('.frame-wrap').forEach((w, j) => w.classList.toggle('active', i === j));
+  if (!loaded.has(i)) {
+    loaded.add(i);
+    const wrap   = frames.querySelectorAll('.frame-wrap')[i];
+    const loader = wrap.querySelector('.loader');
+    const iframe = wrap.querySelector('iframe');
+    iframe.src = decades[i].url;
+    iframe.onload = () => loader.classList.add('hidden');
+  }
+}
+
+// Decade tabs
+decades.forEach((d, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'decade';
+  btn.innerHTML = d.label.slice(0, -1) + '<span style="font-family:\'DM Sans\',sans-serif;font-size:17px;font-weight:600;letter-spacing:0;vertical-align:baseline;">s</span>';
+  btn.addEventListener('click', () => activate(i));
+  nav.appendChild(btn);
+
+  const wrap = document.createElement('div');
+  wrap.className = 'frame-wrap';
+
+  const loader = document.createElement('div');
+  loader.className = 'loader';
+  loader.innerHTML = '<div class="spinner"></div><span>Loading ' + d.label + '…</span>';
+
+  const iframe = document.createElement('iframe');
+  iframe.title = d.label;
+  iframe.allow = 'autoplay; camera; microphone; fullscreen';
+
+  wrap.appendChild(loader);
+  wrap.appendChild(iframe);
+  frames.appendChild(wrap);
+});
+
+// Fullscreen button
+const fsBtn = document.createElement('button');
+fsBtn.id = 'btn-fs';
+fsBtn.title = 'Fullscreen';
+fsBtn.textContent = '⛶';
+fsBtn.addEventListener('click', () => {
+  const el = document.documentElement;
+  if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+    (el.requestFullscreen || el.webkitRequestFullscreen).call(el);
+    fsBtn.textContent = '✕';
+  } else {
+    (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    fsBtn.textContent = '⛶';
+  }
+});
+document.addEventListener('fullscreenchange',       () => { if (!document.fullscreenElement)        fsBtn.textContent = '⛶'; });
+document.addEventListener('webkitfullscreenchange', () => { if (!document.webkitFullscreenElement)  fsBtn.textContent = '⛶'; });
+nav.appendChild(fsBtn);
+
+activate(0);
+</script>
+</body>
+</html>
