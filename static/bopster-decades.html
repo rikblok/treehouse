@@ -34,16 +34,46 @@
     color: #e6edf3;
     font-family: 'DM Sans', sans-serif;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* ── Tab bar ── */
+  /* ── Frame container (grows to fill space above nav) ── */
+  #frames {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .frame-wrap {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .frame-wrap.active { display: block; }
+
+  .frame-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    border: none;
+    width:  calc(100% / var(--scale));
+    height: calc(100% / var(--scale));
+    transform: scale(var(--scale));
+    transform-origin: top left;
+  }
+
+  /* ── Tab bar (pinned to bottom) ── */
   nav {
+    flex-shrink: 0;
     height: var(--tab-h);
     display: flex;
     background: var(--surface);
-    border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--border);
     overflow-x: auto;
     scrollbar-width: none;
+    /* respect iPhone home-bar safe area */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   nav::-webkit-scrollbar { display: none; }
 
@@ -65,15 +95,16 @@
   }
   nav button:last-child { border-right: none; }
 
+  /* active indicator now on top edge since bar is at bottom */
   nav button::after {
     content: '';
     position: absolute;
-    bottom: 0; left: 0; right: 0;
+    top: 0; left: 0; right: 0;
     height: 3px;
     background: var(--accent);
     transform: scaleX(0);
     transition: transform .2s ease;
-    border-radius: 3px 3px 0 0;
+    border-radius: 0 0 3px 3px;
   }
   nav button:hover  { color: #e6edf3; background: rgba(35,166,213,.06); }
   nav button.active { color: var(--accent); background: rgba(35,166,213,.1); }
@@ -90,28 +121,6 @@
     border-left: 1px solid var(--border);
   }
   #btn-fs:hover { color: var(--accent); }
-
-  /* ── Frame container ── */
-  .frame-wrap {
-    display: none;
-    position: relative;
-    width: 100%;
-    height: calc(100vh - var(--tab-h));
-    overflow: hidden;
-  }
-  .frame-wrap.active { display: block; }
-
-  .frame-wrap iframe {
-    position: absolute;
-    top: 0; left: 0;
-    border: none;
-    width:  calc(100% / var(--scale));
-    height: calc(100% / var(--scale));
-    transform: scale(var(--scale));
-    transform-origin: top left;
-  }
-
-
 
   /* ── Loading overlay ── */
   .loader {
@@ -142,8 +151,8 @@
 </head>
 <body>
 
-<nav id="tabs"></nav>
 <div id="frames"></div>
+<nav id="tabs"></nav>
 
 <script>
 const decades = [
@@ -176,7 +185,7 @@ function activate(i) {
 decades.forEach((d, i) => {
   const btn = document.createElement('button');
   btn.className = 'decade';
-  btn.textContent = d.label;
+  btn.innerHTML = d.label.slice(0, -1) + '<span style="font-family:\'DM Sans\',sans-serif;font-size:17px;font-weight:600;letter-spacing:0;vertical-align:baseline;">s</span>';
   btn.addEventListener('click', () => activate(i));
   nav.appendChild(btn);
 
